@@ -1,0 +1,22 @@
+{
+    "/assets/css/bootstrap.css": "/assets/css/bootstrap.css",
+    "/assets/css/bootstrap-dark.css": "/assets/css/bootstrap-dark.css",
+    "/assets/css/icons.css": "/assets/css/icons.css",
+    "/assets/css/app-rtl.css": "/assets/css/app-rtl.css",
+    "/assets/css/app.css": "/assets/css/app.css",
+    "/assets/css/app-dark.css": "/assets/css/app-dark.css",
+    "/assets/libs/jquery/jquery.min.js": "/assets/libs/jquery/jquery.min.js",
+    "/assets/libs/bootstrap/bootstrap.min.js": "/assets/libs/bootstrap/bootstrap.min.js",
+    "/assets/libs/metismenu/metismenu.min.js": "/assets/libs/metismenu/metismenu.min.js",
+    "/assets/libs/simplebar/simplebar.min.js": "/assets/libs/simplebar/simplebar.min.js",
+    "/assets/libs/node-waves/node-waves.min.js": "/assets/libs/node-waves/node-waves.min.js",
+    "/assets/libs/waypoints/waypoints.min.js": "/assets/libs/waypoints/waypoints.min.js",
+    "/assets/libs/jquery-counterup/jquery-counterup.min.js": "/assets/libs/jquery-counterup/jquery-counterup.min.js",
+    "/assets/css/bootstrap.min.css": "/assets/css/bootstrap.min.css",
+    "/assets/css/bootstrap-dark.min.css": "/assets/css/bootstrap-dark.min.css",
+    "/assets/css/icons.min.css": "/assets/css/icons.min.css",
+    "/assets/css/app-rtl.min.css": "/assets/css/app-rtl.min.css",
+    "/assets/css/app.min.css": "/assets/css/app.min.css",
+    "/assets/css/app-dark.min.css": "/assets/css/app-dark.min.css",
+    "/assets/js/app.min.js": "/assets/js/app.min.js"
+}
