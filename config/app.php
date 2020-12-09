@@ -228,5 +228,26 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-
+    'programme_type' => [
+        'Undergraduate Degree',
+        'Postgraduate Degree',
+        'Diploma',
+        'External Degree'
+    ],
+    'student_ugc_header' => [
+        'application_year',
+        'al_index_number',
+        'title',
+        'name_initials',
+        'full_name',
+        'al_z_score',
+        'district_no',
+        'district',
+        'race' ,
+        'gender',
+        'medium',
+        'address_no' ,
+        'address_street','address_city','address_4' ,
+        'mobile','nic','al_english_mark','email','mobile_home','parent_mobile','parent_landline'
+    ],
 ];

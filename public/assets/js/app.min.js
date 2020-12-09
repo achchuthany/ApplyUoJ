@@ -36,18 +36,18 @@
         });
     }
 
-    function initMenuItemScroll() {
-        // focus active menu in left sidebar
-        $(document).ready(function(){
-            if($("#sidebar-menu").length > 0 ){
-                var activeMenu = $("#sidebar-menu .mm-active .active").offset().top;
-                if( activeMenu > 300) {
-                    activeMenu = activeMenu - 300;
-                    $(".simplebar-content-wrapper").animate({ scrollTop: activeMenu }, "slow");
-                }
-            }
-        });
-    }
+    // function initMenuItemScroll() {
+    //     // focus active menu in left sidebar
+    //     $(document).ready(function(){
+    //         if($("#sidebar-menu").length > 0 ){
+    //             var activeMenu = $("#sidebar-menu .mm-active .active").offset().top;
+    //             if( activeMenu > 300) {
+    //                 activeMenu = activeMenu - 300;
+    //                 $(".simplebar-content-wrapper").animate({ scrollTop: activeMenu }, "slow");
+    //             }
+    //         }
+    //     });
+    // }
 
     function initHoriMenuActive() {
         $(".navbar-nav a").each(function () {
@@ -195,7 +195,7 @@
         initMetisMenu();
         initLeftMenuCollapse();
         initActiveMenu();
-        initMenuItemScroll();
+        // initMenuItemScroll();
         initFullScreen();
         initHoriMenuActive();
         initRightSidebar();

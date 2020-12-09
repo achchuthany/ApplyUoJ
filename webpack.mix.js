@@ -26,6 +26,28 @@ var third_party_assets = {
         {"name": "node-waves", "assets": ["./node_modules/node-waves/dist/waves.js"]},
         {"name": "waypoints", "assets": ["./node_modules/waypoints/lib/jquery.waypoints.min.js"]},
         {"name": "jquery-counterup", "assets": ["./node_modules/jquery.counterup/jquery.counterup.min.js"]},
+        {"name": "select2", "assets": ["./node_modules/select2/dist/js/select2.min.js", "./node_modules/select2/dist/css/select2.min.css"]},
+        {"name": "sweetalert2", "assets": ["./node_modules/sweetalert2/dist/sweetalert2.min.js", "./node_modules/sweetalert2/dist/sweetalert2.min.css"]},
+        {
+            "name": "datatables", "assets": ["./node_modules/datatables.net/js/jquery.dataTables.min.js",
+                "./node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js",
+                "./node_modules/datatables.net-responsive/js/dataTables.responsive.min.js",
+                "./node_modules/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js",
+                "./node_modules/datatables.net-buttons/js/dataTables.buttons.min.js",
+                "./node_modules/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js",
+                "./node_modules/datatables.net-buttons/js/buttons.html5.min.js",
+                "./node_modules/datatables.net-buttons/js/buttons.flash.min.js",
+                "./node_modules/datatables.net-buttons/js/buttons.print.min.js",
+                "./node_modules/datatables.net-buttons/js/buttons.colVis.min.js",
+                "./node_modules/datatables.net-keytable/js/dataTables.keyTable.min.js",
+                "./node_modules/datatables.net-select/js/dataTables.select.min.js",
+                "./node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css",
+                "./node_modules/datatables.net-responsive-bs4/css/responsive.bootstrap4.css",
+                "./node_modules/datatables.net-buttons-bs4/css/buttons.bootstrap4.css",
+                "./node_modules/datatables.net-select-bs4/css/select.bootstrap4.css"]
+        },
+        {"name": "pdfmake", "assets": ["./node_modules/pdfmake/build/pdfmake.min.js", "./node_modules/pdfmake/build/vfs_fonts.js"]},
+        {"name": "jszip", "assets": ["./node_modules/jszip/dist/jszip.min.js"]}
         // {"name": "summernote", "assets": ["./node_modules/summernote/dist/summernote-bs4.min.js", "./node_modules/summernote/dist/summernote-bs4.css"]},
 
     ]
@@ -80,6 +102,16 @@ mix.sass('resources/scss/app-dark.scss', folder.dist_assets + "css").minify(fold
 //copying demo pages related assets
 var app_pages_assets = {
     js: [
+        folder.src + "js/pages/datatables.init.js",
+        folder.src + "js/pages/datatables.faculty.index.js",
+        folder.src + "js/pages/delete.faculty.index.js",
+        folder.src + "js/pages/sweetalert.index.js",
+        folder.src + "js/pages/datatables.programmes.index.js",
+        folder.src + "js/pages/delete.programme.index.js",
+        folder.src + "js/pages/datatables.academic-years.index.js",
+        folder.src + "js/pages/delete.academic-year.index.js",
+        folder.src + "js/pages/datatables.application.registrations.index.js",
+        folder.src + "js/pages/delete.application.registrations.index.js",
     ]
 };
 

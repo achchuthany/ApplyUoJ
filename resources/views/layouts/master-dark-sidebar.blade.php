@@ -17,6 +17,7 @@
             <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
+                    @include('common-components.flash-message')
                     @yield('content')
                 </div>
                 <!-- container-fluid -->

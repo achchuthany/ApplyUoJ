@@ -1,4 +1,4 @@
-// 
+//
 // authentication.scss
 //
 
@@ -11,6 +11,24 @@
 }
 
 .authentication-bg{
+    background-color: $auth-bg;
+    .auth-logo{
+        .logo{
+            margin: 0px auto;
+        }
+    }
+
+}
+
+.authentication-student-bg{
+    background: #222 url('/assets/images/studentapp_background.png') center center no-repeat;
+    /* background: #222; */
+    background-size: cover;
+    height: 100%;
+    //display: flex;
+    align-items: center;
+    position: relative;
+
     background-color: $auth-bg;
     .auth-logo{
         .logo{

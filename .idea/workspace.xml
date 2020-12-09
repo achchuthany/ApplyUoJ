@@ -1,9 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2c2ec210-208a-41b5-8c22-9ae5395aa4fe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AcademicYearController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicationRegistrationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/FacultyController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ProgrammeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/AcademicYear.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Address.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/ApplicationRegistration.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/CsvData.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Enroll.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Faculty.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Programme.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Student.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/StudentAlExam.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_09_055557_create_application_registrations_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/FacultySeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/pages/datatables.faculty.index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/pages/datatables.init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/pages/delete.faculty.index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/pages/sweetalert.index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/datatables/datatables.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/datatables/datatables.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/jszip/jszip.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/pdfmake/pdfmake.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/select2/select2.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/select2/select2.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/sweetalert2/sweetalert2.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/sweetalert2/sweetalert2.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/images/studentapp_background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/images/uoj.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/datatables.academic-years.index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/datatables.application.registrations.index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/datatables.faculty.index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/datatables.init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/datatables.programmes.index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/delete.academic-year.index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/delete.application.registrations.index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/delete.faculty.index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/delete.programme.index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/sweetalert.index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/academic-year/add-edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/academic-year/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/application/registration/add-edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/application/registration/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/common-components/flash-message.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/401.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/403.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/404.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/419.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/429.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/500.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/503.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/illustrated-layout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/layout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/minimal.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/faculty/add-edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/faculty/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/programme/add-edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/programme/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/upload-view.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/upload.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ApplyUoJ.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ApplyUoJ.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_07_090021_create_students_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_07_090021_create_students_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_07_131620_create_programmes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_07_131620_create_programmes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_07_131711_create_academic_years_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_07_131711_create_academic_years_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/app-dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app-dark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/app-dark.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app-dark.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/app-rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app-rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/app-rtl.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app-rtl.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/app.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/app.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/custom/pages/_authentication.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/custom/pages/_authentication.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/horizontal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/horizontal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master-dark-sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master-dark-sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master-without-nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master-without-nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/right-sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/right-sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/topbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/topbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,7 +125,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -125,29 +240,35 @@
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1lGbSY53lYYd3K0HBKihhCAhYId" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/student" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views\student" />
+      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\js\pages" />
+      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views\application" />
+      <recent name="D:\xampp\htdocs\ApplyUoJ\public\assets\images" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\lang\en" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views\auth" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -166,7 +287,13 @@
       <updated>1607226375648</updated>
       <workItem from="1607226377336" duration="2715000" />
       <workItem from="1607232600443" duration="4577000" />
-      <workItem from="1607259403418" duration="1853000" />
+      <workItem from="1607259403418" duration="2563000" />
+      <workItem from="1607331529292" duration="5427000" />
+      <workItem from="1607344617570" duration="11754000" />
+      <workItem from="1607409966076" duration="11241000" />
+      <workItem from="1607431566449" duration="9170000" />
+      <workItem from="1607485528604" duration="21031000" />
+      <workItem from="1607518486746" duration="10580000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1607261190718</created>
@@ -175,17 +302,55 @@
       <option name="project" value="LOCAL" />
       <updated>1607261190718</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial Commit">
+      <created>1607261555438</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1607261555438</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Database">
+      <created>1607423555209</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1607423555209</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Database" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607522096909">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1607505767443" />
+    <state x="1779" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1366.728@1366.0.1366.728" timestamp="1607420213119" />
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1607522096909" />
+    <state x="1825" y="276" key="ComposerInitDialogKey" timestamp="1607417156650">
+      <screen x="1366" y="0" width="1366" height="728" />
+    </state>
+    <state x="1825" y="276" key="ComposerInitDialogKey/0.0.1366.728/1366.0.1366.728@1366.0.1366.728" timestamp="1607417156650" />
     <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1607259997498">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -210,10 +375,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1607260929715" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1607261218203">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1607261621499">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1607261218203" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1607261621499" />
     <state x="500" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607260983512">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -226,5 +391,16 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="0" y="166" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1607231493356" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/student/upload.blade.php</url>
+          <line>25</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

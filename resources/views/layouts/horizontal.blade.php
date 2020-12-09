@@ -30,7 +30,7 @@
             <form class="app-search d-none d-lg-block">
                 <div class="position-relative">
                     <input type="text" class="form-control" placeholder="@lang('translation.Search')...">
-                    <span class="uil-search"></span>
+                    <span class="uil-search"></span>123
                 </div>
             </form>
         </div>
@@ -59,12 +59,12 @@
                     @endswitch
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                    
+
                     <!-- item-->
                     <a href="{{ url('index/en') }}" class="dropdown-item notify-item">
                         <img src="{{ URL::asset('assets/images/flags/us.jpg')}}" alt="user-image" class="mr-1" height="12"> <span class="align-middle">English</span>
                     </a>
-                    
+
                     <!-- item-->
                     <a href="{{ url('index/es') }}" class="dropdown-item notify-item">
                         <img src="{{ URL::asset('assets/images/flags/spain.jpg')}}" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Spanish</span>
@@ -193,7 +193,7 @@
                                 </div>
                             </div>
                         </a>
-                        
+
                         <a href="" class="text-reset notification-item">
                             <div class="media">
                                 <div class="avatar-xs mr-3">
@@ -259,14 +259,14 @@
                     <i class="uil-cog"></i>
                 </button>
             </div>
-            
+
         </div>
     </div>
     <div class="container-fluid">
         <div class="topnav">
 
             <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
-    
+
                 <div class="collapse navbar-collapse" id="topnav-menu-content">
                     <ul class="navbar-nav">
 
@@ -275,7 +275,7 @@
                                 <i class="uil-home-alt mr-2"></i> @lang('translation.Dashboard')
                             </a>
                         </li>
-    
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -321,7 +321,7 @@
 
                             </div>
                         </li>
-    
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -368,7 +368,7 @@
                                         <a href="invoices-detail" class="dropdown-item">@lang('translation.Invoice_Detail')</a>
                                     </div>
                                 </div>
-                                
+
                                 <div class="dropdown">
                                     <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-contact"
                                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -382,7 +382,7 @@
                                 </div>
                             </div>
                         </li>
-    
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -457,14 +457,14 @@
                                 </div>
                             </div>
                         </li>
-    
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="uil-copy mr-2"></i>@lang('translation.Extra_pages') <div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-more">
-                                
+
                                 <div class="dropdown">
                                     <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-auth"
                                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -511,7 +511,7 @@
                                 <a href="layouts-colored-sidebar" class="dropdown-item">@lang('translation.Colored_Sidebar')</a>
                             </div>
                         </li>
-    
+
                     </ul>
                 </div>
             </nav>

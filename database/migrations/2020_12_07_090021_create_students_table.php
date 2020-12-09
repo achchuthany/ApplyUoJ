@@ -29,6 +29,7 @@ class CreateStudentsTable extends Migration
             $table->unsignedSmallInteger('district_no')->nullable();   //2.4
             $table->string('nic', 20)->unique();              //2.5
             $table->string('mobile', 20)->nullable();           //2.6
+            $table->string('mobile_home', 20)->nullable();           //2.6
             $table->string('email', 255)->unique();           //2.7
 
 
@@ -36,12 +37,14 @@ class CreateStudentsTable extends Migration
             $table->integer('al_index_number')->unique();             //3.2
             $table->unsignedSmallInteger('al_exam_year')->nullable();   //3.1
             $table->unsignedDouble('al_z_score')->nullable();   //3.3
+            $table->unsignedSmallInteger('al_english_mark')->nullable();   //3.1
 
             //4. Details of Citizenship
             $table->string('race', 20)->nullable();         //4.1
             $table->string('gender', 10);       //4.2
             $table->string('civil_status', 20)->nullable(); //4.3
             $table->string('religion', 20)->nullable();     //4.4
+            $table->string('medium', 20)->nullable();
 
             $table->date('date_of_birth')->nullable();                 //4.5
             $table->string('citizenship', 30)->nullable();      //4.6
@@ -53,6 +56,7 @@ class CreateStudentsTable extends Migration
             $table->string('parent_occupation', 255)->nullable();       //5.2
             $table->text('parent_address_work')->nullable();                   //5.3
             $table->string('parent_mobile', 20)->nullable();             //5.4
+            $table->string('parent_landline', 20)->nullable();             //5.4
             $table->string('emergency_contact_name', 255)->nullable();   //5.5
             $table->string('emergency_contact_mobile', 20)->nullable();  //5.6
 
