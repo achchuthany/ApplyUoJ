@@ -54,6 +54,25 @@ Route::group(['middleware' => ['auth','verified']], function () {
         'as' => 'admin.students.upload.completed'
     ]);
 
+    Route::get('/admin/students/all',[
+        'uses' => 'App\Http\Controllers\StudentController@all',
+        'as' => 'admin.students.all'
+    ]);
+
+    Route::get('/admin/students/pending',[
+        'uses' => 'App\Http\Controllers\StudentController@pending',
+        'as' => 'admin.students.pending'
+    ]);
+
+
+    Route::get('/admin/students/enroll/profile/{id}',[
+        'uses' => 'App\Http\Controllers\StudentController@profile',
+        'as' => 'admin.students.enroll.profile'
+    ]);
+    Route::get('/admin/students/edit/{id}',[
+        'uses' => 'App\Http\Controllers\StudentController@edit',
+        'as' => 'admin.students.edit',
+    ]);
 
     //Faculty
 
@@ -148,5 +167,18 @@ Route::group(['middleware' => ['auth','verified']], function () {
         'as' => 'admin.application.registrations.delete',
     ]);
 
+//    Route::get('/admin/pdf',[
+//        'uses' => 'App\Http\Controllers\HomeController@pdf',
+//        'as' => 'admin.pdf',
+//    ]);
 
+
+});
+
+//Student
+Route::group(['middleware' => ['auth','verified']], function () {
+    Route::get('/registration',[
+        'uses' => 'App\Http\Controllers\HomeController@pdf',
+        'as' => 'admin.pdf',
+    ]);
 });

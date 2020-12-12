@@ -4,7 +4,7 @@
 @endsection
 @section('css')
     <!-- DataTables -->
-    <link href="{{ URL::asset('assets/libs/rwd-table/rwd-table.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/libs/datatables/datatables.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -29,8 +29,8 @@
                         </div>
                     </div>
                     <div class="table-rep-plugin">
-                        <div class="table-responsive mb-0" data-pattern="priority-columns">
-                            <table id="tech-companies-1" class="table">
+                        <div class="table-responsive mb-0">
+                            <table id="datatable"  class="table table-centered datatable dt-responsive nowrap table-card-list" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                 <tr class="text-uppercase">
                                     <th data-priority="1">ID</th>
@@ -92,6 +92,8 @@
 
 @endsection
 @section('script')
-    <script src="{{ URL::asset('assets/libs/rwd-table/rwd-table.min.js')}}"></script>
-    <script src="{{ URL::asset('assets/js/pages/table-responsive.init.js')}}"></script>
+    <script src="{{ URL::asset('assets/libs/datatables/datatables.min.js')}}"></script>
+    <script src="{{ URL::asset('assets/libs/jszip/jszip.min.js')}}"></script>
+    <script src="{{ URL::asset('assets/libs/pdfmake/pdfmake.min.js')}}"></script>
+    <script src="{{ URL::asset('assets/js/pages/datatables.init.js')}}"></script>
 @endsection

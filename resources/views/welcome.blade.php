@@ -1,4 +1,4 @@
-@extends('layouts.master-without-nav')
+@extends('layouts.master-without-nav-index')
 @section('title')
     Online Application Form
 @endsection

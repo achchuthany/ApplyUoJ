@@ -26,6 +26,7 @@ var third_party_assets = {
         {"name": "node-waves", "assets": ["./node_modules/node-waves/dist/waves.js"]},
         {"name": "waypoints", "assets": ["./node_modules/waypoints/lib/jquery.waypoints.min.js"]},
         {"name": "jquery-counterup", "assets": ["./node_modules/jquery.counterup/jquery.counterup.min.js"]},
+        {"name": "magnific-popup", "assets": ["./node_modules/magnific-popup/dist/jquery.magnific-popup.min.js", "./node_modules/magnific-popup/dist/magnific-popup.css"]},
         {"name": "select2", "assets": ["./node_modules/select2/dist/js/select2.min.js", "./node_modules/select2/dist/css/select2.min.css"]},
         {"name": "sweetalert2", "assets": ["./node_modules/sweetalert2/dist/sweetalert2.min.js", "./node_modules/sweetalert2/dist/sweetalert2.min.css"]},
         {
@@ -112,6 +113,9 @@ var app_pages_assets = {
         folder.src + "js/pages/delete.academic-year.index.js",
         folder.src + "js/pages/datatables.application.registrations.index.js",
         folder.src + "js/pages/delete.application.registrations.index.js",
+        folder.src + "js/pages/datatables.students.all.index.js",
+        folder.src + "js/pages/datatables.students.pending.index.js",
+        folder.src + "js/pages/lightbox.init.js",
     ]
 };
 

@@ -1,0 +1,278 @@
+@extends('layouts.pdf')
+@section('header')
+    <div class="h6 text-uppercase text-right mt-5"><p>Form No. 01</p></div>
+@endsection
+
+@section('footer')
+    <div class="page-number float-right mr-5" style="font-size: 10px"></div>
+    <div class="ml-5 text-left text-uppercase" style="font-size: 10px">University of Jaffba | Personal Data of Student</div>
+@endsection
+@section('content')
+    <table class="table">
+        <tr>
+            <td style="width: 15%" >
+                <div style="width: 35mm;height: 45mm;border: 1px solid black;">
+                    <div class="h5 text-center" ><p>Photo</p></div>
+                </div>
+            </td>
+            <td class="text-center" style="width: 65%">
+                <img src="{{URL::asset('assets/images/logo-sm.png')}}" style="height: 30mm">
+                <div class="h5">University of Jaffna, Sri Lanka.</div>
+                <div class="h4 text-uppercase">Personal Data of Students</div>
+            </td>
+            <td style="width: 20%">
+
+            </td>
+        </tr>
+
+    </table>
+
+
+    <table class="table table-striped" style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
+        <tr>
+            <td class="p-2" style="width:5cm">Name of the Course of Study</td>
+        </tr>
+        <tr>
+            <td class="p-2 pl-3 py-3 text-wrap">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</td>
+        </tr>
+
+        <tr>
+            <td class="p-2">Faculty</td>
+        </tr>
+        <tr>
+            <td class="p-2 pl-3 py-3 text-wrap">mmmmmmmmmmmmmmmmmmmmmmmm</td>
+        </tr>
+
+        <tr>
+            <td class="p-2">Registration No.</td>
+        </tr>
+        <tr>
+            <td class="p-2 pl-3 py-3 text-wrap">mmmmmmmmmmmmmmmmmmmmmmmm</td>
+        </tr>
+    </table>
+    <h6 class="text-uppercase mt-3">1. Name</h6>
+    <table class="table-borderless text-wrap" style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
+        <tr>
+            <td class="p-2" style="width: 30%">i. Title</td>
+            <td class="p-2 pl-3 py-3 text-wrap" style="width: 70%">Mr</td>
+        </tr>
+        <tr>
+            <td class="p-2 text-wrap">ii. Last Name/Surname</td>
+            <td class="p-2 pl-3 py-3">Yogarajah </td>
+        </tr>
+
+        <tr>
+            <td class="p-2">iii. Name with Initials</td>
+            <td class="p-2 pl-3 py-3 text-wrap">Y. Achchuthan</td>
+        </tr>
+
+        <tr>
+            <td class="p-2">iv. Full Name</td>
+            <td class="p-2 pl-3 py-3">mmmmmmmmmmmmmmmmmmmmmmmm</td>
+        </tr>
+    </table>
+    <h6 class="text-uppercase mt-3">2. Address</h6>
+    <table class="table-borderless text-wrap" style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
+        <tr>
+            <td class="p-2" style="width: 30%">i. Permanent Address</td>
+            <td class="p-2 pl-3 py-3" style="width: 70%;">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</td>
+        </tr>
+        <tr>
+            <td class="p-2">ii. Contact Address</td>
+            <td class="p-2 pl-3 py-3">mmmmmmmmmmmmmmmmmmmmmmmm</td>
+        </tr>
+        <tr>
+            <td class="p-2">iii. Province</td>
+            <td class="p-2 pl-3 py-3">mmmmmmmmmmmmmmmmmmmmmmmm</td>
+        </tr>
+        <tr>
+            <td class="p-2">iv. District</td>
+            <td class="p-2 pl-3 py-3">mmmmmmmmmmmmmmmmmmmmmmmm</td>
+        </tr>
+        <tr>
+            <td class="p-2">v. National Identity Card / &nbsp;&nbsp;&nbsp;&nbsp;Passport No. </td>
+            <td class="p-2 pl-3 py-3">mmmmmmmmmmmmmmmmmmmmmmmm</td>
+        </tr>
+        <tr>
+            <td class="p-2">vi. Mobile</td>
+            <td class="p-2 pl-3 py-3">mmmmmmmmmmmmmmmmmmmmmmmm</td>
+        </tr>
+        <tr>
+            <td class="p-2">vii. Email</td>
+            <td class="p-2 pl-3 py-3">mmmmmmmmmmmmmmmmmmmmmmmm</td>
+        </tr>
+    </table>
+
+    <h6 class="text-uppercase mt-3">3. Educational Qualifications</h6>
+    <table class="table-borderless text-wrap" style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
+        <tr>
+            <td class="p-2" style="width: 50%">i. Year of the G.C.E(A/L) Examination</td>
+            <td class="p-2 pl-3 py-3" style="width: 50%">2018</td>
+        </tr>
+        <tr>
+            <td class="p-2">ii. Index No. of the G.C.E(A/L) Examination</td>
+            <td class="p-2 pl-3 py-3">151254</td>
+        </tr>
+        <tr>
+            <td class="p-2">iii. Average Z Score</td>
+            <td class="p-2 pl-3 py-3">1.2358</td>
+        </tr>
+        <tr>
+            <td class="p-2" colspan="2">iv. G.C.E(A/L) Examination Results</td>
+        </tr>
+        <tr>
+            <td class="p-2 pl-4">Subject 1 </td>
+            <td class="p-2 pl-3 py-2">A+</td>
+        </tr>
+        <tr>
+            <td class="p-2 pl-4">Subject 1 </td>
+            <td class="p-2 pl-3 py-2">A+</td>
+        </tr>
+        <tr>
+            <td class="p-2 pl-4">Subject 1 </td>
+            <td class="p-2 pl-3 py-2">A+</td>
+        </tr>
+    </table>
+
+    <h6 class="text-uppercase mt-3">3. Details of Citizenship</h6>
+    <table class="table-borderless text-wrap" style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
+        <tr>
+            <th class="p-2" style="width: 25%">i. Race</th>
+            <td class="p-2 pl-3 py-3" style="width: 25%">Tamil</td>
+
+            <th class="p-2" style="width: 25%">ii. Gender</th>
+            <td class="p-2 pl-3 py-3" style="width: 25%">Male</td>
+        </tr>
+
+        <tr>
+            <th class="p-2" style="width: 25%">iii. Civil Status</th>
+            <td class="p-2 pl-3 py-3" style="width: 25%">Single</td>
+
+            <th class="p-2" style="width: 25%">iv. Religion</th>
+            <td class="p-2 pl-3 py-" style="width: 25%;">Hindu</td>
+        </tr>
+
+        <tr>
+            <th class="p-2">v. Date of Birth</th>
+            <td class="p-2 pl-3 py-3">12/10/1996</td>
+            <th class="p-2">vi. Age</th>
+            <td class="p-2 pl-3 py-3">30</td>
+        </tr>
+
+        <tr>
+            <th class="p-2">vii. Citizenship</th>
+            <td class="p-2 pl-3 py-3">Sri Lankan</td>
+            <td class="p-2">If Sri Lanka</td>
+            <td class="p-2 pl-3 py-3">By Descent</td>
+        </tr>
+
+    </table>
+
+    <h6 class="text-uppercase mt-3">5. Details of Parents / Guardian</h6>
+    <table class="table-borderless text-wrap" style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
+        <tr>
+            <td class="p-2" style="width: 30%">i. Full name of Father / &nbsp;&nbsp;&nbsp;&nbsp;Mother / Guardian</td>
+            <td class="p-2 pl-3 py-3" style="width: 70%">2018</td>
+        </tr>
+        <tr>
+            <td class="p-2">ii. Occupation</td>
+            <td class="p-2 pl-3 py-3">ddddddddddddddddddddd</td>
+        </tr>
+        <tr>
+            <td class="p-2">iii. Address of the <br>&nbsp;&nbsp;&nbsp;&nbsp;place of work</td>
+            <td class="p-2 pl-3 py-3">1.2358</td>
+        </tr>
+        <tr>
+            <td class="p-2">iv. Telephone No.</td>
+            <td class="p-2 pl-3 py-3">1.2358</td>
+        </tr>
+
+        <tr>
+            <td class="p-2" colspan="2">v. Name and the telephone no of the person to be informed in case of an Emergency</td>
+        </tr>
+        <tr>
+            <td class="p-2 pl-4">Name</td>
+            <td class="p-2 pl-3 py-3">1.2358</td>
+        </tr>
+        <tr>
+            <td class="p-2 pl-4">Mobile</td>
+            <td class="p-2 pl-3 py-3">1.2358</td>
+        </tr>
+
+    </table>
+    <div class="page-break"></div>
+
+    <div class="text-center text-uppercase h5">Declaration</div>
+    <p class="text-justify">
+        I......................................................... declare that I shall abide by the Statutes, By Laws, Regulations and rules of the University of Jaffna so far as they are applicable to me, pay due respect to
+        the Teachers, officers and other employees, of the University of Jaffna and conduct myself in a manner
+        which will in no way be prejudicial to the good name of the University, I am also aware that if I fail to
+        adhere to the terms of the declaration, I will be liable to expel from the University of Jaffna or for other disciplinary action.
+    </p>
+    <p class="text-justify">
+        I hereby declare that I agree to accept and conduct myself according to the laws in the "Prohibition of
+        Ragging and other forms of Violence" in Educational Institutions Act No. 20 of 1998. In addition, I shall at
+        all times refrain from encouraging such undesirable activities,
+        disciplinary action.
+    </p>
+    <p class="text-justify">
+        Further, I declare that the particulars given in this application are true and correct to the best of my
+        knowledge. I am aware that the University has the right to cancel my registration if any information
+        given above is found to be incorrect.
+    </p>
+
+    <table class="table-borderless text-wrap" style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
+        <tr>
+            <td class="">................................................</td>
+            <td class="">....../....../............</td>
+        </tr>
+        <tr>
+            <td class="p-2">Signature of the Student</td>
+            <td class="p-2">Date</td>
+        </tr>
+    </table>
+    <p class="text-justify pt-5" style="width: 100%">
+        I hereby certify that this applicant, who is known to me personally, has enclosed all information
+        relevant to this registration form correctly and that he/she signed this application in my
+        presence.
+    </p>
+    <table class="table-borderless text-wrap" style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
+        <tr>
+            <td class="p-2" style="width: 50%">Name of the Applicant</td>
+            <td class="p-2" style="width: 50%;border-bottom: 1px dotted black;"></td>
+        </tr>
+        <tr>
+            <td class="p-2">National Identity Card No of the applicant</td>
+            <td class="p-2" style="border-bottom: 1px dotted black;"></td>
+        </tr>
+        <tr>
+            <td class="p-2">Signature of the applicant</td>
+            <td class="p-2" style="border-bottom: 1px dotted black;"></td>
+        </tr>
+        <tr>
+            <td class="p-2" colspan="2">Name of the Justice of Peace/ Commissioner for Oaths/Principal of the School of the applicant</td>
+        </tr>
+        <tr>
+            <td class="p-2" colspan="2" style="border-bottom: 1px dotted black;"></td>
+        </tr>
+        <tr>
+            <td class="p-2" colspan="2">Signature of the Justice of Peace/Commissioner for Oaths/Principal of the school</td>
+        </tr>
+        <tr>
+            <td class="p-2" colspan="2" style="border-bottom: 1px dotted black;"></td>
+        </tr>
+        <tr>
+            <td class="p-2" colspan="2">Official Stamp of the Justice of Peace/Commissioner for Oaths/Principal of the school</td>
+        </tr>
+        <tr>
+            <td class="p-2" colspan="2" style="border-bottom: 1px dotted black;"></td>
+        </tr>
+
+        <tr>
+            <td class="p-2" style="border-bottom: 1px dotted black;">Date: </td>
+            <td class="p-2" style="border-bottom: 1px dotted black;">Place: </td>
+        </tr>
+    </table>
+
+@endsection
+

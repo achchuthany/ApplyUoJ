@@ -41,6 +41,7 @@
         "jquery": "^3.5.1",
         "jquery.counterup": "^2.1.0",
         "jszip": "^3.5.0",
+        "magnific-popup": "^1.1.0",
         "metismenu": "^3.0.4",
         "node-waves": "^0.7.6",
         "pdfmake": "^0.1.68",

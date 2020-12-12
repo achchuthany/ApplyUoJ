@@ -3,8 +3,8 @@
     Students
 @endsection
 @section('css')
-    <!-- DataTables -->
     <link href="{{ URL::asset('assets/libs/datatables/datatables.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/libs/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -13,15 +13,15 @@
         @slot('title') List of Students @endslot
     @endcomponent
     <div class="row">
-        <div class="col-3">
+        <div class="col-md-3">
             <div class="card">
-                <div class="card-header">UGC Student's List <span class="float-right text-light"><a href="#" class="btn-link"><i class="fas fa-list"></i> View All</a> </span></div>
-                <div class="card-body">
+                <div class="card-header">UGC Student's List <span class="float-right text-light"><a href="{{route('admin.students.all')}}" class="btn-link"><i class="fas fa-list"></i> View All</a> </span></div>
+                <div class="card-body table-info">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-md-12">
                             <div class="card-body text-center">
-                                <div class="h1 font-weight-lighter">250  </div>
-                                <div class="h6"><i class="fa fa-user-graduate"></i> Total</div>
+                                <div class="h1 font-weight-lighter text-info"><span data-plugin="counterup">{{$count['ugc']}}</span> </div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total Students</div>
                             </div>
                         </div>
                     </div>
@@ -30,21 +30,21 @@
         </div> <!-- end col -->
 
 
-        <div class="col-4">
+        <div class="col-md-4">
             <div class="card">
-                <div class="card-header bg-warning text-light">Registration Pending Students <span class="float-right text-light"><a href="#" class="btn-link text-light"><i class="fas fa-list"></i> View All</a> </span></div>
+                <div class="card-header">Registration Pending Students <span class="float-right text-light"><a href="{{route('admin.students.pending')}}" class="btn-link"><i class="fas fa-list"></i> View All</a> </span></div>
                 <div class="card-body table-warning">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-md-6">
                             <div class="card-body  text-center">
-                                <div class="h1 font-weight-lighter">250</div>
-                                <div class="h6"> <i class="fa fa-user-graduate"></i> Today</div>
+                                <div class="h1 font-weight-lighter text-warning"><span data-plugin="counterup">{{$count['pending_today']}}</span> </div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today</div>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6">
                             <div class="card-body text-center">
-                                <div class="h1 font-weight-lighter">250</div>
-                                <div class="h6"><i class="fa fa-user-graduate"></i> Total</div>
+                                <div class="h1 font-weight-lighter text-warning"><span data-plugin="counterup">{{$count['pending']}}</span> </div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
                             </div>
                         </div>
                     </div>
@@ -53,21 +53,21 @@
         </div> <!-- end col -->
 
 
-        <div class="col-5">
+        <div class="col-md-5">
             <div class="card">
-                <div class="card-header bg-success text-light">Registered Students <span class="float-right"><a href="#" class="btn-link text-light"><i class="fas fa-list"></i> View All</a> </span></div>
+                <div class="card-header">Registered Students <span class="float-right"><a href="#" class="btn-link"><i class="fas fa-list"></i> View All</a> </span></div>
                 <div class="card-body table-success">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-md-6">
                             <div class="card-body  text-center">
-                                <div class="h1 font-weight-lighter">250</div>
-                                <div class="h6"> <i class="fa fa-user-graduate"></i> Today</div>
+                                <div class="h1 font-weight-lighter text-success"><span data-plugin="counterup">{{$count['registered']}}</span></div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today </div>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6">
                             <div class="card-body text-center">
-                                <div class="h1 font-weight-lighter">255550</div>
-                                <div class="h6"><i class="fa fa-user-graduate"></i> Total</div>
+                                <div class="h1 font-weight-lighter text-success"><span data-plugin="counterup">{{$count['registered_today']}}</span></div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
                             </div>
                         </div>
                     </div>
@@ -127,4 +127,8 @@
     <script src="{{ URL::asset('assets/libs/jszip/jszip.min.js')}}"></script>
     <script src="{{ URL::asset('assets/libs/pdfmake/pdfmake.min.js')}}"></script>
     <script src="{{ URL::asset('assets/js/pages/datatables.init.js')}}"></script>
+    <script src="{{ URL::asset('assets/libs/select2/select2.min.js')}}"></script>
+    <script>
+        $(".select2").select2();
+    </script>
 @endsection

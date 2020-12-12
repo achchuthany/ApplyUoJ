@@ -4,21 +4,43 @@ namespace App\Http\Controllers;
 
 use App\Models\AcademicYear;
 use App\Models\Address;
+use App\Models\ApplicationRegistration;
 use App\Models\CsvData;
 use App\Models\Enroll;
 use App\Models\Programme;
 use App\Models\Student;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\Facades\DataTables;
 
 class StudentController extends Controller
 {
     public function index(){
+        $ugc_count = Student::get()->count();
+        $pending_count = Enroll::where('status','Processing')->get()->count();
+        $pending_today_count = Enroll::whereDate('updated_at', Carbon::today())->where('status','Processing')->get()->count();
+
+        $registered_count = Enroll::where('status','Registered')->get()->count();
+        $registered_today_count = Enroll::whereDate('updated_at', Carbon::today())->where('status','Registered')->get()->count();
+
         $programmes = Programme::orderBy('name','asc')->get();
         $academics = AcademicYear::orderBy('name','asc')->get();
-        return view('student.index',['programmes'=>$programmes,'academics'=>$academics]);
+        return view('student.index',[
+            'programmes'=>$programmes,
+            'academics'=>$academics,
+            'count'=>[
+                'ugc'=>$ugc_count,
+                'pending'=>$pending_count,
+                'pending_today'=>$pending_today_count,
+                'registered'=>$registered_count,
+                'registered_today'=>$registered_today_count
+            ]
+        ]);
     }
     public function upload()
     {
@@ -34,6 +56,14 @@ class StudentController extends Controller
             'programme_id'=>'required',
             'academic_year_id'=>'required'
         ]);
+
+        $checkApplication = ApplicationRegistration::where([['academic_year_id',$request['academic_year_id'],['programme_id',$request['academic_year_id']]]])->first();
+        if(!$checkApplication){
+            return redirect()->back()
+                ->withInput()
+                ->with(['warning'=>'Please create Registration Application in (Registrations >  Call a Registration) then upload data here!']);
+        }
+
         $path = $request->file('csv_file')->getRealPath();
         $data = array_map('str_getcsv', file($path));
         $csv_data = array_slice($data, 1);
@@ -245,6 +275,107 @@ class StudentController extends Controller
             $message = $count_insert[0]. ' students and '.$count_insert[1].'  enroll data has been successfully created.';
         }
         return redirect()->route('admin.students.upload')->with(['message_type'=>$msag_type,'message'=>$message]);
+    }
+
+
+    public function all(Request $request){
+        if ($request->ajax()) {
+            $data = Enroll::latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('name', function($row){
+                    $regnos = preg_split("#/#", $row->regno);
+                    $regno = "";
+                    foreach($regnos as $key=>$value) {
+                        $regno .= "$value";
+                    }
+                    if(Storage::disk('public')->exists('images/users/'.$regno.'.jpeg'))
+                        return '<img src="'.Storage::url('images/users/'.$regno.'.jpeg').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials.'</span>';
+                    else if($row->student->gender == "M")
+                        return '<img src="'.URL::asset('assets/images/users/male.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials.'</span>';
+                    else
+                        return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials.'</span>';
+
+
+                })
+                ->addColumn('nic', function($row){
+                    return Student::where('id',$row->student_id)->first()->nic;
+                })
+                ->addColumn('mobile', function($row){
+                    return Student::where('id',$row->student_id)->first()->mobile;
+                })
+                ->addColumn('programme', function($row){
+                    return $row->programme->name;
+                })
+                ->addColumn('academic_year', function($row){
+                    return $row->academic_year->name;
+                })
+                ->addColumn('action', function($row){
+                    $btn = '
+                   <a href="'.route('admin.students.enroll.profile',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Profile"><i class="uil uil-user  "></i></a>
+                   <a href="'.route('admin.students.edit',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil  uil-edit-alt  font-size-18"></i></a>
+                   ';
+                    return $btn;
+                })
+                ->rawColumns(['action','name'])
+                ->make(true);
+        }
+        return view('student.all');
+    }
+    public function pending(Request $request){
+        if ($request->ajax()) {
+            $data = Enroll::where('status','Processing')->latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('name', function($row){
+                    $regnos = preg_split("#/#", $row->regno);
+                    $regno = "";
+                    foreach($regnos as $key=>$value) {
+                        $regno .= "$value";
+                    }
+                    if(Storage::disk('public')->exists('images/users/'.$regno.'.jpeg'))
+                        return '<img src="'.Storage::url('images/users/'.$regno.'.jpeg').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials.'</span>';
+                    else if($row->student->gender == "M")
+                        return '<img src="'.URL::asset('assets/images/users/male.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials.'</span>';
+                    else
+                        return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials.'</span>';
+
+
+                })
+                ->addColumn('nic', function($row){
+                    return Student::where('id',$row->student_id)->first()->nic;
+                })
+                ->addColumn('mobile', function($row){
+                    return Student::where('id',$row->student_id)->first()->mobile;
+                })
+                ->addColumn('programme', function($row){
+                    return $row->programme->name;
+                })
+                ->addColumn('academic_year', function($row){
+                    return $row->academic_year->name;
+                })
+                ->addColumn('updated', function($row){
+                    return $row->updated_at->diffForHumans();
+                })
+                ->addColumn('action', function($row){
+                    $btn = '
+                   <a href="'.route('admin.students.enroll.profile',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="View Submission"><i class="far fa-file-archive "></i></a>
+                   ';
+                    return $btn;
+                })
+                ->rawColumns(['action','name'])
+                ->make(true);
+        }
+        return view('student.pending');
+    }
+    public function profile($id)
+    {
+        $enroll = Enroll::whereId($id)->first();
+        if(!$enroll)
+            return redirect()->back();
+
+
+    return view('student.profile',['enroll'=>$enroll]);
     }
 
 }
