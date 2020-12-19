@@ -153,7 +153,7 @@
                                     <div class="col-md-5">
                                         <div class="mt-4">
                                             <p class="text-muted mb-1">Last Name or Surname</p>
-                                            <h5 class="font-size-16 {{$enroll->student->lastname? '': 'text-info'}}">{{$enroll->student->lastname? $enroll->student->lastname: 'Not Assigned'}}</h5>
+                                            <h5 class="font-size-16 {{$enroll->student->last_name? '': 'text-info'}}">{{$enroll->student->last_name? $enroll->student->last_name: 'Not Assigned'}}</h5>
                                         </div>
                                     </div>
                                     <div class="col-md-5">

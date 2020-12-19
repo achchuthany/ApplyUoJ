@@ -17,4 +17,7 @@ class Student extends Model
     public function enrolls(){
         return $this->hasMany('App\Models\Enroll');
     }
+    public function users(){
+        return $this->belongsToMany('App\Models\User', 'user_student', 'student_id', 'user_id');
+    }
 }

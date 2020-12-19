@@ -40,14 +40,14 @@ class CreateStudentsTable extends Migration
             $table->unsignedSmallInteger('al_english_mark')->nullable();   //3.1
 
             //4. Details of Citizenship
-            $table->string('race', 20)->nullable();         //4.1
+            $table->string('race', 30)->nullable();         //4.1
             $table->string('gender', 10);       //4.2
             $table->string('civil_status', 20)->nullable(); //4.3
-            $table->string('religion', 20)->nullable();     //4.4
-            $table->string('medium', 20)->nullable();
+            $table->string('religion', 30)->nullable();     //4.4
+            $table->string('medium', 30)->nullable();
 
             $table->date('date_of_birth')->nullable();                 //4.5
-            $table->string('citizenship', 30)->nullable();      //4.6
+            $table->string('citizenship', 100)->nullable();      //4.6
             $table->string('citizenship_type', 30)->nullable(); //4.7
 
 

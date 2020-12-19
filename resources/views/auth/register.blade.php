@@ -18,25 +18,26 @@ Register
         <div class="row align-items-center justify-content-center">
             <div class="col-md-8 col-lg-6 col-xl-5">
                 <div class="card">
-                    <div class="card-body p-4 shadow-lg ">
+                    <div class="card-body p-4">
                         <div class="text-center mt-2">
-                            <h5 class="text-primary">Register Account</h5>
-                            <p class="text-muted">Get your {{config('app.name')}} account now.</p>
+                            <h5 class="text-primary">Start a new application</h5>
+                            <p class="text-muted">To start a new application, complete the form below..</p>
                         </div>
                         <div class="p-2 mt-4">
+                            @include('common-components.flash-message')
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
 
-                                <div class="form-group">
-                                    <label for="name">{{ __('Name') }}</label>
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Enter username">
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="name">{{ __('Name') }}</label>--}}
+{{--                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Enter username">--}}
 
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                </div>
+{{--                                        @error('name')--}}
+{{--                                            <span class="invalid-feedback" role="alert">--}}
+{{--                                                <strong>{{ $message }}</strong>--}}
+{{--                                            </span>--}}
+{{--                                        @enderror--}}
+{{--                                </div>--}}
 
                                 <div class="form-group">
                                     <label for="nic">{{ __('National Identity Card / Passport No.') }}</label>
@@ -88,7 +89,10 @@ Register
                                 </div>
 
                                 <div class="mt-3 text-right">
-                                    <button class="btn btn-primary w-sm waves-effect waves-light" type="submit">{{ __('Next') }}</button>
+                                    <button class="btn btn-primary w-sm waves-effect waves-light" type="submit">{{ __('Continue') }}</button>
+                                </div>
+                                <div class="mt-4 text-center">
+                                    <p class="mb-0">Manage your existing applications <a href="{{url('login')}}" class="font-weight-medium text-primary"> My Applications </a> </p>
                                 </div>
                             </form>
                         </div>

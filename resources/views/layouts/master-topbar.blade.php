@@ -14,24 +14,25 @@
         <!-- Start right Content here -->
         <!-- ============================================================== -->
         <div class="main-content">
-            <div class="page-content">
+            <div class="page-content" style="margin-top: 0px">
                 <!-- Start content -->
                 <div class="container-fluid">
+                    @include('common-components.flash-message')
                     @yield('content')
                 </div> <!-- content -->
             </div>
-            @include('layouts.footer')    
+            @include('layouts.footer')
         </div>
         <!-- ============================================================== -->
         <!-- End Right content here -->
         <!-- ============================================================== -->
     </div>
     <!-- END wrapper -->
-    
+
     <!-- Right Sidebar -->
     @include('layouts.right-sidebar')
     <!-- END Right Sidebar -->
 
-    @include('layouts.vendor-scripts')    
+    @include('layouts.vendor-scripts')
     </body>
 </html>

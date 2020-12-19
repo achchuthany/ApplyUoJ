@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,17 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
-
-    public function pdf(){
-        //return view('pdf.personal_data');
-        $dompdf = PDF::loadView('pdf.personal_data');
-        $dompdf->setPaper('A4', 'portrait');
-
-
-// Output the generated PDF to Browser
-        return $dompdf->stream();
-
+        if(Auth::User()->hasRole('Student')){
+            return redirect()->route('student.registration.index');
+        }else{
+            return view('home');
+        }
     }
 }

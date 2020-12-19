@@ -4,7 +4,7 @@ $(document).ready(function() {
             processing: true,
             serverSide: true,
             retrieve: true,
-            ajax: "/admin/students/pending",
+            ajax: url,
             columns: [
                 {data: 'name', name: 'name'},
                 {data: 'nic', name: 'nic'},

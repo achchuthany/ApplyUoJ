@@ -20,6 +20,15 @@ use Yajra\DataTables\Facades\DataTables;
 
 class StudentController extends Controller
 {
+    public $params = array(
+    'in'=>'Invited',
+    'dp'=>'Documents Pending',
+    'ps'=>'Processing',
+    'ap'=>'Accepted',
+    'rg'=>'Registered',
+    're'=>'Rejected',
+    'de'=>'Deleted'
+    );
     public function index(){
         $ugc_count = Student::get()->count();
         $pending_count = Enroll::where('status','Processing')->get()->count();
@@ -30,6 +39,14 @@ class StudentController extends Controller
 
         $programmes = Programme::orderBy('name','asc')->get();
         $academics = AcademicYear::orderBy('name','asc')->get();
+
+        $count_total = array();
+        $count_today = array();
+        foreach ($this->params as $key=>$value){
+            $count_today[$key] = Enroll::whereDate('updated_at', Carbon::today())->where('status',$value)->get()->count();
+            $count_total[$key]= Enroll::where('status',$value)->get()->count();
+        }
+
         return view('student.index',[
             'programmes'=>$programmes,
             'academics'=>$academics,
@@ -39,7 +56,10 @@ class StudentController extends Controller
                 'pending_today'=>$pending_today_count,
                 'registered'=>$registered_count,
                 'registered_today'=>$registered_today_count
-            ]
+            ],
+            'count_total'=>$count_total,
+            'count_today'=>$count_today,
+            'params'=>$this->params
         ]);
     }
     public function upload()
@@ -290,11 +310,11 @@ class StudentController extends Controller
                         $regno .= "$value";
                     }
                     if(Storage::disk('public')->exists('images/users/'.$regno.'.jpeg'))
-                        return '<img src="'.Storage::url('images/users/'.$regno.'.jpeg').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials.'</span>';
+                        return '<img src="'.Storage::url('images/users/'.$regno.'.jpeg').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials. '('.$row->status.')</span>';
                     else if($row->student->gender == "M")
-                        return '<img src="'.URL::asset('assets/images/users/male.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials.'</span>';
+                        return '<img src="'.URL::asset('assets/images/users/male.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials. '('.$row->status.')</span>';
                     else
-                        return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials.'</span>';
+                        return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials. '('.$row->status.')</span>';
 
 
                 })
@@ -322,9 +342,14 @@ class StudentController extends Controller
         }
         return view('student.all');
     }
-    public function pending(Request $request){
+
+    public function pending(Request $request,$status){
+
+        if(!array_key_exists("$status",$this->params)){
+            return redirect()->route('admin.students.index');
+        }
         if ($request->ajax()) {
-            $data = Enroll::where('status','Processing')->latest()->get();
+            $data = Enroll::where('status',$this->params[$status])->latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('name', function($row){
@@ -366,7 +391,7 @@ class StudentController extends Controller
                 ->rawColumns(['action','name'])
                 ->make(true);
         }
-        return view('student.pending');
+        return view('student.pending',['title'=>$this->params[$status]]);
     }
     public function profile($id)
     {

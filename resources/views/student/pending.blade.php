@@ -1,6 +1,6 @@
 @extends('layouts.master-dark-sidebar')
 @section('title')
-    Pending Online Registrations
+{{$title}} Online Registrations
 @endsection
 @section('css')
     <link href="{{ URL::asset('assets/libs/datatables/datatables.min.css')}}" rel="stylesheet" type="text/css" />
@@ -11,7 +11,7 @@
 @section('content')
 @component('common-components.breadcrumb')
     @slot('pagetitle') Students @endslot
-    @slot('title')<a href="{{route('admin.students.index')}}"> <i class="uil uil-arrow-left "></i> </a> Pending Online Registrations @endslot
+    @slot('title')<a href="{{route('admin.students.index')}}"> <i class="uil uil-arrow-left "></i> </a> {{$title}} Online Registrations @endslot
 @endcomponent
     <div class="row">
         <div class="col-12">
@@ -43,5 +43,7 @@
     <script src="{{ URL::asset('assets/libs/jszip/jszip.min.js')}}"></script>
     <script src="{{ URL::asset('assets/libs/pdfmake/pdfmake.min.js')}}"></script>
     <script src="{{ URL::asset('assets/js/pages/datatables.students.pending.index.js')}}"></script>
-
+<script>
+    var url = '/admin/students/cat/{{Route::current()->parameters['status']}}';
+</script>
 @endsection

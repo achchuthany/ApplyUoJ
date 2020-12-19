@@ -18,7 +18,7 @@ Verify Your Email Address
         <div class="row align-items-center justify-content-center">
             <div class="col-md-8 col-lg-6 col-xl-5">
                 <div class="card">
-                    <div class="card-header bg-info text-light">{{ __('Verify Your Email Address') }}</div>
+                    <div class="card-header bg-info text-light">{{ __('Activate your account') }}</div>
 
                     <div class="card-body shadow-lg">
                         @if (session('resent'))
