@@ -5,6 +5,7 @@
 @section('css')
     <!-- Lightbox css -->
     <link href="{{ URL::asset('assets/libs/magnific-popup/magnific-popup.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
 @component('common-components.breadcrumb')
@@ -15,35 +16,46 @@
     <div class="row mb-4">
         <div class="col-xl-4">
             <div class="card h-100">
-                <div class="card-body {{$enroll->status =='Processing' ? 'table-warning': ($enroll->status =='Invited'?'table-info':($enroll->status =='Registered'?'table-success':($enroll->status =='EditInvited'?'table-secondary':'table-danger')))}} ">
+                <div class="card-body">
                     <div class="text-center">
                         <div class="dropdown float-right">
-                            <a class="text-body dropdown-toggle font-size-18" href="#" role="button" data-toggle="dropdown" aria-haspopup="true">
-                                <i class="uil uil-ellipsis-v"></i>
+                            <a class="text-body dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true">
+                                <i class="mdi mdi-account-settings-outline"></i>Action
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Edit</a>
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Remove</a>
+                                @if($enroll->status=='Documents Pending'||$enroll->status=='Processing')
+                                <a class="dropdown-item sa-accept" data-enrollid="{{$enroll->id}}" data-enrollstatus="ap" href="#"><i class="mdi mdi-account-check text-success font-size-20"></i> Accept Application</a>
+                                <a class="dropdown-item sa-accept"  data-enrollid="{{$enroll->id}}" data-enrollstatus="in"  href="#"><i class="mdi mdi-account-cancel text-warning font-size-20"></i> Re-submission Request</a>
+                                @endif
+                                <a class="dropdown-item" href="#"><i class="mdi mdi-account-edit font-size-20"></i> Edit Application</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{route('admin.enroll.change.course',['id'=>$enroll->id])}}"><i class="mdi mdi-account-settings text-danger font-size-20"></i>Change Course of Study </a>
+
                             </div>
                         </div>
                         <div class="dropdown float-left">
-                            Status is {{$enroll->status}}
+                            Status is <span id="enroll_status">{{$enroll->status}}</span>
                         </div>
                         <div class="clearfix"></div>
                         <div>
-                            <a class="image-popup-no-margins" href="{{ URL::asset('assets/images/users/male.png') }}">
-                                <img class="img-fluid avatar-lg rounded-circle img-thumbnail" alt="" src="{{ URL::asset('assets/images/users/male.png')}}" width="75">
-                            </a>
+                                @if($enroll->student->student_docs()->where('type','photo')->first() && Storage::disk('docs')->exists($enroll->student->student_docs()->where('type','photo')->first()->name))
+                                <a class="image-popup-no-margins" href="/registration/student/image/{{$enroll->student->student_docs()->where('type','photo')->first()->name}}">
+
+                                <img src="/registration/student/image/{{$enroll->student->student_docs()->where('type','photo')->first()->name}}" alt="{{$enroll->student->student_docs()->where('type','photo')->first()->type}}" class="img-fluid avatar-lg rounded-circle img-thumbnail">
+                                </a>
+                                @else
+                                <img class="img-fluid avatar-lg rounded-circle img-thumbnail" alt="" src="{{ URL::asset('assets/images/users/user.png')}}" width="75">
+                                @endif
+
                         </div>
                         <h6 class="mt-3 mb-1 text-capitalize">{{$enroll->student->title}} {{$enroll->student->name_initials}}</h6>
                         <p class="text-muted mb-0">{{$enroll->programme->name}}</p>
                         <p class="text-muted mt-0">{{$enroll->academic_year->name}}</p>
 
-{{--                        <div class="mt-4">--}}
-{{--                            <button type="button" class="btn btn-light btn-sm"><i class="uil uil-envelope-alt mr-2"></i> Message</button>--}}
-{{--                        </div>--}}
+                        <div class="mt-4 font-size-12">
+                            <i class="mdi mdi-clock-outline"></i> <span class="text-muted">Updated at {{$enroll->updated_at->diffForHumans()}} </span>
+                        </div>
                     </div>
 
                     <hr class="my-4">
@@ -74,7 +86,7 @@
 
                             <div class="mt-4">
                                 <p class="mb-1">Date of Registration</p>
-                                <h5 class="font-size-16 {{$enroll->registration_date? '': 'text-info'}} ">{{$enroll->registration_date? $enroll->registration_date: 'Not Assigned'}}</h5>
+                                <h5 class="font-size-16 {{$enroll->registration_date? '': 'text-info'}} ">{{$enroll->registration_date? Carbon\Carbon::parse($enroll->registration_date)->toFormattedDateString(): 'Not Assigned'}}</h5>
                             </div>
 
                             <div class="mt-4">
@@ -451,14 +463,15 @@
                             <div class="card-body">
                                 <div class="zoom-gallery">
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="card-title mb-1">Type of File</div>
-                                            <a href="{{ URL::asset('assets/images/users/male.png')}}" title="Project 1"><img src="{{ URL::asset('assets/images/users/male.png')}}" alt="ABC" class="img-thumbnail rounded"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card-title mb-1">Type of File</div>
-                                            <a  href="{{ URL::asset('assets/images/users/male.png')}}" title="Project 1"><img src="{{ URL::asset('assets/images/users/male.png')}}" alt="CDE" class="img-thumbnail rounded"></a>
-                                        </div>
+                                        @foreach($enroll->student->student_docs()->get() as $doc)
+                                            @if(Storage::disk('docs')->exists($doc->name))
+                                                <div class="col-md-6">
+                                                    <div class="card-title mb-1">{{$doc->name}}</div>
+                                                <a href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->type}}" class="rounded-sm img-thumbnail"></a>
+                                                </div>
+                                            @endif
+                                        @endforeach
+
                                     </div>
                                 </div>
                             </div>
@@ -542,8 +555,9 @@
     <!-- end row -->
 @endsection
 @section('script')
-    <!-- Magnific Popup-->
     <script src="{{ URL::asset('assets/libs/magnific-popup/magnific-popup.min.js')}}"></script>
-    <!-- lightbox init js-->
     <script src="{{ URL::asset('assets/js/pages/lightbox.init.js')}}"></script>
+    <script src="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
+    <script src="{{ URL::asset('assets/js/pages/action.enroll.index.js')}}"></script>
+
 @endsection

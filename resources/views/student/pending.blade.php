@@ -18,9 +18,10 @@
             <div class="card">
                 <div class="card-body table-responsive mb-4">
 
-                    <table id="datatable"  class="table-sm table-hover  table-striped table-centered datatable dt-responsive nowrap table-card-list" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <table id="datatable"  class="table table-hover  table-striped table-centered datatable dt-responsive nowrap table-card-list" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                         <tr class="bg-transparent">
+                            <th>Image</th>
                             <th>Name With Initials</th>
                             <th>NIC No.</th>
                             <th>Mobile</th>

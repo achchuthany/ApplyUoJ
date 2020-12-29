@@ -98,7 +98,7 @@ $(document).ready(function () {
     processing: true,
     retrieve: true,
     lengthChange: true,
-    pageLength: 100,
+    pageLength: 400,
     dom: 'Bfrtip',
     buttons: ['copy', 'excel', 'pdf', 'colvis']
   });

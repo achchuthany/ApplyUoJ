@@ -27,6 +27,12 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'as' => 'home',
         'roles' => ['Admin','Student']
     ]);
+    //Admin Home Page
+    Route::get('/home/data/{aid}',[
+        'uses' => 'App\Http\Controllers\HomeController@graphData',
+        'as' => 'home.data',
+        'roles' => ['Admin']
+    ]);
     //student
     Route::get('/admin/students',[
         'uses' => 'App\Http\Controllers\StudentController@index',
@@ -79,9 +85,25 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'as' => 'admin.students.enroll.profile',
         'roles' => ['Admin']
     ]);
+    Route::get('/admin/students/enroll/profile/action/{eid}/{status}',[
+        'uses' => 'App\Http\Controllers\StudentController@acceptRequest',
+        'as' => 'admin.students.enroll.profile.action',
+        'roles' => ['Admin']
+    ]);
+
     Route::get('/admin/students/edit/{id}',[
         'uses' => 'App\Http\Controllers\StudentController@edit',
         'as' => 'admin.students.edit',
+        'roles' => ['Admin']
+    ]);
+    Route::get('/admin/students/{pid}/{aid}/{status}',[
+        'uses' => 'App\Http\Controllers\StudentController@students',
+        'as' => 'admin.students.program.academic',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/students/search/list',[
+        'uses' => 'App\Http\Controllers\StudentController@searchStudentsList',
+        'as' => 'admin.students.search.list',
         'roles' => ['Admin']
     ]);
 
@@ -197,10 +219,46 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'as' => 'admin.application.registrations.delete',
         'roles' => ['Admin']
     ]);
+    Route::get('registration/student/image/{name}',[
+        'uses' => 'App\Http\Controllers\RegistrationController@getImageFile',
+        'as' => 'student.registration.image',
+        'roles' => ['Admin','Student']
+    ]);
 
-    Route::get('/admin/pdf',[
-        'uses' => 'App\Http\Controllers\HomeController@pdf',
-        'as' => 'admin.pdf',
+    //Enroll Data
+    Route::get('/admin/enroll/assign/reg/{pid}/{aid}',[
+        'uses' => 'App\Http\Controllers\EnrollController@assignRegistrationNoIndex',
+        'as' => 'admin.enroll.assign.reg.index',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/enroll/assign/reg/{pid}/{aid}/process',[
+        'uses' => 'App\Http\Controllers\EnrollController@assignRegistrationNoProcess',
+        'as' => 'admin.enroll.assign.reg.process',
+        'roles' => ['Admin']
+    ]);
+    Route::get('/admin/enroll/clear/reg/{pid}/{aid}',[
+        'uses' => 'App\Http\Controllers\EnrollController@clearRegistrationNoIndex',
+        'as' => 'admin.enroll.clear.reg.index',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/enroll/assign/reg/{pid}/{aid}/delete',[
+        'uses' => 'App\Http\Controllers\EnrollController@assignRegistrationNoDelete',
+        'as' => 'admin.enroll.assign.reg.delete',
+        'roles' => ['Admin']
+    ]);
+    Route::get('/admin/enroll/change/{id}',[
+        'uses' => 'App\Http\Controllers\EnrollController@changeCourseStudy',
+        'as' => 'admin.enroll.change.course',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/enroll/change/process/{id}',[
+        'uses' => 'App\Http\Controllers\EnrollController@changeCourseStudyProcess',
+        'as' => 'admin.enroll.change.course.process',
+        'roles' => ['Admin']
+    ]);
+    Route::get('/admin/enroll/change/get/reg/{pid}/{aid}',[
+        'uses' => 'App\Http\Controllers\EnrollController@getRegNo',
+        'as' => 'admin.enroll.change.get.reg',
         'roles' => ['Admin']
     ]);
 
@@ -253,7 +311,11 @@ Route::group(['middleware' => ['auth','roles'],'roles' => ['Student']], function
         'uses' => 'App\Http\Controllers\RegistrationController@parentsProcess',
         'as' => 'student.parents.process',
     ]);
-    Route::get('/registration/conform',[
+    Route::get('/registration/6',[
+        'uses' => 'App\Http\Controllers\RegistrationController@documents',
+        'as' => 'student.documents',
+    ]);
+    Route::get('/registration/7',[
         'uses' => 'App\Http\Controllers\RegistrationController@complete',
         'as' => 'student.registration.complete',
     ]);
@@ -269,4 +331,9 @@ Route::group(['middleware' => ['auth','roles'],'roles' => ['Student']], function
         'uses' => 'App\Http\Controllers\RegistrationController@downloadPersonalData',
         'as' => 'student.registration.download.PersonalData',
     ]);
+    Route::post('registration/student/imageUpload',[
+        'uses' => 'App\Http\Controllers\RegistrationController@imageUploadPost',
+        'as' => 'student.registration.image.upload'
+    ]);
+
 });

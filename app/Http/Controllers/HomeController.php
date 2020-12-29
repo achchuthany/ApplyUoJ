@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AcademicYear;
+use App\Models\Enroll;
+use App\Models\Faculty;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -29,7 +33,28 @@ class HomeController extends Controller
         if(Auth::User()->hasRole('Student')){
             return redirect()->route('student.registration.index');
         }else{
-            return view('home');
+            $ays = AcademicYear::latest()->get();
+           return view('home',['ays'=>$ays]);
         }
+    }
+
+    public function graphData($aid){
+       $counts = DB::table('enrolls')
+           ->select(DB::raw('count(*) as count,programmes.abbreviation,academic_years.name'))
+           ->leftJoin('programmes','programmes.id','=','enrolls.programme_id')
+           ->leftJoin('academic_years','academic_years.id','=','enrolls.academic_year_id')
+           ->where([['enrolls.status','Registered'],['academic_years.id',$aid]])
+           ->groupByRaw('programmes.abbreviation,academic_years.name')
+           ->get();
+
+        $programme = array();
+        $students = array();
+
+        foreach ($counts as $count){
+            $programme [] = $count->abbreviation;
+            $students [] = $count->count; //rand(10,100);
+        }
+
+        return response()->json(['programme'=>$programme,'count'=>$students]);
     }
 }

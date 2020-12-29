@@ -20,4 +20,7 @@ class Student extends Model
     public function users(){
         return $this->belongsToMany('App\Models\User', 'user_student', 'student_id', 'user_id');
     }
+    public function student_docs(){
+        return $this->hasMany('App\Models\StudentDoc');
+    }
 }

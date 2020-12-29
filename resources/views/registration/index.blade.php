@@ -4,6 +4,8 @@
 @endsection
 @section('css')
     <link href="{{ URL::asset('assets/libs/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- Lightbox css -->
+    <link href="{{ URL::asset('assets/libs/magnific-popup/magnific-popup.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     @component('common-components.breadcrumb')
@@ -53,6 +55,9 @@
                         @if(Route::currentRouteName()=='student.parents')
                             @include('registration.parents')
                         @endif
+                        @if(Route::currentRouteName()=='student.documents')
+                            @include('registration.documents')
+                        @endif
 
                     </div>
                 </div>
@@ -63,6 +68,10 @@
 @endsection
 @section('script')
     <script src="{{ URL::asset('assets/libs/select2/select2.min.js')}}"></script>
+    <!-- Magnific Popup-->
+    <script src="{{ URL::asset('assets/libs/magnific-popup/magnific-popup.min.js')}}"></script>
+    <!-- lightbox init js-->
+    <script src="{{ URL::asset('assets/js/pages/lightbox.init.js')}}"></script>
     <script>
         $(".select2").select2();
     </script>

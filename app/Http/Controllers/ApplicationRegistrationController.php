@@ -24,11 +24,17 @@ class ApplicationRegistrationController extends Controller
                 ->addColumn('programme', function($row){
                     return $row->programme->name;
                 })
+                ->addColumn('next_registration_number', function($row){
+                    return $row->academic_year->application_year.'/'.$row->programme->abbreviation.'/'.sprintf("%03d",$row->next_registration_number);
+                })
                 ->addColumn('action', function($row){
                     $btn = '
-                    <a href="'.route('admin.application.registrations.edit',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil uil-pen font-size-18"></i></a>';
+                     <a href="'.route('admin.enroll.assign.reg.index',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Assign Registration Number"><i class="mdi mdi-account-lock font-size-18"></i> Assign Reg. No.</a>
+                     <a href="'.route('admin.enroll.clear.reg.index',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id]).'" class="px-3 text-danger" data-toggle="tooltip" data-placement="top" title="Delete Registration Number"><i class="mdi mdi-account-remove font-size-18"></i> Clear Reg. No.</a>
+                     <a href="'.route('admin.students.program.academic',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id,'status'=>'all']).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="View All Students"><i class="fas fa-users font-size-18"></i> List of Students</a>
+                    <a href="'.route('admin.application.registrations.edit',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil uil-pen font-size-18"></i> Edit</a>';
                     if($row->status =='Draft')
-                        $btn.= '<a  class="px-3 text-danger sa-warning" id ="exam'.$row->id.'" data-exam="'.$row->id.'" data-toggle="tooltip" data-placement="top" title="Delete"  ><i class="uil uil-trash-alt font-size-18"></i></a>';
+                        $btn.= '<a  class="px-3 text-danger sa-warning" id ="exam'.$row->id.'" data-exam="'.$row->id.'" data-toggle="tooltip" data-placement="top" title="Delete"  ><i class="uil uil-trash-alt font-size-18"> Delete</i></a>';
                     return $btn;
                 })
                 ->rawColumns(['action'])

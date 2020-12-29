@@ -252,4 +252,13 @@ return [
         'address_street','address_city','address_4' ,
         'mobile','nic','al_english_mark','email','mobile_home','parent_mobile','parent_landline'
     ],
+    'enroll_status'=>[
+        'in'=>'Invited',
+        'dp'=>'Documents Pending',
+        'ps'=>'Processing',
+        'ap'=>'Accepted',
+        'rg'=>'Registered',
+        're'=>'Rejected',
+        'de'=>'Deleted'
+    ],
 ];

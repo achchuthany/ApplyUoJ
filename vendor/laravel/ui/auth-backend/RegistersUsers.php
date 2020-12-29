@@ -56,7 +56,8 @@ trait RegistersUsers
 
 
 
-        event(new Registered($user = $this->create($request->all())));
+        //event(new Registered($user = $this->create($request->all())));
+        $user = $this->create($request->all());
         $role_student = Role::where('name', 'Student')->first();
         $user->roles()->attach($role_student);
         $user->students()->attach($student);

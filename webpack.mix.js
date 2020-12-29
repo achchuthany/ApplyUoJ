@@ -29,6 +29,7 @@ var third_party_assets = {
         {"name": "magnific-popup", "assets": ["./node_modules/magnific-popup/dist/jquery.magnific-popup.min.js", "./node_modules/magnific-popup/dist/magnific-popup.css"]},
         {"name": "select2", "assets": ["./node_modules/select2/dist/js/select2.min.js", "./node_modules/select2/dist/css/select2.min.css"]},
         {"name": "sweetalert2", "assets": ["./node_modules/sweetalert2/dist/sweetalert2.min.js", "./node_modules/sweetalert2/dist/sweetalert2.min.css"]},
+        {"name": "chart-js", "assets": ["./node_modules/chart.js/dist/Chart.bundle.min.js"]},
         {
             "name": "datatables", "assets": ["./node_modules/datatables.net/js/jquery.dataTables.min.js",
                 "./node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js",
@@ -115,7 +116,10 @@ var app_pages_assets = {
         folder.src + "js/pages/delete.application.registrations.index.js",
         folder.src + "js/pages/datatables.students.all.index.js",
         folder.src + "js/pages/datatables.students.pending.index.js",
+        folder.src + "js/pages/datatables.students.list.index.js",
         folder.src + "js/pages/lightbox.init.js",
+        folder.src + "js/pages/action.enroll.index.js",
+        folder.src + "js/pages/chartjs.init.js",
     ]
 };
 

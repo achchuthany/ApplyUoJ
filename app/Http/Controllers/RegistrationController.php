@@ -6,12 +6,17 @@ use App\Models\Address;
 use App\Models\ApplicationRegistration;
 use App\Models\Student;
 use App\Models\StudentAlExam;
+use App\Models\StudentDoc;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 
 class RegistrationController extends Controller
 {
@@ -507,12 +512,26 @@ class RegistrationController extends Controller
         $student->emergency_contact_name = $request['emergency_contact_name'];
         $student->emergency_contact_mobile = $request['emergency_contact_mobile'];
         $student->parent_address_work = $request['parent_address_work'];
+
+        $enroll = $student->enrolls()->latest()->first();
+        $enroll->status = 'Documents Pending';
         try {
             $student->update();
-            return redirect()->route('student.registration.complete');
+            $enroll->update();
+            return redirect()->route('student.documents');
         }catch (QueryException $e){
             return back()->withInput()->with(['error'=>'Failed to update']);
         }
+    }
+    public function documents(){
+        if($this->checkApplicationStatus())
+            return redirect()->route('student.registration.completed');
+        $student = Auth::user()->students()->latest()->first();
+        $enroll = $student->enrolls()->latest()->first();
+        if(!$student->emergency_contact_mobile)
+            return redirect()->route('student.parents');
+
+        return view('registration.index',['enroll'=>$enroll]);
     }
     public function complete(){
         if($this->checkApplicationStatus())
@@ -522,27 +541,18 @@ class RegistrationController extends Controller
     public function completeProcess(){
         $student = Auth::user()->students()->latest()->first();
         $enroll = $student->enrolls()->latest()->first();
-        if($enroll->status!='Invited'){
+        if($enroll->status!='Documents Pending'){
             return redirect()->route('student.registration.completed');
         }
-        $enroll->status = 'Documents Pending';
+        $enroll->status = 'Processing';
         $enroll->update();
-        DB::beginTransaction();
-        try {
-            $application = ApplicationRegistration::where([['academic_year_id', $enroll->academic_year_id], ['programme_id', $enroll->programme_id]])->first();
-            $application->count_received += 1;
-            $application->update();
-            DB::commit();
-        }catch(QueryException $e){
-            DB::rollBack();
-        }
         return redirect()->route('student.registration.completed');
     }
     public function completed(){
         $student = Auth::user()->students()->latest()->first();
         $enroll = $student->enrolls()->latest()->first();
         if(!$this->checkApplicationStatus())
-            return redirect()->back();
+            return redirect()->route('student.registration.complete');
         return view('registration.proceed',['enroll'=>$enroll]);
     }
     public function downloadPersonalData(){
@@ -584,12 +594,161 @@ class RegistrationController extends Controller
         //return $dompdf->stream();
         return $dompdf->download($student->nic.'_Personal_Data.pdf');
     }
+
     public function checkApplicationStatus(){
         $student = Auth::user()->students()->latest()->first();
         $enroll = $student->enrolls()->latest()->first();
-        if($enroll->status!='Invited'){
-            return true;
+        if($enroll->status=='Invited'||$enroll->status=='Documents Pending'){
+            return false;
         }
-        return false;
+        return true;
+    }
+
+    public function imageUploadPost(Request $request){
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,jpg|max:2048',
+            'bank' => 'required|image|mimes:jpeg,jpg|max:2048',
+            'lc_f' => 'required|image|mimes:jpeg,jpg|max:2048',
+            'lc_b' => 'required|image|mimes:jpeg,jpg|max:2048',
+            'nic_f' => 'required|image|mimes:jpeg,jpg|max:2048',
+            'nic_b' => 'required|image|mimes:jpeg,jpg|max:2048',
+        ]);
+        $student = Auth::user()->students()->latest()->first();
+
+
+        $imageName =$student->nic.'_photo.'.$request->image->extension();
+        $request->image->storeAs('docs', $imageName);
+        /* Store $imageName name in DATABASE from HERE */
+        $docs = StudentDoc::where([['student_id',$student->id],['type','photo']])->first();
+        $isUpdate = true;
+        if(!$docs){
+            $docs = new StudentDoc();
+            $isUpdate = false;
+        }
+
+        $docs->student_id = $student->id;
+        $docs->name = $imageName;
+        $docs->type = "photo";
+        if($isUpdate)
+            $docs->update();
+        else
+            $docs->save();
+
+
+
+        //bank
+        $imageName =$student->nic.'_bank.'.$request->bank->extension();
+        $request->bank->storeAs('docs', $imageName);
+        /* Store $imageName name in DATABASE from HERE */
+        $docs = StudentDoc::where([['student_id',$student->id],['type','bank']])->first();
+        $isUpdate = true;
+        if(!$docs){
+            $docs = new StudentDoc();
+            $isUpdate = false;
+        }
+
+        $docs->student_id = $student->id;
+        $docs->name = $imageName;
+        $docs->type = "bank";
+        if($isUpdate)
+            $docs->update();
+        else
+            $docs->save();
+
+        //LC Front
+
+        $imageName =$student->nic.'_FLC.'.$request->lc_f->extension();
+        $request->lc_f->storeAs('docs', $imageName);
+        /* Store $imageName name in DATABASE from HERE */
+        $docs = StudentDoc::where([['student_id',$student->id],['type','FLC']])->first();
+        $isUpdate = true;
+        if(!$docs){
+            $docs = new StudentDoc();
+            $isUpdate = false;
+        }
+
+        $docs->student_id = $student->id;
+        $docs->name = $imageName;
+        $docs->type = "FLC";
+        if($isUpdate)
+            $docs->update();
+        else
+            $docs->save();
+
+        //LC Back
+        $imageName =$student->nic.'_BLC.'.$request->lc_b->extension();
+        $request->lc_b->storeAs('docs', $imageName);
+        /* Store $imageName name in DATABASE from HERE */
+        $docs = StudentDoc::where([['student_id',$student->id],['type','BLC']])->first();
+        $isUpdate = true;
+        if(!$docs){
+            $docs = new StudentDoc();
+            $isUpdate = false;
+        }
+
+        $docs->student_id = $student->id;
+        $docs->name = $imageName;
+        $docs->type = "BLC";
+        if($isUpdate)
+            $docs->update();
+        else
+            $docs->save();
+
+        //NIC Front
+        $imageName =$student->nic.'_FNIC.'.$request->nic_f->extension();
+        $request->nic_f->storeAs('docs', $imageName);
+        /* Store $imageName name in DATABASE from HERE */
+        $docs = StudentDoc::where([['student_id',$student->id],['type','FNIC']])->first();
+        $isUpdate = true;
+        if(!$docs){
+            $docs = new StudentDoc();
+            $isUpdate = false;
+        }
+
+        $docs->student_id = $student->id;
+        $docs->name = $imageName;
+        $docs->type = "FNIC";
+        if($isUpdate)
+            $docs->update();
+        else
+            $docs->save();
+
+        //NIC Back
+        $imageName =$student->nic.'_BNIC.'.$request->nic_b->extension();
+        $request->nic_b->storeAs('docs', $imageName);
+        /* Store $imageName name in DATABASE from HERE */
+        $docs = StudentDoc::where([['student_id',$student->id],['type','BNIC']])->first();
+        $isUpdate = true;
+        if(!$docs){
+            $docs = new StudentDoc();
+            $isUpdate = false;
+        }
+
+        $docs->student_id = $student->id;
+        $docs->name = $imageName;
+        $docs->type = "BNIC";
+        if($isUpdate)
+            $docs->update();
+        else
+            $docs->save();
+
+
+        return back()
+            ->with('success','You have successfully upload image.')
+            ->with('image',$imageName);
+    }
+
+    public function getImageFile($name){
+        $path= Storage::disk('docs')->path($name);
+        if (!File::exists($path)) {
+            abort(404);
+        }
+        $file = File::get($path);
+        $type = File::mimeType($path);
+
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+
+        return $response;
     }
 }

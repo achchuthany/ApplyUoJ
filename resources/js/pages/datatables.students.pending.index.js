@@ -6,6 +6,7 @@ $(document).ready(function() {
             retrieve: true,
             ajax: url,
             columns: [
+                {data: 'image', name: 'image'},
                 {data: 'name', name: 'name'},
                 {data: 'nic', name: 'nic'},
                 {data: 'mobile', name: 'mobile'},
@@ -15,6 +16,7 @@ $(document).ready(function() {
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             lengthChange: true,
+            "order": [[ 1, "asc" ]],
             pageLength: 50,
             // dom: 'Bfrtip',
             // buttons: {

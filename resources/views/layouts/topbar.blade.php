@@ -152,7 +152,7 @@
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect font-size-12">
-                    <i class="fas fa-eye-dropper"></i>
+                    <i class="uil-cog"></i>
                 </button>
             </div>
 

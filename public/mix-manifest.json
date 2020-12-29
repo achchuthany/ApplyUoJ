@@ -1,4 +1,6 @@
 {
+    "/assets/js/pages/action.enroll.index.js": "/assets/js/pages/action.enroll.index.js",
+    "/assets/js/pages/chartjs.init.js": "/assets/js/pages/chartjs.init.js",
     "/assets/js/pages/datatables.academic-years.index.js": "/assets/js/pages/datatables.academic-years.index.js",
     "/assets/js/pages/datatables.application.registrations.index.js": "/assets/js/pages/datatables.application.registrations.index.js",
     "/assets/js/pages/datatables.faculty.index.js": "/assets/js/pages/datatables.faculty.index.js",
@@ -11,6 +13,7 @@
     "/assets/css/app-dark.css": "/assets/css/app-dark.css",
     "/assets/js/pages/datatables.programmes.index.js": "/assets/js/pages/datatables.programmes.index.js",
     "/assets/js/pages/datatables.students.all.index.js": "/assets/js/pages/datatables.students.all.index.js",
+    "/assets/js/pages/datatables.students.list.index.js": "/assets/js/pages/datatables.students.list.index.js",
     "/assets/js/pages/datatables.students.pending.index.js": "/assets/js/pages/datatables.students.pending.index.js",
     "/assets/js/pages/delete.academic-year.index.js": "/assets/js/pages/delete.academic-year.index.js",
     "/assets/js/pages/delete.application.registrations.index.js": "/assets/js/pages/delete.application.registrations.index.js",
@@ -31,6 +34,7 @@
     "/assets/libs/select2/select2.min.css": "/assets/libs/select2/select2.min.css",
     "/assets/libs/sweetalert2/sweetalert2.min.js": "/assets/libs/sweetalert2/sweetalert2.min.js",
     "/assets/libs/sweetalert2/sweetalert2.min.css": "/assets/libs/sweetalert2/sweetalert2.min.css",
+    "/assets/libs/chart-js/chart-js.min.js": "/assets/libs/chart-js/chart-js.min.js",
     "/assets/libs/datatables/datatables.min.js": "/assets/libs/datatables/datatables.min.js",
     "/assets/libs/datatables/datatables.min.css": "/assets/libs/datatables/datatables.min.css",
     "/assets/libs/pdfmake/pdfmake.min.js": "/assets/libs/pdfmake/pdfmake.min.js",

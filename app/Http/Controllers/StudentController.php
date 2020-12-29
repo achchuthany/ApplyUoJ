@@ -10,6 +10,7 @@ use App\Models\Enroll;
 use App\Models\Programme;
 use App\Models\Student;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
@@ -20,15 +21,10 @@ use Yajra\DataTables\Facades\DataTables;
 
 class StudentController extends Controller
 {
-    public $params = array(
-    'in'=>'Invited',
-    'dp'=>'Documents Pending',
-    'ps'=>'Processing',
-    'ap'=>'Accepted',
-    'rg'=>'Registered',
-    're'=>'Rejected',
-    'de'=>'Deleted'
-    );
+    public $params;
+    public function __construct(){
+        $this->params = config('app.enroll_status');
+    }
     public function index(){
         $ugc_count = Student::get()->count();
         $pending_count = Enroll::where('status','Processing')->get()->count();
@@ -103,7 +99,6 @@ class StudentController extends Controller
             'aid'=>$request['academic_year_id'],
             'id'=>$csv_data_file->id]);
     }
-
     public function uploadPreview($pid,$aid,$id){
         $csv_data_file= CsvData::whereId($id)->first();
         $csv_x = json_decode($csv_data_file->csv_data, true);
@@ -194,7 +189,6 @@ class StudentController extends Controller
         }
         return view('student.upload-view',compact('csv_data','csv_data_file','csv_header','programme','academic'));
     }
-
     public function processImport(Request $request)
     {
         $programme_id = $request['programme_id'];
@@ -296,27 +290,24 @@ class StudentController extends Controller
         }
         return redirect()->route('admin.students.upload')->with(['message_type'=>$msag_type,'message'=>$message]);
     }
-
-
     public function all(Request $request){
         if ($request->ajax()) {
             $data = Enroll::latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->addColumn('name', function($row){
-                    $regnos = preg_split("#/#", $row->regno);
-                    $regno = "";
-                    foreach($regnos as $key=>$value) {
-                        $regno .= "$value";
-                    }
-                    if(Storage::disk('public')->exists('images/users/'.$regno.'.jpeg'))
-                        return '<img src="'.Storage::url('images/users/'.$regno.'.jpeg').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials. '('.$row->status.')</span>';
+                ->addColumn('image', function($row){
+                    $doc = $row->student->student_docs()->where('type','photo')->first();
+                    if($doc && Storage::disk('docs')->exists($doc->name))
+                        return '<img src="/registration/student/image/'.$doc->name.'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
                     else if($row->student->gender == "M")
-                        return '<img src="'.URL::asset('assets/images/users/male.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials. '('.$row->status.')</span>';
+                        return '<img src="'.URL::asset('assets/images/users/male.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
                     else
-                        return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials. '('.$row->status.')</span>';
+                        return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
 
 
+                })
+                ->addColumn('name', function($row){
+                    return $row->student->name_initials;
                 })
                 ->addColumn('nic', function($row){
                     return Student::where('id',$row->student_id)->first()->nic;
@@ -337,12 +328,11 @@ class StudentController extends Controller
                    ';
                     return $btn;
                 })
-                ->rawColumns(['action','name'])
+                ->rawColumns(['action','image'])
                 ->make(true);
         }
         return view('student.all');
     }
-
     public function pending(Request $request,$status){
 
         if(!array_key_exists("$status",$this->params)){
@@ -352,20 +342,17 @@ class StudentController extends Controller
             $data = Enroll::where('status',$this->params[$status])->latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->addColumn('name', function($row){
-                    $regnos = preg_split("#/#", $row->regno);
-                    $regno = "";
-                    foreach($regnos as $key=>$value) {
-                        $regno .= "$value";
-                    }
-                    if(Storage::disk('public')->exists('images/users/'.$regno.'.jpeg'))
-                        return '<img src="'.Storage::url('images/users/'.$regno.'.jpeg').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials.'</span>';
+                ->addColumn('image', function($row){
+                    $doc = $row->student->student_docs()->where('type','photo')->first();
+                    if($doc && Storage::disk('docs')->exists($doc->name))
+                        return '<img src="/registration/student/image/'.$doc->name.'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
                     else if($row->student->gender == "M")
-                        return '<img src="'.URL::asset('assets/images/users/male.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials.'</span>';
+                        return '<img src="'.URL::asset('assets/images/users/male.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
                     else
-                        return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail"> <span>'.$row->student->name_initials.'</span>';
-
-
+                        return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
+                })
+                ->addColumn('name', function($row){
+                    return $row->student->name_initials;
                 })
                 ->addColumn('nic', function($row){
                     return Student::where('id',$row->student_id)->first()->nic;
@@ -384,11 +371,11 @@ class StudentController extends Controller
                 })
                 ->addColumn('action', function($row){
                     $btn = '
-                   <a href="'.route('admin.students.enroll.profile',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="View Submission"><i class="far fa-file-archive "></i></a>
+                   <a href="'.route('admin.students.enroll.profile',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="View Submission"><i class="uil uil-user"></i></a>
                    ';
                     return $btn;
                 })
-                ->rawColumns(['action','name'])
+                ->rawColumns(['action','image'])
                 ->make(true);
         }
         return view('student.pending',['title'=>$this->params[$status]]);
@@ -401,6 +388,109 @@ class StudentController extends Controller
 
 
     return view('student.profile',['enroll'=>$enroll]);
+    }
+    public function students(Request $request,$pid,$aid,$status){
+
+        if ($status == "all") {
+            $data = Enroll::where([['programme_id', $pid], ['academic_year_id', $aid]])->latest()->get();
+            $filter = "All";
+
+        } else {
+            if (!array_key_exists("$status", $this->params)) {
+                return redirect()->route('admin.students.index');
+            }
+            $data = Enroll::where([['programme_id', $pid], ['academic_year_id', $aid], ['status', $this->params[$status]]])->latest()->get();
+            $filter = $this->params[$status];
+        }
+        $count = $data->count();
+        if ($request->ajax()) {
+            return (Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('image', function($row){
+                    $doc = $row->student->student_docs()->where('type','photo')->first();
+                    if($doc && Storage::disk('docs')->exists($doc->name))
+                        return '<img src="/registration/student/image/'.$doc->name.'" alt="" class="avatar-sm rounded-circle img-thumbnail">';
+                    else if($row->student->gender == "M")
+                        return '<img src="'.URL::asset('assets/images/users/male.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
+                    else
+                        return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
+                })
+                ->addColumn('reg_no', function ($row) {
+                    return ($row->reg_no)?$row->reg_no:'N/A';
+                })
+                ->addColumn('index_no', function ($row) {
+                    return ($row->index_no)?$row->index_no:'N/A';
+                })
+                ->addColumn('nic', function ($row) {
+                    return $row->student->nic;
+                })
+                ->addColumn('mobile', function ($row) {
+                    return $row->student->mobile;
+                })
+                ->addColumn('title', function ($row) {
+                    return strtoupper($row->student->title);
+                })
+                ->addColumn('name_initials', function ($row) {
+                    return $row->student->name_initials;
+                })
+                ->addColumn('full_name', function ($row) {
+                    return $row->student->full_name;
+                })
+                ->addColumn('registration_date', function ($row) {
+                    return ($row->registration_date)?Carbon::parse($row->registration_date)->toFormattedDateString().' ('.Carbon::parse($row->registration_date)->diffForHumans().')':"Not Registered";
+                })
+                ->addColumn('action', function ($row) {
+                    $btn = '
+                   <a href="' . route('admin.students.enroll.profile', ['id' => $row->id]) . '" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="View Submission"><i class="uil uil-user "></i></a>
+                   ';
+                    return $btn;
+                })
+                ->rawColumns(['action', 'image'])
+                ->make(true));
+        }
+        $programme = Programme::whereId($pid)->first();
+        $ay = AcademicYear::whereId($aid)->first();
+            return view('student.list',['programme'=>$programme,'academic' => $ay,'count'=>$count,'filter'=>$filter]);
+
+    }
+    public function searchStudentsList(Request $request){
+        $this->validate($request,[
+           'academic_year_id'=>'required',
+            'programme_id'=>'required',
+            'status'=>'required',
+        ]);
+        return redirect()->route('admin.students.program.academic',[
+            'pid'=>$request['programme_id'],
+            'aid'=>$request['academic_year_id'],
+            'status'=>$request['status']]);
+    }
+    public function acceptRequest($eid,$status){
+        $enroll = Enroll::whereId($eid)->first();
+        if(!$enroll)
+            return response()->json(['msg'=>"Enroll data not found!",'code'=>201]);
+        if(!array_key_exists("$status",$this->params))
+            return response()->json(['msg'=>"Status data not found!",'code'=>201]);
+        $isUpdateCountReceive = ($this->params[$status]!=$enroll->status);
+        $enroll->status = $this->params[$status];
+        try{
+            $enroll->update();
+            $code = 200;
+            $msg = $enroll->student->name_initials." enroll status has been updated to ".$enroll->status;
+        }catch (QueryException $ex){
+            $msg = $ex->getMessage();
+            $code = 201;
+        }
+        DB::beginTransaction();
+        try {
+            $application = ApplicationRegistration::where([['academic_year_id', $enroll->academic_year_id], ['programme_id', $enroll->programme_id]])->first();
+            if($isUpdateCountReceive)
+                $application->count_received += 1;
+            $application->update();
+            DB::commit();
+        }catch(QueryException $e){
+            DB::rollBack();
+        }
+        return response()->json(['msg'=>$msg,'code'=>$code,'status'=>$enroll->status]);
     }
 
 }
