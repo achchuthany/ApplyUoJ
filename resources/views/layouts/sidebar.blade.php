@@ -76,7 +76,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('admin.students.index')}}"><i class="fas fa-table"></i>View Students</a></li>
-                        <li><a href="#"><i class="fas fa-plus"></i>Add a Student</a></li>
+                        <li><a href="{{route('admin.students.add')}}"><i class="fas fa-plus"></i>Add a Student</a></li>
                         <li><a href="{{route('admin.students.upload')}}"><i class="fas fa-upload"></i>Bulk Upload UGC List</a></li>
 
                     </ul>

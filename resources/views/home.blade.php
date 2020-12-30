@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
-                <div class="card-header h6 bg-soft-info border-bottom border-info">
+                <div class="card-header h6">
                     Students Statics by Programme
                     <span class="float-right">Academic Year
                         <select  id="ay">

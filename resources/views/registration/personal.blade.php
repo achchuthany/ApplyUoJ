@@ -78,9 +78,9 @@
         <!-- end row -->
     </div>
 </div>
-    <div class="row mt-4">
-        <div class="col text-right">
-            <button  type="submit" class="btn btn-primary">  Next <i class="mdi mdi-arrow-right mr-1"></i></button>
-        </div> <!-- end col -->
-    </div> <!-- end row-->
+<div class="row mt-4">
+    <div class="col text-right">
+        <button  type="submit" class="btn btn-primary">  Next <i class="mdi mdi-arrow-right mr-1"></i></button>
+    </div> <!-- end col -->
+</div> <!-- end row-->
 </form>

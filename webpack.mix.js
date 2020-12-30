@@ -120,6 +120,7 @@ var app_pages_assets = {
         folder.src + "js/pages/lightbox.init.js",
         folder.src + "js/pages/action.enroll.index.js",
         folder.src + "js/pages/chartjs.init.js",
+        folder.src + "js/pages/generate.reg.no.js",
     ]
 };
 

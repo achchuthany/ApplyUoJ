@@ -170,34 +170,6 @@ Change Course of Study
         var message_type = "{{Session::get('message_type')}}";
     </script>
     <script src="{{ URL::asset('assets/js/pages/sweetalert.index.js')}}"></script>
-    <script>
-
-        function generate(){
-            var aid = $('#academic_year_id').val()
-            var pid = $('#programme_id').val()
-            var now = new Date();
-            var day = ("0" + now.getDate()).slice(-2);
-            var month = ("0" + (now.getMonth() + 1)).slice(-2);
-            var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
-            $("#date").val(today);
-
-            $.ajax({
-                url: "/admin/enroll/change/get/reg/"+pid+"/"+aid,
-                type: "get",
-                success: function(data) {
-                    $('#reg_no').val(data.reg_no);
-                    $('#index_no').val(data.index_no);
-                }
-            });
-        }
-
-        $('.mdi-autorenew').on('click',function (){
-            generate()
-        });
-
-        $('#academic_year_id').on('change', function() {
-            generate();
-        });
-    </script>
+    <script src="{{ URL::asset('assets/js/pages/generate.reg.no.js')}}"></script>
 @endsection
 

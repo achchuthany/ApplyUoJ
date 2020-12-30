@@ -39,6 +39,21 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'as' => 'admin.students.index',
         'roles' => ['Admin']
     ]);
+    Route::get('/admin/students/add',[
+        'uses' => 'App\Http\Controllers\StudentController@add',
+        'as' => 'admin.students.add',
+        'roles' => ['Admin']
+    ]);
+    Route::get('/admin/students/edit/{id}',[
+        'uses' => 'App\Http\Controllers\StudentController@edit',
+        'as' => 'admin.students.edit',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/students/addEditProcess',[
+        'uses' => 'App\Http\Controllers\StudentController@addEditProcess',
+        'as' => 'admin.students.addEditProcess',
+        'roles' => ['Admin']
+    ]);
 
     Route::get('/admin/students/upload',[
         'uses' => 'App\Http\Controllers\StudentController@upload',

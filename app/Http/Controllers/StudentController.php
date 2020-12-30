@@ -21,9 +21,22 @@ use Yajra\DataTables\Facades\DataTables;
 
 class StudentController extends Controller
 {
-    public $params;
+    public $params,$al_subjects,$grade,$countries;
+    public $race;
+    public $gender;
+    public $civil_status;
+    public $religion ,$districts;
     public function __construct(){
         $this->params = config('app.enroll_status');
+        $this->countries = config('app.countries');
+        $this->al_subjects = config('app.al_subjects');
+        $this->grade = config('app.grades');
+        $this->race = config('app.race');
+        $this->gender = config('app.gender');
+        $this->civil_status = config('app.civil_status');
+        $this->religion = config('app.religion');
+        $this->districts = config('app.districts');
+
     }
     public function index(){
         $ugc_count = Student::get()->count();
@@ -491,6 +504,43 @@ class StudentController extends Controller
             DB::rollBack();
         }
         return response()->json(['msg'=>$msg,'code'=>$code,'status'=>$enroll->status]);
+    }
+    public function add() {
+        $programmes = Programme::orderBy('name','asc')->get();
+        $ays = AcademicYear::orderBy('name','desc')->get();
+        return view('student.add-edit',[
+            'al_subjects'=>$this->al_subjects,
+            'al_grades'=>$this->grade,
+            'countries'=>$this->countries,
+            'programmes'=>$programmes,
+            'academics'=>$ays,
+            'districts'=>$this->districts,
+        ]);
+    }
+    public function addEditProcess(Request $request){
+        return response()->json($request);
+    }
+    public function edit($id) {
+        $programmes = Programme::orderBy('name','asc')->get();
+        $ays = AcademicYear::orderBy('name','desc')->get();
+        $student= Student::whereId($id)->first();
+        $address_p = $student->addresses()->where('address_type','Permanent')->first();
+        $address_c = $student->addresses()->where('address_type','Contact')->first();
+        $subjects = $student->student_al_exams()->get();
+        $enroll = $student->enrolls()->latest()->first();
+        return view('student.add-edit',[
+            'student'=>$student,
+            'al_subjects'=>$this->al_subjects,
+            'al_grades'=>$this->grade,
+            'countries'=>$this->countries,
+            'programmes'=>$programmes,
+            'academics'=>$ays,
+            'districts'=>$this->districts,
+            'address_p'=>$address_p,
+            'address_c'=>$address_c,
+            'subjects'=>$subjects,
+            'enroll'=>$enroll
+        ]);
     }
 
 }

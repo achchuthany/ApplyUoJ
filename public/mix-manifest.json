@@ -19,6 +19,7 @@
     "/assets/js/pages/delete.application.registrations.index.js": "/assets/js/pages/delete.application.registrations.index.js",
     "/assets/js/pages/delete.faculty.index.js": "/assets/js/pages/delete.faculty.index.js",
     "/assets/js/pages/delete.programme.index.js": "/assets/js/pages/delete.programme.index.js",
+    "/assets/js/pages/generate.reg.no.js": "/assets/js/pages/generate.reg.no.js",
     "/assets/js/pages/lightbox.init.js": "/assets/js/pages/lightbox.init.js",
     "/assets/js/pages/sweetalert.index.js": "/assets/js/pages/sweetalert.index.js",
     "/assets/libs/jquery/jquery.min.js": "/assets/libs/jquery/jquery.min.js",

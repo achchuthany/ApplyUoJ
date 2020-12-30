@@ -29,20 +29,20 @@ Add New Academic Year
 
                     <div>
                         <div class="p-4 border-top">
-                            <form class="needs-validation" method="POST" action="{{ route('admin.academic.years.process') }}" novalidate>
+                            <form class="needs-validation" method="POST" action="{{ route('admin.academic.years.process') }}">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="application_year">Application Year</label>
-                                            <input value="{{(isset($ay)&&!Request::old('application_year'))? $ay->application_year : Request::old('application_year')}}" id="application_year" name="application_year" type="number" class="form-control" required>
+                                            <input value="{{(isset($ay)&&!Request::old('application_year'))? $ay->application_year : Request::old('application_year')}}" id="application_year" name="application_year" type="text" class="form-control" pattern="[0-9]{4}" placeholder="2020" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="academic_year">Academic Year</label>
-                                            <input value="{{(isset($ay)&&!Request::old('academic_year'))? $ay->name : Request::old('academic_year')}}" id="academic_year" name="academic_year" type="text" class="form-control" required>
+                                            <input value="{{(isset($ay)&&!Request::old('academic_year'))? $ay->name : Request::old('academic_year')}}" id="academic_year" name="academic_year" type="text" class="form-control" pattern="[0-9]{4}(\/)[0-9]{4}" placeholder="2020/2021" required>
                                             <input id="id" class="form-control" type="hidden" name="id" value="{{ (isset($ay))? $ay->id   : ''}}" >
                                             @if ($errors->has('name'))
                                                 <div class="text-danger">

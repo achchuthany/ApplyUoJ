@@ -13,24 +13,6 @@
                 <div class="card-header font-size-24 text-center font-weight-lighter bg-soft-primary">
                     On-line Application Status :  <span class="text-primary">{{$enroll->status}}</span>
                 </div>
-                <div class="card-body">
-                    <div class="row mt-2">
-                        <div class="col">
-                            01.  On-line Application Form (Personal Data of Students) Form
-                        </div>
-                        <div class="col">
-                            <a href="{{route('student.registration.download.PersonalData')}}" class="btn btn-sm btn-outline-primary"> <i class="mdi mdi-download"></i> Download</a>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col">
-                            02. Bank Voucher for Payment of Registration Form
-                        </div>
-                        <div class="col">
-                            <button href="#" class="btn btn-sm btn-outline-primary"> <i class="mdi mdi-download"></i> Download</button>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="card-header font-size-16">
                     Instructions
@@ -44,38 +26,137 @@
                            <p>
                                <i class="mdi mdi-arrow-right-bold text-info"></i>   The signature of the applicant, should be attested (Signed and Stamped) by any one of the following persons:   Principle of  the approved school, Grama Niladhari of the Division, Justice of Peace, Commissioner of Oaths, Attorney at Law, Notary Public
                            </p>
-                           <p>
-                               <i class="mdi mdi-arrow-right-bold text-info"></i>  The printed version must be submitted  along with the certified copies (A4 size) of the following documents.
+                           <p class="font-weight-bold">
+                               <i class="mdi mdi-arrow-right-bold text-info"></i>  The details of documents which are required to be sent to the "Assistant Registrar, Admission Branch, University of Jaffna" along with the printed version of the on-line application form is listed below:
                            </p>
                        </div>
                        <div class="col-md-12 pl-5">
+
+                           <table class="table table-sm table-info table-borderless table-striped" style="width: 100%">
+                              <thead>
+                              <tr class="bg-dark text-light">
+                                  <th>No</th>
+                                  <th>Title</th>
+                                  <th class="text-center">Original</th>
+                                  <th class="text-center">Copy</th>
+                                  <th class="text-center">Download</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>1</td>
+                                      <td>Selection Letter sent by the UGC</td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                  </tr>
+                                  <tr>
+                                      <td>2</td>
+                                      <td>School Leaving Certificate</td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                  </tr>
+                                  <tr>
+                                      <td>3</td>
+                                      <td>Duly completed  On-line Application  Form for Registration*</td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center"><a href="{{route('student.registration.download.PersonalData')}}" class="btn btn-sm btn-info"> <i class="mdi mdi-download-outline"></i></a></td>
+                                  </tr>
+                                  <tr>
+                                      <td>4</td>
+                                      <td>Payment voucher of registration fee and other fees of  Rs.2350 made by Peoples’ Bank*</td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                      <td class="text-center"><a href="#" class="btn btn-sm btn-info"> <i class="mdi mdi-download-outline"></i></a></td>
+                                  </tr>
+                                  <tr>
+                                      <td>5</td>
+                                      <td>Declaration for Degree Certificate*</td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                      <td class="text-center"><a href="#" class="btn btn-sm btn-info"> <i class="mdi mdi-download-outline"></i></a></td>
+                                  </tr>
+                                  <tr>
+                                      <td>6</td>
+                                      <td>Duly completed declaration form on Prohibition of Ragging and other forms of violence *</td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                      <td class="text-center"><a href="#" class="btn btn-sm btn-info"> <i class="mdi mdi-download-outline"></i></a></td>
+                                  </tr>
+                                  <tr>
+                                      <td>7</td>
+                                      <td>Student Identity Card Form*</td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                      <td class="text-center"><a href="#" class="btn btn-sm btn-info"> <i class="mdi mdi-download-outline"></i></a></td>
+                                  </tr>
+                                  <tr>
+                                      <td>8</td>
+                                      <td>Medical Form*</td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                      <td class="text-center"><a href="#" class="btn btn-sm btn-info"> <i class="mdi mdi-download-outline"></i></a></td>
+                                  </tr>
+                                  <tr>
+                                      <td>9</td>
+                                      <td>10 copies of 4 X 5 cm. size colour Photograph of the applicant </td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                  </tr>
+                                  <tr>
+                                      <td>10</td>
+                                      <td>NIC Photocopy </td>
+                                      <td class="text-center bg-soft-secondary"></td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                  </tr>
+                                  <tr>
+                                      <td>11</td>
+                                      <td>Birth Certificate  </td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                  </tr>
+                                  <tr>
+                                      <td>12</td>
+                                      <td>Photocopy of the G.C.E. (A/L) Certificate  </td>
+                                      <td class="text-center bg-soft-secondary"></td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                  </tr>
+                                  <tr>
+                                      <td>13</td>
+                                      <td>Photocopy of the G.C.E. (O/L) Certificate </td>
+                                      <td class="text-center bg-soft-secondary"></td>
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                  </tr>
+                                  <tr>
+                                      <td>14</td>
+                                      <td>Affidavit / Marriage certificate, if there is a difference in the name </td>
+
+                                      <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                      <td class="text-center bg-soft-secondary">-</td>
+                                  </tr>
+                              </tbody>
+                           </table>
                             <p>
-                                <i class="mdi mdi-arrow-right-bold text-info"></i>   Photocopy of the Selection Letter of the UGC
+                                <i class="mdi mdi-arrow-right-bold text-info"></i>   Students should affix photos in the On-line Application Form for Registration, Student Identity Card Form and Medical Form and the remaining photos should be sent to Admission Branch in an envelope by mentioning you’re A/L index number on the envelope.
                             </p>
                            <p>
-                               <i class="mdi mdi-arrow-right-bold text-info"></i>  Bank Voucher for Payment of Registration and Other Fees for <b>Rs.2350.00</b>
+                               <i class="mdi mdi-arrow-right-bold text-info"></i>  If a student cannot provide any of the above mentioned documents should give declaration about the reason for not submitting the same. (Form could be downloaded from website which is named as “Non Submission of Documents”.
                            </p>
                            <p>
-                               <i class="mdi mdi-arrow-right-bold text-info"></i>  Photocopy of the NIC ( Principle of  the approved school, Grama Niladhari of the Division, Justice of Peace, Commissioner of Oaths, Attorney at Law, Notary Public )
-                           </p>
-                           <p>
-                               <i class="mdi mdi-arrow-right-bold text-info"></i>  Original of the G.C.E. (A/L) Certificate issued by the Department of Examinations / Results sheet
-                               issued by the Principal of the school and photocopies of the same certified by Principle of  the approved school, Grama Niladhari of the Division, Justice of Peace, Commissioner of Oaths, Attorney at Law, Notary Public
-                           </p>
-                           <p>
-                               <i class="mdi mdi-arrow-right-bold text-info"></i>  Originals and Photocopies of the G.C.E. (O/L) Certificates issued by the Department of Examinations
-                               / Results sheet issued by the Principal of the school and photocopies of the same certified by Principle of  the approved school, Grama Niladhari of the Division, Justice of Peace, Commissioner of Oaths, Attorney at Law, Notary Public
-                           </p>
-                           <p>
-                               <i class="mdi mdi-arrow-right-bold text-info"></i>  Original of the Student Record Sheet (School Leaving Certificate)
-                           </p>
-                           <p>
-                               <i class="mdi mdi-arrow-right-bold text-info"></i>   Original Birth Certificate and the photocopy of the certificate should be certified by Principle of  the approved school, Grama Niladhari of the Division, Justice of Peace, Commissioner of Oaths, Attorney at Law, Notary Public
+                               <i class="mdi mdi-arrow-right-bold text-info"></i> Photocopies of the documents should be certified by principal of the approved school/ Grama Niladhari of the Division/Justice of Peace,/Commissioner of Oaths,/Attorney at law/Notary Public
                            </p>
                        </div>
                    </div>
                 </div>
-                <div class="card-footer bg-soft-secondary">
+                <div class="card-footer bg-soft-secondary h6 text-center">
                      For further information, please contact: Deputy Registrar/Admission & Registration Branch of the University of Jaffna. 021 2226714 or 0212218120.
                 </div>
             </div>
