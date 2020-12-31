@@ -19,9 +19,9 @@ class CreateStudentsTable extends Migration
 
             //1.NAME
             $table->string('title', 20)->nullable();            //1.1
-            $table->string('last_name', 255)->nullable();       //1.2
-            $table->string('name_initials', 255)->nullable();   //1.3
-            $table->string('full_name', 255);       //1.4
+            $table->string('last_name')->nullable();       //1.2
+            $table->string('name_initials')->nullable();   //1.3
+            $table->string('full_name');       //1.4
 
             //2. Address
             $table->string('province', 100)->nullable();        //2.3
@@ -30,7 +30,7 @@ class CreateStudentsTable extends Migration
             $table->string('nic', 20)->unique();              //2.5
             $table->string('mobile', 20)->nullable();           //2.6
             $table->string('mobile_home', 20)->nullable();           //2.6
-            $table->string('email', 255)->unique();           //2.7
+            $table->string('email')->unique();           //2.7
 
 
             //3. Education
@@ -52,12 +52,12 @@ class CreateStudentsTable extends Migration
 
 
             //5.Details of Parents
-            $table->string('parent_full_name', 255)->nullable();        //5.1
-            $table->string('parent_occupation', 255)->nullable();       //5.2
+            $table->string('parent_full_name')->nullable();        //5.1
+            $table->string('parent_occupation')->nullable();       //5.2
             $table->text('parent_address_work')->nullable();                   //5.3
             $table->string('parent_mobile', 20)->nullable();             //5.4
             $table->string('parent_landline', 20)->nullable();             //5.4
-            $table->string('emergency_contact_name', 255)->nullable();   //5.5
+            $table->string('emergency_contact_name')->nullable();   //5.5
             $table->string('emergency_contact_mobile', 20)->nullable();  //5.6
 
             $table->bigInteger('created_by_user_id')->unsigned();
