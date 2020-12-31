@@ -63,7 +63,7 @@ class CreateStudentsTable extends Migration
             $table->bigInteger('created_by_user_id')->unsigned();
             $table->foreign('created_by_user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->string('status',20)->nullable();
-            $table->json('comments')->nullable();
+            $table->text('comments')->nullable();
 
             $table->timestamps();
         });
