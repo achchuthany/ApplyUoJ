@@ -1,6 +1,6 @@
 @extends('layouts.master-without-nav')
 @section('title')
-    @lang('translation.FAQS')
+    Online Registration
 @endsection
 
 @section('content')

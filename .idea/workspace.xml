@@ -20,9 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c2ec210-208a-41b5-8c22-9ae5395aa4fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/images/419_error.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/errors/419.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/419.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -237,7 +234,7 @@
       <workItem from="1609244508200" duration="7761000" />
       <workItem from="1609299524965" duration="15903000" />
       <workItem from="1609386440862" duration="11707000" />
-      <workItem from="1609419533759" duration="8063000" />
+      <workItem from="1609419533759" duration="8737000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1607261190718</created>
@@ -323,7 +320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609407663757</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="welcome page">
+      <created>1609428434913</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1609428434913</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,7 +357,8 @@
     <MESSAGE value="json to txt update" />
     <MESSAGE value="string size" />
     <MESSAGE value="test update" />
-    <option name="LAST_COMMIT_MESSAGE" value="test update" />
+    <MESSAGE value="welcome page" />
+    <option name="LAST_COMMIT_MESSAGE" value="welcome page" />
   </component>
   <component name="WindowStateProjectService">
     <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609394371916">
@@ -393,12 +398,12 @@
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1607260929715" />
     <state x="184" y="8" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608816149865" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1609407665298">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1609428437056">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1607529786950" />
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1609407665298" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1609226662535" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1609428437056" />
     <state x="500" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608266173185">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
