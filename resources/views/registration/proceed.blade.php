@@ -10,7 +10,7 @@
     <div class="row align-items-center justify-content-center">
         <div class="col-md-10 col-lg-10 col-xl-10">
             <div class="card">
-                <div class="card-header font-size-24 text-center font-weight-lighter bg-soft-primary">
+                <div class="card-header font-size-24 bg-soft-info">
                     On-line Application Status :  <span class="text-primary">{{$enroll->status}}</span>
                 </div>
 
@@ -30,9 +30,9 @@
                                <i class="mdi mdi-arrow-right-bold text-info"></i>  The details of documents which are required to be sent to the "Assistant Registrar, Admission Branch, University of Jaffna" along with the printed version of the on-line application form is listed below:
                            </p>
                        </div>
-                       <div class="col-md-12 pl-5">
+                       <div class="col-md-12">
 
-                           <table class="table table-sm table-info table-borderless table-striped" style="width: 100%">
+                           <table class="table table-striped">
                               <thead>
                               <tr class="bg-dark text-light">
                                   <th>No</th>
@@ -62,42 +62,44 @@
                                       <td>Duly completed  On-line Application  Form for Registration*</td>
                                       <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
                                       <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
-                                      <td class="text-center"><a href="{{route('student.registration.download.PersonalData')}}" class="btn btn-sm btn-info"> <i class="mdi mdi-download-outline"></i></a></td>
+                                      <td class="text-center"><a href="{{route('student.registration.download.PersonalData')}}" class="btn btn-sm btn-link"> <i class="mdi mdi-download-outline"></i> Download</a></td>
                                   </tr>
                                   <tr>
                                       <td>4</td>
                                       <td>Payment voucher of registration fee and other fees of  Rs.2350 made by Peoples’ Bank*</td>
                                       <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
                                       <td class="text-center bg-soft-secondary">-</td>
-                                      <td class="text-center"><a href="#" class="btn btn-sm btn-info"> <i class="mdi mdi-download-outline"></i></a></td>
+                                      <td class="text-center"><a href="{{URL::asset('/assets/images/download/PAYING_IN_VOUCHER.pdf')}}" download="PAYING_IN_VOUCHER.pdf" target="_blank" class="btn btn-sm btn-link"> <i class="mdi mdi-download-outline"></i> Download</a> </td>
                                   </tr>
                                   <tr>
                                       <td>5</td>
                                       <td>Declaration for Degree Certificate*</td>
                                       <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
                                       <td class="text-center bg-soft-secondary">-</td>
-                                      <td class="text-center"><a href="#" class="btn btn-sm btn-info"> <i class="mdi mdi-download-outline"></i></a></td>
+                                      <td class="text-center"><a href="{{URL::asset('/assets/images/download/Declaration_Name_Degree_Certificate.pdf')}}" download="Declaration_Name_Degree_Certificate.pdf" target="_blank" class="btn btn-sm btn-link"> <i class="mdi mdi-download-outline"></i> Download</a></td>
                                   </tr>
                                   <tr>
                                       <td>6</td>
                                       <td>Duly completed declaration form on Prohibition of Ragging and other forms of violence *</td>
                                       <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
                                       <td class="text-center bg-soft-secondary">-</td>
-                                      <td class="text-center"><a href="#" class="btn btn-sm btn-info"> <i class="mdi mdi-download-outline"></i></a></td>
+                                      <td class="text-center"><a href="{{URL::asset('/assets/images/download/Declaration_Ragging_Sinhala.pdf')}}" class="btn btn-sm btn-link m-2"  target="_blank" download="Declaration_Ragging_Sinhala.pdf"> <i class="mdi mdi-download-outline"></i> Sinhala</a>
+                                          <a href="{{URL::asset('/assets/images/download/Declaration_Ragging_Tamil.pdf')}}" class="btn btn-sm btn-link"  target="_blank" download="Declaration_Ragging_Tamil.pdf"> <i class="mdi mdi-download-outline"></i> Tamil</a>
+                                      </td>
                                   </tr>
                                   <tr>
                                       <td>7</td>
                                       <td>Student Identity Card Form*</td>
                                       <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
                                       <td class="text-center bg-soft-secondary">-</td>
-                                      <td class="text-center"><a href="#" class="btn btn-sm btn-info"> <i class="mdi mdi-download-outline"></i></a></td>
+                                      <td class="text-center"><a href="{{URL::asset('/assets/images/download/IC_Form.pdf')}}" download="IC_Form.pdf" target="_blank" class="btn btn-sm btn-link"> <i class="mdi mdi-download-outline"></i> Download</a></td>
                                   </tr>
                                   <tr>
                                       <td>8</td>
                                       <td>Medical Form*</td>
                                       <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
                                       <td class="text-center bg-soft-secondary">-</td>
-                                      <td class="text-center"><a href="#" class="btn btn-sm btn-info"> <i class="mdi mdi-download-outline"></i></a></td>
+                                      <td class="text-center"><a href="{{URL::asset('/assets/images/download/Medical_Form.pdf')}}" download="Medical_Form.pdf" target="_blank"  class="btn btn-sm btn-link"> <i class="mdi mdi-download-outline"></i> Download</a></td>
                                   </tr>
                                   <tr>
                                       <td>9</td>
@@ -148,15 +150,15 @@
                                 <i class="mdi mdi-arrow-right-bold text-info"></i>   Students should affix photos in the On-line Application Form for Registration, Student Identity Card Form and Medical Form and the remaining photos should be sent to Admission Branch in an envelope by mentioning you’re A/L index number on the envelope.
                             </p>
                            <p>
-                               <i class="mdi mdi-arrow-right-bold text-info"></i>  If a student cannot provide any of the above mentioned documents should give declaration about the reason for not submitting the same. (Form could be downloaded from website which is named as “Non Submission of Documents”.
+                               <i class="mdi mdi-arrow-right-bold text-info"></i>  If a student cannot provide any of the above mentioned documents should give declaration about the reason for not submitting the same. (Form could be downloaded from website which is named as <a href="{{URL::asset('/assets/images/download/Non_Submission_of_Documents.pdf')}}" download="Non_Submission_of_Documents.pdf" target="_blank"  class="btn btn-sm btn-link">"<i class="mdi mdi-download-outline"></i> Non Submission of Documents”</a>).
                            </p>
                            <p>
-                               <i class="mdi mdi-arrow-right-bold text-info"></i> Photocopies of the documents should be certified by principal of the approved school/ Grama Niladhari of the Division/Justice of Peace,/Commissioner of Oaths,/Attorney at law/Notary Public
+                               <i class="mdi mdi-arrow-right-bold text-info"></i> Photocopies of the documents should be certified by principal of the approved school/ Grama Niladhari of the Division/Justice of Peace,/Commissioner of Oaths,/Attorney at law/Notary Public.
                            </p>
                        </div>
                    </div>
                 </div>
-                <div class="card-footer bg-soft-secondary h6 text-center">
+                <div class="card-footer">
                      For further information, please contact: Deputy Registrar/Admission & Registration Branch of the University of Jaffna. 021 2226714 or 0212218120.
                 </div>
             </div>

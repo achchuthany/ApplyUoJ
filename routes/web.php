@@ -20,13 +20,16 @@ Route::get('/', function () {
 Auth::routes();
 Auth::routes(['verify' => true]);
 
-Route::group(['middleware' => ['auth','verified','roles']], function () {
-
+Route::group(['middleware' => ['auth','roles']], function () {
     Route::get('/home',[
         'uses' => 'App\Http\Controllers\HomeController@index',
         'as' => 'home',
         'roles' => ['Admin','Student']
     ]);
+});
+
+
+Route::group(['middleware' => ['auth','verified','roles']], function () {
     //Admin Home Page
     Route::get('/home/data/{aid}',[
         'uses' => 'App\Http\Controllers\HomeController@graphData',
