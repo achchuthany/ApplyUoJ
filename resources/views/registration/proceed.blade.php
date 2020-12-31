@@ -10,12 +10,12 @@
     <div class="row align-items-center justify-content-center">
         <div class="col-md-10 col-lg-10 col-xl-10">
             <div class="card">
-                <div class="card-header font-size-24 bg-soft-info">
+                <div class="card-header font-size-24">
                     On-line Application Status :  <span class="text-primary">{{$enroll->status}}</span>
                 </div>
 
-                <div class="card-header font-size-16">
-                    Instructions
+                <div class="card-header font-weight-bold">
+                   <span class="text-success"> Your On-line registration  has been successfully completed </span>and follow the Instructions to conform your registration of University of Jaffna.
                 </div>
                 <div class="card-body">
                    <div class="row">

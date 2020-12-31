@@ -11,6 +11,13 @@
                     <img src="{{ URL::asset('assets/images/uoj.png')}}" alt="UNIVERSITY OF JAFFNA" height="80" class="logo logo-dark">
                     <img src="{{ URL::asset('assets/images/uoj.png')}}" alt="UNIVERSITY OF JAFFNA" height="80" class="logo logo-light">
                 </a>
+
+                <div class="text-uppercase h5 font-weight-bolder text-warning">
+                    Web Application under <i class="mdi mdi-beta"></i>testing ..
+                    <div class="spinner-grow text-warning m-1" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
             </div>
         </div>
          <div class="col-md-8">
