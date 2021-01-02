@@ -4,7 +4,7 @@
 @endsection
 
 @section('footer')
-    <div class="page-number" style=" margin:0 50px;text-align:left;font-size: 10px">  | {{\Carbon\Carbon::now()->toFormattedDateString().' '. \Carbon\Carbon::now()->toTimeString()}} <span style="font-size: 10px;float: right">Personal Data of Student | University of Jaffna</span></div>
+    <div class="page-number" style=" margin:0 50px;text-align:left;font-size: 10px">  | {{\Carbon\Carbon::now('Asia/Colombo')->toFormattedDateString().' '. \Carbon\Carbon::now('Asia/Colombo')->toTimeString()}} <span style="font-size: 10px;float: right">Personal Data of Student | University of Jaffna</span></div>
 
 @endsection
 @section('content')
