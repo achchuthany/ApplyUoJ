@@ -1,28 +1,19 @@
 <div class="card">
-    <div class="card-header font-size-16 bg-info text-light">
+    <div class="card-header font-size-16 bg-dark text-light">
         Upload your documents to conform your registration
     </div>
     <div class="card-body">
-        <div class="row mt-2">
-            <div class="col">
-                01.  On-line Application Form (Personal Data of Students) Form
-            </div>
-            <div class="col">
-                <a href="{{route('student.registration.download.PersonalData')}}" class="btn btn-sm btn-outline-primary"> <i class="mdi mdi-download"></i> Download</a>
-            </div>
-        </div>
         <div class="row mt-3">
-            <div class="col">
-                02. Bank Voucher for Payment of Registration Form
-            </div>
-            <div class="col">
-                <button href="#" class="btn btn-sm btn-outline-primary"> <i class="mdi mdi-download"></i> Download</button>
+            <div class="col-md-12">
+                Payment voucher of registration fee and other fees of  Rs.2350 made by Peoples’ Bank (If you already download in instruction page ignore this download)
+
+                <a href="{{URL::asset('/assets/images/download/PAYING_IN_VOUCHER.pdf')}}" download="PAYING_IN_VOUCHER.pdf" target="_blank" class="btn btn-sm btn-link"> <i class="mdi mdi-download-outline"></i> Download</a>
             </div>
         </div>
     </div>
 
     <div class="card-body">
-        <form action="{{ route('student.registration.image.upload') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('student.registration.image.upload') }}" method="POST" enctype="multipart/form-data" id="document-upload">
             @csrf
             <div class="row">
                 <div class="col-md-8" >
@@ -52,7 +43,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label>Bank Voucher <span class="text-danger font-size-16">*</span></label>
+                                    <label>Paid Bank Voucher <span class="text-danger font-size-16">*</span></label>
                                     <input type="file" name="bank" class="form-control">
                                 </div>
                             </div>
@@ -94,6 +85,12 @@
 
                         <div class="card-body">
                             <div class="row">
+                                <div class="col-md-12" id="progress-data">
+                                     <div class="progress p-3">
+                                        <div class="bar"></div >
+                                        <div class="percent">0%</div>
+                                    </div>
+                                </div>
                                 <div class="col-md-12 mt-3">
                                     <button type="submit" class="btn btn-block btn-primary"><i class="fas fa-file-upload"></i> Upload</button>
                                 </div>
@@ -103,8 +100,8 @@
                 </div>
                 @if($enroll->student->student_docs()->count()>0)
                 <div class="col-md-4" >
-                    <div class="card bg-soft-success">
-                        <div class="card-header bg-success text-light">Check your uploaded documents</div>
+                    <div class="card">
+                        <div class="card-header bg-success text-light"><i class="mdi mdi-check-circle"></i> Files has been uploaded</div>
                         <div class="card-body">
                             <div class="zoom-gallery">
                                 <div class="row">
@@ -132,7 +129,7 @@
 </div>
 <div class="row mt-4">
     <div class="col">
-        <a href="{{route('student.citizenship')}}" class="btn btn-light"><i class="mdi mdi-arrow-left mr-1"></i> Back</a>
+        <a href="{{route('student.parents')}}" class="btn btn-light"><i class="mdi mdi-arrow-left mr-1"></i> Back</a>
     </div>
     <div class="col text-right">
         <a href="{{route('student.registration.complete')}}" class="btn btn-primary">Next <i class="mdi mdi-arrow-right mr-1"></i></a>

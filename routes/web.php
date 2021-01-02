@@ -26,6 +26,11 @@ Route::group(['middleware' => ['auth','roles']], function () {
         'as' => 'home',
         'roles' => ['Admin','Student']
     ]);
+    Route::get('registration/student/image/{name}',[
+        'uses' => 'App\Http\Controllers\RegistrationController@getImageFile',
+        'as' => 'student.registration.image',
+        'roles' => ['Admin','Student']
+    ]);
 });
 
 
@@ -236,11 +241,6 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'uses' => 'App\Http\Controllers\ApplicationRegistrationController@delete',
         'as' => 'admin.application.registrations.delete',
         'roles' => ['Admin']
-    ]);
-    Route::get('registration/student/image/{name}',[
-        'uses' => 'App\Http\Controllers\RegistrationController@getImageFile',
-        'as' => 'student.registration.image',
-        'roles' => ['Admin','Student']
     ]);
 
     //Enroll Data

@@ -1,6 +1,7 @@
 <html>
 <head>
-    <link href="{{ URL::asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+{{--    <link href="{{ URL::asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />--}}
+
     <style>
         /**
             Set the margins of the page to 0, so the footer and the header
@@ -9,7 +10,9 @@
         @page {
             margin: 0cm 0cm;
         }
-
+        *{
+            font-family: 'Times New Roman', serif;
+        }
         /** Define now the real margins of every page in the PDF **/
         body {
             margin-top: 2cm;
@@ -17,7 +20,24 @@
             margin-right: 2cm;
             margin-bottom: 2cm;
         }
-
+        table{
+            width: 100%;
+        }
+        th{
+            text-align: left;
+        }
+        .p-2{
+            padding: 10px;
+        }
+        .mt-5{
+            margin-top: 20px;
+            border-bottom: 1px solid #dddddd;
+            padding-bottom: 5px;
+        }
+        .b{font-weight: bolder;}
+        .text-info{
+            color: #1d68a7;
+        }
         /** Define the header rules **/
         header {
             position: fixed;
@@ -52,6 +72,9 @@
         }
         .dotted{
             border-bottom: 1px dotted black;
+        }
+        .text-justify{
+            text-align: justify;
         }
     </style>
 </head>

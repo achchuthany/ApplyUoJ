@@ -6,7 +6,7 @@
     </div>
     <div class="card-body">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="name">i. Race <span class="text-danger font-size-16">*</span></label>
                     <div class="form-group">
@@ -37,7 +37,7 @@
             <script>
 
             </script>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="shortname">ii. Gender <span class="text-danger font-size-16">*</span></label>
                     <div class="form-group">
@@ -52,6 +52,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="shortname">iii. Civil Status <span class="text-danger font-size-16">*</span></label>
@@ -67,7 +68,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="shortname">iv. Religion <span class="text-danger font-size-16">*</span></label>
                     <div class="form-group">

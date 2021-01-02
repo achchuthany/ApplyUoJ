@@ -49,7 +49,8 @@ var third_party_assets = {
                 "./node_modules/datatables.net-select-bs4/css/select.bootstrap4.css"]
         },
         {"name": "pdfmake", "assets": ["./node_modules/pdfmake/build/pdfmake.min.js", "./node_modules/pdfmake/build/vfs_fonts.js"]},
-        {"name": "jszip", "assets": ["./node_modules/jszip/dist/jszip.min.js"]}
+        {"name": "jszip", "assets": ["./node_modules/jszip/dist/jszip.min.js"]},
+        {"name": "jquery-form", "assets": ["./node_modules/jquery-form/dist/jquery.form.min.js"]},
         // {"name": "summernote", "assets": ["./node_modules/summernote/dist/summernote-bs4.min.js", "./node_modules/summernote/dist/summernote-bs4.css"]},
 
     ]

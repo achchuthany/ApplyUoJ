@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label for="address_country_p">Address Country <span class="text-danger font-size-16">*</span></label>
                     <select id="address_country_p" name="address[P][address_country]" class="form-control select2" required>
-                        <option selected disabled>--Select--</option>
+                        <option selected disabled>Select Country</option>
                         @foreach($countries as $country)
                             <option value="{{$country}}" {{(isset($address_p)&&!Request::old('address_country'))? ($address_p->address_country==$country?'selected':'') : (Request::old('address_country')==$country?'selected':'') }}>{{$country}}</option>
                         @endforeach
@@ -51,11 +51,11 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="address_postal_code">Address Postal Code</label>
-                    <input value="{{(isset($address_p)&&!Request::old('address_postal_code'))? $address_p->address_postal_code : Request::old('address_postal_code')}}" id="address_postal_code" name="address[P][address_postal_code]" type="text" class="form-control">
+                    <input value="{{(isset($address_p)&&!Request::old('address_postal_code'))? $address_p->address_postal_code : Request::old('address_postal_code')}}" id="address_postal_code" name="address[P][address_postal_code]" type="text" class="form-control" pattern="^[0-9]{4,10}$">
                 </div>
             </div>
         </div>
-        <label for="name">ii. Contact Address</label>
+        <label for="name" class="mt-4 font-weight-bold">ii. Contact Address</label>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -91,6 +91,7 @@
                 <div class="form-group">
                     <label for="address_country">Address Country <span class="text-danger font-size-16">*</span></label>
                     <select id="address_country" name="address[C][address_country]" class="form-control select2" required>
+                        <option selected disabled>Select Country</option>
                         @foreach($countries as $country)
                             <option value="{{$country}}" {{(isset($address_c)&&!Request::old('address_country'))? ($address_c->address_country==$country?'selected':'') : (Request::old('address_country')==$country?'selected':'') }}>{{$country}}</option>
                         @endforeach
@@ -100,7 +101,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="address_postal_code">Address Postal Code</label>
-                    <input value="{{(isset($address_c)&&!Request::old('address_postal_code'))? $address_c->address_postal_code : Request::old('address_postal_code')}}" id="address_postal_code" name="address[C][address_postal_code]" type="text" class="form-control">
+                    <input value="{{(isset($address_c)&&!Request::old('address_postal_code'))? $address_c->address_postal_code : Request::old('address_postal_code')}}" id="address_postal_code" name="address[C][address_postal_code]" type="text" class="form-control" pattern="^[0-9]{4,10}$">
                 </div>
             </div>
         </div>
@@ -109,7 +110,7 @@
                 <div class="form-group">
                     <label for="province">iii. Province <span class="text-danger font-size-16">*</span></label>
                     <select id="province" name="province" class="form-control select2 @error('province') is-invalid @enderror" required>
-                        <option selected disabled>--Select--</option>
+                        <option selected disabled>Select Province</option>
                         <option value="Central" {{(isset($student)&&!Request::old('province'))? ($student->province=='Central'?'selected':'') : (Request::old('province')=='Central'?'selected':'') }}>Central</option>
                         <option value="Eastern" {{(isset($student)&&!Request::old('province'))? ($student->province=='Eastern'?'selected':'') : (Request::old('province')=='Eastern'?'selected':'') }}>Eastern</option>
                         <option value="North Central" {{(isset($student)&&!Request::old('province'))? ($student->province=='North Central'?'selected':'') : (Request::old('province')=='North Central'?'selected':'') }}>North Central</option>
@@ -144,7 +145,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="mobile">vi. Mobile<span class="text-danger font-size-16">*</span> </label>
-                    <input value="{{(isset($student)&&!Request::old('mobile'))? $student->mobile : Request::old('mobile')}}" id="mobile" name="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" required>
+                    <input value="{{(isset($student)&&!Request::old('mobile'))? $student->mobile : Request::old('mobile')}}" id="mobile" name="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" pattern="^[0-9]{9,10}$" required>
                     @error('mobile')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

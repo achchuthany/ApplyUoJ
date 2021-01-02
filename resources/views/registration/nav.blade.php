@@ -1,4 +1,4 @@
-<ul class="nav nav-pills navbar-dark font-size-13 bg-soft-primary">
+<ul class="nav nav-pills navbar-dark font-size-13">
     <li class="nav-item">
         <a href="#" class="nav-link {{Route::currentRouteName() =='student.personal'?'active':''}}">
             <span class="rounded bg-primary p-1 text-light">01</span>

@@ -27,13 +27,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="parent_landline">iv. Telephone No. (Landline)</label>
-                        <input value="{{(isset($student)&&!Request::old('parent_landline'))? $student->parent_landline : Request::old('parent_landline')}}" id="parent_landline" name="parent_landline" type="text" class="form-control @error('parent_landline') is-invalid @enderror">
+                        <input value="{{(isset($student)&&!Request::old('parent_landline'))? $student->parent_landline : Request::old('parent_landline')}}" id="parent_landline" name="parent_landline" type="text" class="form-control @error('parent_landline') is-invalid @enderror" pattern="^[0-9]{9,10}$">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="parent_mobile">Telephone No. (Mobile) <span class="text-danger font-size-16">*</span></label>
-                        <input value="{{(isset($student)&&!Request::old('parent_mobile'))? $student->parent_mobile : Request::old('parent_mobile')}}" id="parent_mobile" name="parent_mobile" type="text" class="form-control @error('parent_mobile') is-invalid @enderror">
+                        <input value="{{(isset($student)&&!Request::old('parent_mobile'))? $student->parent_mobile : Request::old('parent_mobile')}}" id="parent_mobile" name="parent_mobile" type="text" class="form-control @error('parent_mobile') is-invalid @enderror" pattern="^[0-9]{9,10}$">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -45,7 +45,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="emergency_contact_mobile">Telephone no of the person to be informed in case of an Emergency <span class="text-danger font-size-16">*</span></label>
-                        <input value="{{(isset($student)&&!Request::old('emergency_contact_mobile'))? $student->emergency_contact_mobile : Request::old('emergency_contact_mobile')}}" id="emergency_contact_mobile" name="emergency_contact_mobile" type="text" class="form-control @error('emergency_contact_mobile') is-invalid @enderror">
+                        <input value="{{(isset($student)&&!Request::old('emergency_contact_mobile'))? $student->emergency_contact_mobile : Request::old('emergency_contact_mobile')}}" id="emergency_contact_mobile" name="emergency_contact_mobile" type="text" pattern="^[0-9]{9,10}$" class="form-control @error('emergency_contact_mobile') is-invalid @enderror">
                     </div>
                 </div>
             </div>

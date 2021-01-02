@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class RegistrationController extends Controller
 {
@@ -50,8 +51,8 @@ class RegistrationController extends Controller
     }
     public function personalProcess(Request $request){
         $this->validate($request,[
-           'title'=>'required',
-           'last_name'=>'required'
+           'title'=>'required|max:10',
+           'last_name'=>'required|max:150'
         ]);
         $id = Auth::user()->students()->latest()->first()->id;
         $student = Student::whereId($id)->first();
@@ -80,6 +81,28 @@ class RegistrationController extends Controller
             'mobile'=>'required',
             'email'=>'required',
         ]);
+
+        $validator = Validator::make($request['address']['P'],[
+            'address_no'=>'required|max:150',
+            'address_street'=>'required|max:150',
+            'address_country'=>'required|max:150'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $validator = Validator::make($request['address']['C'],[
+            'address_no'=>'required|max:150',
+            'address_street'=>'required|max:150',
+            'address_country'=>'required|max:150'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         $student = Auth::user()->students()->latest()->first();
 
         $address_p = $student->addresses()->where('address_type','Permanent')->first();
@@ -131,7 +154,40 @@ class RegistrationController extends Controller
         return view('registration.index',['student'=>$student,'al_subjects'=>$this->al_subjects,'al_grades'=>$this->grade,'subjects'=>$subjects]);
     }
     public function educationProcess(Request $request){
+        $this->validate($request,[
+            'al_exam_year'=>'required'
+        ]);
+        $validator = Validator::make($request['subjects'][1],[
+            'subject'=>'required',
+            'grade'=>'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $validator = Validator::make($request['subjects'][2],[
+            'subject'=>'required',
+            'grade'=>'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $validator = Validator::make($request['subjects'][3],[
+            'subject'=>'required',
+            'grade'=>'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $student = Auth::user()->students()->latest()->first();
+        $student->al_exam_year = $request['al_exam_year'];
+        $student->update();
         $subjects = $student->student_al_exams()->first();
         $isUpdate = true;
         if($subjects){
@@ -153,6 +209,19 @@ class RegistrationController extends Controller
         return view('registration.index',['student'=>$student,'countries'=>$this->countries]);
     }
     public function citizenshipProcess(Request $request){
+        Validator::extend('older_than_fifteen_year', function($attribute, $value, $parameters)
+        {
+            return Carbon::now()->diff(new Carbon($value))->y >= 15;
+        });
+        $this->validate($request,[
+            'race'=>'required',
+            'gender'=>'required',
+            'civil_status'=>'required',
+            'religion'=>'required',
+            'date_of_birth'=>'required|date|older_than_fifteen_year:15',
+            'citizenship'=>'required',
+        ]);
+
         $student = Auth::user()->students()->latest()->first();
         $student->race=$request['race'];
         if($request['race']=='O')

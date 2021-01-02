@@ -8,8 +8,8 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="name">i. Year of the G.C.E(A/L) Examination <span class="text-danger font-size-16">*</span></label>
-                    <input value="{{$student->application_year}}" id="name" name="name" type="text" class="form-control bg-light" disabled>
+                    <label for="al_exam_year">i. Year of the G.C.E(A/L) Examination <span class="text-danger font-size-16">*</span></label>
+                    <input value="{{$student->al_exam_year}}" id="al_exam_year" name="al_exam_year" type="text" class="form-control" pattern="^[0-9]{4}" required>
                 </div>
             </div>
             <div class="col-md-4">
