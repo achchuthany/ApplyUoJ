@@ -52,7 +52,7 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'as' => 'admin.students.add',
         'roles' => ['Admin']
     ]);
-    Route::get('/admin/students/edit/{id}',[
+    Route::get('/admin/students/edit/{sid}',[
         'uses' => 'App\Http\Controllers\StudentController@edit',
         'as' => 'admin.students.edit',
         'roles' => ['Admin']
@@ -114,11 +114,6 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'roles' => ['Admin']
     ]);
 
-    Route::get('/admin/students/edit/{sid}',[
-        'uses' => 'App\Http\Controllers\StudentController@edit',
-        'as' => 'admin.students.edit',
-        'roles' => ['Admin']
-    ]);
     Route::get('/admin/students/{pid}/{aid}/{status}',[
         'uses' => 'App\Http\Controllers\StudentController@students',
         'as' => 'admin.students.program.academic',
