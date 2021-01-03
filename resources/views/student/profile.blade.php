@@ -24,10 +24,10 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right bg-light">
-                                @if($enroll->status=='Documents Pending'||$enroll->status=='Processing')
+{{--                                @if($enroll->status=='Documents Pending'||$enroll->status=='Processing')--}}
                                 <a class="dropdown-item sa-accept" data-enrollid="{{$enroll->id}}" data-enrollstatus="ap" href="#"><i class="mdi mdi-account-check text-success font-size-20"></i> Accept Application</a>
                                 <a class="dropdown-item sa-accept"  data-enrollid="{{$enroll->id}}" data-enrollstatus="in"  href="#"><i class="mdi mdi-account-cancel text-warning font-size-20"></i> Re-submission Request</a>
-                                @endif
+{{--                                @endif--}}
                                 <a class="dropdown-item" href="{{route('admin.students.edit',['id'=>$enroll->id])}}"><i class="mdi mdi-account-edit font-size-20"></i> Edit Application</a>
                                     @if($enroll->status=='Registered')
                                 <div class="dropdown-divider"></div>
