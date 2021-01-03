@@ -9,7 +9,7 @@
 
 @section('content')
 @component('common-components.breadcrumb')
-    @slot('pagetitle') Student @endslot
+    @slot('pagetitle') Students @endslot
     @slot('title')UGC Student's List Bulk Upload @endslot
 @endcomponent
     <div class="row">
@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <div class="float-right">
                         <span class="text-muted">
-                            <a href="{{URL::asset('assets/images/csv/students.csv') }}" class="float-right btn-sm btn-light">
+                            <a href="{{URL::asset('assets/images/csv/ugc-list-sample.csv') }}" class="float-right btn-sm btn-light">
                                 <i class=" uil-download-alt"></i> CSV Template </a>
                         </span>
                     </div>

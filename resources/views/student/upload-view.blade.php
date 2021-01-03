@@ -9,7 +9,7 @@
 
 @section('content')
 @component('common-components.breadcrumb')
-    @slot('pagetitle') MACOSIS @endslot
+    @slot('pagetitle') Students @endslot
     @slot('title') Students Bulk Upload View : {{$programme->abbreviation}}@endslot
 @endcomponent
     <div class="row">

@@ -345,9 +345,10 @@ Route::group(['middleware' => ['auth','roles'],'roles' => ['Student']], function
         'uses' => 'App\Http\Controllers\RegistrationController@completed',
         'as' => 'student.registration.completed',
     ]);
-    Route::get('/registration/download/PersonalData',[
+    Route::get('/registration/download/{eid}/PersonalData',[
         'uses' => 'App\Http\Controllers\RegistrationController@downloadPersonalData',
         'as' => 'student.registration.download.PersonalData',
+        'roles' => ['Student','Admin']
     ]);
     Route::post('registration/student/imageUpload',[
         'uses' => 'App\Http\Controllers\RegistrationController@imageUploadPost',

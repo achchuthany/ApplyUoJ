@@ -62,7 +62,7 @@
                                       <td>Duly completed  On-line Application  Form for Registration*</td>
                                       <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
                                       <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
-                                      <td class="text-center"><a href="{{route('student.registration.download.PersonalData')}}" class="btn btn-sm btn-link"> <i class="mdi mdi-download-outline"></i> Download</a></td>
+                                      <td class="text-center"><a href="{{route('student.registration.download.PersonalData',['eid'=>$enroll->id])}}" class="btn btn-sm btn-link"> <i class="mdi mdi-download-outline"></i> Download</a></td>
                                   </tr>
                                   <tr>
                                       <td>4</td>

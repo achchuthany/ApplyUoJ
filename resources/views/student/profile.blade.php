@@ -28,11 +28,14 @@
                                 <a class="dropdown-item sa-accept" data-enrollid="{{$enroll->id}}" data-enrollstatus="ap" href="#"><i class="mdi mdi-account-check text-success font-size-20"></i> Accept Application</a>
                                 <a class="dropdown-item sa-accept"  data-enrollid="{{$enroll->id}}" data-enrollstatus="in"  href="#"><i class="mdi mdi-account-cancel text-warning font-size-20"></i> Re-submission Request</a>
                                 @endif
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-account-edit font-size-20"></i> Edit Application</a>
+                                <a class="dropdown-item" href="{{route('admin.students.edit',['id'=>$enroll->id])}}"><i class="mdi mdi-account-edit font-size-20"></i> Edit Application</a>
                                     @if($enroll->status=='Registered')
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{route('admin.enroll.change.course',['id'=>$enroll->id])}}"><i class="mdi mdi-account-settings text-danger font-size-20"></i>Change Course of Study </a>
                                     @endif
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{route('student.registration.download.PersonalData',['eid'=>$enroll->id])}}"><i class="mdi mdi-file-pdf text-dark"></i> Download Personal Data</a>
+
                             </div>
                         </div>
                         <div class="dropdown float-left">
@@ -232,7 +235,7 @@
                             <div class="font-size-16 card-header">Address</div>
                             <div class="card-body">
                                 @foreach($enroll->student->addresses as $addr)
-                                    <div class="card-title text-secondary">{{$addr->address_type}}</div>
+                                    <div class="card-title text-secondary mt-4 border-bottom">{{$addr->address_type}}</div>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="mt-4">
@@ -345,31 +348,31 @@
                                     <div class="col-md-3">
                                         <div class="mt-4">
                                             <p class="text-muted mb-1">Race</p>
-                                            <h5 class="font-size-16 {{$enroll->student->race? '': 'text-info'}}">{{$enroll->student->race? $enroll->student->race: 'Not Assigned'}}</h5>
+                                            <h5 class="font-size-16 {{$enroll->student->race? '': 'text-info'}}">{{$enroll->student->race? $race: 'Not Assigned'}}</h5>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="mt-4">
                                             <p class="text-muted mb-1">Gender </p>
-                                            <h5 class="font-size-16 {{$enroll->student->gender ? '': 'text-info'}}">{{$enroll->student->gender ? $enroll->student->gender : 'Not Assigned'}}</h5>
+                                            <h5 class="font-size-16 {{$enroll->student->gender ? '': 'text-info'}}">{{$enroll->student->gender ? $gender : 'Not Assigned'}}</h5>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="mt-4">
                                             <p class="text-muted mb-1">Civil Status </p>
-                                            <h5 class="font-size-16 {{$enroll->student->civil_status ? '': 'text-info'}}">{{$enroll->student->civil_status ? $enroll->student->civil_status : 'Not Assigned'}}</h5>
+                                            <h5 class="font-size-16 {{$enroll->student->civil_status ? '': 'text-info'}}">{{$enroll->student->civil_status ? $civil_status : 'Not Assigned'}}</h5>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="mt-4">
                                             <p class="text-muted mb-1">Religion  </p>
-                                            <h5 class="font-size-16 {{$enroll->student->religion  ? '': 'text-info'}}">{{$enroll->student->religion  ? $enroll->student->religion  : 'Not Assigned'}}</h5>
+                                            <h5 class="font-size-16 {{$enroll->student->religion  ? '': 'text-info'}}">{{$enroll->student->religion  ? $religion  : 'Not Assigned'}}</h5>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="mt-4">
                                             <p class="text-muted mb-1">Date of Birth  </p>
-                                            <h5 class="font-size-16 {{$enroll->student->date_of_birth  ? '': 'text-info'}}">{{$enroll->student->date_of_birth  ? $enroll->student->date_of_birth  : 'Not Assigned'}}</h5>
+                                            <h5 class="font-size-16 {{$enroll->student->date_of_birth  ? '': 'text-info'}}">{{$enroll->student->date_of_birth  ? Carbon\Carbon::parse($enroll->student->date_of_birth)->toFormattedDateString()  : 'Not Assigned'}}</h5>
                                         </div>
                                     </div>
 

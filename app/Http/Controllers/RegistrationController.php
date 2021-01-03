@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Address;
 use App\Models\ApplicationRegistration;
+use App\Models\Enroll;
 use App\Models\Student;
 use App\Models\StudentAlExam;
 use App\Models\StudentDoc;
@@ -304,24 +305,25 @@ class RegistrationController extends Controller
             return redirect()->route('student.registration.complete');
         return view('registration.proceed',['enroll'=>$enroll]);
     }
-    public function downloadPersonalData(){
-        $student = Auth::user()->students()->latest()->first();
-        $enroll = $student->enrolls()->latest()->first();
+    public function downloadPersonalData($eid){
+
+        $enroll = Enroll::whereId($eid)->first();
+        $student= $enroll->student;
         $permanent =  $student->addresses->where('address_type','Permanent')->first();
         $permanentAddress = $permanent->address_no .' '.$permanent->address_street .' '.$permanent->address_city .' '.$permanent->address_4 .' '.$permanent->address_state .' '.$permanent->address_country .' '.$permanent->address_postal_code ;
         $permanent =  $student->addresses->where('address_type','Contact')->first();
-        $contactAddress = $permanent->address_no .' '.$permanent->address_street .' '.$permanent->address_city .' '.$permanent->address_4 .' '.$permanent->address_state .' '.$permanent->address_country .' '.$permanent->address_postal_code ;
+        $contactAddress =$permanent ? $permanent->address_no .' '.$permanent->address_street .' '.$permanent->address_city .' '.$permanent->address_4 .' '.$permanent->address_state .' '.$permanent->address_country .' '.$permanent->address_postal_code :null ;
         $student_al_exams = $student->student_al_exams()->get();
         if(strlen($student->race)>1){
             $race = $student->race;
         }else{
-            $race = $this->race[$student->race];
+            $race = $student->race? $this->race[$student->race] : null;
         }
 
         if(strlen($student->religion)>1){
             $religion = $student->religion;
         }else{
-            $religion = $this->religion[$student->religion];
+            $religion = $student->religion ? $this->religion[$student->religion]: null;
         }
 
         $data = [
@@ -332,8 +334,8 @@ class RegistrationController extends Controller
             'contactAddress'=>$contactAddress,
             'student_al_exams'=>$student_al_exams,
             'race'=>$race,
-            'gender'=>$this->gender[$student->gender],
-            'civil_status'=>$this->civil_status[$student->civil_status],
+            'gender'=>$student->gender? $this->gender[$student->gender]:null,
+            'civil_status'=>$student->civil_status?$this->civil_status[$student->civil_status]:null,
             'religion'=>$religion,
             'dob'=>Carbon::parse($student->date_of_birth)->toFormattedDateString(),
             'age'=>Carbon::now()->diffInYears(Carbon::parse($enroll->student->date_of_birth)),
