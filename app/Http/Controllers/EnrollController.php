@@ -36,8 +36,9 @@ class EnrollController extends Controller
         $this->checkParams($pid,$aid);
         $enrolls = $this->getEnrolls($pid,$aid,'Registered');
 
-        $updated_at = Enroll::where([['enrolls.programme_id',$pid],['enrolls.academic_year_id',$aid],['enrolls.status','Registered']])->
-        orderBy('updated_at','desc')->first()->updated_at;
+        $updated = Enroll::where([['enrolls.programme_id',$pid],['enrolls.academic_year_id',$aid],['enrolls.status','Registered']])->
+        orderBy('updated_at','desc')->first();
+        $updated_at = $updated? $updated->updated_at: null;
         $now = Carbon::now('Asia/Colombo');
         $isVisible = ($now->diffInHours($updated_at, false)< -36);
 
@@ -60,17 +61,14 @@ class EnrollController extends Controller
             $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
             $reg_no = $application->academic_year->application_year.'/'.$application->programme->abbreviation.'/'.sprintf("%03d",$application->next_registration_number);
             $index_no = $application->programme->abbreviation.substr($application->academic_year->application_year,2,2).sprintf("%03d",$application->next_registration_number);
-            $isUpdate = is_null($enroll->reg_no);
             $enroll->reg_no = $reg_no;
             $enroll->index_no = $index_no;
             $enroll->registration_date= $request['date'];
             $enroll->status = 'Registered';
             try {
-                if($isUpdate) {
-                    $application->next_registration_number += 1;
-                    $application->update();
-                    $enroll->update();
-                }
+                $application->next_registration_number += 1;
+                $application->update();
+                $enroll->update();
                 DB::commit();
             }catch(QueryException $e){
                 DB::rollBack();
@@ -89,7 +87,6 @@ class EnrollController extends Controller
         foreach ($enrolls as $enroll){
             DB::beginTransaction();
             $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
-            if($enroll->reg_no!=null) {
                 $enroll->reg_no = null;
                 $enroll->index_no = null;
                 $enroll->registration_date=null;
@@ -102,7 +99,6 @@ class EnrollController extends Controller
                 } catch (QueryException $e) {
                     DB::rollBack();
                 }
-            }
 
         }
 
