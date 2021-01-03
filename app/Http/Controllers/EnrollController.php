@@ -55,12 +55,16 @@ class EnrollController extends Controller
     }
     public function assignRegistrationNoProcess(Request $request,$pid,$aid){
         $this->checkParams($pid,$aid);
-        $enrolls =$this->getEnrolls($pid,$aid,'Accepted');
-        foreach ($enrolls as $enroll){
+        $enrolls = Enroll::select('enrolls.id as id')->leftJoin('students','students.id','=','enrolls.student_id')
+            ->where([['enrolls.programme_id',$pid],['enrolls.academic_year_id',$aid],['enrolls.status','Accepted']])
+            ->orderBy('students.name_initials','asc')
+            ->get();
+        foreach ($enrolls as $en){
             DB::beginTransaction();
             $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
             $reg_no = $application->academic_year->application_year.'/'.$application->programme->abbreviation.'/'.sprintf("%03d",$application->next_registration_number);
             $index_no = $application->programme->abbreviation.substr($application->academic_year->application_year,2,2).sprintf("%03d",$application->next_registration_number);
+            $enroll = Enroll::whereId($en->id)->first();
             $enroll->reg_no = $reg_no;
             $enroll->index_no = $index_no;
             $enroll->registration_date= $request['date'];
@@ -83,17 +87,18 @@ class EnrollController extends Controller
     }
     public function assignRegistrationNoDelete($pid,$aid){
         $this->checkParams($pid,$aid);
-        $enrolls =$this->getEnrolls($pid,$aid,'Registered');
+        $enrolls = Enroll::where([['enrolls.programme_id',$pid],['enrolls.academic_year_id',$aid],['enrolls.status','Registered']])
+            ->get();
+        $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
+        $application->next_registration_number = 1;
+        $application->update();
         foreach ($enrolls as $enroll){
             DB::beginTransaction();
-            $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
                 $enroll->reg_no = null;
                 $enroll->index_no = null;
                 $enroll->registration_date=null;
                 $enroll->status='Accepted';
                 try {
-                    $application->next_registration_number -= 1;
-                    $application->update();
                     $enroll->update();
                     DB::commit();
                 } catch (QueryException $e) {
