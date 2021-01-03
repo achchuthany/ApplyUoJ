@@ -70,8 +70,6 @@ class EnrollController extends Controller
                     $application->next_registration_number += 1;
                     $application->update();
                     $enroll->update();
-                }else{
-                    $enroll->update();
                 }
                 DB::commit();
             }catch(QueryException $e){
