@@ -61,10 +61,8 @@ class EnrollController extends Controller
             $reg_no = $application->academic_year->application_year.'/'.$application->programme->abbreviation.'/'.sprintf("%03d",$application->next_registration_number);
             $index_no = $application->programme->abbreviation.substr($application->academic_year->application_year,2,2).sprintf("%03d",$application->next_registration_number);
             $isUpdate = is_null($enroll->reg_no);
-            if($isUpdate){
-                $enroll->reg_no = $reg_no;
-                $enroll->index_no = $index_no;
-            }
+            $enroll->reg_no = $reg_no;
+            $enroll->index_no = $index_no;
             $enroll->registration_date= $request['date'];
             $enroll->status = 'Registered';
             try {
