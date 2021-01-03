@@ -514,8 +514,10 @@ class StudentController extends Controller
         DB::beginTransaction();
         try {
             $application = ApplicationRegistration::where([['academic_year_id', $enroll->academic_year_id], ['programme_id', $enroll->programme_id]])->first();
-            if($isUpdateCountReceive)
-                $application->count_received += 1;
+                if($this->params[$status]=='Accepted')
+                    $application->count_received += 1;
+                else
+                    $application->count_received -= 1;
             $application->update();
             DB::commit();
         }catch(QueryException $e){
