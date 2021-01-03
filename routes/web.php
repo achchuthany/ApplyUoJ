@@ -114,7 +114,7 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'roles' => ['Admin']
     ]);
 
-    Route::get('/admin/students/edit/{id}',[
+    Route::get('/admin/students/edit/{sid}',[
         'uses' => 'App\Http\Controllers\StudentController@edit',
         'as' => 'admin.students.edit',
         'roles' => ['Admin']
@@ -352,7 +352,8 @@ Route::group(['middleware' => ['auth','roles'],'roles' => ['Student']], function
     ]);
     Route::post('registration/student/imageUpload',[
         'uses' => 'App\Http\Controllers\RegistrationController@imageUploadPost',
-        'as' => 'student.registration.image.upload'
+        'as' => 'student.registration.image.upload',
+        'roles' => ['Student','Admin']
     ]);
 
 });

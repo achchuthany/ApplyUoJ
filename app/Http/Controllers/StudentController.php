@@ -9,6 +9,7 @@ use App\Models\CsvData;
 use App\Models\Enroll;
 use App\Models\Programme;
 use App\Models\Student;
+use App\Models\StudentAlExam;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -337,7 +338,7 @@ class StudentController extends Controller
                 ->addColumn('action', function($row){
                     $btn = '
                    <a href="'.route('admin.students.enroll.profile',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Profile"><i class="uil uil-user  "></i></a>
-                   <a href="'.route('admin.students.edit',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil  uil-edit-alt  font-size-18"></i></a>
+                   <a href="'.route('admin.students.edit',['sid'=>$row->student_id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil  uil-edit-alt  font-size-18"></i></a>
                    ';
                     return $btn;
                 })
@@ -538,16 +539,236 @@ class StudentController extends Controller
         ]);
     }
     public function addEditProcess(Request $request){
-        return response()->json($request);
+        Validator::extend('older_than_fifteen_year', function($attribute, $value, $parameters)
+        {
+            return \Carbon\Carbon::now()->diff(new Carbon($value))->y >= 15;
+        });
+        $this->validate($request,[
+            'title'=>'required|max:10',
+            'last_name'=>'required|max:150',
+            'name_initials'=>'required|max:150',
+            'full_name'=>'required|max:150',
+            'province'=>'required',
+            'district'=>'required',
+            'mobile'=>'required',
+            'nic'=>'required',
+            'email'=>'required|email',
+            'al_exam_year'=>'required',
+            'race'=>'required',
+            'gender'=>'required',
+            'civil_status'=>'required',
+            'religion'=>'required',
+            'date_of_birth'=>'required|date|older_than_fifteen_year:15',
+            'citizenship'=>'required',
+            'parent_full_name'=>'required|max:200',
+            'parent_occupation'=>'required|max:200',
+            'parent_mobile'=>'required|max:20',
+            'emergency_contact_name'=>'required|max:200',
+            'emergency_contact_mobile'=>'required|max:20',
+        ]);
+
+        $validator = Validator::make($request['address']['P'],[
+            'address_no'=>'required|max:150',
+            'address_street'=>'required|max:150',
+            'address_country'=>'required|max:150'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $validator = Validator::make($request['address']['C'],[
+            'address_no'=>'required|max:150',
+            'address_street'=>'required|max:150',
+            'address_country'=>'required|max:150'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $validator = Validator::make($request['subjects'][1],[
+            'subject'=>'required',
+            'grade'=>'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $validator = Validator::make($request['subjects'][2],[
+            'subject'=>'required',
+            'grade'=>'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $validator = Validator::make($request['subjects'][3],[
+            'subject'=>'required',
+            'grade'=>'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        //Student Data
+        $isUpdateStudent = ($request['student_id'])? true:false;
+        if($isUpdateStudent){
+            $student = Student::whereId($request['student_id'])->first();
+        }else{
+            $student = new Student();
+            $student->created_by_user_id  = Auth::user()->id;
+            $this->validate($request,[
+                'programme_id'=>'required',
+                'academic_year_id'=>'required',
+                'registration_date'=>'required'
+            ]);
+            $student->application_year = AcademicYear::whereId($request['academic_year_id'])->first()->application_year;
+        }
+
+
+
+
+        $student->title = $request['title'];
+        $student->last_name = $request['last_name'];
+        $student->name_initials = $request['name_initials'];
+        $student->full_name = $request['full_name'];
+        $student->province = $request['province'];
+
+        $student->district = $this->districts[$request['district']];
+        $student->district_no = $request['district_no'];
+        $student->nic  = $request['nic'];
+        $student->mobile = $request['mobile'];
+        $student->email  = $request['email'];
+
+        $student->al_index_number = $request['al_index_number'];
+        $student->al_exam_year = $request['al_exam_year'];
+        $student->al_z_score = $request['al_z_score'];
+        $student->race=$request['race'];
+        if($request['race']=='O')
+            $student->race=$request['RaceSpecify'];
+
+        $student->gender = $request['gender'];
+
+        $student->civil_status = $request['civil_status'];
+        $student->religion = $request['religion'];
+        if($request['religion']=='O')
+            $student->religion=$request['religionSpecify'];
+        $student->date_of_birth = $request['date_of_birth'];
+        $student->citizenship = $request['citizenship'];
+        $student->citizenship_type = $request['citizenship_type'];
+
+        $student->parent_full_name = $request['parent_full_name'];
+        $student->parent_occupation = $request['parent_occupation'];
+        $student->parent_address_work = $request['parent_address_work'];
+        $student->parent_mobile = $request['parent_mobile'];
+        $student->parent_landline = $request['parent_landline'];
+
+        $student->emergency_contact_name = $request['emergency_contact_name'];
+        $student->emergency_contact_mobile = $request['emergency_contact_mobile'];
+
+        if($isUpdateStudent){
+            $student->update();
+        }else{
+            $student->save();
+        }
+
+        //AL Exams
+        $subjects = $student->student_al_exams()->first();
+        if($subjects){
+            $subjects = $student->student_al_exams()->delete();
+        }
+        foreach ($request['subjects'] as $subject){
+            $sub = new StudentAlExam();
+            $sub->student_id = $student->id;
+            $sub->subject = $subject['subject'];
+            $sub->grade = $subject['grade'];
+            $sub->save();
+        }
+
+        //Address
+
+        $address_p = $student->addresses()->where('address_type','Permanent')->first();
+        $isUpdate_p = true;
+        if(!$address_p) {
+            $address_p = new Address();
+            $isUpdate_p = false;
+            $address_p->address_type = 'Permanent';
+            $address_p->student_id = $student->id;
+        }
+        $address_p->address_no = $request['address']['P']['address_no'];
+        $address_p->address_street = $request['address']['P']['address_street'];
+        $address_p->address_city = $request['address']['P']['address_city'];
+        $address_p->address_4 = $request['address']['P']['address_4'];
+        $address_p->address_state = $request['address']['P']['address_state'];
+        $address_p->address_country = $request['address']['P']['address_country'];
+        $address_p->address_postal_code = $request['address']['P']['address_postal_code'];
+        if($isUpdate_p)
+            $address_p->update();
+        else {
+            $address_p->save();
+        }
+
+
+        $address_C = $student->addresses()->where('address_type','Contact')->first();
+        $isUpdate = true;
+        if(!$address_C) {
+            $address_C = new Address();
+            $isUpdate = false;
+            $address_C->address_type = 'Contact';
+            $address_C->student_id = $student->id;
+        }
+        $address_C->address_no = $request['address']['C']['address_no'];
+        $address_C->address_street = $request['address']['C']['address_street'];
+        $address_C->address_city = $request['address']['C']['address_city'];
+        $address_C->address_4 = $request['address']['C']['address_4'];
+        $address_C->address_state = $request['address']['C']['address_state'];
+        $address_C->address_country = $request['address']['C']['address_country'];
+        $address_C->address_postal_code = $request['address']['C']['address_postal_code'];
+        if($isUpdate)
+            $address_C->update();
+        else {
+            $address_C->save();
+        }
+
+
+        //Enroll
+        if(!$isUpdateStudent){
+            $enroll = new Enroll();
+            $programme_id = $request['programme_id'];
+            $academic_year_id = $request['academic_year_id'];
+
+            $data = (new EnrollController)->getRegNo($programme_id,$academic_year_id);
+
+            $reg_no = (json_decode($data->getContent(),true)['reg_no']);
+            $index_no = (json_decode($data->getContent(),true)['index_no']);
+
+            $enroll->programme_id = $programme_id;
+            $enroll->academic_year_id = $academic_year_id;
+            $enroll->reg_no = $reg_no;
+            $enroll->index_no = $index_no;
+            $enroll->student_id = $student->id;
+            $enroll->status = 'Documents Pending';
+            $enroll->registration_date = $request['registration_date'];
+            $enroll->save();
+        }
+
+        return redirect()->route('admin.students.edit',['sid'=>$student->id])->with(['success'=>'Student data has been updated!']);
     }
-    public function edit($id) {
+    public function edit($sid) {
         $programmes = Programme::orderBy('name','asc')->get();
         $ays = AcademicYear::orderBy('name','desc')->get();
-        $student= Student::whereId($id)->first();
+        $student= Student::whereId($sid)->first();
         $address_p = $student->addresses()->where('address_type','Permanent')->first();
         $address_c = $student->addresses()->where('address_type','Contact')->first();
         $subjects = $student->student_al_exams()->get();
         $enroll = $student->enrolls()->latest()->first();
+        $enrolls = $student->enrolls()->latest()->get();
         return view('student.add-edit',[
             'student'=>$student,
             'al_subjects'=>$this->al_subjects,
@@ -559,7 +780,8 @@ class StudentController extends Controller
             'address_p'=>$address_p,
             'address_c'=>$address_c,
             'subjects'=>$subjects,
-            'enroll'=>$enroll
+            'enroll'=>$enroll,
+            'enrolls'=>$enrolls
         ]);
     }
 

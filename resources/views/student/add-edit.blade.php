@@ -33,6 +33,7 @@ Add a Student / Edit Student
                         <div class="p-4 border-top">
                             <form class="needs-validation" method="POST" action="{{ route('admin.students.addEditProcess') }}">
                                 {{ csrf_field() }}
+                                @if(!isset($enroll))
                                 <div class="card">
                                     <div class="card-header bg-dark text-light">
                                         Course Details
@@ -41,7 +42,7 @@ Add a Student / Edit Student
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="programme_id">Name of the Course of Study</label>
+                                                    <label for="programme_id">Name of the Course of Study <span class="text-danger font-size-16">*</span></label>
                                                     <select class="form-control select2 @error('programme_id') is-invalid @enderror" name="programme_id" id="programme_id" required>
                                                         <option selected disabled>Select Programme Title</option>
                                                         @foreach($programmes as $programme)
@@ -52,7 +53,7 @@ Add a Student / Edit Student
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="academic_year_id">Academic Year</label>
+                                                    <label for="academic_year_id">Academic Year <span class="text-danger font-size-16">*</span></label>
                                                     <select id="academic_year_id" class="form-control select2 @error('academic_year_id') is-invalid @enderror" name="academic_year_id" required>
                                                         <option selected disabled>Select Academic Year</option>
                                                         @foreach($academics as $academic)
@@ -73,11 +74,65 @@ Add a Student / Edit Student
                                                     <input id="index_no" name="index_no" type="text" class="form-control bg-light" disabled>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="registration_date">Date of Registration <span class="text-danger font-size-16">*</span></label>
+                                                    <input id="registration_date" name="registration_date" type="date" class="form-control" required>
+                                                </div>
+                                            </div>
                                         </div>
                                         <!-- end row -->
                                     </div>
                                 </div>
+                                @endif
+                                @if(isset($enroll))
+                                    <div class="card">
+                                        <div class="card-header bg-dark text-light">
+                                            Course Details
+                                        </div>
+                                        @foreach($enrolls as $en)
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <div class="form-group">
+                                                        <label>Name of the Course of Study</label>
+                                                        <input type="text" value="{{$en->programme->name}}" class="form-control bg-light" disabled>
 
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Status</label>
+                                                        <input type="text" value="{{$en->status}}" class="form-control bg-light" disabled>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="academic_year_id">Academic Year</label>
+                                                        <input type="text" value="{{$en->academic_year->name}}" class="form-control bg-light" disabled>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label >Registration Number</label>
+                                                        <input  type="text" value="{{$en->reg_no}}" class="form-control bg-light" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="index_no">Index Number</label>
+                                                        <input type="text" value="{{$en->index_no}}" class="form-control bg-light" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end row -->
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <div class="card">
                                     <div class="card-header bg-dark text-light">
                                         1. Personal Details
@@ -103,6 +158,8 @@ Add a Student / Edit Student
                                             <div class="col-md-10">
                                                 <div class="form-group">
                                                     <label for="last_name">ii. Last Name or Surname of the Applicant <span class="text-danger font-size-16">*</span> </label>
+                                                    <input value="{{isset($student)? $student->id : null}}" id="student_id" name="student_id" type="hidden">
+
                                                     <input value="{{(isset($student)&&!Request::old('last_name'))? $student->last_name : Request::old('last_name')}}" id="last_name" name="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" required>
                                                     @error('last_name')
                                                     <span class="invalid-feedback" role="alert">
@@ -254,8 +311,8 @@ Add a Student / Edit Student
                                                     <label for="shortname">iv. District</label>
                                                     <select id="district" name="district" class="form-control select2" required>
                                                         <option selected disabled>Select District</option>
-                                                        @foreach($districts as $district)
-                                                            <option value="{{$district}}" {{(isset($student)&&!Request::old('district'))? ($student->district==$district?'selected':'') : (Request::old('district')==$district?'selected':'') }}>{{$district}}</option>
+                                                        @foreach($districts as $key=>$district)
+                                                            <option value="{{$key}}" {{(isset($student)&&!Request::old('district'))? ($student->district==$district?'selected':'') : (Request::old('district')==$district?'selected':'') }}>{{$district}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -263,7 +320,7 @@ Add a Student / Edit Student
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="shortname">District No.</label>
-                                                    <input value="{{isset($student) && $student->district_no }}" id="district_no" name="district_no" type="text" class="form-control bg-light" disabled>
+                                                    <input value="{{isset($student)? $student->district_no : 0 }}" id="district_no" name="district_no" type="number" class="form-control bg-light" readonly>
                                                 </div>
                                             </div>
 
@@ -411,19 +468,19 @@ Add a Student / Edit Student
                                                     <label for="name">i. Race <span class="text-danger font-size-16">*</span></label>
                                                     <div class="form-group">
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                            <input value="S" type="radio" id="Sinhala" name="race" class="custom-control-input" {{(isset($student)&&!Request::old('race'))? ($student->race=='S'?'checked':'') : (Request::old('race')=='S'?'checked':'')}} onchange="raceHandleHide()">
+                                                            <input value="S" type="radio" id="Sinhala" name="race" class="custom-control-input" {{(isset($student)&&!Request::old('race'))? ($student->race=='S'?'checked':'') : (Request::old('race')=='S'?'checked':'')}} onchange="raceHandleHide()" required>
                                                             <label class="custom-control-label" for="Sinhala">Sinhala</label>
                                                         </div>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                            <input value="T" type="radio" id="Tamil" name="race" class="custom-control-input" {{(isset($student)&&!Request::old('race'))? ($student->race=='T'?'checked':'') : (Request::old('race')=='T'?'checked':'')}}  onchange="raceHandleHide()">
+                                                            <input value="T" type="radio" id="Tamil" name="race" class="custom-control-input" {{(isset($student)&&!Request::old('race'))? ($student->race=='T'?'checked':'') : (Request::old('race')=='T'?'checked':'')}}  onchange="raceHandleHide()" required>
                                                             <label class="custom-control-label" for="Tamil">Tamil</label>
                                                         </div>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                            <input value="M" type="radio" id="Muslim" name="race" class="custom-control-input" {{(isset($student)&&!Request::old('race'))? ($student->race=='M'?'checked':'') : (Request::old('race')=='M'?'checked':'')}}  onchange="raceHandleHide()">
+                                                            <input value="M" type="radio" id="Muslim" name="race" class="custom-control-input" {{(isset($student)&&!Request::old('race'))? ($student->race=='M'?'checked':'') : (Request::old('race')=='M'?'checked':'')}}  onchange="raceHandleHide()" required>
                                                             <label class="custom-control-label" for="Muslim">Muslim</label>
                                                         </div>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                            <input value="O" type="radio" id="RaceOthers" name="race" class="custom-control-input" onchange="raceHandleShow();">
+                                                            <input value="O" type="radio" id="RaceOthers" name="race" class="custom-control-input" onchange="raceHandleShow();" required>
                                                             <label class="custom-control-label" for="RaceOthers">Others</label>
                                                         </div>
                                                         <div class="custom-control custom-radio custom-control-inline" id="RaceSpecifyShow">
@@ -595,6 +652,7 @@ Add a Student / Edit Student
                                 </div>
                             </form>
                         </div>
+                        @if(isset($enroll))
                         <div class="card">
                             <div class="card-header bg-dark text-light">
                                 Documents
@@ -704,6 +762,7 @@ Add a Student / Edit Student
                                 </form>
                             </div>
                         </div>
+                        @endif
                     </div>
             </div>
         </div>
@@ -761,7 +820,9 @@ Add a Student / Edit Student
         }
         calculateAge();
 
-
+        $('#district').on('change', function() {
+           $('#district_no').val($('#district').val());
+        });
         //countr
         document.getElementById('IfSriLankan').style.visibility='hidden';
         $('#citizenship').on('change', function() {
