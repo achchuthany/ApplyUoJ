@@ -114,8 +114,19 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="media-body">
-                                                                <p>Before start this online registration, please keep the scan images (JPG/JPEG and Each image size < 5MB) of Your photo, NIC Front Side, NIC Back Side, School Leaving Certificate Front Side , School Leaving Certificate Back Side and Paid Voucher(Use the <a href="{{URL::asset('/assets/images/download/PAYING_IN_VOUCHER.pdf')}}" download="PAYING_IN_VOUCHER.pdf" target="_blank" class="btn btn-sm btn-link"><i class="mdi mdi-download-outline"></i> Paying in Voucher </a> for your payment) </p>                                                            </div>
+                                                            <div class="media-body text-muted">
+                                                                <p>Following documents will be required to be uploaded to process your application. Therefore, please have the documents scanned into either ‘ jpeg’ or 'jpg' formats and each image file size less than 5MB</p>
+                                                                <ol>
+                                                                    <li>Your recent photograph.</li>
+                                                                    <li>National Identity Card Front Side</li>
+                                                                    <li>National Identity Card Back Side</li>
+                                                                    <li>School Leaving Certificate Front Side</li>
+                                                                    <li>School Leaving Certificate Back Side</li>
+                                                                    <li>Paying voucher  (Use the <a href="{{URL::asset('/assets/images/download/PAYING_IN_VOUCHER.pdf')}}" download="PAYING_IN_VOUCHER.pdf" target="_blank" class="btn btn-sm btn-link"><i class="mdi mdi-download-outline"></i> Paying in Voucher </a> Form)</li>
+                                                                </ol>
+                                                                <p>Please attach the copy of the paid deposit slip together with the University copy of the voucher you have downloaded after paying the required fee to any branch of the People’s Bank.</p>
+
+                                                             </div>
                                                         </div>
 
                                                         <div class="media mt-4">
@@ -226,20 +237,33 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div id="faqs-privacy-policy-collapse" class="collapse" data-parent="#faqs-accordion">
                                 </div>
 
                             </div>
                         </div>
                     </div>
 
-                    <div class="row justify-content-center mt-4">
+                    <div class="row justify-content-center mt-4 p-3">
                         <div class="col-lg-6">
                             <div class="text-center">
                                 <div>
-                                    <a href="{{route('login')}}" class="btn btn-secondary m-2"><i class="mdi mdi-account-outline"></i> Manage your application </a>
+                                    <a href="{{route('login')}}" class="btn btn-outline-secondary m-2"><i class="mdi mdi-account-outline"></i> Manage your application </a>
                                     <a href="{{route('register')}}" class="btn btn-primary m-2"><i class="mdi mdi-progress-check"></i> Start the Registration Now!</a>                                                    </div>
                             </div>
+                        </div>
+                        <div class="col-lg-12 text-center mt-3 px-2">
+                                <div>If you have any queries regarding your registration or any other matters, please contact us by  email/phone given below.
+                        </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div> <i class="mdi mdi-email"></i> help@univ.jfn.ac.lk</div>
+                        </div>
+                        <div class="col-md-2">
+                            <div> <i class="mdi mdi-phone"></i> +94 021 221 8120</div>
+                        </div>
+                        <div class="col-md-2">
+                            <div> <i class="mdi mdi-phone"></i> +94 021 222 6714</div>
                         </div>
                     </div>
 

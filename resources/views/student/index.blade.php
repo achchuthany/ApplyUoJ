@@ -37,13 +37,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card-body  text-center">
-                                <div class="h1 font-weight-lighter text-secondary"><span data-plugin="counterup">{{$count_total['dp']}}</span> </div>
+                                <div class="h1 font-weight-lighter text-secondary"><span data-plugin="counterup">{{$count_today['dp']}}</span> </div>
                                 <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today</div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="card-body text-center">
-                                <div class="h1 font-weight-lighter text-secondary"><span data-plugin="counterup">{{$count_today['dp']}}</span> </div>
+                                <div class="h1 font-weight-lighter text-secondary"><span data-plugin="counterup">{{$count_total['dp']}}</span> </div>
                                 <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
                             </div>
                         </div>

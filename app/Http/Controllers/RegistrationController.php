@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\RegistrationConfirmationJob;
 use App\Models\Address;
 use App\Models\ApplicationRegistration;
 use App\Models\Enroll;
@@ -296,6 +297,7 @@ class RegistrationController extends Controller
         }
         $enroll->status = 'Processing';
         $enroll->update();
+        dispatch(new RegistrationConfirmationJob($enroll->id,$student->id));
         return redirect()->route('student.registration.completed');
     }
     public function completed(){

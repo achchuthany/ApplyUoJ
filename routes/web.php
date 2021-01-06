@@ -276,6 +276,47 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
     ]);
 
 
+    //Users
+    Route::get('/admin/users',[
+        'uses' => 'App\Http\Controllers\UserController@index',
+        'as' => 'users.index',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+    Route::get('/admin/users/add',[
+        'uses' => 'App\Http\Controllers\UserController@add',
+        'as' => 'users.add',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+    Route::get('/admin/users/edit/{id}',[
+        'uses' => 'App\Http\Controllers\UserController@edit',
+        'as' => 'users.edit',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/users/edit/process',[
+        'uses' => 'App\Http\Controllers\UserController@addEditProcess',
+        'as' => 'users.process',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+    Route::get('/admin/users/delete/{id}',[
+        'uses' => 'App\Http\Controllers\UserController@delete',
+        'as' => 'users.delete',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+
+    Route::get('/admin/user/profile',[
+        'uses' => 'App\Http\Controllers\UserController@profile',
+        'as' => 'user.profile',
+        'middleware' => 'roles',
+        'roles' => ['Admin','Student']
+    ]);
+
+
+
 });
 
 //Student
@@ -352,3 +393,10 @@ Route::group(['middleware' => ['auth','roles'],'roles' => ['Student']], function
     ]);
 
 });
+
+//Route::get('/mailable', function () {
+//    $student = App\Models\Student::first();
+//    $enroll = $student->enrolls()->first()->programme->name;
+//    return new App\Mail\RegistrationConfirmationMail($enroll,$student->full_name);
+//});
+

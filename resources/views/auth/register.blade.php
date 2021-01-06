@@ -21,7 +21,7 @@ Register
                         </div>
 
                         <div class="text-center mt-2">
-                            <h5 class="text-primary">Start a new application</h5>
+                            <h5 class="text-dark text-uppercase">Start your registration</h5>
                             <p class="text-muted">To start a new application, complete the form below..</p>
                         </div>
                         <div class="p-2 mt-4">
@@ -88,8 +88,8 @@ Register
                                     <label for="password-confirm">{{ __('Confirm Password') }}</label>
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Enter password">
                                 </div>
-                                <div class="mt-3">
-                                <i class="mdi mdi-information-outline text-info"></i> <b>Important: </b> Keep remember your email and password.
+                                <div class="mt-3 text-dark">
+                                <b>Important: </b> Please remember/note-down your "email" and "password" and keep securely for future use
                                 </div>
                                 <div class="mt-3 text-right">
                                     <button class="btn btn-primary w-sm waves-effect waves-light" type="submit">{{ __('Continue') }}</button>

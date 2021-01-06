@@ -6,15 +6,15 @@ Login
 <div class="account-pages">
     <div class="container">
         <div class="row vh-100 justify-content-center align-items-center">
-            <div class="col-md-10">
+            <div class="col-md-8 col-lg-6 col-xl-5">
                 <div class="card ">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="card-body">
-                                <img src="{{URL::asset('assets/images/account.gif')}}" class="img-fluid"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+{{--                        <div class="col-md-6">--}}
+{{--                            <div class="card-body">--}}
+{{--                                <img src="{{URL::asset('assets/images/account.gif')}}" class="img-fluid"/>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+                        <div class="col-md-12">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -76,10 +76,11 @@ Login
                                 </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 mt-2 text-center">
-                            <p>© 2020 {{config('app.name')}}. Developed by <a href="https://cv.achchuthan.org" class="btn-link">ACHCHUTHAN.ORG</a> </p>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt-2 text-center text-muted">
+                        <p>© 2020 {{config('app.name')}}.</p>
+                        <p class="font-size-10">Developed by <a href="https://cv.achchuthan.org" class="btn-link" target="_blank">ACHCHUTHAN.ORG</a></p>
                     </div>
                 </div>
             </div>

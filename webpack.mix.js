@@ -122,6 +122,8 @@ var app_pages_assets = {
         folder.src + "js/pages/action.enroll.index.js",
         folder.src + "js/pages/chartjs.init.js",
         folder.src + "js/pages/generate.reg.no.js",
+        folder.src + "js/pages/datatables.users.index.js",
+        folder.src + "js/pages/delete.users.index.js",
     ]
 };
 

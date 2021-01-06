@@ -68,6 +68,18 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fas fa-users"></i>
+                        <span>Login Users</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('users.index')}}"><i class="fas fa-table"></i>View Users</a></li>
+                        <li><a href="{{route('users.add')}}"><i class="fas fa-plus"></i>Add an User</a></li>
+
+                    </ul>
+                </li>
+
                 <li class="menu-title">Students</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
