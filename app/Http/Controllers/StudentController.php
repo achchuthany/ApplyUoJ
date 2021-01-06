@@ -517,8 +517,8 @@ class StudentController extends Controller
             $application = ApplicationRegistration::where([['academic_year_id', $enroll->academic_year_id], ['programme_id', $enroll->programme_id]])->first();
                 if($isUpdateCountReceive && $this->params[$status]=='Accepted')
                     $application->count_received += 1;
-                if($isUpdateCountReceive && $this->params[$status]=='Invited')
-                    $application->count_received -= 1;
+//                if($isUpdateCountReceive && $this->params[$status]=='Invited')
+//                    $application->count_received -= 1;
             $application->update();
             DB::commit();
         }catch(QueryException $e){

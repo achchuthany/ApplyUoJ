@@ -180,7 +180,7 @@ class UserController extends Controller
     public function delete($id){
         $user= User::where('id',$id)->first();
         $role = DB::table('role_user')->where('user_id',$user->id);
-        if($user->username == 'admin'){
+        if($user->email == 'achchuthan@maco.jfn.ac.lk'){
             $code = 201;
             $msg = $user->name. ' user can not be delete';
             return response()->json(['msg'=>$msg,'code'=>$code]);

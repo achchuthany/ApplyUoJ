@@ -12,6 +12,7 @@ use App\Models\StudentDoc;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -142,6 +143,15 @@ class RegistrationController extends Controller
         $student->province = $request['province'];
         $student->mobile = $request['mobile'];
         $student->email  = $request['email'];
+
+        $user = $student->users()->latest()->first();
+        if($user && strtolower($user->email) != strtolower($request['email'])){
+            $user->email = $request['email'];
+            $user->email_verified_at = null;
+            $user->update();
+            event(new Registered($user));
+        }
+
         $student->update();
         return redirect()->route('student.education');
 
