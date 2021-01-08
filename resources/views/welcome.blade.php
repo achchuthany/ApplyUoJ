@@ -87,7 +87,7 @@
                                                             </div>
 
                                                             <div class="media-body">
-                                                                <p class="text-muted">  Please provide your permanent address, contact telephone number and email address to enable the Admission & Registration Branch of the University of Jaffna to communicate with you in future activities.</p>
+                                                                <p class="text-muted">  Please provide your permanent address, contact telephone number and email address to enable the Admissions Branch of the University of Jaffna to communicate with you in future activities.</p>
                                                             </div>
                                                         </div>
 
@@ -114,15 +114,16 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="media-body text-muted">
-                                                                <p>Following documents will be required to be uploaded to process your application. Therefore, please have the documents scanned into either ‘ jpeg’ or 'jpg' formats and each image file size less than 5MB</p>
+                                                            <div class="media-body text-dark">
+                                                                <p>Following documents will be required to be uploaded to process your application. Therefore, please have the documents scanned into either ‘ jpeg’ or 'jpg' formats and each image size should be less than 5MB</p>
                                                                 <ol>
+                                                                    <li>Selection Letter sent by the UGC</li>
                                                                     <li>Your recent photograph.</li>
                                                                     <li>National Identity Card Front Side</li>
                                                                     <li>National Identity Card Back Side</li>
                                                                     <li>School Leaving Certificate Front Side</li>
                                                                     <li>School Leaving Certificate Back Side</li>
-                                                                    <li>Paying voucher  (Use the <a href="{{URL::asset('/assets/images/download/PAYING_IN_VOUCHER.pdf')}}" download="PAYING_IN_VOUCHER.pdf" target="_blank" class="btn btn-sm btn-link"><i class="mdi mdi-download-outline"></i> Paying in Voucher </a> Form)</li>
+                                                                    <li>Paying voucher  (Use the<a href="{{URL::asset('/assets/images/download/PAYING_IN_VOUCHER.pdf')}}" download="PAYING_IN_VOUCHER.pdf" target="_blank" class="btn btn-sm btn-link"><i class="mdi mdi-download-outline"></i> Paying in Voucher </a> Form)</li>
                                                                 </ol>
                                                                 <p>Please attach the copy of the paid deposit slip together with the University copy of the voucher you have downloaded after paying the required fee to any branch of the People’s Bank.</p>
 
@@ -256,8 +257,8 @@
                                 <div>If you have any queries regarding your registration or any other matters, please contact us by  email/phone given below.
                         </div>
                         </div>
-                        <div class="col-md-2">
-                            <div> <i class="mdi mdi-email"></i> help@univ.jfn.ac.lk</div>
+                        <div class="col-md-3">
+                            <div> <i class="mdi mdi-email"></i> admissions@univ.jfn.ac.lk</div>
                         </div>
                         <div class="col-md-2">
                             <div> <i class="mdi mdi-phone"></i> +94 021 221 8120</div>

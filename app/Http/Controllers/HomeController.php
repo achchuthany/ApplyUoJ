@@ -30,6 +30,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //dd(Auth::User()->roles()->get());
         if(Auth::User()->hasRole('Student')){
             return redirect()->route('student.registration.index');
         }else{

@@ -11,19 +11,19 @@
                     <label for="name">i. Race <span class="text-danger font-size-16">*</span></label>
                     <div class="form-group">
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input value="S" type="radio" id="Sinhala" name="race" class="custom-control-input" {{(isset($student)&&!Request::old('race'))? ($student->race=='S'?'checked':'') : (Request::old('race')=='S'?'checked':'')}} onchange="raceHandleHide()">
+                            <input value="S" type="radio" id="Sinhala" name="race" class="custom-control-input" {{(isset($student)&&!Request::old('race'))? ($student->race=='S'?'checked':'') : (Request::old('race')=='S'?'checked':'')}} onchange="raceHandleHide()" required>
                             <label class="custom-control-label" for="Sinhala">Sinhala</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input value="T" type="radio" id="Tamil" name="race" class="custom-control-input" {{(isset($student)&&!Request::old('race'))? ($student->race=='T'?'checked':'') : (Request::old('race')=='T'?'checked':'')}}  onchange="raceHandleHide()">
+                            <input value="T" type="radio" id="Tamil" name="race" class="custom-control-input" {{(isset($student)&&!Request::old('race'))? ($student->race=='T'?'checked':'') : (Request::old('race')=='T'?'checked':'')}}  onchange="raceHandleHide()" required>
                             <label class="custom-control-label" for="Tamil">Tamil</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input value="M" type="radio" id="Muslim" name="race" class="custom-control-input" {{(isset($student)&&!Request::old('race'))? ($student->race=='M'?'checked':'') : (Request::old('race')=='M'?'checked':'')}}  onchange="raceHandleHide()">
+                            <input value="M" type="radio" id="Muslim" name="race" class="custom-control-input" {{(isset($student)&&!Request::old('race'))? ($student->race=='M'?'checked':'') : (Request::old('race')=='M'?'checked':'')}}  onchange="raceHandleHide()" required>
                             <label class="custom-control-label" for="Muslim">Muslim</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input value="O" type="radio" id="RaceOthers" name="race" class="custom-control-input" onchange="raceHandleShow();">
+                            <input value="O" type="radio" id="RaceOthers" name="race" class="custom-control-input" onchange="raceHandleShow();" required>
                             <label class="custom-control-label" for="RaceOthers">Others</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline" id="RaceSpecifyShow">
@@ -42,11 +42,11 @@
                     <label for="shortname">ii. Gender <span class="text-danger font-size-16">*</span></label>
                     <div class="form-group">
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input value="M" type="radio" id="Male" name="gender" class="custom-control-input" {{(isset($student)&&!Request::old('gender'))? ($student->gender=='M'?'checked':'') : (Request::old('gender')=='M'?'checked':'')}}>
+                            <input value="M" type="radio" id="Male" name="gender" class="custom-control-input" {{(isset($student)&&!Request::old('gender'))? ($student->gender=='M'?'checked':'') : (Request::old('gender')=='M'?'checked':'')}} required>
                             <label class="custom-control-label" for="Male">Male</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input value="F" type="radio" id="Female" name="gender" class="custom-control-input" {{(isset($student)&&!Request::old('gender'))? ($student->gender=='F'?'checked':'') : (Request::old('gender')=='F'?'checked':'')}}>
+                            <input value="F" type="radio" id="Female" name="gender" class="custom-control-input" {{(isset($student)&&!Request::old('gender'))? ($student->gender=='F'?'checked':'') : (Request::old('gender')=='F'?'checked':'')}} required>
                             <label class="custom-control-label" for="Female">Female</label>
                         </div>
                     </div>
@@ -58,11 +58,11 @@
                     <label for="shortname">iii. Civil Status <span class="text-danger font-size-16">*</span></label>
                     <div class="form-group">
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input value="S" type="radio" id="Single" name="civil_status" class="custom-control-input" {{(isset($student)&&!Request::old('civil_status'))? ($student->civil_status=='S'?'checked':'') : (Request::old('civil_status')=='S'?'checked':'')}}>
+                            <input value="S" type="radio" id="Single" name="civil_status" class="custom-control-input" {{(isset($student)&&!Request::old('civil_status'))? ($student->civil_status=='S'?'checked':'') : (Request::old('civil_status')=='S'?'checked':'')}} required>
                             <label class="custom-control-label" for="Single">Single</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input value="M" type="radio" id="Married" name="civil_status" class="custom-control-input" {{(isset($student)&&!Request::old('civil_status'))? ($student->civil_status=='M'?'checked':'') : (Request::old('civil_status')=='M'?'checked':'')}}>
+                            <input value="M" type="radio" id="Married" name="civil_status" class="custom-control-input" {{(isset($student)&&!Request::old('civil_status'))? ($student->civil_status=='M'?'checked':'') : (Request::old('civil_status')=='M'?'checked':'')}} required>
                             <label class="custom-control-label" for="Married">Married</label>
                         </div>
                     </div>
@@ -73,23 +73,23 @@
                     <label for="shortname">iv. Religion <span class="text-danger font-size-16">*</span></label>
                     <div class="form-group">
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input onchange="religionHandleHide()" value="B" type="radio" id="Buddhist" name="religion" class="custom-control-input" {{(isset($student)&&!Request::old('religion'))? ($student->religion=='B'?'checked':'') : (Request::old('religion')=='B'?'checked':'')}}>
+                            <input onchange="religionHandleHide()" value="B" type="radio" id="Buddhist" name="religion" class="custom-control-input" {{(isset($student)&&!Request::old('religion'))? ($student->religion=='B'?'checked':'') : (Request::old('religion')=='B'?'checked':'')}} required>
                             <label class="custom-control-label" for="Buddhist">Buddhist</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input onchange="religionHandleHide()" value="H" type="radio" id="Hindu" name="religion" class="custom-control-input" {{(isset($student)&&!Request::old('religion'))? ($student->religion=='H'?'checked':'') : (Request::old('religion')=='H'?'checked':'')}}>
+                            <input onchange="religionHandleHide()" value="H" type="radio" id="Hindu" name="religion" class="custom-control-input" {{(isset($student)&&!Request::old('religion'))? ($student->religion=='H'?'checked':'') : (Request::old('religion')=='H'?'checked':'')}} required>
                             <label class="custom-control-label" for="Hindu">Hindu</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input onchange="religionHandleHide()" value="C" type="radio" id="Christian" name="religion" class="custom-control-input" {{(isset($student)&&!Request::old('religion'))? ($student->religion=='C'?'checked':'') : (Request::old('religion')=='C'?'checked':'')}}>
+                            <input onchange="religionHandleHide()" value="C" type="radio" id="Christian" name="religion" class="custom-control-input" {{(isset($student)&&!Request::old('religion'))? ($student->religion=='C'?'checked':'') : (Request::old('religion')=='C'?'checked':'')}} required>
                             <label class="custom-control-label" for="Christian">Christian</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input onchange="religionHandleHide()" value="I" type="radio" id="Islam" name="religion" class="custom-control-input" {{(isset($student)&&!Request::old('religion'))? ($student->religion=='I'?'checked':'') : (Request::old('religion')=='I'?'checked':'')}}>
+                            <input onchange="religionHandleHide()" value="I" type="radio" id="Islam" name="religion" class="custom-control-input" {{(isset($student)&&!Request::old('religion'))? ($student->religion=='I'?'checked':'') : (Request::old('religion')=='I'?'checked':'')}} required>
                             <label class="custom-control-label" for="Islam">Islam</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input onchange="religionHandleShow()" value="O" type="radio" id="religionOthers" name="religion" class="custom-control-input" {{(isset($student)&&!Request::old('religion'))? ($student->religion=='O'?'checked':'') : (Request::old('religion')=='O'?'checked':'')}}>
+                            <input onchange="religionHandleShow()" value="O" type="radio" id="religionOthers" name="religion" class="custom-control-input" {{(isset($student)&&!Request::old('religion'))? ($student->religion=='O'?'checked':'') : (Request::old('religion')=='O'?'checked':'')}} required>
                             <label class="custom-control-label" for="religionOthers">Others</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline" id="religionSpecifyShow">
@@ -103,7 +103,7 @@
                 <div class="form-group">
                     <label for="date_of_birth">v. Date of Birth <span class="text-danger font-size-16">*</span></label>
                     <input value="{{(isset($student)&&!Request::old('date_of_birth'))? $student->date_of_birth : Request::old('date_of_birth')}}" id="date_of_birth" name="date_of_birth" type="date" class="form-control" placeholder="yyyy-mm-dd" onchange="
-                    calculateAge()">
+                    calculateAge()" required>
                 </div>
             </div>
             <div class="col-md-6">

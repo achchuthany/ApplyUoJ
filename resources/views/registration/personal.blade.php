@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label for="title">i. Title <span class="text-danger font-size-16">*</span></label>
                     <select id="title" name="title" class="form-control select2 @error('title') is-invalid @enderror" required>
-                        <option selected disabled>--Select--</option>
+                        <option selected disabled>Select Title</option>
                         <option value="Mr" {{(isset($student)&&!Request::old('title'))? ($student->title=='Mr'?'selected':'') : (Request::old('title')=='Mr'?'selected':'') }}>Mr</option>
                         <option value="Miss" {{(isset($student)&&!Request::old('title'))? ($student->title=='Miss'?'selected':'') : (Request::old('title')=='Miss'?'selected':'') }}>Miss</option>
                         <option value="Mrs" {{(isset($student)&&!Request::old('title'))? ($student->title=='Mrs'?'selected':'') : (Request::old('title')=='Mrs'?'selected':'') }}>Mrs</option>

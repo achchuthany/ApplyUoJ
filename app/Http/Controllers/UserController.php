@@ -239,4 +239,16 @@ class UserController extends Controller
         }
         return redirect()->back()->with(['message_type'=>$msag_type,'message'=>$message]);
     }
+
+    public function reset(Request $request){
+        if(!Auth::user()){
+            return redirect()->route('home');
+        }
+        $user = User::whereId(Auth::user()->id)->first();
+        DB::table('role_user')->where('user_id',$user->id)->delete();
+        DB::table('user_student')->where('user_id',$user->id)->delete();
+        $user->delete();
+
+        return redirect('/register')->with(['success'=>'Start you fresh registration now']);
+    }
 }

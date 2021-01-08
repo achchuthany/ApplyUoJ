@@ -30,7 +30,7 @@
             <div class="col-md-8">
                 <div class="form-group">
                     <label for="subject_1">Subject</label>
-                    <select id="subject_1" name="subjects[1][subject]" class="form-control select2" required>
+                    <select id="subject_1" name="subjects[1][subject]" class="form-control select2">
                         <option disabled selected>-- Select --</option>
                         @foreach($al_subjects as $key=>$subject)
                             <option value="{{$key}}" {{(isset($subjects[0]['subject'])&&!Request::old('subjects[1][subject]'))? ($subjects[0]['subject']==$key?'selected':'') : (Request::old('subjects[1][subject]')==$key?'selected':'') }}>{{$subject}}</option>
@@ -41,7 +41,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="grade_1">Grade</label>
-                    <select id="grade_1" name="subjects[1][grade]" class="form-control select2" required>
+                    <select id="grade_1" name="subjects[1][grade]" class="form-control select2" >
                         <option disabled selected>-- Select --</option>
                         @foreach($al_grades as $key=>$value)
                             <option value="{{$key}}" {{(isset($subjects[0]['grade'])&&!Request::old('subjects[1][grade]'))? ($subjects[0]['grade']==$key?'selected':'') : (Request::old('subjects[1][grade]')==$key?'selected':'') }}>{{$key}} ({{$value}})</option>

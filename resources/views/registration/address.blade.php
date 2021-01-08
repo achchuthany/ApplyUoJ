@@ -157,7 +157,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="email">vii. Email <span class="text-danger font-size-16">*</span> </label>
-                    <input value="{{(isset($student)&&!Request::old('email'))? $student->email : Request::old('email')}}" id="email" name="email" type="email" class="form-control @error('email') is-invalid @enderror" required>
+                    <input value="{{(isset($student)&&!Request::old('email'))? $student->email : Request::old('email')}}" id="email" name="email" type="email" class="form-control @error('email') is-invalid @enderror bg-light" readonly>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

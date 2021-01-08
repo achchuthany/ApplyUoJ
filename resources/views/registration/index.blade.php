@@ -39,7 +39,7 @@
                         <div class="row mb-4">
                             <div class="col-md-12">
                                 <p class="pt-2">
-                                    Once you have finished entering your details, use the <b>'Proceed with Registration'</b> button provided at the bottom of the page to continue with your registration.
+                                    Once you have finished entering your details, use the <b>'Next'</b> button provided at the bottom of the page to continue with your registration.
                                     <span class="text-danger">*</span><b>Mandatory fields</b>
                                 </p>
 
@@ -162,48 +162,59 @@
         </script>
     @endif
 
-    @if(Route::currentRouteName()=='student.documents')
-    <script>
-        $('#progress-data').hide();
-        function validate(formData, jqForm, options) {
-            var form = jqForm[0];
-            if (!form.image.value || !form.bank.value || !form.lc_f.value || !form.lc_b.value|| !form.nic_f.value||!form.nic_b.value) {
-                Swal.fire("Warning", "Please select all required files", "warning");
-                return false;
-            }
-        }
-        (function() {
-            var bar = $('.bar');
-            var percent = $('.percent');
-            var status = $('#status');
-            $('#document-upload').ajaxForm({
-                beforeSubmit: validate,
-                beforeSend: function() {
-                    status.empty();
-                    $('#progress-data').show();
-                    var percentVal = '0%';
-                    var posterValue = $('input[name=nic_b]').fieldValue();
-                    bar.width(percentVal)
-                    percent.html(percentVal);
-                },
-                uploadProgress: function(event, position, total, percentComplete) {
-                    var percentVal = percentComplete + '%';
-                    bar.width(percentVal)
-                    percent.html(percentVal);
-                },
-                success: function() {
-                    var percentVal = 'Wait, Saving';
-                    bar.width(percentVal)
-                    percent.html(percentVal);
-                },
-                complete: function(xhr) {
-                    status.html(xhr.responseText);
-                    Swal.fire("Success", "File has been uploaded", "success");
-                    window.location.href = "/registration/6";
-                }
-            });
-        })();
-    </script>
-    @endif
+{{--    @if(Route::currentRouteName()=='student.documents')--}}
+{{--    <script>--}}
+
+{{--        function validate(formData, jqForm, options) {--}}
+{{--            var form = jqForm[0];--}}
+{{--            if (!form.image.value || !form.bank.value || !form.lc_f.value || !form.lc_b.value|| !form.nic_f.value||!form.nic_b.value) {--}}
+{{--                Swal.fire("Warning", "Please select all required files", "warning");--}}
+{{--                return false;--}}
+{{--            }--}}
+{{--        }--}}
+{{--        (function() {--}}
+{{--            var bar = $('.bar');--}}
+{{--            var percent = $('.percent');--}}
+{{--            var status = $('#upload_status');--}}
+{{--            $('#document-upload').ajaxForm({--}}
+{{--               // beforeSubmit: validate,--}}
+{{--                beforeSend: function() {--}}
+{{--                    status.empty();--}}
+{{--                    $('#progress-data').show();--}}
+{{--                    var percentVal = '0%';--}}
+{{--                    var posterValue = $('input[name=nic_b]').fieldValue();--}}
+{{--                    bar.width(percentVal)--}}
+{{--                    percent.html(percentVal);--}}
+{{--                },--}}
+{{--                uploadProgress: function(event, position, total, percentComplete) {--}}
+{{--                    var percentVal = percentComplete + '%';--}}
+{{--                    bar.width(percentVal)--}}
+{{--                    percent.html(percentVal);--}}
+{{--                },--}}
+{{--                success: function() {--}}
+{{--                    var percentVal = 'Wait, Saving';--}}
+{{--                    bar.width(percentVal)--}}
+{{--                    percent.html(percentVal);--}}
+{{--                },--}}
+{{--                complete: function(xhr) {--}}
+{{--                    status.html(xhr.responseText);--}}
+
+{{--                    if(xhr.responseText==true){--}}
+{{--                        Swal.fire("Success", "File has been uploaded", "success");--}}
+{{--                        //window.location.href = "/registration/6";--}}
+{{--                    }else{--}}
+{{--                        var message = JSON.parse(xhr.responseText);--}}
+{{--                        console.log(message["errors"]);--}}
+{{--                        for (i in message["errors"]){--}}
+{{--                            console.log(i);--}}
+{{--                        }--}}
+{{--                    }--}}
+
+
+{{--                }--}}
+{{--            });--}}
+{{--        })();--}}
+{{--    </script>--}}
+{{--    @endif--}}
 
 @endsection

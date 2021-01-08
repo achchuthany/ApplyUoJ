@@ -321,7 +321,10 @@ class StudentController extends Controller
 
                 })
                 ->addColumn('name', function($row){
-                    return $row->student->name_initials;
+                    return $row->student->full_name;
+                })
+                ->addColumn('ref_no', function($row){
+                    return $row->getRefNo();
                 })
                 ->addColumn('nic', function($row){
                     return Student::where('id',$row->student_id)->first()->nic;
@@ -364,6 +367,9 @@ class StudentController extends Controller
                         return '<img src="'.URL::asset('assets/images/users/male.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
                     else
                         return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
+                })
+                ->addColumn('ref_no', function($row){
+                    return $row->getRefNo();
                 })
                 ->addColumn('name', function($row){
                     return $row->student->name_initials;
@@ -447,6 +453,9 @@ class StudentController extends Controller
                     else
                         return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
                 })
+                ->addColumn('ref_no', function($row){
+                    return $row->getRefNo();
+                })
                 ->addColumn('reg_no', function ($row) {
                     return ($row->reg_no)?$row->reg_no:'N/A';
                 })
@@ -458,6 +467,22 @@ class StudentController extends Controller
                 })
                 ->addColumn('mobile', function ($row) {
                     return $row->student->mobile;
+                })
+                ->addColumn('email', function ($row) {
+                    return $row->student->email;
+                })
+                ->addColumn('address', function ($row) {
+                    $add =  $row->student->addresses()->where('address_type','Permanent')->first();
+                    if($add){
+                        $address = $add->address_no.', '.$add->address_street;
+                        $address.=  $add->address_city ? (', '.$add->address_city) : '';
+                        $address.= $add->address_4 ? ', '.$add->address_4:'';
+                        $address.= $add->address_state ? ', '.$add->address_state:'';
+                        $address.=', '.$add->address_country;
+                        $address.= $add->address_postal_code? ', '.$add->address_postal_code:'';
+                        return $address;
+                    }
+                    return null;
                 })
                 ->addColumn('title', function ($row) {
                     return strtoupper($row->student->title);

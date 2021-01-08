@@ -84,28 +84,35 @@ class RegistrationController extends Controller
             'mobile'=>'required',
             'email'=>'required',
         ]);
-
-        $validator = Validator::make($request['address']['P'],[
-            'address_no'=>'required|max:150',
-            'address_street'=>'required|max:150',
-            'address_country'=>'required|max:150'
+        $validator = Validator::make($request->all(), [
+            "address"    => "required|array|min:2",
+            "address.*.address_no"=>'required',
+            "address.*.address_street"=>'required',
+            "address.*.address_country"=>'required'
         ]);
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
-
-        $validator = Validator::make($request['address']['C'],[
-            'address_no'=>'required|max:150',
-            'address_street'=>'required|max:150',
-            'address_country'=>'required|max:150'
-        ]);
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
+//
+//        $validator = Validator::make($request['address']['P'],[
+//            'address_no'=>'required|max:150',
+//            'address_street'=>'required|max:150',
+//            'address_country'=>'required|max:150'
+//        ]);
+//
+//
+//        $validator = Validator::make($request['address']['C'],[
+//            'address_no'=>'required|max:150',
+//            'address_street'=>'required|max:150',
+//            'address_country'=>'required|max:150'
+//        ]);
+//        if ($validator->fails()) {
+//            return redirect()->back()
+//                ->withErrors($validator)
+//                ->withInput();
+//        }
         $student = Auth::user()->students()->latest()->first();
 
         $address_p = $student->addresses()->where('address_type','Permanent')->first();
@@ -142,15 +149,15 @@ class RegistrationController extends Controller
 
         $student->province = $request['province'];
         $student->mobile = $request['mobile'];
-        $student->email  = $request['email'];
+        //$student->email  = $request['email'];
 
-        $user = $student->users()->latest()->first();
-        if($user && strtolower($user->email) != strtolower($request['email'])){
-            $user->email = $request['email'];
-            $user->email_verified_at = null;
-            $user->update();
-            event(new Registered($user));
-        }
+//        $user = $student->users()->latest()->first();
+//        if($user && strtolower($user->email) != strtolower($request['email'])){
+//            $user->email = $request['email'];
+//            $user->email_verified_at = null;
+//            $user->update();
+//            event(new Registered($user));
+//        }
 
         $student->update();
         return redirect()->route('student.education');
@@ -167,35 +174,47 @@ class RegistrationController extends Controller
     }
     public function educationProcess(Request $request){
         $this->validate($request,[
-            'al_exam_year'=>'required'
+            'al_exam_year'=>'required',
         ]);
-        $validator = Validator::make($request['subjects'][1],[
-            'subject'=>'required',
-            'grade'=>'required',
-        ]);
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-        $validator = Validator::make($request['subjects'][2],[
-            'subject'=>'required',
-            'grade'=>'required',
+        $validator = Validator::make($request->all(), [
+            "subjects"    => "required|array|min:3",
+            "subjects.*.subject"=>'required',
+            "subjects.*.grade"=>'required'
         ]);
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
-        $validator = Validator::make($request['subjects'][3],[
-            'subject'=>'required',
-            'grade'=>'required',
-        ]);
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
+
+//            $validator = Validator::make($request['subjects'][1],[
+//                'subject'=>'required',
+//                'grade'=>'required',
+//            ]);
+//            if ($validator->fails()) {
+//                return redirect()->back()
+//                    ->withErrors($validator)
+//                    ->withInput();
+//            }
+//
+//        $validator = Validator::make($request['subjects'][2],[
+//            'subject'=>'required',
+//            'grade'=>'required',
+//        ]);
+//        if ($validator->fails()) {
+//            return redirect()->back()
+//                ->withErrors($validator)
+//                ->withInput();
+//        }
+//        $validator = Validator::make($request['subjects'][3],[
+//            'subject'=>'required',
+//            'grade'=>'required',
+//        ]);
+//        if ($validator->fails()) {
+//            return redirect()->back()
+//                ->withErrors($validator)
+//                ->withInput();
+//        }
 
         $student = Auth::user()->students()->latest()->first();
         $student->al_exam_year = $request['al_exam_year'];
@@ -297,6 +316,9 @@ class RegistrationController extends Controller
     public function complete(){
         if($this->checkApplicationStatus())
             return redirect()->route('student.registration.completed');
+
+        if(Auth::user()->students()->first()->student_docs()->count()<1)
+            return back()->with(['warning'=>'Please upload required documents']);
         return view('registration.conform');
     }
     public function completeProcess(){
@@ -367,16 +389,36 @@ class RegistrationController extends Controller
     }
     public function imageUploadPost(Request $request){
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,jpg|max:2048',
-            'bank' => 'required|image|mimes:jpeg,jpg|max:2048',
-            'lc_f' => 'required|image|mimes:jpeg,jpg|max:2048',
-            'lc_b' => 'required|image|mimes:jpeg,jpg|max:2048',
-            'nic_f' => 'required|image|mimes:jpeg,jpg|max:2048',
-            'nic_b' => 'required|image|mimes:jpeg,jpg|max:2048',
+            'ugc' => 'required|image|mimes:jpeg,jpg|max:5120',
+            'image' => 'required|image|mimes:jpeg,jpg|max:5120',
+            'bank' => 'required|image|mimes:jpeg,jpg|max:5120',
+            'lc_f' => 'required|image|mimes:jpeg,jpg|max:5120',
+            'lc_b' => 'required|image|mimes:jpeg,jpg|max:5120',
+            'nic_f' => 'required|image|mimes:jpeg,jpg|max:5120',
+            'nic_b' => 'required|image|mimes:jpeg,jpg|max:5120',
         ]);
         $student = Auth::user()->students()->latest()->first();
 
+        //ugc
+        $imageName =$student->nic.'_ugc.'.$request->image->extension();
+        $request->ugc->storeAs('docs', $imageName);
+        /* Store $imageName name in DATABASE from HERE */
+        $docs = StudentDoc::where([['student_id',$student->id],['type','ugc']])->first();
+        $isUpdate = true;
+        if(!$docs){
+            $docs = new StudentDoc();
+            $isUpdate = false;
+        }
 
+        $docs->student_id = $student->id;
+        $docs->name = $imageName;
+        $docs->type = "ugc";
+        if($isUpdate)
+            $docs->update();
+        else
+            $docs->save();
+
+        //photo
         $imageName =$student->nic.'_photo.'.$request->image->extension();
         $request->image->storeAs('docs', $imageName);
         /* Store $imageName name in DATABASE from HERE */

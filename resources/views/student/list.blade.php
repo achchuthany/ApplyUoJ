@@ -58,6 +58,7 @@ Students Details by Programme
                     <table id="datatable"  class="table table-hover  table-striped table-centered datatable dt-responsive nowrap table-card-list" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                         <tr class="bg-transparent">
+                            <th>Reference</th>
                             <th>Image</th>
                             <th>Reg. No.</th>
                             <th>Index. No.</th>
@@ -65,7 +66,9 @@ Students Details by Programme
                             <th>Name With Initials</th>
                             <th>NIC No.</th>
                             <th>Mobile</th>
+                            <th>Email</th>
                             <th>Full Name</th>
+                            <th>Permanent Address</th>
                             <th>Date of Registration</th>
                             <th>Profile</th>
                         </tr>

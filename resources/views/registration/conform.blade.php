@@ -16,8 +16,8 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header text-info">
-                   <i class="fas fa-info-circle"></i> Use the 'Proceed with Registration' button provided at the bottom of the page to complete your registration. If you click 'Proceed with Registration' you will
+                <div class="card-header text-dark">
+                   Use the 'Proceed with Registration' button provided at the bottom of the page to complete your registration. If you click 'Proceed with Registration' you will
                     no be able to Edit the application anymore.
                 </div>
                 <form class="needs-validation" method="POST" action="{{ route('student.registration.complete.process') }}">

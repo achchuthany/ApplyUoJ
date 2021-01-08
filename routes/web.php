@@ -15,12 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 Auth::routes(['verify' => true]);
 
-Route::group(['middleware' => ['auth','roles']], function () {
+Route::post('/user/reset',[
+    'uses' => 'App\Http\Controllers\UserController@reset',
+    'as' => 'user.reset',
+]);
+
+Route::group(['middleware' => ['auth','verified','roles']], function () {
+    //home
     Route::get('/home',[
         'uses' => 'App\Http\Controllers\HomeController@index',
         'as' => 'home',
@@ -31,10 +37,7 @@ Route::group(['middleware' => ['auth','roles']], function () {
         'as' => 'student.registration.image',
         'roles' => ['Admin','Student']
     ]);
-});
 
-
-Route::group(['middleware' => ['auth','verified','roles']], function () {
     //Admin Home Page
     Route::get('/home/data/{aid}',[
         'uses' => 'App\Http\Controllers\HomeController@graphData',
@@ -320,7 +323,7 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
 });
 
 //Student
-Route::group(['middleware' => ['auth','roles'],'roles' => ['Student']], function () {
+Route::group(['middleware' => ['auth','verified','roles'],'roles' => ['Student']], function () {
     Route::get('/registration',[
         'uses' => 'App\Http\Controllers\RegistrationController@index',
         'as' => 'student.registration.index',
@@ -394,9 +397,10 @@ Route::group(['middleware' => ['auth','roles'],'roles' => ['Student']], function
 
 });
 
-//Route::get('/mailable', function () {
-//    $student = App\Models\Student::first();
-//    $enroll = $student->enrolls()->first()->programme->name;
-//    return new App\Mail\RegistrationConfirmationMail($enroll,$student->full_name);
-//});
+Route::get('/mailable', function () {
+    $student = App\Models\Student::first();
+    $enroll = $student->enrolls()->first();
+    $ref_no = $enroll->getRefNo();
+    return new App\Mail\RegistrationConfirmationMail($enroll->programme->name,$student->full_name,$ref_no);
+});
 

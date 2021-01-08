@@ -1,11 +1,11 @@
 <div class="card">
     <div class="card-header font-size-16 bg-dark text-light">
-        Upload your documents to conform your registration
+        Upload your documents
     </div>
     <div class="card-body">
         <div class="row mt-3">
             <div class="col-md-12">
-                Payment voucher of registration fee and other fees of  Rs.2350 made by Peoples’ Bank (If you already download in instruction page ignore this download)
+                Payment voucher of registration (Ignore this download if you download on the instruction page)
 
                 <a href="{{URL::asset('/assets/images/download/PAYING_IN_VOUCHER.pdf')}}" download="PAYING_IN_VOUCHER.pdf" target="_blank" class="btn btn-sm btn-link"> <i class="mdi mdi-download-outline"></i> Download</a>
             </div>
@@ -20,23 +20,42 @@
                     <div class="card">
                         <div class="card-header bg-soft-info">
                             <div class="text-primary">
-                                <div>Each image must be a file of type of jpeg, jpg and may not be greater than 2048 kilobytes (2MB).
+                                <div>Each image must be a file of type of jpeg, jpg and may not be greater than 5120 kilobytes (5MB).
                                 </div>
                             </div>
                         </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Selection Letter sent by the UGC <span class="text-danger font-size-16">*</span></label>
+                                    <input type="file" name="ugc" class="form-control  @error('ugc') is-invalid @enderror">
+                                    @error('ugc')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="card-body bg-light">
                             <div class="row">
                                 <div class="col-md-12 mt-3">
-                                    <label>Identity Card Image <span class="text-danger font-size-16">*</span></label>
-                                    <input type="file" name="image" class="form-control">
+                                    <label>Your recent photograph (Identity Card Image) <span class="text-danger font-size-16">*</span></label>
+                                    <input type="file" name="image" class="form-control  @error('image') is-invalid @enderror">
                                     <div class="alert  p-3">
                                         <div class="h6 text-primary"><i class="mdi mdi-information"></i> Identity Card Image should be: </div>
-                                        <div>Required photo size: 45mm in height and 35mm in width (Passport Size)</div>
+                                        <div>Required photo size: Passport Size</div>
                                         <div>The submitted photos must be in color</div>
                                         <div> Head position: straight</div>
                                         <div>Background: Blue/Light Blue</div>
                                         <div>Recency: taken no more than 6 months ago</div>
                                     </div>
+                                    @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -44,7 +63,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label>Paid Bank Voucher <span class="text-danger font-size-16">*</span></label>
-                                    <input type="file" name="bank" class="form-control">
+                                    <input type="file" name="bank" class="form-control  @error('bank') is-invalid @enderror">
+                                    @error('bank')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -55,11 +79,21 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label>Front Side</label>
-                                    <input type="file" name="lc_f" class="form-control">
+                                    <input type="file" name="lc_f" class="form-control  @error('lc_f') is-invalid @enderror">
+                                    @error('lc_f')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6">
                                     <label>Back side </label>
-                                    <input type="file" name="lc_b" class="form-control">
+                                    <input type="file" name="lc_b" class="form-control  @error('lc_b') is-invalid @enderror">
+                                    @error('lc_b')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -73,24 +107,34 @@
 
                                 <div class="col-md-6">
                                     <label>Front side</label>
-                                    <input type="file" name="nic_f" class="form-control">
+                                    <input type="file" name="nic_f" class="form-control  @error('nic_f') is-invalid @enderror">
+                                    @error('nic_f')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
 
                                 <div class="col-md-6">
                                     <label>Back side</label>
-                                    <input type="file" name="nic_b" class="form-control">
+                                    <input type="file" name="nic_b" class="form-control  @error('nic_b') is-invalid @enderror">
+                                    @error('nic_b')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
 
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-12" id="progress-data">
-                                     <div class="progress p-3">
-                                        <div class="bar"></div >
-                                        <div class="percent">0%</div>
-                                    </div>
-                                </div>
+{{--                                <div class="col-md-12" id="progress-data">--}}
+{{--                                     <div class="progress p-3">--}}
+{{--                                        <div class="bar"></div >--}}
+{{--                                        <div class="percent">0%</div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                                 <div class="col-md-12 mt-3">
                                     <button type="submit" class="btn btn-block btn-primary"><i class="fas fa-file-upload"></i> Upload</button>
                                 </div>
@@ -107,9 +151,9 @@
                                 <div class="row">
                                     @foreach($enroll->student->student_docs()->get() as $doc)
                                         @if(Storage::disk('docs')->exists($doc->name))
-                                            <div class="col-md-6 text-center">
+                                            <div class="col-md-12 text-center">
                                                 <div class="font-size-12">{{$doc->name}}</div>
-                                                <a href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->type}}" class="img-thumbnail"></a>
+                                                <a href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->type}}" class="img-thumbnail img-fluid" width="150"></a>
                                             </div>
                                         @endif
                                     @endforeach

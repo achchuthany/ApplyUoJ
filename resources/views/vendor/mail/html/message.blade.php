@@ -21,12 +21,14 @@
 {{-- Footer --}}
 @slot('footer')
 @component('mail::footer')
+<img src="{{URL::asset('assets/images/uoj.png')}}"  height="50px" alt="University of Jaffna">
+
 
 Please do not reply to this email. Replies to this email will not be responded to or read.
 
-You're receiving this email because you're a registered {{ config('app.name') }}. We'll send you timely updates - meant just for {{ config('app.name') }}.
+You're receiving this email because you're a registered user of {{ config('app.name') }}.
 
-If you do not wish to receive these updates, please contact help@maco.jfn.ac.lk.
+If you do not wish to receive these updates, please contact admissions@univ.jfn.ac.lk
 
 © {{ date('Y') }} <a target="_blank" href="{{config('app.url')}}"> {{ config('app.name') }}</a>. @lang('All rights reserved.')
 

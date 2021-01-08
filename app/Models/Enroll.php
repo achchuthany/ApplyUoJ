@@ -17,4 +17,8 @@ class Enroll extends Model
     public function programme(){
         return $this->belongsTo('App\Models\Programme');
     }
+
+    public function getRefNo(){
+        return $this->programme->abbreviation.''.sprintf('%04d', $this->id) ;
+    }
 }

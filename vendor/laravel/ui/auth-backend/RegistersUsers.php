@@ -60,6 +60,8 @@ trait RegistersUsers
         $role_student = Role::where('name', 'Student')->first();
         $user->roles()->attach($role_student);
         $user->students()->attach($student);
+        $student->email = $user->email;
+        $student->update();
         event(new Registered($user));
         $this->guard()->login($user);
 

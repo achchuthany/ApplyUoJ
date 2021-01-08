@@ -39,7 +39,7 @@ class RegistrationConfirmationJob implements ShouldQueue
         $enroll= Enroll::whereId($this->eid)->first();
         $student = Student::whereId($this->sid)->first();
         $email_id = $student->users()->latest()->first()->email;
-        $email = new RegistrationConfirmationMail($enroll->programme->name,$student->full_name);
+        $email = new RegistrationConfirmationMail($enroll->programme->name,$student->full_name,$enroll->getRefNo());
         Mail::to($email_id)->send($email);
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.master-dark-sidebar')
 @section('title')
-    @lang('translation.Chartjs')
+    Home
 @endsection
 
 @section('content')
