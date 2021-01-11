@@ -48,8 +48,8 @@ class ApplicationRegistrationController extends Controller
                 ->addColumn('action', function($row){
                     $btn = '
                     <div class="dropdown dropleft">
-                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="mdi mdi-dots-vertical"></i>
+                        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="mdi mdi-menu"></i>
                         </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <h5 class="dropdown-header">Registration</h5>

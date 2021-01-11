@@ -415,6 +415,10 @@ Route::group(['middleware' => ['auth','verified','roles'],'roles' => ['Student']
         'uses' => 'App\Http\Controllers\RegistrationController@completed',
         'as' => 'student.registration.completed',
     ]);
+    Route::get('/registration/profile',[
+        'uses' => 'App\Http\Controllers\StudentController@student_profile',
+        'as' => 'student.profile',
+    ]);
     Route::get('/registration/download/{eid}/PersonalData',[
         'uses' => 'App\Http\Controllers\RegistrationController@downloadPersonalData',
         'as' => 'student.registration.download.PersonalData',

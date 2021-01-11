@@ -20,10 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c2ec210-208a-41b5-8c22-9ae5395aa4fe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/student/my_profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApplicationRegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicationRegistrationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/pdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/pdf.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pdf/personal_data.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pdf/personal_data.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/EnrolmentConfirmationMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/EnrolmentConfirmationMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/RegistrationConfirmationMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/RegistrationConfirmationMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Enroll.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Enroll.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/registration/proceed.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/proceed.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,23 +176,23 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/mail" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/student" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images\users" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\storage\app" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views\student" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views\mail" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views\enroll" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images\download" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\app\Http\Controllers" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\js\pages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images" />
+      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images\users" />
+      <recent name="D:\xampp\htdocs\ApplyUoJ\storage\app" />
     </key>
   </component>
   <component name="RunManager">
@@ -256,7 +262,7 @@
       <workItem from="1610118897239" duration="4538000" />
       <workItem from="1610344104387" duration="4386000" />
       <workItem from="1610351626630" duration="6950000" />
-      <workItem from="1610372181058" duration="2371000" />
+      <workItem from="1610372181058" duration="7364000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1607261190718</created>
@@ -496,7 +502,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610358005043</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="PDF Design">
+      <created>1610374645891</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1610374645891</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -547,7 +560,8 @@
     <MESSAGE value="Student Download" />
     <MESSAGE value="Reference Number" />
     <MESSAGE value="Email Notification and Reg" />
-    <option name="LAST_COMMIT_MESSAGE" value="Email Notification and Reg" />
+    <MESSAGE value="PDF Design" />
+    <option name="LAST_COMMIT_MESSAGE" value="PDF Design" />
   </component>
   <component name="WindowStateProjectService">
     <state x="404" y="170" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1610352314195">
@@ -591,12 +605,12 @@
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1607260929715" />
     <state x="184" y="8" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608816149865" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1610358007206">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1610374647984">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1607529786950" />
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1610102068397" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1610358007206" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1610374647984" />
     <state x="92" y="92" width="1182" height="554" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1609862057482">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

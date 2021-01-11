@@ -400,6 +400,32 @@ class StudentController extends Controller
         }
         return view('student.pending',['title'=>$this->params[$status]]);
     }
+    public function student_profile(){
+        $student = Auth::user()->students()->latest()->first();
+        $enroll = $student->enrolls()->latest()->first();
+
+        $races = config('app.race');
+        $genders = config('app.gender');
+        $civil_statuses = config('app.civil_status');
+        $religion = config('app.religion');
+
+        if(!$enroll)
+            return redirect()->back();
+
+        if($enroll->student->race)
+            if($enroll->student->race && strlen($enroll->student->race)>1){
+                $race = $enroll->student->race;
+            }else if($enroll->student->race){
+                $race = $races[$enroll->student->race];
+            }
+
+        $gender = $enroll->student->gender?$genders[$enroll->student->gender] : null;
+        $civil_status = $enroll->student->civil_status? $civil_statuses[$enroll->student->civil_status] : null;
+
+        $religion = $enroll->student->religion? (strlen($enroll->student->religion)>1?$enroll->student->religion:$religion[$enroll->student->religion]): null;
+
+        return view('student.my_profile',['enroll'=>$enroll,'race'=>$race,'gender'=>$gender,'civil_status'=>$civil_status,'religion'=>$religion]);
+    }
     public function profile($id)
     {
         $races = config('app.race');

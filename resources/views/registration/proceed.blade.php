@@ -8,7 +8,7 @@
 @endsection
 @section('content')
     <div class="row align-items-center justify-content-center">
-        <div class="col-md-10 col-lg-10 col-xl-10">
+        <div class="col-md-12 col-lg-12 col-xl-12">
             <div class="card shadow-none">
                 <div class="card-header font-weight-lighter font-size-20">
                     Your Online Application Status is  <span class="text-primary">{{$enroll->status}}</span>
@@ -221,10 +221,10 @@
                            </div>
                        </div>
                    </div>
+                </div> <div class="card-footer text-center">
+                    Contact: Assistant  Registrar/Admissions Branch of the University of Jaffna. <i class="mdi mdi-phone"></i>+94 21 222 6714 \ <i class="mdi mdi-phone"></i> +94 21 221 8120
                 </div>
-                <div class="card-footer text-center">
-                  Contact: Assistant  Registrar/Admissions Branch of the University of Jaffna. <i class="mdi mdi-phone"></i>+94 21 222 6714 \ <i class="mdi mdi-phone"></i> +94 21 221 8120
-                </div>
+
             </div>
         </div>
     </div>

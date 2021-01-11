@@ -29,7 +29,7 @@ class EnrolmentConfirmationMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('[#'.$this->enroll->getRefNo().'] Confirmation of Enrolment ')
+        return $this->subject('['.$this->enroll->getRefNo().'] Confirmation of Enrolment ')
             ->markdown('mail.enrollment_confirmation')
             ->with([
                 'enroll' => $this->enroll,

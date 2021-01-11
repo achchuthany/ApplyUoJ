@@ -41,6 +41,13 @@ class RegistrationController extends Controller
         $this->religion = config('app.religion');
     }
     public function index(){
+        //Registered Users Home page
+        $student = Auth::user()->students()->latest()->first();
+        $enroll = $student->enrolls()->latest()->first();
+        if($enroll->status=='Registered'){
+            return redirect()->route('student.profile');
+        }
+        //Check for status
         if($this->checkApplicationStatus())
             return redirect()->route('student.registration.completed');
         return redirect()->route('student.personal');

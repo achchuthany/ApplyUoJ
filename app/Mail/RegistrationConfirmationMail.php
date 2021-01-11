@@ -34,7 +34,7 @@ class RegistrationConfirmationMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('[#'.$this->ref_no.'] Notification of Online Registration ')
+        return $this->subject('['.$this->ref_no.'] Notification of Online Registration ')
             ->markdown('mail.registration_confirmation')
             ->with([
                 'programme' => $this->programme,

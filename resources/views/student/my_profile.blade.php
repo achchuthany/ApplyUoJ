@@ -1,6 +1,6 @@
-@extends('layouts.master-dark-sidebar')
+@extends('layouts.master-topbar')
 @section('title')
-    Profile
+    {{$enroll->student->name_initials}}
 @endsection
 @section('css')
     <!-- Lightbox css -->
@@ -9,8 +9,8 @@
 @endsection
 @section('content')
 @component('common-components.breadcrumb')
-    @slot('pagetitle') Student @endslot
-    @slot('title')<a href="{{url()->previous()}}"> <i class="uil uil-arrow-left "></i> </a> Profile @endslot
+    @slot('pagetitle') Home @endslot
+    @slot('title') {{$enroll->student->name_initials}} @endslot
 @endcomponent
 
     <div class="row mb-4">
@@ -18,26 +18,8 @@
             <div class="card h-100">
                 <div class="card-body">
                     <div class="text-center">
-                        <div class="dropdown float-right">
-                            <a class="text-body text-primary dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true">
-                                Action <i class="mdi mdi-menu "></i>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right">
-                                @if($enroll->status=='Documents Pending'||$enroll->status=='Processing')
-                                <a class="dropdown-item sa-accept" data-enrollid="{{$enroll->id}}" data-enrollstatus="ap" href="#"><i class="mdi mdi-account-check text-success font-size-20"></i> Accept Application</a>
-                                <a class="dropdown-item sa-accept"  data-enrollid="{{$enroll->id}}" data-enrollstatus="in"  href="#"><i class="mdi mdi-account-cancel text-warning font-size-20"></i> Re-submission Request</a>
-                                @endif
-                                <a class="dropdown-item" href="{{route('admin.students.edit',['sid'=>$enroll->student_id])}}"><i class="mdi mdi-account-edit font-size-20"></i> Edit Application</a>
-                                    @if($enroll->status=='Registered')
-                                <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{{route('admin.enroll.change.reg',['id'=>$enroll->id])}}"><i class="mdi mdi-circle-edit-outline text-warning font-size-20"></i> Edit Registration Number </a>
-                                        <a class="dropdown-item" href="{{route('admin.enroll.change.course',['id'=>$enroll->id])}}"><i class="mdi mdi-account-settings text-warning font-size-20"></i>Change Course of Study </a>
-                                    @endif
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{route('student.registration.download.PersonalData',['eid'=>$enroll->id])}}"><i class="mdi mdi-file-pdf text-dark"></i> Download Personal Data</a>
-
-                            </div>
+                        <div class="dropdown float-right text-dark">
+                            <a href="{{route('student.registration.completed')}}">Instructions</a>
                         </div>
                         <div class="dropdown float-left text-dark">
                             <i class="mdi mdi-information-outline"></i> <span id="enroll_status">{{$enroll->status}}</span>
@@ -103,6 +85,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="card-footer text-center">
+                    Contact: Admissions Branch, University of Jaffna <div><i class="mdi mdi-phone"></i>+94 21 222 6714</div>
+                    <div> <i class="mdi mdi-phone"></i> +94 21 221 8120</div>
+                    <div><i class="mdi mdi-email"></i> admissions@univ.jfn.ac.lk</div>
+                </div>
                 <div class="card-footer">
                     <div class="font-size-10 text-center text-uppercase">
                         <i class="mdi mdi-clock-outline"></i> <span class="text-muted">Updated at {{$enroll->updated_at->diffForHumans()}} </span>
@@ -139,12 +126,12 @@
                             <span class="d-none d-sm-block">Parents/Guardian</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#files" role="tab">
-                            <i class="uil  uil-file  font-size-20"></i>
-                            <span class="d-none d-sm-block">Files</span>
-                        </a>
-                    </li>
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link" data-toggle="tab" href="#files" role="tab">--}}
+{{--                            <i class="uil  uil-file  font-size-20"></i>--}}
+{{--                            <span class="d-none d-sm-block">Files</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 {{--                    <li class="nav-item">--}}
 {{--                        <a class="nav-link" data-toggle="tab" href="#log" role="tab">--}}
 {{--                            <i class="uil   uil-clock   font-size-20"></i>--}}
@@ -462,27 +449,27 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane" id="files" role="tabpanel">
-                        <div>
-                            <div class="font-size-16 card-header">Details of Attachments/Files</div>
-                            <div class="card-body">
-                                <div class="zoom-gallery">
-                                    <div class="row">
-                                        @foreach($enroll->student->student_docs()->get() as $doc)
-                                            @if(Storage::disk('docs')->exists($doc->name))
-                                                <div class="col-md-6">
-                                                    <div class="card-title mb-1">{{$doc->name}}</div>
-                                                <a href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->type}}" class="rounded-sm img-thumbnail"></a>
-                                                </div>
-                                            @endif
-                                        @endforeach
+{{--                    <div class="tab-pane" id="files" role="tabpanel">--}}
+{{--                        <div>--}}
+{{--                            <div class="font-size-16 card-header">Details of Attachments/Files</div>--}}
+{{--                            <div class="card-body">--}}
+{{--                                <div class="zoom-gallery">--}}
+{{--                                    <div class="row">--}}
+{{--                                        @foreach($enroll->student->student_docs()->get() as $doc)--}}
+{{--                                            @if(Storage::disk('docs')->exists($doc->name))--}}
+{{--                                                <div class="col-md-6">--}}
+{{--                                                    <div class="card-title mb-1">{{$doc->name}}</div>--}}
+{{--                                                <a href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->type}}" class="rounded-sm img-thumbnail"></a>--}}
+{{--                                                </div>--}}
+{{--                                            @endif--}}
+{{--                                        @endforeach--}}
 
-                                    </div>
-                                </div>
-                            </div>
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                        </div>
-                    </div>
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="tab-pane" id="log" role="tabpanel">
                         <div>

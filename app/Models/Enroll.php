@@ -19,6 +19,6 @@ class Enroll extends Model
     }
 
     public function getRefNo(){
-        return $this->programme->abbreviation.''.sprintf('%04d', $this->id) ;
+        return '#'.$this->programme->abbreviation.''.sprintf('%04d', $this->id) ;
     }
 }
