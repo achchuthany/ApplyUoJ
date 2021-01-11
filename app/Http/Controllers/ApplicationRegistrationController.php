@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AcademicYear;
 use App\Models\ApplicationRegistration;
+use App\Models\Enroll;
 use App\Models\Faculty;
 use App\Models\Programme;
 use Illuminate\Database\QueryException;
@@ -21,6 +22,23 @@ class ApplicationRegistrationController extends Controller
                 ->addColumn('academic_year', function($row){
                     return $row->academic_year->name;
                 })
+                ->addColumn('count_received', function($row){
+                    $reg = Enroll::where([['academic_year_id',$row->academic_year_id],['programme_id',$row->programme_id],['status','Registered']])->count();
+                    $total = Enroll::where([['academic_year_id',$row->academic_year_id],['programme_id',$row->programme_id]])->count();
+                    $x = $total>0? round(($reg/$total)*100,0):0;
+                   $data =  '<div class="progress  progress-xl animated-progess" style="height: 10px;" >
+                        <div class="progress-bar bg-purple" role="progressbar" style="width: '.$x.'%" aria-valuenow="'.$x.'" aria-valuemin="0" aria-valuemax="'.$x.'">
+
+                        </div>
+                    </div>';
+                    return $data;
+                })
+                ->addColumn('count_called', function($row){
+                    $reg = Enroll::where([['academic_year_id',$row->academic_year_id],['programme_id',$row->programme_id],['status','Registered']])->count();
+                    $total = Enroll::where([['academic_year_id',$row->academic_year_id],['programme_id',$row->programme_id]])->count();
+                    $x = $total>0? round(($reg/$total)*100,0):0;
+                    return sprintf("%03d",$reg).'/'.sprintf("%03d",$total).' ('.sprintf("%02d",$x).'%)';
+                })
                 ->addColumn('programme', function($row){
                     return $row->programme->name;
                 })
@@ -29,15 +47,31 @@ class ApplicationRegistrationController extends Controller
                 })
                 ->addColumn('action', function($row){
                     $btn = '
-                     <a href="'.route('admin.enroll.assign.reg.index',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Assign Registration Number"><i class="mdi mdi-account-lock font-size-18"></i> Assign Reg. No.</a>
-                     <a href="'.route('admin.enroll.clear.reg.index',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id]).'" class="px-3 text-danger" data-toggle="tooltip" data-placement="top" title="Delete Registration Number"><i class="mdi mdi-account-remove font-size-18"></i> Clear Reg. No.</a>
-                     <a href="'.route('admin.students.program.academic',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id,'status'=>'all']).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="View All Students"><i class="fas fa-users font-size-18"></i> List of Students</a>
-                    <a href="'.route('admin.application.registrations.edit',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil uil-pen font-size-18"></i> Edit</a>';
+                    <div class="dropdown dropleft">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="mdi mdi-dots-vertical"></i>
+                        </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <h5 class="dropdown-header">Registration</h5>
+                        <a class="dropdown-item" href="'.route('admin.enroll.assign.reg.index',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id]).'"  data-toggle="tooltip" data-placement="top" title="Assign Registration Number"><i class="mdi mdi-account-lock font-size-18"></i> Assign Registration No.</a>
+                        <a class="dropdown-item" href="'.route('admin.enroll.clear.reg.index',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id]).'"   data-toggle="tooltip" data-placement="top" title="Delete Registration Number"><i class="mdi mdi-account-remove font-size-18 text-warning"></i> Clear Registration No.</a>
+                        <div class="dropdown-divider"></div>
+                        <h5 class="dropdown-header">Email</h5>
+                        <a class="dropdown-item" href="'.route('admin.enroll.confirmation',['app_id'=>$row->id]).'"   data-toggle="tooltip" data-placement="top" title=" Confirmation of Enrolment"><i class="mdi mdi-email-send font-size-18"></i> Confirmation of Enrolment</a>
+                        <div class="dropdown-divider"></div>
+                        <h5 class="dropdown-header">Students</h5>
+                        <a class="dropdown-item" href="'.route('admin.students.program.academic',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id,'status'=>'all']).'"  data-toggle="tooltip" data-placement="top" title="View All Students"><i class="fas fa-users font-size-18"></i> List of Students</a>
+                        <div class="dropdown-divider"></div>
+                        <h5 class="dropdown-header">Applications</h5>
+                    <a class="dropdown-item" href="'.route('admin.application.registrations.edit',['id'=>$row->id]).'"   data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil uil-pen font-size-18"></i> Edit</a>
+                        ';
                     if($row->status =='Draft')
-                        $btn.= '<a  class="px-3 text-danger sa-warning" id ="exam'.$row->id.'" data-exam="'.$row->id.'" data-toggle="tooltip" data-placement="top" title="Delete"  ><i class="uil uil-trash-alt font-size-18"> Delete</i></a>';
+                        $btn.= '<a  class="dropdown-item" class="px-3 text-danger sa-warning" id ="exam'.$row->id.'" data-exam="'.$row->id.'" data-toggle="tooltip" data-placement="top" title="Delete"  ><i class="uil uil-trash-alt font-size-18"> Delete</i></a>';
+                    $btn.='</div>
+                            </div>';
                     return $btn;
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action','count_received'])
                 ->make(true);
         }
         return view('application.registration.index');

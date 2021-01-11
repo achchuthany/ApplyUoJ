@@ -23,7 +23,7 @@
                         <table id="datatable" class="table table-striped table-centered datatable dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                             <tr>
-                                <th>Name with Initials</th>
+                                <th>Full Name</th>
                                 <th>NIC</th>
                                 <th>Date of Registration</th>
                                 <th>Assigned Reg. No.</th>
@@ -32,7 +32,7 @@
                             <tbody>
                             @foreach($enrolls as $enroll)
                                 <tr>
-                                    <td>{{$enroll->name_initials}}</td>
+                                    <td>{{$enroll->full_name}}</td>
                                     <td>{{$enroll->nic}}</td>
                                     <td>{{($enroll->registration_date)?Carbon\Carbon::parse($enroll->registration_date)->toFormattedDateString():''}}</td>
                                     <td><i class="mdi mdi-lock-outline text-success" data-toggle="tooltip" data-placement="top" title="Assigned Registration Number"></i> {{$enroll->reg_no}}</td>
@@ -48,8 +48,8 @@
                        @if($isNotVisible)
                        <div class="col-md-8 offset-md-2 text-center">
                            <div class="alert fade show d-block" role="alert">
-                               <i class="mdi mdi-information-outline d-block display-4 mt-2 mb-3 text-danger"></i>
-                               <h4 class="text-danger"> You cannot reset set the data, because last enroll was updated on 3 days before.</h4>
+
+                               <h4 class="text-danger"><i class="mdi mdi-information-outline text-danger"></i> Data was edited on three days before.</h4>
                                </p>
                            </div>
                        </div>

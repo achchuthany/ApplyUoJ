@@ -23,20 +23,16 @@
                         <table id="datatable" class="table table-striped table-centered datatable dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                             <tr>
-                                <th>Name with Initials</th>
+                                <th>Full Name</th>
                                 <th>NIC</th>
-                                <th>Date of Registration</th>
-                                <th>Assigned Reg. No.</th>
                                 <th>Available Reg. No.</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($enrolls as $enroll)
                                 <tr>
-                                    <td>{{$enroll->name_initials}}</td>
+                                    <td>{{$enroll->full_name}}</td>
                                     <td>{{$enroll->nic}}</td>
-                                    <td>{{($enroll->registration_date)?Carbon\Carbon::parse($enroll->registration_date)->toFormattedDateString():''}}</td>
-                                    <td><i class="mdi mdi-lock-outline text-success" data-toggle="tooltip" data-placement="top" title="Assigned Registration Number"></i> {{$enroll->reg_no}}</td>
                                     <td><i class="mdi mdi-lock-open-variant-outline text-info" data-toggle="tooltip" data-placement="top" title="Registration Number can be assign"></i> {{$application->academic_year->application_year.'/'.$application->programme->abbreviation.'/'.sprintf("%03d",$application->next_registration_number++)}}</td>
                                 </tr>
                             @endforeach

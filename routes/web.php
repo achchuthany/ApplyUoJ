@@ -277,6 +277,26 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'as' => 'admin.enroll.change.get.reg',
         'roles' => ['Admin']
     ]);
+    Route::get('/admin/enroll/change/reg/{id}',[
+        'uses' => 'App\Http\Controllers\EnrollController@changeReg',
+        'as' => 'admin.enroll.change.reg',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/enroll/change/reg/process/{id}',[
+        'uses' => 'App\Http\Controllers\EnrollController@changeRegProcess',
+        'as' => 'admin.enroll.change.reg.process',
+        'roles' => ['Admin']
+    ]);
+    Route::get('/admin/enroll/confirmation/{app_id}',[
+        'uses' => 'App\Http\Controllers\EnrollController@confirmation',
+        'as' => 'admin.enroll.confirmation',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/enroll/confirmation/process/{app_id}',[
+        'uses' => 'App\Http\Controllers\EnrollController@confirmationProcess',
+        'as' => 'admin.enroll.confirmation.process',
+        'roles' => ['Admin']
+    ]);
 
 
     //Users
@@ -397,10 +417,15 @@ Route::group(['middleware' => ['auth','verified','roles'],'roles' => ['Student']
 
 });
 
-Route::get('/mailable', function () {
+Route::get('/mailable/1', function () {
     $student = App\Models\Student::first();
     $enroll = $student->enrolls()->first();
     $ref_no = $enroll->getRefNo();
     return new App\Mail\RegistrationConfirmationMail($enroll->programme->name,$student->full_name,$ref_no);
+});
+Route::get('/mailable/2', function () {
+    $student = App\Models\Student::first();
+    $enroll = $student->enrolls()->first();
+    return new App\Mail\EnrolmentConfirmationMail($enroll);
 });
 

@@ -23,7 +23,7 @@
                                 Action <i class="mdi mdi-menu"></i>
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right bg-light">
+                            <div class="dropdown-menu dropdown-menu-right">
                                 @if($enroll->status=='Documents Pending'||$enroll->status=='Processing')
                                 <a class="dropdown-item sa-accept" data-enrollid="{{$enroll->id}}" data-enrollstatus="ap" href="#"><i class="mdi mdi-account-check text-success font-size-20"></i> Accept Application</a>
                                 <a class="dropdown-item sa-accept"  data-enrollid="{{$enroll->id}}" data-enrollstatus="in"  href="#"><i class="mdi mdi-account-cancel text-warning font-size-20"></i> Re-submission Request</a>
@@ -31,7 +31,8 @@
                                 <a class="dropdown-item" href="{{route('admin.students.edit',['sid'=>$enroll->student_id])}}"><i class="mdi mdi-account-edit font-size-20"></i> Edit Application</a>
                                     @if($enroll->status=='Registered')
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{route('admin.enroll.change.course',['id'=>$enroll->id])}}"><i class="mdi mdi-account-settings text-danger font-size-20"></i>Change Course of Study </a>
+                                        <a class="dropdown-item" href="{{route('admin.enroll.change.reg',['id'=>$enroll->id])}}"><i class="mdi mdi-circle-edit-outline text-warning font-size-20"></i> Edit Registration Number </a>
+                                        <a class="dropdown-item" href="{{route('admin.enroll.change.course',['id'=>$enroll->id])}}"><i class="mdi mdi-account-settings text-warning font-size-20"></i>Change Course of Study </a>
                                     @endif
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{route('student.registration.download.PersonalData',['eid'=>$enroll->id])}}"><i class="mdi mdi-file-pdf text-dark"></i> Download Personal Data</a>

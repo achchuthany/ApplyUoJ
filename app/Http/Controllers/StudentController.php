@@ -577,7 +577,7 @@ class StudentController extends Controller
             'district'=>'required',
             'mobile'=>'required',
             'nic'=>'required',
-            'email'=>'required|email',
+            'email'=>'required|email|unique:students',
             'al_exam_year'=>'required',
             'race'=>'required',
             'gender'=>'required',

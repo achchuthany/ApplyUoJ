@@ -21,7 +21,7 @@ List of Students
                         <tr class="bg-transparent">
                             <th>Reference</th>
                             <th>Image</th>
-                            <th>Name With Initials</th>
+                            <th>Full Name</th>
                             <th>NIC No.</th>
                             <th>Mobile</th>
                             <th>Programme</th>

@@ -20,40 +20,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c2ec210-208a-41b5-8c22-9ae5395aa4fe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Jobs/EnrolmentConfirmationJob.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/EnrolmentConfirmationMail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/enroll/confirmation.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/enroll/reg.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mail/enrollment_confirmation.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApplicationRegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicationRegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EnrollController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EnrollController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/RegistrationConfirmationJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/RegistrationConfirmationJob.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mail/RegistrationConfirmationMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/RegistrationConfirmationMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Enroll.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Enroll.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/datatables.students.all.index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/datatables.students.all.index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/datatables.students.list.index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/datatables.students.list.index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/datatables.students.pending.index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/datatables.students.pending.index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/custom/fonts/_fonts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/custom/fonts/_fonts.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mail/registration_confirmation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/registration_confirmation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/registration/address.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/address.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/registration/citizenship.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/citizenship.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/registration/conform.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/conform.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/registration/documents.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/documents.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/registration/education.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/education.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/registration/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/registration/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/nav.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/registration/parents.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/parents.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/registration/personal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/personal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/registration/proceed.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/proceed.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/datatables.application.registrations.index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/datatables.application.registrations.index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/application/registration/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/application/registration/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/enroll/assign.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/enroll/assign.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/enroll/clear.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/enroll/clear.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/all.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/all.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/pending.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/pending.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/mail/html/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/vendor/mail/html/message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/message.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/mail/html/themes/default.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/themes/default.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/ui/auth-backend/RegistersUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/ui/auth-backend/RegistersUsers.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,10 +196,10 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views\mail" />
+      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views\enroll" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images\download" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\app\Http\Controllers" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\js\pages" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views" />
     </key>
   </component>
   <component name="RunManager">
@@ -281,7 +265,10 @@
       <workItem from="1609904045333" duration="13409000" />
       <workItem from="1610002669880" duration="17266000" />
       <workItem from="1610077757224" duration="103000" />
-      <workItem from="1610089739575" duration="10501000" />
+      <workItem from="1610089739575" duration="11125000" />
+      <workItem from="1610118897239" duration="4538000" />
+      <workItem from="1610344104387" duration="4386000" />
+      <workItem from="1610351626630" duration="6231000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1607261190718</created>
@@ -507,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610004835792</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Reference Number">
+      <created>1610102064535</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1610102064535</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -556,17 +550,22 @@
     <MESSAGE value="email update student" />
     <MESSAGE value="email command schedule in kernal" />
     <MESSAGE value="Student Download" />
-    <option name="LAST_COMMIT_MESSAGE" value="Student Download" />
+    <MESSAGE value="Reference Number" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reference Number" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609920321489">
+    <state x="404" y="170" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1610352314195">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="404" y="170" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738@0.0.1366.738" timestamp="1610352314195" />
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1610357148785">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1607505767443" />
     <state x="1779" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1366.728@1366.0.1366.728" timestamp="1607420213119" />
     <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1607522096909" />
     <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1609920321489" />
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1609672289654" />
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1610357148785" />
     <state x="1825" y="276" key="ComposerInitDialogKey" timestamp="1607417156650">
       <screen x="1366" y="0" width="1366" height="728" />
     </state>
@@ -596,11 +595,11 @@
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1607260929715" />
     <state x="184" y="8" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608816149865" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1610004840810">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1610102068397">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1607529786950" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1610004840810" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1610102068397" />
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1609685494437" />
     <state x="92" y="92" width="1182" height="554" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1609862057482">
       <screen x="0" y="0" width="1366" height="738" />
@@ -655,6 +654,11 @@
           <url>file://$PROJECT_DIR$/resources/views/mail/registration_confirmation.blade.php</url>
           <line>8</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/enroll/confirmation.blade.php</url>
+          <line>47</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

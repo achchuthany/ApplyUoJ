@@ -23,8 +23,8 @@
                             <tr>
                                 <th>Academic Year</th>
                                 <th>Programme</th>
-                                <th>#Applicatios</th>
-                                <th>#UGC List</th>
+                                <th>#Registered</th>
+                                <th>#Count</th>
                                 <th>Calling Date</th>
                                 <th>Closing Date</th>
                                 <th>Next Registration Number</th>

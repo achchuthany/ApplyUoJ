@@ -21,9 +21,6 @@
 {{-- Footer --}}
 @slot('footer')
 @component('mail::footer')
-<img src="{{URL::asset('assets/images/uoj.png')}}"  height="50px" alt="University of Jaffna">
-
-
 Please do not reply to this email. Replies to this email will not be responded to or read.
 
 You're receiving this email because you're a registered user of {{ config('app.name') }}.

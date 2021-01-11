@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\EnrolmentConfirmationJob;
 use App\Models\AcademicYear;
 use App\Models\ApplicationRegistration;
 use App\Models\Enroll;
@@ -16,7 +17,7 @@ class EnrollController extends Controller
     private function getEnrolls($pid,$aid,$status){
         return    $enrolls = Enroll::leftJoin('students','students.id','=','enrolls.student_id')
             ->where([['enrolls.programme_id',$pid],['enrolls.academic_year_id',$aid],['enrolls.status',$status]])
-            ->orderBy('students.name_initials','asc')
+            ->orderBy('students.full_name','asc')
             ->get();
     }
     private function checkParams($pid, $aid){
@@ -51,19 +52,24 @@ class EnrollController extends Controller
         return $application->academic_year->application_year.'/'.$application->programme->abbreviation.'/'.sprintf("%03d",$application->next_registration_number);
     }
     private function generateIndexNo(ApplicationRegistration $application){
-        return $application->programme->abbreviation.substr($application->academic_year->application_year,2,2).sprintf("%03d",$application->next_registration_number);
+        $regnos = preg_split("#/#", $application->programme->abbreviation);
+        $regno = "";
+        foreach($regnos as $key=>$value) {
+            $regno .= "$value";
+        }
+        return $regno.substr($application->academic_year->application_year,2,2).sprintf("%03d",$application->next_registration_number);
     }
     public function assignRegistrationNoProcess(Request $request,$pid,$aid){
         $this->checkParams($pid,$aid);
         $enrolls = Enroll::select('enrolls.id as id')->leftJoin('students','students.id','=','enrolls.student_id')
             ->where([['enrolls.programme_id',$pid],['enrolls.academic_year_id',$aid],['enrolls.status','Accepted']])
-            ->orderBy('students.name_initials','asc')
+            ->orderBy('students.full_name','asc')
             ->get();
         foreach ($enrolls as $en){
             DB::beginTransaction();
             $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
             $reg_no = $application->academic_year->application_year.'/'.$application->programme->abbreviation.'/'.sprintf("%03d",$application->next_registration_number);
-            $index_no = $application->programme->abbreviation.substr($application->academic_year->application_year,2,2).sprintf("%03d",$application->next_registration_number);
+            $index_no = $this->generateIndexNo($application); //$application->programme->abbreviation.substr($application->academic_year->application_year,2,2).sprintf("%03d",$application->next_registration_number);
             $enroll = Enroll::whereId($en->id)->first();
             $enroll->reg_no = $reg_no;
             $enroll->index_no = $index_no;
@@ -177,4 +183,51 @@ class EnrollController extends Controller
         }
         return response()->json(['reg_no'=>$reg_no,'index_no'=>$index_no],200);
     }
+
+    public function changeReg($id){
+        $enroll = Enroll::whereId($id)->first();
+        $programmes = Programme::orderBy('name','asc')->get();
+        $ays = AcademicYear::orderBy('name','desc')->get();
+        return view('enroll.reg',['enroll'=>$enroll,'programmes'=>$programmes,'academics'=>$ays]);
+    }
+    public function changeRegProcess(Request $request,$id){
+        $this->validate($request,[
+            'reg_no' => 'sometimes|required|unique:enrolls,reg_no,'.$id,
+            'index_no' => 'sometimes|required|unique:enrolls,index_no,'.$id,
+            'date'=>'required',
+        ]);
+        $enroll = Enroll::whereId($id)->first();
+        $enroll->registration_date= $request['date'];
+        $enroll->reg_no = strtoupper($request['reg_no']);
+        $enroll->index_no = strtoupper($request['index_no']);
+        try {
+            $enroll->update();
+            $message = $enroll->reg_no. ' successfully updated';
+            $msag_type = 'success';
+        }catch(QueryException $e){
+            $message = $e;
+            $msag_type = 'error';
+        }
+        return redirect()->back()->with(['message_type'=>$msag_type,'message'=>$message]);
+
+    }
+
+    public function confirmation($app_id){
+        $application = ApplicationRegistration::whereId($app_id)->first();
+        $enrolls = Enroll::where([['enrolls.programme_id',$application->programme_id],['enrolls.academic_year_id',$application->academic_year_id],['enrolls.status','Registered']])
+            ->orderBy('reg_no','asc')
+            ->get();
+        return view('enroll.confirmation',['enrolls'=>$enrolls,'application'=>$application]);
+    }
+    public function confirmationProcess($app_id){
+        $application = ApplicationRegistration::whereId($app_id)->first();
+        $enrolls = Enroll::where([['enrolls.programme_id',$application->programme_id],['enrolls.academic_year_id',$application->academic_year_id],['enrolls.status','Registered']])
+            ->orderBy('reg_no','asc')
+            ->get();
+        foreach ($enrolls as $enroll){
+            dispatch(new EnrolmentConfirmationJob($enroll->id));
+        }
+        return redirect()->back()->with(['message_type'=>'success','message'=>'Email has been send']);
+    }
+
 }
