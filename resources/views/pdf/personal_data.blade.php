@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('header')
-    <p style="float: right">Form No. 01</p>
+   <p>Reference Number: #{{$enroll->getRefNo()}} <span style="float: right">Form No. 01</span></p>
 @endsection
 
 @section('footer')
@@ -11,7 +11,7 @@
     <table width="100%" style="margin-bottom: 10px">
         <tr>
             <td style="width: 15%" >
-                <div style="width: 35mm;height: 45mm;border: 1px solid black;">
+                <div style="width: 35mm;height: 45mm;border: 1px dashed black;">
                     <div style="text-align: center" ><p>Photo</p></div>
                 </div>
             </td>
@@ -26,94 +26,94 @@
 
     <table style="table-layout: fixed; border-collapse: collapse; width: 100%; border: none;">
         <tr>
-            <th class="p-2" width="40%">Name of the Course of Study</th>
-            <td class="p-2 pl-3 py-3 text-wrap">: {{$enroll->programme->name}}</td>
+            <td class="p-2" width="40%">Name of the Course of Study</td>
+            <td class="p-2 pl-3 py-3 dotted">{{$enroll->programme->name}}</td>
         </tr>
 
         <tr>
-            <th class="p-2">Faculty</th>
-            <td class="p-2">: {{$enroll->programme->faculty->name}}</td>
+            <td class="p-2">Faculty</td>
+            <td class="p-2 dotted">{{$enroll->programme->faculty->name}}</td>
         </tr>
 
         <tr>
-            <th class="p-2">Registration No.</th>
-            <td class="p-2">: {{$enroll->reg_no? $enroll->reg_no: $NotAssigned}}</td>
+            <td class="p-2">Registration No.</td>
+            <td class="p-2 dotted">{{$enroll->reg_no? $enroll->reg_no: $NotAssigned}}</td>
         </tr>
     </table>
     <div class="mt-5 b">1. NAME</div>
     <table style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
         <tr>
-            <th class="p-2" style="width: 40%">i. Title</th>
-            <td class="p-2" style="width: 60%">: {{$student->title}}</td>
+            <td class="p-2" style="width: 40%">i. Title</td>
+            <td class="p-2 dotted" style="width: 60%">{{$student->title}}</td>
         </tr>
         <tr>
-            <th class="p-2">ii. Last Name or Surname</th>
-            <td class="p-2 {{$student->last_name? '': 'text-info'}}">: {{$student->last_name? $student->last_name: $NotAssigned}} </td>
-        </tr>
-
-        <tr>
-            <th class="p-2">iii. Name with Initials</th>
-            <td class="p-2 {{$student->name_initials? '': 'text-info'}}">: {{$student->name_initials? $student->name_initials: $NotAssigned}}</td>
+            <td class="p-2">ii. Last Name or Surname</td>
+            <td class="p-2 dotted {{$student->last_name? '': 'text-info'}}"> {{$student->last_name? $student->last_name: $NotAssigned}} </td>
         </tr>
 
         <tr>
-            <th class="p-2">iv. Full Name</th>
-            <td class="p-2 pl-3 py-3">: {{$student->full_name}}</td>
+            <td class="p-2">iii. Name with Initials</td>
+            <td class="p-2 dotted {{$student->name_initials? '': 'text-info'}}"> {{$student->name_initials? $student->name_initials: $NotAssigned}}</td>
+        </tr>
+
+        <tr>
+            <td class="p-2">iv. Full Name</td>
+            <td class="p-2 dotted"> {{$student->full_name}}</td>
         </tr>
     </table>
     <div class="mt-5 b">2. ADDRESS</div>
     <table class="table-borderless text-wrap" style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
         <tr>
-            <th class="p-2" style="width: 40%">i. Permanent Address</th>
-            <td class="p-2" style="width: 60%;">: {{$permanentAddress}}</td>
+            <td class="p-2" style="width: 40%">i. Permanent Address</td>
+            <td class="p-2 dotted" style="width: 60%;"> {{$permanentAddress}}</td>
         </tr>
         <tr>
-            <th class="p-2">ii. Contact Address</th>
-            <td class="p-2">: {{$contactAddress}}</td>
+            <td class="p-2">ii. Contact Address</td>
+            <td class="p-2 dotted"> {{$contactAddress}}</td>
         </tr>
         <tr>
-            <th class="p-2">iii. Province</th>
-            <td class="p-2 {{$student->province? '': 'text-info'}}">: {{$student->province? $student->province: 'Not Assigned'}}</td>
+            <td class="p-2">iii. Province</td>
+            <td class="p-2 dotted {{$student->province? '': 'text-info'}}"> {{$student->province? $student->province: 'Not Assigned'}}</td>
         </tr>
         <tr>
-            <th class="p-2">iv. District</th>
-            <td class="p-2 {{$student->district? '': 'text-info'}}">: {{$student->district? $student->district: 'Not Assigned'}}</td>
+            <td class="p-2">iv. District</td>
+            <td class="p-2 dotted {{$student->district? '': 'text-info'}}"> {{$student->district? $student->district: 'Not Assigned'}}</td>
         </tr>
         <tr>
-            <th class="p-2">v. National Identity Card / &nbsp;&nbsp;&nbsp;&nbsp;Passport No. </th>
-            <td class="p-2">: {{$student->nic}}</td>
+            <td class="p-2">v. National Identity Card / &nbsp;&nbsp;&nbsp;&nbsp;Passport No. </td>
+            <td class="p-2 dotted"> {{$student->nic}}</td>
         </tr>
         <tr>
-            <th class="p-2">vi. Mobile</th>
-            <td class="p-2">: {{$student->mobile}}</td>
+            <td class="p-2">vi. Mobile</td>
+            <td class="p-2 dotted"> {{$student->mobile}}</td>
         </tr>
         <tr>
-            <th class="p-2">vii. Email</th>
-            <td class="p-2">: {{$student->email}}</td>
+            <td class="p-2">vii. Email</td>
+            <td class="p-2 dotted"> {{$student->email}}</td>
         </tr>
     </table>
 
     <div class="mt-5 b">3. EDUCATIONAL QUALIFICATIONS</div>
     <table style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
         <tr>
-            <th class="p-2" style="width: 50%">i. Year of the G.C.E(A/L) Examination</th>
-            <td class="p-2" style="width: 50%">: {{$student->al_exam_year}}</td>
+            <td class="p-2" style="width: 50%">i. Year of the G.C.E(A/L) Examination</td>
+            <td class="p-2 dotted" style="width: 50%"> {{$student->al_exam_year}}</td>
         </tr>
         <tr>
-            <th class="p-2">ii. Index No. of the G.C.E(A/L) Examination</th>
-            <td class="p-2">: {{$student->al_index_number}}</td>
+            <td class="p-2">ii. Index No. of the G.C.E(A/L) Examination</td>
+            <td class="p-2 dotted"> {{$student->al_index_number}}</td>
         </tr>
         <tr>
-            <th class="p-2">iii. Average Z Score</th>
-            <td class="p-2">: {{$student->al_z_score}}</td>
+            <td class="p-2">iii. Average Z Score</td>
+            <td class="p-2 dotted"> {{$student->al_z_score}}</td>
         </tr>
         <tr>
-            <th class="p-2" colspan="2">iv. G.C.E(A/L) Examination Results</th>
+            <td class="p-2" colspan="2">iv. G.C.E(A/L) Examination Results</td>
         </tr>
         @foreach($enroll->student->student_al_exams as $al_exam)
         <tr>
-            <td class="p-2" style="padding-left:60px">{{$al_exam->subject}} </td>
-            <td class="p-2">: {{$al_exam->grade}}</td>
+            <td class="p-2 dotted" style="padding-left:60px">{{$al_exam->subject}} </td>
+            <td class="p-2 dotted"> {{$al_exam->grade}}</td>
         </tr>
         @endforeach
     </table>
@@ -121,33 +121,33 @@
     <div class="mt-5 b">4.	DETAILS OF CITIIZENSHIP</div>
     <table class="table-borderless text-wrap" style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
         <tr>
-            <th class="p-2" style="width: 25%">i. Race</th>
-            <td class="p-2 pl-3 py-3" style="width: 25%">: {{$race}}</td>
+            <td class="p-2" style="width: 25%">i. Race</td>
+            <td class="p-2 dotted" style="width: 25%"> {{$race}}</td>
 
-            <th class="p-2" style="width: 25%">ii. Gender</th>
-            <td class="p-2 pl-3 py-3" style="width: 25%">: {{$gender}}</td>
+            <td class="p-2" style="width: 25%">ii. Gender</td>
+            <td class="p-2 dotted" style="width: 25%"> {{$gender}}</td>
         </tr>
 
         <tr>
-            <th class="p-2" style="width: 25%">iii. Civil Status</th>
-            <td class="p-2 pl-3 py-3" style="width: 25%">: {{$civil_status}}</td>
+            <td class="p-2" style="width: 25%">iii. Civil Status</td>
+            <td class="p-2 dotted" style="width: 25%"> {{$civil_status}}</td>
 
-            <th class="p-2" style="width: 25%">iv. Religion</th>
-            <td class="p-2 pl-3 py-" style="width: 25%;">: {{$religion}}</td>
+            <td class="p-2" style="width: 25%">iv. Religion</td>
+            <td class="p-2 dotted" style="width: 25%;"> {{$religion}}</td>
         </tr>
 
         <tr>
-            <th class="p-2">v. Date of Birth</th>
-            <td class="p-2 pl-3 py-3">: {{$dob}}</td>
-            <th class="p-2">vi. Age</th>
-            <td class="p-2 pl-3 py-3">: {{$age}} years</td>
+            <td class="p-2">v. Date of Birth</td>
+            <td class="p-2 dotted"> {{$dob}}</td>
+            <td class="p-2">vi. Age</td>
+            <td class="p-2 dotted"> {{$age}} years</td>
         </tr>
 
         <tr>
-            <th class="p-2">vii. Citizenship</th>
-            <td class="p-2 pl-3 py-3">: {{$student->citizenship}}</td>
+            <td class="p-2">vii. Citizenship</td>
+            <td class="p-2 dotted"> {{$student->citizenship}}</td>
             <td class="p-2">If Sri Lanka</td>
-            <td class="p-2 pl-3 py-3">: {{$student->citizenship_type}}</td>
+            <td class="p-2 dotted"> {{$student->citizenship_type}}</td>
         </tr>
 
     </table>
@@ -155,32 +155,32 @@
     <div class="mt-5 b">5.	DETAILS OF PARENTS/GUARDIAN</div>
     <table style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
         <tr>
-            <th class="p-2" style="width: 30%">i. Full name of Father / &nbsp;&nbsp;&nbsp;&nbsp;Mother / Guardian</th>
-            <td class="p-2 pl-3 py-3" style="width: 70%">: {{$student->parent_full_name}}</td>
+            <td class="p-2" style="width: 35%">i. Full name of Father / &nbsp;&nbsp;&nbsp;&nbsp;Mother / Guardian</td>
+            <td class="p-2 dotted" style="width: 65%"> {{$student->parent_full_name}}</td>
         </tr>
         <tr>
-            <th class="p-2">ii. Occupation</th>
-            <td class="p-2 pl-3 py-3">: {{$student->parent_occupation}}</td>
+            <td class="p-2">ii. Occupation</td>
+            <td class="p-2 dotted"> {{$student->parent_occupation}}</td>
         </tr>
         <tr>
-            <th class="p-2">iii. Address of the <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;place of work</th>
-            <td class="p-2 pl-3 py-3">: {{$student->parent_address_work}}</td>
+            <td class="p-2">iii. Address of the <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;place of work</td>
+            <td class="p-2 dotted"> {{$student->parent_address_work}}</td>
         </tr>
         <tr>
-            <th class="p-2">iv. Telephone No.</th>
-            <td class="p-2 pl-3 py-3">: {{$student->parent_mobile}}, {{$student->parent_landline}}</td>
+            <td class="p-2">iv. Telephone No.</td>
+            <td class="p-2 dotted"> {{$student->parent_mobile}}, {{$student->parent_landline}}</td>
         </tr>
 
         <tr>
-            <th class="p-2" colspan="2">v. Name and the telephone no of the person to be informed in case of an Emergency</th>
+            <td class="p-2" colspan="2">v. Name and the telephone no of the person to be informed in case of an Emergency</td>
         </tr>
         <tr>
             <td class="p-2" style="padding-left: 50px">Name</td>
-            <td class="p-2">: {{$student->emergency_contact_name}}</td>
+            <td class="p-2 dotted"> {{$student->emergency_contact_name}}</td>
         </tr>
         <tr>
             <td class="p-2" style="padding-left: 50px">Mobile</td>
-            <td class="p-2">: {{$student->emergency_contact_mobile}}</td>
+            <td class="p-2 dotted"> {{$student->emergency_contact_mobile}}</td>
         </tr>
     </table>
 

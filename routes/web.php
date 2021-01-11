@@ -338,7 +338,18 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'roles' => ['Admin','Student']
     ]);
 
-
+//CHECK MAIL
+    Route::get('/mailable/1', function () {
+        $student = App\Models\Student::first();
+        $enroll = $student->enrolls()->first();
+        $ref_no = $enroll->getRefNo();
+        return new App\Mail\RegistrationConfirmationMail($enroll->programme->name,$student->full_name,$ref_no);
+    });
+    Route::get('/mailable/2', function () {
+        $student = App\Models\Student::first();
+        $enroll = $student->enrolls()->first();
+        return new App\Mail\EnrolmentConfirmationMail($enroll);
+    });
 
 });
 
@@ -415,17 +426,5 @@ Route::group(['middleware' => ['auth','verified','roles'],'roles' => ['Student']
         'roles' => ['Student','Admin']
     ]);
 
-});
-
-Route::get('/mailable/1', function () {
-    $student = App\Models\Student::first();
-    $enroll = $student->enrolls()->first();
-    $ref_no = $enroll->getRefNo();
-    return new App\Mail\RegistrationConfirmationMail($enroll->programme->name,$student->full_name,$ref_no);
-});
-Route::get('/mailable/2', function () {
-    $student = App\Models\Student::first();
-    $enroll = $student->enrolls()->first();
-    return new App\Mail\EnrolmentConfirmationMail($enroll);
 });
 

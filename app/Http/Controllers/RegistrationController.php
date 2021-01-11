@@ -376,7 +376,7 @@ class RegistrationController extends Controller
         ];
         $dompdf = PDF::loadView('pdf.personal_data',$data);
         $dompdf->setPaper('A4', 'portrait');
-        //return $dompdf->stream();
+        return $dompdf->stream();
         return $dompdf->download($student->nic.'_Personal_Data.pdf');
     }
     public function checkApplicationStatus(){

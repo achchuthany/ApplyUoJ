@@ -20,23 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c2ec210-208a-41b5-8c22-9ae5395aa4fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Jobs/EnrolmentConfirmationJob.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mail/EnrolmentConfirmationMail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/enroll/confirmation.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/enroll/reg.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mail/enrollment_confirmation.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApplicationRegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicationRegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EnrollController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EnrollController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mail/RegistrationConfirmationMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/RegistrationConfirmationMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/datatables.application.registrations.index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/datatables.application.registrations.index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/application/registration/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/application/registration/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/enroll/assign.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/enroll/assign.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/enroll/clear.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/enroll/clear.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/all.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/all.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/mail/html/message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/message.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/pdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/pdf.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pdf/personal_data.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pdf/personal_data.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -268,7 +255,8 @@
       <workItem from="1610089739575" duration="11125000" />
       <workItem from="1610118897239" duration="4538000" />
       <workItem from="1610344104387" duration="4386000" />
-      <workItem from="1610351626630" duration="6231000" />
+      <workItem from="1610351626630" duration="6950000" />
+      <workItem from="1610372181058" duration="2371000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1607261190718</created>
@@ -501,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610102064535</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Email Notification and Reg">
+      <created>1610358005043</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1610358005043</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,7 +546,8 @@
     <MESSAGE value="email command schedule in kernal" />
     <MESSAGE value="Student Download" />
     <MESSAGE value="Reference Number" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reference Number" />
+    <MESSAGE value="Email Notification and Reg" />
+    <option name="LAST_COMMIT_MESSAGE" value="Email Notification and Reg" />
   </component>
   <component name="WindowStateProjectService">
     <state x="404" y="170" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1610352314195">
@@ -595,12 +591,12 @@
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1607260929715" />
     <state x="184" y="8" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608816149865" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1610102068397">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1610358007206">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1607529786950" />
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1610102068397" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1609685494437" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1610358007206" />
     <state x="92" y="92" width="1182" height="554" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1609862057482">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

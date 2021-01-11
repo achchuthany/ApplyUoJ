@@ -11,7 +11,7 @@
             margin: 0cm 0cm;
         }
         *{
-            font-family: 'Times New Roman', serif;
+            font-family:  Helvetica, sans-serif;
         }
         /** Define now the real margins of every page in the PDF **/
         body {
@@ -27,12 +27,14 @@
             text-align: left;
         }
         .p-2{
-            padding: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
         }
         .mt-5{
-            margin-top: 20px;
-            border-bottom: 1px solid #dddddd;
-            padding-bottom: 5px;
+            margin-top: 15px;
+            /*border: 1px solid #dddddd;*/
+            background-color: #f6f6f6;
+            padding: 10px;
         }
         .b{font-weight: bolder;}
         .text-info{
@@ -71,7 +73,7 @@
             content: "Page " counter(page);
         }
         .dotted{
-            border-bottom: 1px dotted black;
+            border-bottom: 1px dotted #555b6d;
         }
         .text-justify{
             text-align: justify;
