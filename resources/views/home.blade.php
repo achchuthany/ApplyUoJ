@@ -1,19 +1,19 @@
 @extends('layouts.master-dark-sidebar')
 @section('title')
-    Home
+    Students Statistics
 @endsection
 
 @section('content')
     @component('common-components.breadcrumb')
         @slot('pagetitle') Home @endslot
-        @slot('title') Students Statics @endslot
+        @slot('title') Students Statistics @endslot
     @endcomponent
 
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-header h6">
-                    Students Statics by Programme
+                    Students Statistics by Programme
                     <span class="float-right">Academic Year
                         <select  id="ay">
                             @foreach($ays as $ay)
