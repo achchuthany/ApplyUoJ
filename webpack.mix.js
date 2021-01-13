@@ -124,6 +124,7 @@ var app_pages_assets = {
         folder.src + "js/pages/generate.reg.no.js",
         folder.src + "js/pages/datatables.users.index.js",
         folder.src + "js/pages/delete.users.index.js",
+        folder.src + "js/pages/datatables.students.delete.index.js",
     ]
 };
 

@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('header')
-   <p>Reference Number: #{{$enroll->getRefNo()}} <span style="float: right">Form No. 01</span></p>
+   <p>Reference Number: {{$enroll->getRefNo()}} <span style="float: right">Form No. 01</span></p>
 @endsection
 
 @section('footer')

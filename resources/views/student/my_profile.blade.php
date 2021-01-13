@@ -60,28 +60,10 @@
                                 <p class="mb-1">Registration Number</p>
                                 <h5 class="font-size-16 {{$enroll->reg_no? '': 'text-info'}} ">{{$enroll->reg_no? $enroll->reg_no: 'Not Assigned'}} </h5>
                             </div>
-
-                            <div class="mt-4">
-                                <p class="mb-1">Index Number</p>
-                                <h5 class="font-size-16 {{$enroll->index_no? '': 'text-info'}} ">{{$enroll->index_no? $enroll->index_no: 'Not Assigned'}}</h5>
-                            </div>
-
                             <div class="mt-4">
                                 <p class="mb-1">Date of Registration</p>
                                 <h5 class="font-size-16 {{$enroll->registration_date? '': 'text-info'}} ">{{$enroll->registration_date? Carbon\Carbon::parse($enroll->registration_date)->toFormattedDateString(): 'Not Assigned'}}</h5>
                             </div>
-
-                            <div class="mt-4">
-                                <p class="mb-1">Date of Effective</p>
-                                <h5 class="font-size-16 {{$enroll->effective_date? '': 'text-info'}} ">{{$enroll->effective_date? $enroll->effective_date: 'Not Assigned'}}</h5>
-                            </div>
-
-                            <div class="mt-4">
-                                <p class="mb-1">Grade Point Average</p>
-                                <h5 class="font-size-16 {{$enroll->gpa? '': 'text-info'}} ">{{$enroll->gpa? $enroll->gpa: 'Not Assigned'}}</h5>
-                            </div>
-
-
                         </div>
                     </div>
                 </div>

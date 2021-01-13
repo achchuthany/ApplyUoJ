@@ -7,7 +7,6 @@ We inform you that your registration has been <b>confirmed</b> for the {{$enroll
 <p>Student Name: {{$enroll->student->full_name}}</p>
 <p>Course: {{$enroll->programme->name}}</p>
 <p>Registration Number: {{$enroll->reg_no}}</p>
-<p>Index Number: {{$enroll->index_no}}</p>
 <p>Date of Registration: {{($enroll->registration_date)? \Carbon\Carbon::parse($enroll->registration_date)->toFormattedDateString() : ''}}</p>
 <p>Enrollment Status: <b>{{$enroll->status}}</b></p>
 @endcomponent

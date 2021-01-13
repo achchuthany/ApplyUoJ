@@ -383,7 +383,7 @@ class RegistrationController extends Controller
         ];
         $dompdf = PDF::loadView('pdf.personal_data',$data);
         $dompdf->setPaper('A4', 'portrait');
-        return $dompdf->stream();
+        //return $dompdf->stream();
         return $dompdf->download($student->nic.'_Personal_Data.pdf');
     }
     public function checkApplicationStatus(){
@@ -396,13 +396,13 @@ class RegistrationController extends Controller
     }
     public function imageUploadPost(Request $request){
         $request->validate([
-            'ugc' => 'required|image|mimes:jpeg,jpg|max:5120',
-            'image' => 'required|image|mimes:jpeg,jpg|max:5120',
-            'bank' => 'required|image|mimes:jpeg,jpg|max:5120',
-            'lc_f' => 'required|image|mimes:jpeg,jpg|max:5120',
-            'lc_b' => 'required|image|mimes:jpeg,jpg|max:5120',
-            'nic_f' => 'required|image|mimes:jpeg,jpg|max:5120',
-            'nic_b' => 'required|image|mimes:jpeg,jpg|max:5120',
+            'ugc' => 'required|image|mimes:jpeg,jpg|max:5125',
+            'image' => 'required|image|mimes:jpeg,jpg|max:5125',
+            'bank' => 'required|image|mimes:jpeg,jpg|max:5125',
+            'lc_f' => 'required|image|mimes:jpeg,jpg|max:5125',
+            'lc_b' => 'required|image|mimes:jpeg,jpg|max:5125',
+            'nic_f' => 'required|image|mimes:jpeg,jpg|max:5125',
+            'nic_b' => 'required|image|mimes:jpeg,jpg|max:5125',
         ]);
         $student = Auth::user()->students()->latest()->first();
 

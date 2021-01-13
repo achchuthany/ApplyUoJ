@@ -127,6 +127,17 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'as' => 'admin.students.search.list',
         'roles' => ['Admin']
     ]);
+    Route::get('/admin/students/delete',[
+        'uses' => 'App\Http\Controllers\StudentController@delete',
+        'as' => 'admin.students.delete.index',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/students/delete/process',[
+        'uses' => 'App\Http\Controllers\StudentController@deleteProcess',
+        'as' => 'admin.students.delete.process',
+        'roles' => ['Admin']
+    ]);
+
 
     //Faculty
 

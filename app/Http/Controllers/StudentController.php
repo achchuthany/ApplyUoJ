@@ -835,5 +835,70 @@ class StudentController extends Controller
             'enrolls'=>$enrolls
         ]);
     }
+    public function delete(Request $request){
+        if ($request->ajax()) {
+            $data = Student::latest()->get();
+            return Datatables::of($data)
+                ->addColumn('name', function($row){
+                    return $row->name_initials;
+                })
+                ->addColumn('nic', function($row){
+                    return $row->nic;
+                })
+                ->addColumn('mobile', function($row){
+                    return $row->mobile;
+                })
+                ->addColumn('enrolls', function($row){
+                    return $row->enrolls()->count();
+                })
+                ->addColumn('updated', function($row){
+                    return $row->updated_at;
+                })
+                ->addColumn('action', function($row){
+                    $btn = '<div class="custom-control custom-checkbox mb-2 mr-sm-3">';
+                    if($row->enrolls()->where('status','<>','Invited')->count()>0)
+                        $btn.='<i class="mdi mdi-lock text-success font-size-16" data-toggle="tooltip" data-placement="top" title="Cannot remove student "></i>';
+                    else
+                        $btn.='
+                                <input type="checkbox" id="'.$row->id.'" name="delete[]" value="'.$row->id.'" class="custom-control-input">
+                                <label class="custom-control-label" for="'.$row->id.'">
+                                    <i class="mdi mdi-account-remove text-danger font-size-16" data-toggle="tooltip" data-placement="top" title="Delete"></i></label>';
+                        $btn.='</div>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view('student.delete');
+    }
+public function deleteProcess(Request $request) {
 
+        $stu_ids = $request['delete'];
+
+        if(!$stu_ids)
+            return redirect()->back()->with(['warning'=>'Select the students']);
+        $a=$b=0;
+        foreach ($stu_ids as $id){
+            try{
+                $student  = Student::whereId($id)->first();
+                if($student->enrolls()->where('status','<>','Invited')->count()<1) {
+                    $enrolls = $student->enrolls()->delete();
+                    $address = $student->addresses()->delete();
+                    $users = $student->users()->delete();
+                    $al = $student->student_al_exams()->delete();
+                    $student_docs = $student->student_docs()->delete();
+                    $student->delete();
+                    $a++;
+                }else{
+                    $b++;
+                }
+                $code = 200;
+                $msg = 'Students record was deleted. (Number of record : '.$a.')';
+            }catch (QueryException $ex){
+                $msg = $ex->getMessage();
+                $code = 201;
+            }
+        }
+    return redirect()->back()->with(['success'=>$msg]);
+}
 }

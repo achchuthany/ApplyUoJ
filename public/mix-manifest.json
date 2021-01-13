@@ -13,6 +13,7 @@
     "/assets/css/app-dark.css": "/assets/css/app-dark.css",
     "/assets/js/pages/datatables.programmes.index.js": "/assets/js/pages/datatables.programmes.index.js",
     "/assets/js/pages/datatables.students.all.index.js": "/assets/js/pages/datatables.students.all.index.js",
+    "/assets/js/pages/datatables.students.delete.index.js": "/assets/js/pages/datatables.students.delete.index.js",
     "/assets/js/pages/datatables.students.list.index.js": "/assets/js/pages/datatables.students.list.index.js",
     "/assets/js/pages/datatables.students.pending.index.js": "/assets/js/pages/datatables.students.pending.index.js",
     "/assets/js/pages/datatables.users.index.js": "/assets/js/pages/datatables.users.index.js",
