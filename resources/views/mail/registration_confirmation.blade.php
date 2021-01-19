@@ -11,7 +11,7 @@ Your reference number is <b>{{$ref_no}}</b>
 
 <p>To download all the documents , use your email address and password in  <a href="{{route('home') }}" target="_blank">Login page</a>.</p>
 
-<p>Your registration will be confirmed when you received notification about you registration number.</p>
+<p>Your registration will be confirmed when you have received notification about your registration number.</p>
 
 <p>If you do not remember your password, simply click the <a href="{{ route('password.request')}}" target="_blank">Forgot Password</a> link and follow the instructions.</p>
 
