@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+Route::get('/info',[
+    'uses' => 'App\Http\Controllers\HomeController@info',
+    'as' => 'info'
+]);
 
 Auth::routes();
 Auth::routes(['verify' => true]);

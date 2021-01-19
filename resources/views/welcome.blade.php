@@ -123,7 +123,7 @@
                                                                     <li>National Identity Card Back Side</li>
                                                                     <li>School Leaving Certificate Front Side</li>
                                                                     <li>School Leaving Certificate Back Side</li>
-                                                                    <li>Paying voucher  (Use the<a href="{{URL::asset('/assets/images/download/PAYING_IN_VOUCHER.pdf')}}" download="PAYING_IN_VOUCHER.pdf" target="_blank" class="btn btn-sm btn-link"><i class="mdi mdi-download-outline"></i> Paying in Voucher </a> Form)</li>
+                                                                    <li>Paying voucher  (Use the<a href="{{URL::asset('/assets/images/download/PAYING_IN_VOUCHER.pdf')}}" download="PAYING_IN_VOUCHER.pdf" target="_blank" ><i class="mdi mdi-file-pdf"></i>Paying in Voucher </a> Form)</li>
                                                                 </ol>
                                                                 <p>Please attach the copy of the paid deposit slip together with the University copy of the voucher you have downloaded after paying the required fee to any branch of the People’s Bank.</p>
 
@@ -138,7 +138,7 @@
                                                             </div>
 
                                                             <div class="media-body">
-                                                                <p class="text-muted"> You should complete all the entry requirements on or before the closing date.</p>                                                            </div>
+                                                                <p class="text-muted"> You should complete all the entry requirements on or before the (<a href="{{route('info')}}" > closing date</a>.</p>                                                            </div>
                                                         </div>
 
                                                         <div class="media mt-4">

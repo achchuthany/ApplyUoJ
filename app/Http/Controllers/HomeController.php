@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\AcademicYear;
+use App\Models\ApplicationRegistration;
 use App\Models\Enroll;
 use App\Models\Faculty;
 use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -18,10 +20,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
 
     /**
      * Show the application dashboard.
@@ -57,5 +59,10 @@ class HomeController extends Controller
         }
 
         return response()->json(['programme'=>$programme,'count'=>$students]);
+    }
+
+    public function info(){
+        $data = ApplicationRegistration::whereDate('close_date', '>=', Carbon::now())->where('status','Published')->get();
+        return view('info',['data'=>$data]);
     }
 }

@@ -63,12 +63,12 @@ class ApplicationRegistrationController extends Controller
                         <a class="dropdown-item" href="'.route('admin.students.program.academic',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id,'status'=>'all']).'"  data-toggle="tooltip" data-placement="top" title="View All Students"><i class="fas fa-users font-size-18"></i> List of Students</a>
                         <div class="dropdown-divider"></div>
                         <h5 class="dropdown-header">Applications</h5>
-                    <a class="dropdown-item" href="'.route('admin.application.registrations.edit',['id'=>$row->id]).'"   data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil uil-pen font-size-18"></i> Edit</a>
+                        <a class="dropdown-item" href="'.route('admin.application.registrations.edit',['id'=>$row->id]).'"   data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil uil-pen font-size-18"></i> Edit</a>
                         ';
-                    if($row->status =='Draft')
-                        $btn.= '<a  class="dropdown-item" class="px-3 text-danger sa-warning" id ="exam'.$row->id.'" data-exam="'.$row->id.'" data-toggle="tooltip" data-placement="top" title="Delete"  ><i class="uil uil-trash-alt font-size-18"> Delete</i></a>';
-                    $btn.='</div>
-                            </div>';
+                    if($row->status =='Draft') {
+                        $btn .= '<a  class="dropdown-item text-danger sa-warning" id ="exam' . $row->id . '" data-exam="' . $row->id . '" data-toggle="tooltip" data-placement="top" title="Delete"  ><i class="uil uil-trash-alt font-size-18"> </i> Delete</a>';
+                    }
+                        $btn.='</div></div>';
                     return $btn;
                 })
                 ->rawColumns(['action','count_received'])
@@ -140,6 +140,11 @@ class ApplicationRegistrationController extends Controller
     }
     public function delete($id){
         $exam = ApplicationRegistration::where([['id',$id],['status','Draft']])->first();
+        $enroll= Enroll::where([['programme_id',$exam->programme_id],['academic_year_id',$exam->academic_year_id]])->count();
+        if($enroll>0){
+            return response()->json(['msg'=>'Students were there, you cannot delete this','code'=>201]);
+
+        }
         try{
             $exam->delete();
             $code = 200;
