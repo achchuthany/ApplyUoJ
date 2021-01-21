@@ -1,4 +1,4 @@
-@extends('layouts.master-without-nav')
+@extends('layouts.master-without-nav-index')
 @section('title')
     Online Registration
 @endsection
@@ -7,9 +7,8 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <div class="card bg-transparent shadow-none">
+            <div class="card  shadow-none">
                 <div class="card-body">
-
                     <div class="row justify-content-center mt-4">
                         <div class="col-lg-5">
                             <div class="text-center">
@@ -22,8 +21,8 @@
                     </div>
 
                     <div class="card-body bg-transparent text-center mt-4">
-                        <div class="h2  text-primary">
-                            Online Registration of Students for Courses of Study - University of Jaffna
+                        <div class="h2 font-weight-lighter text-dark">
+                            Online Registration of Students for Courses of Study
                         </div>
                     </div>
 

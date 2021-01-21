@@ -54,7 +54,7 @@ Reset Password
                 </div>
             </div>
             <div class="mt-5 text-center">
-                <p>© {{ date('Y') }}  {{config('app.name')}} | University of Jaffna | All Rights Reserved</p>
+                <p>© {{ date('Y') }}  {{config('app.name')}}  | All Rights Reserved</p>
             </div>
         </div>
     </div>
