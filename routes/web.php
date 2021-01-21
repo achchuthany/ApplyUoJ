@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/apply', function () {
     return view('welcome');
 })->name('welcome');
+
 Route::get('/info',[
     'uses' => 'App\Http\Controllers\HomeController@info',
     'as' => 'info'
@@ -30,6 +31,12 @@ Route::post('/user/reset',[
 ]);
 
 Route::group(['middleware' => ['auth','verified','roles']], function () {
+    //index
+    Route::get('/',[
+        'uses' => 'App\Http\Controllers\HomeController@index',
+        'as' => 'index',
+        'roles' => ['Admin','Student']
+    ]);
     //home
     Route::get('/home',[
         'uses' => 'App\Http\Controllers\HomeController@index',

@@ -3375,7 +3375,7 @@ a.ck.ck-button:not(.ck-disabled):hover {
 }
 
 .authentication-bg {
-  background-color: #f6f6f6;
+  background-color: #fdfdfd;
 }
 
 .authentication-bg .auth-logo .logo {
@@ -3389,7 +3389,7 @@ a.ck.ck-button:not(.ck-disabled):hover {
   height: 100%;
   align-items: center;
   position: relative;
-  background-color: #f6f6f6;
+  background-color: #fdfdfd;
 }
 
 .authentication-student-bg .auth-logo .logo {

@@ -20,11 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c2ec210-208a-41b5-8c22-9ae5395aa4fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/info.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/images/logo-light.psd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApplicationRegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicationRegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/app-rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app-rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/app-rtl.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app-rtl.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/app.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/logo-dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/logo-dark.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/logo-light.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/logo-light.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/logo-dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/logo-dark.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/logo-light.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/logo-light.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scss/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -171,23 +182,23 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/images" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images\users" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\storage\app" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\ApplyUoJ\public\assets\images" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\js\pages" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views\student" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views\mail" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views\enroll" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images" />
+      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images\users" />
+      <recent name="D:\xampp\htdocs\ApplyUoJ\storage\app" />
     </key>
   </component>
   <component name="RunManager">
@@ -262,7 +273,8 @@
       <workItem from="1610514664348" duration="4148000" />
       <workItem from="1611039993363" duration="854000" />
       <workItem from="1611050938153" duration="682000" />
-      <workItem from="1611069552239" duration="2745000" />
+      <workItem from="1611069552239" duration="2883000" />
+      <workItem from="1611218909384" duration="4374000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1607261190718</created>
@@ -537,7 +549,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611051016218</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="update">
+      <created>1611072435061</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1611072435061</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,7 +596,6 @@
     <MESSAGE value="string size" />
     <MESSAGE value="test update" />
     <MESSAGE value="welcome page" />
-    <MESSAGE value="update" />
     <MESSAGE value="'Asia/Colombo'" />
     <MESSAGE value="fix" />
     <MESSAGE value="Data Mapping" />
@@ -592,7 +610,8 @@
     <MESSAGE value="student profile" />
     <MESSAGE value="Delete Students" />
     <MESSAGE value="english check" />
-    <option name="LAST_COMMIT_MESSAGE" value="english check" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="309" y="47" key="#Inspections" timestamp="1610466705380">
@@ -640,12 +659,12 @@
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1607260929715" />
     <state x="184" y="8" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608816149865" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1611051020818">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1611072437983">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1607529786950" />
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1610102068397" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1611051020818" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1611072437983" />
     <state x="92" y="92" width="1182" height="554" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1609862057482">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

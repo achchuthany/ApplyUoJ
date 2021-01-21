@@ -6,15 +6,15 @@ Login
 <div class="account-pages">
     <div class="container">
         <div class="row vh-100 justify-content-center align-items-center">
-            <div class="col-md-8 col-lg-6 col-xl-5">
-                <div class="card ">
-                    <div class="row">
-{{--                        <div class="col-md-6">--}}
-{{--                            <div class="card-body">--}}
-{{--                                <img src="{{URL::asset('assets/images/account.gif')}}" class="img-fluid"/>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-                        <div class="col-md-12">
+            <div class="col-md-12 col-lg-12 col-xl-10">
+                <div class="card bg-transparent shadow-none">
+                    <div class="row align-items-center ">
+                        <div class="col-md-6">
+                            <div class="card-body text-center">
+                                <img src="{{URL::asset('assets/images/uoj.png')}}" class="logo " height="80"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -27,8 +27,8 @@ Login
                                     </div>
                                 </div>
                                     <div class="text-center">
-                                        <h5 class="text-primary">My Applications</h5>
-                                        <p class="text-muted">Sign in below to manage existing applications and upload documents.</p>
+                                        <h5 class="text-dark">Student Information System</h5>
+                                        <p class="text-muted">Sign in below to manage your MyUoJ account</p>
                                     </div>
                                     <div class="">
                                         <form method="POST" action="{{ route('login') }}">
@@ -69,18 +69,17 @@ Login
                                                 <button class="btn btn-primary w-sm waves-effect waves-light" type="submit">{{ __('Log In') }}</button>
                                             </div>
                                             <div class="mt-4 text-center">
-                                                <p class="mb-0">Don't have an account ? <a href="{{url('register')}}" class="font-weight-medium text-primary"> Start new application </a> </p>
+                                                <p class="mb-0">Don't have an account ? <a href="{{url('apply')}}" class="font-weight-medium text-primary"> Apply now! </a> </p>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 mt-2 text-center text-muted">
-                        <p>© 2020 {{config('app.name')}}.</p>
-                        <p class="font-size-10">Developed by <a href="https://cv.achchuthan.org" class="btn-link" target="_blank">ACHCHUTHAN.ORG</a></p>
+                    <div class="row">
+                        <div class="col-md-12 mt-2 text-center text-muted">
+                            <p>© {{ date('Y') }}  {{config('app.name')}} | University of Jaffna | All Rights Reserved</p>
+                        </div>
                     </div>
                 </div>
             </div>

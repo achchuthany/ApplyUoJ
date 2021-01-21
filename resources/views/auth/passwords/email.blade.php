@@ -54,7 +54,7 @@ Reset Password
                 </div>
             </div>
             <div class="mt-5 text-center">
-                <p>© 2020 {{config('app.name')}}. Developed by <a href="https://cv.achchuthan.org" class="btn-link">ACHCHUTHAN.ORG</a> </p>
+                <p>© {{ date('Y') }}  {{config('app.name')}} | University of Jaffna | All Rights Reserved</p>
             </div>
         </div>
     </div>
