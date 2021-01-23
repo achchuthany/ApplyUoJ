@@ -20,29 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c2ec210-208a-41b5-8c22-9ae5395aa4fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/images/slider-bg-1.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/images/slider-bg-4.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/app-dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app-dark.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/app-dark.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app-dark.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/app-rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app-rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/app-rtl.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app-rtl.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/app.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/images/logo-dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/logo-dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/images/logo-light.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/logo-light.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/logo-dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/logo-dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/logo-light.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/logo-light.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/logo-light.psd" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/logo-light.psd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/custom/pages/_authentication.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/custom/pages/_authentication.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/info.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/info.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -570,7 +550,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611223874235</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Registration error modified and vendor script move to auth">
+      <created>1611410262019</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1611410262019</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,7 +587,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Database" />
     <MESSAGE value="Students" />
     <MESSAGE value="Step" />
     <MESSAGE value="Update 2" />
@@ -625,7 +611,8 @@
     <MESSAGE value="english check" />
     <MESSAGE value="update" />
     <MESSAGE value="Interface Update and Landing Page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Interface Update and Landing Page" />
+    <MESSAGE value="Registration error modified and vendor script move to auth" />
+    <option name="LAST_COMMIT_MESSAGE" value="Registration error modified and vendor script move to auth" />
   </component>
   <component name="WindowStateProjectService">
     <state x="309" y="47" key="#Inspections" timestamp="1610466705380">
@@ -636,14 +623,14 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="404" y="170" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738@0.0.1366.738" timestamp="1610352314195" />
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1610516085263">
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1611409378904">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1607505767443" />
     <state x="1779" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1366.728@1366.0.1366.728" timestamp="1607420213119" />
     <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1607522096909" />
     <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1609920321489" />
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1610516085263" />
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1611409378904" />
     <state x="1825" y="276" key="ComposerInitDialogKey" timestamp="1607417156650">
       <screen x="1366" y="0" width="1366" height="728" />
     </state>
@@ -668,17 +655,21 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="637" height="170" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1607232562435" />
+    <state x="504" y="71" key="RollbackChangesDialog" timestamp="1611410215273">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="504" y="71" key="RollbackChangesDialog/0.0.1366.738@0.0.1366.738" timestamp="1611410215273" />
     <state x="184" y="8" key="SettingsEditor" timestamp="1608816149865">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1607260929715" />
     <state x="184" y="8" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608816149865" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1611223878058">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1611410263651">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1607529786950" />
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1611223878058" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1611072437983" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1611410263651" />
     <state x="92" y="92" width="1182" height="554" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1609862057482">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
