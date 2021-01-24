@@ -10,8 +10,8 @@ function makeid(length) {
 
 
 $(document).on('click', '.sa-warning', function(event){
-    var exam_id = event.target.parentNode.dataset.exam ;
-    var exam_row = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
+    var exam_id = event.target.dataset.exam ;
+    var exam_row = event.target.parentElement.parentElement.parentElement.parentElement;
     console.log(exam_id);
     swal.queue([{
         title: "Are you sure?",
