@@ -9,7 +9,7 @@ Login
             <div class="col-md-12 col-lg-12 col-xl-12">
                 <div class="">
                     <div class="row align-items-center ">
-                        <div class="col-md-7">
+                        <div class="col-lg-7">
                             <div class="card-body text-center">
 
                                 <div class="h1 font-weight-lighter text-light">Welcome Back !</div>
@@ -17,7 +17,7 @@ Login
 
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-lg-5">
                             <div class="card rounded-lg shadow-lg p-2">
                                 <div class="card-body">
                                 <div class="row">

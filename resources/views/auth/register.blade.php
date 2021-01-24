@@ -6,7 +6,7 @@ Register
 <div class="account-pages">
     <div class="container">
         <div class="row vh-100 align-items-center justify-content-center">
-            <div class="col-md-10 col-lg-10 col-xl-9">
+            <div class="col-md-12 col-lg-10 col-xl-9">
                 <div class="card rounded-lg shadow-lg mt-3">
                     <div class="card-body p-4">
                         <div class="row">
