@@ -28,9 +28,6 @@ You're receiving this email because you're a registered user of {{ config('app.n
 If you do not wish to receive these updates, please contact admissions@univ.jfn.ac.lk
 
 © {{ date('Y') }} <a target="_blank" href="{{config('app.url')}}"> {{ config('app.name') }}</a>. @lang('All rights reserved.')
-
-
-Developed by <a target="_blank" href="https://cv.achchuthan.org">ACHCHUTHAN.ORG</a>
 @endcomponent
 @endslot
 @endcomponent
