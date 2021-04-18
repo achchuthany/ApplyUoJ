@@ -224,10 +224,24 @@ class EnrollController extends Controller
         $enrolls = Enroll::where([['enrolls.programme_id',$application->programme_id],['enrolls.academic_year_id',$application->academic_year_id],['enrolls.status','Registered']])
             ->orderBy('reg_no','asc')
             ->get();
+
+        //GET ENV varilables
+        $scheduled_at = getenv("MAIL_START_DELAY_TIME");
+        $delay_bulk = getenv('MAIL_DELAY_TIME_FOR_NEXT_COUNT');
+        $limit = getenv('MAIL_COUNT_FOR_DELAY');
+        $delay_one = getenv('MAIL_DELAY_TIME_FOR_NEXT_MAIL');
+        $count = 0;
         foreach ($enrolls as $enroll){
-            dispatch(new EnrolmentConfirmationJob($enroll->id));
+            ($count>=$limit && $count%$limit==0) ? $scheduled_at = $scheduled_at + $delay_bulk : $scheduled_at += $delay_one;
+            $count++;
+            // send all mail in the queue.
+            $job = (new EnrolmentConfirmationJob($enroll->id))
+                ->delay(
+                    now()->addSeconds($scheduled_at)
+                );
+            dispatch($job);
         }
-        return redirect()->back()->with(['message_type'=>'success','message'=>'Email has been send']);
+        return redirect()->back()->with(['message_type'=>'success','message'=>'Email has been placed in queue for the process. Queue will be start '.getenv("MAIL_START_DELAY_TIME").' second latter.']);
     }
 
 }
