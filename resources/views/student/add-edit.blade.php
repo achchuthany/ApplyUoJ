@@ -826,9 +826,7 @@ Add a Student / Edit Student
     <!-- lightbox init js-->
     <script src="{{ URL::asset('assets/js/pages/lightbox.init.js')}}"></script>
     <script>
-        $(".select2").select2({
-            theme: "classic"
-        });
+        $(".select2").select2();
     </script>
     <script>
         if(!$('#RaceOthers').is(':checked')){
