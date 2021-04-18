@@ -43,7 +43,7 @@
                     <select id="address_country_p" name="address[P][address_country]" class="form-control select2" required>
                         <option selected disabled>Select Country</option>
                         @foreach($countries as $country)
-                            <option value="{{$country}}" {{(isset($address_p)&&!Request::old('address_country'))? ($address_p->address_country==$country?'selected':'') : (Request::old('address_country')==$country?'selected':'') }}>{{$country}}</option>
+                            <option value="{{$country}}" {{(isset($address_p)&&!Request::old('address_country'))? ($address_p->address_country==$country?'selected':($country=='Sri Lanka'?'selected':'')) : (Request::old('address_country')==$country?'selected':($country=='Sri Lanka'?'selected':'')) }}>{{$country}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -93,7 +93,7 @@
                     <select id="address_country" name="address[C][address_country]" class="form-control select2" required>
                         <option selected disabled>Select Country</option>
                         @foreach($countries as $country)
-                            <option value="{{$country}}" {{(isset($address_c)&&!Request::old('address_country'))? ($address_c->address_country==$country?'selected':'') : (Request::old('address_country')==$country?'selected':'') }}>{{$country}}</option>
+                            <option value="{{$country}}" {{(isset($address_c)&&!Request::old('address_country'))? ($address_c->address_country==$country?'selected':($country=='Sri Lanka'?'selected':'')) : (Request::old('address_country')==$country?'selected':($country=='Sri Lanka'?'selected':'')) }}>{{$country}}</option>
                         @endforeach
                     </select>
                 </div>
