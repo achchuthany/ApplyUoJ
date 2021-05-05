@@ -258,8 +258,10 @@ return [
         'ps'=>'Processing',
         'ap'=>'Accepted',
         'rg'=>'Registered',
+        'tr'=>'Transferred',
+        'dr'=>'Dropout',
         're'=>'Rejected',
-        'de'=>'Deleted'
+        'de'=>'Deleted',
     ],
     'countries'=>[
         'Afghanistan',
