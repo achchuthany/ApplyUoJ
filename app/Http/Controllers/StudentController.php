@@ -524,9 +524,12 @@ class StudentController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '
-                   <a href="' . route('admin.students.enroll.profile', ['id' => $row->id]) . '" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="View Submission"><i class="uil uil-user "></i></a>
+                   <a href="' . route('admin.students.enroll.profile', ['id' => $row->id]) . '" class="px-3 btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="View Submission"><i class="uil uil-user "></i> Profile</a>
                    ';
                     return $btn;
+                })
+                ->addColumn('status', function ($row) {
+                    return $row->status;
                 })
                 ->rawColumns(['action', 'image'])
                 ->make(true));

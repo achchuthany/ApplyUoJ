@@ -70,6 +70,7 @@ Students Details by Programme
                             <th>Full Name</th>
                             <th>Permanent Address</th>
                             <th>Date of Registration</th>
+                            <th>Registration Status</th>
                             <th>Profile</th>
                         </tr>
                         </thead>

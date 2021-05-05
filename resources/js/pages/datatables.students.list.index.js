@@ -18,6 +18,7 @@ $(document).ready(function() {
                 {data: 'full_name', name: 'full_name'},
                 {data: 'address', name: 'address'},
                 {data: 'registration_date', name: 'registration_date'},
+                {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             "order": [[ 2, "asc" ]],
