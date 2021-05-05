@@ -145,7 +145,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="mobile">vi. Mobile<span class="text-danger font-size-16">*</span> </label>
-                    <input value="{{(isset($student)&&!Request::old('mobile'))? $student->mobile : Request::old('mobile')}}" id="mobile" name="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" pattern="^[0-9]{9,10}$" required>
+                    <input value="{{(isset($student)&&!Request::old('mobile'))? $student->mobile : Request::old('mobile')}}" id="mobile" name="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror bg-light" readonly>
                     @error('mobile')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

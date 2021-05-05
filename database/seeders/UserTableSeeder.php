@@ -22,6 +22,7 @@ class UserTableSeeder extends Seeder
         $admin->email = 'achchuthan@maco.jfn.ac.lk';
         $admin->email_verified_at = Carbon::now();
         $admin->password = bcrypt('achchuthan');
+        $admin->phone_number = '00940770201500';
         $admin->save();
         $admin->roles()->attach($role_admin);
     }

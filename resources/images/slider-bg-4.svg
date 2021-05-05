@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1313 612.5" style="enable-background:new 0 0 1313 612.5;" xml:space="preserve">
-<style type="text/css">
-	.st0{clip-path:url(#SVGID_2_);fill:#6100AD;}
-	.st1{clip-path:url(#SVGID_2_);fill:#2727BA;}
-	.st2{clip-path:url(#SVGID_2_);fill:url(#SVGID_3_);}
-</style>
-    <g>
-	<defs>
-		<rect id="SVGID_1_" width="1313" height="612.5"/>
-	</defs>
-        <clipPath id="SVGID_2_">
-		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-	</clipPath>
-        <path class="st0" d="M601.6-4.1c154.2,97.1,213.5,302.2,132.5,458s-271.8,203.4-426,106.3L-898.6-199.9
-		c-154.2-97.1-213.5-302.2-132.5-458s271.8-203.4,426-106.3L601.6-4.1z"/>
-        <path class="st1" d="M1577.3-1247c108.9-136.5,319.1-162.3,469.3-57.8s183.8,300,74.8,436.5L1156.9,340.2
-		C1048,476.6,837.9,502.5,687.6,397.9l-1330.4-926c-150.3-104.6-183.8-300-74.8-436.5s319.1-162.3,469.3-57.8L810-285.7L1577.3-1247
-		z"/>
-        <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="545.8112" y1="-506.3378" x2="1388.769" y2="74.1332">
-		<stop  offset="0" style="stop-color:#7202BB"/>
-            <stop  offset="0.6467" style="stop-color:#4940E0"/>
-            <stop  offset="1" style="stop-color:#65258a"/>
-	</linearGradient>
-        <path class="st2" d="M966.4-1281.1c71.9-159.2,269.1-236.1,440.5-171.8s252.1,245.4,180.3,404.5L950.9,360.7
-		C879,519.9,681.8,596.8,510.4,532.5l-1517.8-569c-171.4-64.3-252.1-245.4-180.3-404.5S-918.6-677-747.2-612.8L460.2-160.2
-		L966.4-1281.1z"/>
-</g>
+    <g mask="url(&quot;#SvgjsMask1058&quot;)" fill="none">
+        <rect width="1440" height="720" x="0" y="0" fill="url(#SvgjsLinearGradient1059)"></rect>
+        <path d="M33 720L753 0L1420.5 0L700.5 720z" fill="url(#SvgjsLinearGradient1060)"></path>
+        <path d="M515.2 720L1235.2 0L1913.2 0L1193.2 720z" fill="url(#SvgjsLinearGradient1060)"></path>
+        <path d="M1431 720L711 0L232.5 0L952.5 720z" fill="url(#SvgjsLinearGradient1061)"></path>
+        <path d="M932.8 720L212.79999999999995 0L-363.20000000000005 0L356.79999999999995 720z" fill="url(#SvgjsLinearGradient1061)"></path>
+        <path d="M810.7694885771728 720L1440 90.76948857717275L1440 720z" fill="url(#SvgjsLinearGradient1060)"></path>
+        <path d="M0 720L629.2305114228272 720L 0 90.76948857717275z" fill="url(#SvgjsLinearGradient1061)"></path>
+    </g>
+    <defs>
+        <mask id="SvgjsMask1058">
+            <rect width="1440" height="720" fill="#ffffff"></rect>
+        </mask>
+        <linearGradient x1="12.5%" y1="-25%" x2="87.5%" y2="125%" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient1059">
+            <stop stop-color="rgba(14, 42, 71, 1)" offset="0"></stop>
+            <stop stop-color="#00459e" offset="1"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="SvgjsLinearGradient1060">
+            <stop stop-color="rgba(15, 70, 185, 0.2)" offset="0"></stop>
+            <stop stop-opacity="0" stop-color="rgba(15, 70, 185, 0.2)" offset="0.66"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="100%" x2="0%" y2="0%" id="SvgjsLinearGradient1061">
+            <stop stop-color="rgba(15, 70, 185, 0.2)" offset="0"></stop>
+            <stop stop-opacity="0" stop-color="rgba(15, 70, 185, 0.2)" offset="0.66"></stop>
+        </linearGradient>
+    </defs>
 </svg>

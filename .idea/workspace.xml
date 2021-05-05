@@ -20,8 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c2ec210-208a-41b5-8c22-9ae5395aa4fe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/mail/html/message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/message.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_18_121409_add_phone_number_to_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UserTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/slider-bg-4.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/slider-bg-4.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/registration/address.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/address.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/add-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/add-edit.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +270,8 @@
       <workItem from="1611069552239" duration="2883000" />
       <workItem from="1611218909384" duration="4784000" />
       <workItem from="1611233347420" duration="5979000" />
-      <workItem from="1618568133179" duration="117000" />
+      <workItem from="1618568133179" duration="24860000" />
+      <workItem from="1620192230869" duration="1027000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1607261190718</created>
@@ -557,7 +567,42 @@
       <option name="project" value="LOCAL" />
       <updated>1611410262019</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Footer and UI">
+      <created>1618568535084</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1618568535084</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Letter &quot;A&quot; removed">
+      <created>1618587776704</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1618587776705</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Email delay setting">
+      <created>1618745101169</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1618745101169</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Default country">
+      <created>1618745120078</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1618745120078</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Student Update unique check">
+      <created>1618746909864</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1618746909864</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,12 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Students" />
-    <MESSAGE value="Step" />
-    <MESSAGE value="Update 2" />
-    <MESSAGE value="Update" />
-    <MESSAGE value="json to txt update" />
-    <MESSAGE value="string size" />
     <MESSAGE value="test update" />
     <MESSAGE value="welcome page" />
     <MESSAGE value="'Asia/Colombo'" />
@@ -612,94 +651,13 @@
     <MESSAGE value="update" />
     <MESSAGE value="Interface Update and Landing Page" />
     <MESSAGE value="Registration error modified and vendor script move to auth" />
-    <option name="LAST_COMMIT_MESSAGE" value="Registration error modified and vendor script move to auth" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="309" y="47" key="#Inspections" timestamp="1610466705380">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="309" y="47" key="#Inspections/0.0.1366.738@0.0.1366.738" timestamp="1610466705380" />
-    <state x="404" y="170" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1610352314195">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="404" y="170" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738@0.0.1366.738" timestamp="1610352314195" />
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1611409378904">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1607505767443" />
-    <state x="1779" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1366.728@1366.0.1366.728" timestamp="1607420213119" />
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1607522096909" />
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1609920321489" />
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1611409378904" />
-    <state x="1825" y="276" key="ComposerInitDialogKey" timestamp="1607417156650">
-      <screen x="1366" y="0" width="1366" height="728" />
-    </state>
-    <state x="1825" y="276" key="ComposerInitDialogKey/0.0.1366.728/1366.0.1366.728@1366.0.1366.728" timestamp="1607417156650" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1607259997498">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1607259997498" />
-    <state width="637" height="170" key="GridCell.Tab.0.bottom" timestamp="1607232562435">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="637" height="170" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1607232562435" />
-    <state width="637" height="170" key="GridCell.Tab.0.center" timestamp="1607232562435">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="637" height="170" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1607232562435" />
-    <state width="637" height="170" key="GridCell.Tab.0.left" timestamp="1607232562435">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="637" height="170" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1607232562435" />
-    <state width="637" height="170" key="GridCell.Tab.0.right" timestamp="1607232562435">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="637" height="170" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1607232562435" />
-    <state x="504" y="71" key="RollbackChangesDialog" timestamp="1611410215273">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="504" y="71" key="RollbackChangesDialog/0.0.1366.738@0.0.1366.738" timestamp="1611410215273" />
-    <state x="184" y="8" key="SettingsEditor" timestamp="1608816149865">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1607260929715" />
-    <state x="184" y="8" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608816149865" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1611410263651">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1607529786950" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1611223878058" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1611410263651" />
-    <state x="92" y="92" width="1182" height="554" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1609862057482">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="92" y="92" width="1182" height="554" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.738@0.0.1366.738" timestamp="1609862057482" />
-    <state x="500" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608266173185">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="500" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1607260983512" />
-    <state x="500" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1608266173185" />
-    <state x="263" y="23" key="editAsTableFormatDialogDimension" timestamp="1609654119218">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="263" y="23" key="editAsTableFormatDialogDimension/0.0.1366.738@0.0.1366.738" timestamp="1609654119218" />
-    <state x="621" y="77" width="585" height="592" key="find.popup" timestamp="1609141828563">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="621" y="77" width="585" height="592" key="find.popup/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1609141828563" />
-    <state x="484" y="270" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1607261033072">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="484" y="270" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1366.728@0.0.1366.728" timestamp="1607261033072" />
-    <state x="0" y="168" key="run.anything.popup" timestamp="1609051670949">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="0" y="166" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1607231493356" />
-    <state x="0" y="168" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1609051670949" />
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1609562387872">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1609562387872" />
+    <MESSAGE value="Footer and UI" />
+    <MESSAGE value="Letter &quot;A&quot; removed" />
+    <MESSAGE value="Email delay setting" />
+    <MESSAGE value="Default country" />
+    <MESSAGE value="Student Update unique check" />
+    <MESSAGE value="Mobile Number Added for Users" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mobile Number Added for Users" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

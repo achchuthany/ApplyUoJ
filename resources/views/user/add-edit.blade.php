@@ -40,19 +40,19 @@ Add New User
 
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="faculty_id">Faculty</label>
                                             <select class="form-control select2" name="faculty_id" required>
                                                 <option disabled selected>Select Faculty</option>
-                                                <option value="supper" {{(isset($user)&&!Request::old('department_id'))? (($did  == 'supper')? 'selected':'') : ( (Request::old('department_id') =='supper')? 'selected':'')}}>All Faculties</option>
+                                                <option value="0" {{(isset($user)&&!Request::old('department_id'))? (($did  == '0')? 'selected':'') : ( (Request::old('department_id') =='0')? 'selected':'')}}>All Faculties</option>
                                                 @foreach($faculties as $faculty)
                                                     <option value="{{$faculty->id}}" {{(isset($user)&&!Request::old('department_id'))? (($did  == $faculty->id)? 'selected':'') : ( (Request::old('department_id') ==$faculty->id)? 'selected':'')}}>{{$faculty->name}}</option>
                                                 @endforeach
                                             </select><input id="id" class="form-control" type="hidden" name="id" value="{{ (isset($user))? $user->id   : ''}}" >
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="role_id">User Role</label>
                                             <select class="form-control select2" name="role_id" readonly>
@@ -62,9 +62,7 @@ Add New User
                                             </select><input id="id" class="form-control" type="hidden" name="id" value="{{ (isset($user))? $user->id   : ''}}" >
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="control-label">Email</label>
@@ -72,14 +70,38 @@ Add New User
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-5">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Phone Number</label>
+                                            <input value="{{(isset($user)&&!Request::old('phone_number'))? $user->phone_number : Request::old('phone_number')}}"  id="phone_number" name="phone_number" type="text" class="form-control" required>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="control-label">Password</label>
                                             <input value="{{(isset($user)&&!Request::old('password'))? '' : Request::old('password')}}"  id="password" name="password" type="password" class="form-control" {{isset($user)? '':'required'}}>
 
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Subscription</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" name="is_email_subscribed" type="checkbox" id="is_email_subscribed" value="true" {{(isset($user)&&$user->is_email_subscribed == true) ? 'checked':''}}>
+                                                <label class="form-check-label" for="is_email_subscribed">
+                                                    Email Subscription
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="is_sms_subscribed" name="is_sms_subscribed" value="true" {{(isset($user)&&$user->is_sms_subscribed == true) ? 'checked':''}}>
+                                                <label class="form-check-label" for="is_sms_subscribed">
+                                                    SMS Subscription
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label">Status</label>
                                             <select class="form-control select2" name="is_active" required>

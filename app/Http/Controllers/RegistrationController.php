@@ -155,7 +155,7 @@ class RegistrationController extends Controller
         }
 
         $student->province = $request['province'];
-        $student->mobile = $request['mobile'];
+        //$student->mobile = $request['mobile'];
         //$student->email  = $request['email'];
 
 //        $user = $student->users()->latest()->first();

@@ -54,16 +54,21 @@ class UserController extends Controller
                 ->addColumn('status', function($row){
                     $b = null;
                     if($row->email_verified_at ==null){
-                        $b .= '<i class="mdi mdi-email-mark-as-unread text-warning p-2" data-toggle="tooltip" data-placement="top" title="Email Verification Failed"></i>';
+                        $b .= '<i class="mdi mdi-email-mark-as-unread text-warning p-1" data-toggle="tooltip" data-placement="top" title="Email Verification Failed"></i>';
                     }
                    else{
-                        $b .= '<i class="mdi mdi-email text-success p-2" data-toggle="tooltip" data-placement="top" title="Email Verified"></i>';
+                        $b .= '<i class="mdi mdi-email text-success p-1" data-toggle="tooltip" data-placement="top" title="Email Verified"></i>';
                     }
                     if($row->is_active == 1){
-                        $b.= '<i class="fa fa-user-check text-success p-2" title="Active"></i>';
+                        $b.= '<i class="fa fa-user-check text-success p-1" title="Active"></i>';
                     }
                     else{
-                        $b.= '<i class="fa fa-user-lock text-warning p-2" title="Inactive"></i>';
+                        $b.= '<i class="fa fa-user-lock text-warning p-1" title="Inactive"></i>';
+                    }
+                    if($row->phone_verfied_at == null){
+                        $b.='<i class="fas fa-sms text-warning p-1" title="SMS Verification Pending"></i>';
+                    }else{
+                        $b.='<i class="fas fa-sms text-success p-1" title="SMS Verified"></i>';
                     }
                     return $b;
                 })
@@ -93,7 +98,7 @@ class UserController extends Controller
         if($userroles->name == 'Student')
             $did =  $user->students()->first()->enrolls()->first()->programme()->first()->faculty_id;
         else if ($userroles->name == 'Admin'){
-            $did = 'supper';
+            $did = 0;
         }else{
             $did =  DB::table('role_user')->where([['user_id',$user->id],['role_id',$userroles->id]])->first()->faculty_id;
         }
@@ -116,18 +121,25 @@ class UserController extends Controller
         }
 
         $isEmail = strtolower($user->email) != strtolower($request['email']);
+        $isNewPhone = ($user->phone_number) != ($request['phone_number']);
+
         $user->name = $request['name'];
         if($request['password']!=null)
             $user->password = Hash::make($request['password']);
         $user->is_active = $request['is_active'];
+        $user->is_email_subscribed = $request['is_email_subscribed'] =='true';
+        $user->is_sms_subscribed = $request['is_sms_subscribed']=='true';
 
         try{
             $student = $user->students()->first();
             if($student){
-                $student->email = $request['email'];
                 $this->validate($request,[
-                    'email' => 'sometimes|required|unique:students,email,'.$student->id
+                    'email' => 'sometimes|required|unique:students,email,'.$student->id,
+                    'phone_number' => 'required|unique:users,phone_number,'.$user->id
+
                 ]);
+                $student->email = $request['email'];
+                $student->mobile = $request['phone_number'];
                 $student->update();
             }
 
@@ -138,7 +150,10 @@ class UserController extends Controller
                     $user->email_verified_at = null;
                 }
 
-
+                if($isNewPhone){
+                    $user->phone_number = $request['phone_number'];
+                    $user->phone_verified_at = null;
+                }
                 $user->update();
                 $role = DB::table('role_user')->where('user_id',$user->id);
                 $x = DB::table('role_user')
@@ -156,9 +171,11 @@ class UserController extends Controller
                 $this->validate($request,[
                     'name' => ['required', 'string', 'max:255'],
                     'email' => ['sometimes','required', 'string', 'email', 'max:255', 'unique:users'],
+                    'phone_number' => ['required', 'string','unique:users'],
                     'password' => ['required', 'string', 'min:8'],
                 ]);
                 $user->email = strtolower($request['email']);
+                $user->phone_number = $request['phone_number'];
                 $user->save();
                 $x = DB::table('role_user')
                     ->insert([

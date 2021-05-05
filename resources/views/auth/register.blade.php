@@ -65,7 +65,16 @@ Register
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            Please remember your "email" and "password" for future use
+                                            <label for="phone_number">{{ __('Mobile Number') }}</label>
+                                            <div class="input-group">
+                                                <div class="input-group-text">+94</div>
+                                                <input id="phone_number" type="tel" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus placeholder="07XXXXXXXX">
+                                            </div>
+                                            @error('phone_number')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -97,6 +106,14 @@ Register
                                         </div>
                                     </div>
                                 </div>
+                                <div class="text-muted mt-2">
+                                    <div>
+                                        <i class="mdi mdi-star text-info"></i> Give your working Mobile number and email for future communication from University of Jaffna.
+                                    </div>
+                                    <div>
+                                        <i class="mdi mdi-star text-info"></i> Remember your "email" and "password" for future use
+                                    </div>
+                                </div>
                                 <div class="mt-2 text-right">
                                     <button class="btn btn-primary w-sm waves-effect waves-light" type="submit">{{ __('Continue') }}<i class="mdi mdi-arrow-right-circle-outline ml-1"></i> </button>
                                 </div>
@@ -113,4 +130,3 @@ Register
     <!-- end container -->
 </div>
 @endsection
-

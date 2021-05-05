@@ -61,6 +61,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'nic' => ['required'],
             'al' => ['required'],
+            'phone_number' => ['required', 'numeric','digits:14','unique:users'],
         ]);
     }
 
@@ -76,6 +77,7 @@ class RegisterController extends Controller
             'name' => strtoupper($data['nic']),
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone_number'=> $data['phone_number'],
         ]);
     }
 
@@ -87,6 +89,7 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
+        $request->merge(['phone_number'=>'0094'.$request->get('phone_number')]);
         $this->validator($request->all())->validate();
 
         $student = Student::where([['nic',strtoupper(trim($request['nic']))],['al_index_number',$request['al']]])->first();
@@ -111,16 +114,17 @@ class RegisterController extends Controller
 
         if(!(($now->greaterThanOrEqualTo($open_date) && $now->lessThanOrEqualTo($close_date)) || $application->status=='Draft') ){
 //            return response()->json([$now,$now->greaterThanOrEqualTo($open_date),$now->lessThanOrEqualTo($close_date)]);
-            return back()->with(['info'=>'Application will be open soon/Please Contact Officials'])->withInput();
+            return back()->with(['info'=>'Application will be open soon. Please Contact Officials'])->withInput();
         }
         if($student->users()->get()->count()>0){
-            return back()->with(['warning'=>'User already Exist with your data. If you are not created already please contact Officalis'])->withInput();
+            return back()->with(['warning'=>'User already Exist. If you are not created already please contact Officalis'])->withInput();
         }
         $user = $this->create($request->all());
         $role_student = Role::where('name', 'Student')->first();
         $user->roles()->attach($role_student);
         $user->students()->attach($student);
         $student->email = $user->email;
+        $student->mobile = $user->phone_number;
         $student->update();
         event(new Registered($user));
         $this->guard()->login($user);
