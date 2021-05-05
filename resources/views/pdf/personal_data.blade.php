@@ -16,7 +16,7 @@
                 </div>
             </td>
             <td  style="width: 85%;text-align: center">
-                <img src="{{URL::asset('assets/images/logo-sm.png')}}" style="height: 30mm">
+                <img src="{{public_path("/assets/images/logo-sm.png")}}" style="height: 30mm">
                 <div >University of Jaffna, Sri Lanka.</div>
                 <h3 >PERSONAL DATA OF STUDENTS</h3>
             </td>
