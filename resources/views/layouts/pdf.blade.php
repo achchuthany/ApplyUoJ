@@ -12,6 +12,7 @@
         }
         *{
             font-family:  Helvetica, sans-serif;
+            font-size: 14px;
         }
         /** Define now the real margins of every page in the PDF **/
         body {
@@ -70,6 +71,7 @@
             word-break:break-all; word-wrap:break-word;
         }
         .page-number:before {
+            font-size: 10px;
             content: "Page " counter(page);
         }
         .dotted{
