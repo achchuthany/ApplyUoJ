@@ -92,7 +92,7 @@
             <td class="p-2 dotted"> {{$student->email}}</td>
         </tr>
     </table>
-
+    <div class="page-break"></div>
     <div class="mt-5 b">3. EDUCATIONAL QUALIFICATIONS</div>
     <table style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
         <tr>

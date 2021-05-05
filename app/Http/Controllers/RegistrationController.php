@@ -31,6 +31,7 @@ class RegistrationController extends Controller
     public $gender;
     public $civil_status;
     public $religion ;
+    public $params;
     public function __construct(){
         $this->countries = config('app.countries');
         $this->al_subjects = config('app.al_subjects');
@@ -39,6 +40,8 @@ class RegistrationController extends Controller
         $this->gender = config('app.gender');
         $this->civil_status = config('app.civil_status');
         $this->religion = config('app.religion');
+        $this->params = config('app.enroll_status');
+
     }
     public function index(){
         //Registered Users Home page
@@ -346,6 +349,57 @@ class RegistrationController extends Controller
             return redirect()->route('student.registration.complete');
         return view('registration.proceed',['enroll'=>$enroll]);
     }
+    public function downloadPersonalDataByCourse($pid,$aid,$status){
+        if ($status == "all") {
+            $enrolls = Enroll::where([['programme_id', $pid], ['academic_year_id', $aid]])->latest()->get();
+        } else {
+            if (!array_key_exists("$status", $this->params)) {
+                return redirect()->back()->with(['warning'=>"Invalid enrollment status!"]);
+            }
+            $enrolls = Enroll::where([['programme_id', $pid], ['academic_year_id', $aid], ['status', $this->params[$status]]])->latest()->get();
+        }
+
+        $data = array();
+        foreach ($enrolls as $enroll){
+            $student= $enroll->student;
+            $permanent =  $student->addresses->where('address_type','Permanent')->first();
+            $permanentAddress = $permanent->address_no .' '.$permanent->address_street .' '.$permanent->address_city .' '.$permanent->address_4 .' '.$permanent->address_state .' '.$permanent->address_country .' '.$permanent->address_postal_code ;
+            $permanent =  $student->addresses->where('address_type','Contact')->first();
+            $contactAddress =$permanent ? $permanent->address_no .' '.$permanent->address_street .' '.$permanent->address_city .' '.$permanent->address_4 .' '.$permanent->address_state .' '.$permanent->address_country .' '.$permanent->address_postal_code :null ;
+            $student_al_exams = $student->student_al_exams()->get();
+            if(strlen($student->race)>1){
+                $race = $student->race;
+            }else{
+                $race = $student->race? $this->race[$student->race] : null;
+            }
+
+            if(strlen($student->religion)>1){
+                $religion = $student->religion;
+            }else{
+                $religion = $student->religion ? $this->religion[$student->religion]: null;
+            }
+
+            $data []= [
+                'student'=>$student,
+                'enroll'=>$enroll,
+                'NotAssigned'=>'Not Assigned',
+                'permanentAddress'=>$permanentAddress,
+                'contactAddress'=>$contactAddress,
+                'student_al_exams'=>$student_al_exams,
+                'race'=>$race,
+                'gender'=>$student->gender? $this->gender[$student->gender]:null,
+                'civil_status'=>$student->civil_status?$this->civil_status[$student->civil_status]:null,
+                'religion'=>$religion,
+                'dob'=>Carbon::parse($student->date_of_birth)->toFormattedDateString(),
+                'age'=>Carbon::now()->diffInYears(Carbon::parse($enroll->student->date_of_birth)),
+            ];
+        }
+       // return \response()->json($data);
+        $dompdf = PDF::loadView('pdf.all_personal_data',compact('data'));
+        $dompdf->setPaper('A4', 'portrait');
+        return $dompdf->stream();
+    }
+
     public function downloadPersonalData($eid){
 
         $enroll = Enroll::whereId($eid)->first();
@@ -383,7 +437,7 @@ class RegistrationController extends Controller
         ];
         $dompdf = PDF::loadView('pdf.personal_data',$data);
         $dompdf->setPaper('A4', 'portrait');
-        //return $dompdf->stream();
+        return $dompdf->stream();
         return $dompdf->download($student->nic.'_Personal_Data.pdf');
     }
     public function checkApplicationStatus(){

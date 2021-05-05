@@ -373,6 +373,14 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         return new App\Mail\EnrolmentConfirmationMail($enroll);
     });
 
+    //download all stdents perosnal data form
+
+    Route::get('/registration/download/PersonalData/{pid}/{aid}/{status}',[
+        'uses' => 'App\Http\Controllers\RegistrationController@downloadPersonalDataByCourse',
+        'as' => 'student.registration.download.PersonalData.all',
+        'roles' => ['Admin']
+    ]);
+
 });
 
 //Student

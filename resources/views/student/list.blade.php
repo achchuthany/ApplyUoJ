@@ -54,6 +54,15 @@ Students Details by Programme
                     </div>
                     </div>
                 </div>
+
+                <div class="card-body mb-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-sm btn-outline-purple float-right" target="_blank" href="{{route('student.registration.download.PersonalData.all',['pid'=>request()->route('pid'),'aid'=>request()->route('aid'),'status'=>request()->route('status')])}}"><i class="mdi mdi-file-pdf"></i> Bulk Generate Personal Data of Students' PDF</a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card-body table-responsive mb-4">
                     <table id="datatable"  class="table table-hover  table-striped table-centered datatable dt-responsive nowrap table-card-list" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
