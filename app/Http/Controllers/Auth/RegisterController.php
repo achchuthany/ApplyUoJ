@@ -61,7 +61,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'nic' => ['required'],
             'al' => ['required'],
-            'phone_number' => ['required', 'numeric','digits:14','unique:users'],
+            'phone_number' => ['required', 'numeric','digits:13','unique:users'],
         ]);
     }
 
@@ -89,12 +89,12 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-        $request->merge(['phone_number'=>'0094'.$request->get('phone_number')]);
+        $request->merge(['phone_number'=>'0094'.substr($request->get('phone_number'),-9)]);
         $this->validator($request->all())->validate();
 
         $student = Student::where([['nic',strtoupper(trim($request['nic']))],['al_index_number',$request['al']]])->first();
         if(!$student)
-            return back()->withInput()->with(['warning'=>'The Index Number is incorrect or you are not selected for university admission']);
+            return back()->withInput()->with(['warning'=>'The Index Number is incorrect / You are not selected for university admission']);
         $enroll = $student->enrolls()->latest()->first();
 
         $application = ApplicationRegistration::where([['academic_year_id',$enroll->academic_year_id],['programme_id',$enroll->programme_id]])->first();
@@ -117,7 +117,7 @@ class RegisterController extends Controller
             return back()->with(['info'=>'Application will be open soon. Please Contact Officials'])->withInput();
         }
         if($student->users()->get()->count()>0){
-            return back()->with(['warning'=>'User already Exist. If you are not created already please contact Officalis'])->withInput();
+            return back()->with(['warning'=>'User already Exist. If you are not created already please contact Officials'])->withInput();
         }
         $user = $this->create($request->all());
         $role_student = Role::where('name', 'Student')->first();
