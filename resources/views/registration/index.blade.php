@@ -39,8 +39,8 @@
                         <div class="row mb-4">
                             <div class="col-md-12">
                                 <p class="pt-2">
+                                    <span class="text-danger">*</span><b class="text-info">Mandatory fields</b> |
                                     Once you have finished entering your details, use the <b>'Next'</b> button provided at the bottom of the page to continue with your registration.
-                                    <span class="text-danger">*</span><b>Mandatory fields</b>
                                 </p>
 
                             </div>

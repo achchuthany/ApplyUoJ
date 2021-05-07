@@ -2,15 +2,15 @@
     <div class="card-header font-size-16 bg-dark text-light">
         Upload your documents
     </div>
-    <div class="card-body">
-        <div class="row mt-3">
-            <div class="col-md-12">
-                Payment voucher of registration (Ignore this download if you download on the instruction page)
+{{--    <div class="card-body">--}}
+{{--        <div class="row mt-3">--}}
+{{--            <div class="col-md-12">--}}
+{{--                Payment voucher of registration (Ignore this download if you download on the instruction page)--}}
 
-                <a href="{{URL::asset('/assets/images/download/PAYING_IN_VOUCHER.pdf')}}" download="PAYING_IN_VOUCHER.pdf" target="_blank" class="btn btn-sm btn-link"> <i class="mdi mdi-download-outline"></i> Download</a>
-            </div>
-        </div>
-    </div>
+{{--                <a href="{{URL::asset('/assets/images/download/PAYING_IN_VOUCHER.pdf')}}" download="PAYING_IN_VOUCHER.pdf" target="_blank" class="btn btn-sm btn-link"> <i class="mdi mdi-download-outline"></i> Download</a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <div class="card-body">
         <form action="{{ route('student.registration.image.upload') }}" method="POST" enctype="multipart/form-data" id="document-upload">
@@ -18,8 +18,8 @@
             <div class="row">
                 <div class="col-md-8" >
                     <div class="card">
-                        <div class="card-header bg-soft-info">
-                            <div class="text-primary">
+                        <div class="card-header">
+                            <div class="text-dark">
                                 <div>Each image must be a file of type of jpeg, jpg and may not be greater than 5120 kilobytes (5MB).
                                 </div>
                             </div>

@@ -9,22 +9,32 @@
 @section('content')
     <div class="row align-items-center justify-content-center">
         <div class="col-md-12 col-lg-12 col-xl-12">
+
             <div class="card shadow-none">
-                <div class="card-header font-weight-lighter font-size-20">
-                    Your Online Application Status is  <span class="text-primary">{{$enroll->status}}</span>
-                    <span class="float-right">Reference number is <b class="text-primary">{{$enroll->getRefNo()}}</b></span>
+                <div class="card-header">
+                    <div class="text-center alert alert-light alert-border-success">
+                        <i class="mdi mdi-check-circle display-2  text-success"></i>
+                        <p class="font-weight-lighter font-size-20">Your Online registration  has been successfully completed</p>
+                    </div>
+
                 </div>
             </div>
             <div class="card text-justify ">
-                <div class="card-header">
-                    <span class="text-success"> Your Online registration  has been successfully completed </span>and follow the Instructions to process your registration of University of Jaffna.
+                <div class="card-header bg-dark text-light">
+                   Follow the Instructions to process your registration of University of Jaffna.
                 </div>
                 <div class="card-body">
                    <div class="row">
+                       <div class="col-md-12">
+                           <div class="font-weight-lighter font-size-16">
+                               Your Online Application Status is  <span class="font-weight-bolder border-bottom border-info">{{$enroll->status}}</span>
+                               <span class="float-right">Reference number is <b class="font-weight-bolder border-bottom border-info">{{$enroll->getRefNo()}}</b></span>
+                           </div>
+                       </div>
                        <div class="col-md-12" >
                            <div class="media mt-4">
                                <div class="avatar-xs mr-3">
-                                   <div class="avatar-title rounded-circle bg-soft-info text-primary font-size-14">
+                                   <div class="avatar-title rounded-circle bg-soft-light text-primary font-size-14">
                                        1
                                    </div>
                                </div>
@@ -37,7 +47,7 @@
 
                            <div class="media mt-4">
                                <div class="avatar-xs mr-3">
-                                   <div class="avatar-title rounded-circle bg-soft-info text-primary font-size-14">
+                                   <div class="avatar-title rounded-circle bg-soft-light text-primary font-size-14">
                                        2
                                    </div>
                                </div>
@@ -50,7 +60,7 @@
 
                            <div class="media mt-4">
                                <div class="avatar-xs mr-3">
-                                   <div class="avatar-title rounded-circle bg-soft-info text-primary font-size-14">
+                                   <div class="avatar-title rounded-circle bg-soft-light text-primary font-size-14">
                                        3
                                    </div>
                                </div>
@@ -61,13 +71,13 @@
                                </div>
                            </div>
 
-                           <p class="font-weight-medium text-center">
+                           <p class="font-weight-bolder">
                                 The details of required documents  is listed below:
                            </p>
                        </div>
                        <div class="col-md-12">
 
-                           <table class="table table-bordered table-hover">
+                           <table class="table table-bordered table-hover table-light">
                               <thead>
                               <tr>
                                   <th>No</th>
@@ -183,7 +193,7 @@
                            </table>
                            <div class="media mt-4">
                                <div class="avatar-xs mr-3">
-                                   <div class="avatar-title rounded-circle bg-soft-info text-primary font-size-14">
+                                   <div class="avatar-title rounded-circle bg-soft-light text-primary font-size-14">
                                        4
                                    </div>
                                </div>
@@ -196,7 +206,7 @@
 
                            <div class="media mt-4">
                                <div class="avatar-xs mr-3">
-                                   <div class="avatar-title rounded-circle bg-soft-info text-primary font-size-14">
+                                   <div class="avatar-title rounded-circle bg-soft-light text-primary font-size-14">
                                        5
                                    </div>
                                </div>
@@ -209,7 +219,7 @@
 
                            <div class="media mt-4">
                                <div class="avatar-xs mr-3">
-                                   <div class="avatar-title rounded-circle bg-soft-info text-primary font-size-14">
+                                   <div class="avatar-title rounded-circle bg-soft-light text-primary font-size-14">
                                        6
                                    </div>
                                </div>
@@ -221,7 +231,7 @@
                            </div>
                        </div>
                    </div>
-                </div> <div class="card-footer text-center">
+                </div> <div class="card-footer text-center font-size-16">
                     Contact: Assistant  Registrar/Admissions Branch of the University of Jaffna. <i class="mdi mdi-phone"></i>+94 21 222 6714 \ <i class="mdi mdi-phone"></i> +94 21 221 8120
                 </div>
 

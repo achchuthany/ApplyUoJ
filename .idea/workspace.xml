@@ -20,17 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c2ec210-208a-41b5-8c22-9ae5395aa4fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_18_121409_add_phone_number_to_users_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/UserTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/slider-bg-4.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/slider-bg-4.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/registration/address.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/address.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/add-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/add-edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/registration/conform.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/conform.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/registration/documents.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/documents.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/registration/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/registration/proceed.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/proceed.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,23 +171,23 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/pdf" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images\users" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\storage\app" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/pdf" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\public\assets\images" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\js\pages" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views\student" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images" />
+      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images\users" />
+      <recent name="D:\xampp\htdocs\ApplyUoJ\storage\app" />
     </key>
   </component>
   <component name="RunManager">
@@ -271,42 +266,8 @@
       <workItem from="1611218909384" duration="4784000" />
       <workItem from="1611233347420" duration="5979000" />
       <workItem from="1618568133179" duration="24860000" />
-      <workItem from="1620192230869" duration="1027000" />
-    </task>
-    <task id="LOCAL-00001" summary="Initial Commit">
-      <created>1607261190718</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1607261190718</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Initial Commit">
-      <created>1607261555438</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1607261555438</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Database">
-      <created>1607423555209</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1607423555209</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Students">
-      <created>1607529783654</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1607529783654</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Step">
-      <created>1607787403764</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1607787403764</updated>
+      <workItem from="1620192230869" duration="11232000" />
+      <workItem from="1620307392906" duration="5554000" />
     </task>
     <task id="LOCAL-00006" summary="Update 2">
       <created>1608386593499</created>
@@ -602,7 +563,56 @@
       <option name="project" value="LOCAL" />
       <updated>1618746909864</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Mobile Number Added for Users">
+      <created>1620196448178</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1620196448178</updated>
+    </task>
+    <task id="LOCAL-00049" summary="students registration status added in view">
+      <created>1620198106338</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1620198106338</updated>
+    </task>
+    <task id="LOCAL-00050" summary="pdf image load fix">
+      <created>1620198826196</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1620198826197</updated>
+    </task>
+    <task id="LOCAL-00051" summary="pdf font size 14 px">
+      <created>1620199447556</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1620199447556</updated>
+    </task>
+    <task id="LOCAL-00052" summary="bulk pdf generation for personal data of students">
+      <created>1620207954689</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1620207954689</updated>
+    </task>
+    <task id="LOCAL-00053" summary="enrollment status added">
+      <created>1620207990408</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1620207990408</updated>
+    </task>
+    <task id="LOCAL-00054" summary="phone number format">
+      <created>1620310188016</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1620310188016</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,13 +642,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="test update" />
-    <MESSAGE value="welcome page" />
-    <MESSAGE value="'Asia/Colombo'" />
-    <MESSAGE value="fix" />
-    <MESSAGE value="Data Mapping" />
-    <MESSAGE value="route" />
-    <MESSAGE value="email notification" />
     <MESSAGE value="email update student" />
     <MESSAGE value="email command schedule in kernal" />
     <MESSAGE value="Student Download" />
@@ -657,7 +660,14 @@
     <MESSAGE value="Default country" />
     <MESSAGE value="Student Update unique check" />
     <MESSAGE value="Mobile Number Added for Users" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mobile Number Added for Users" />
+    <MESSAGE value="students registration status added in view" />
+    <MESSAGE value="pdf image load fix" />
+    <MESSAGE value="pdf font size 14 px" />
+    <MESSAGE value="bulk pdf generation for personal data of students" />
+    <MESSAGE value="enrollment status added" />
+    <MESSAGE value="phone number format" />
+    <MESSAGE value="UI Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI Fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -16,9 +16,9 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header text-dark">
-                   Use the 'Proceed with Registration' button provided at the bottom of the page to complete your registration. If you click 'Proceed with Registration' you will
-                    not be able to Edit the application anymore.
+                <div class="card-header">
+                    <i class="mdi mdi-information text-warning"></i> <span class="ml-1">Use the 'Proceed with Registration' button provided at the bottom of the page to complete your registration.
+                    If you click 'Proceed with Registration' you will not be able to Edit the application anymore.</span>
                 </div>
                 <form class="needs-validation" method="POST" action="{{ route('student.registration.complete.process') }}">
                     {{ csrf_field() }}
