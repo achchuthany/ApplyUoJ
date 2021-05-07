@@ -351,12 +351,12 @@ class RegistrationController extends Controller
     }
     public function downloadPersonalDataByCourse($pid,$aid,$status){
         if ($status == "all") {
-            $enrolls = Enroll::where([['programme_id', $pid], ['academic_year_id', $aid]])->latest()->get();
+            $enrolls = Enroll::where([['programme_id', $pid], ['academic_year_id', $aid]])->orderBy('reg_no')->orderBy('id')->get();
         } else {
             if (!array_key_exists("$status", $this->params)) {
                 return redirect()->back()->with(['warning'=>"Invalid enrollment status!"]);
             }
-            $enrolls = Enroll::where([['programme_id', $pid], ['academic_year_id', $aid], ['status', $this->params[$status]]])->latest()->get();
+            $enrolls = Enroll::where([['programme_id', $pid], ['academic_year_id', $aid], ['status', $this->params[$status]]])->orderBy('reg_no')->orderBy('id')->get();
         }
 
         $data = array();
