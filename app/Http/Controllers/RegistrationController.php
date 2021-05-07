@@ -457,8 +457,9 @@ class RegistrationController extends Controller
             'lc_b' => 'required|image|mimes:jpeg,jpg|max:5125',
             'nic_f' => 'required|image|mimes:jpeg,jpg|max:5125',
             'nic_b' => 'required|image|mimes:jpeg,jpg|max:5125',
+            'student_id'=>'required',
         ]);
-        $student = Auth::user()->students()->latest()->first();
+        $student = Student::where('id',$request['student_id'])->first();
 
         //ugc
         $imageName =$student->nic.'_ugc.'.$request->image->extension();

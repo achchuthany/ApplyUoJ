@@ -334,7 +334,7 @@ Add a Student / Edit Student
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="mobile">vi. Mobile<span class="text-danger font-size-16">*</span> </label>
-                                                    <input value="{{(isset($student)&&!Request::old('mobile'))? $student->mobile : Request::old('mobile')}}" id="mobile" name="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" required>
+                                                    <input value="{{(isset($student)&&!Request::old('mobile'))? $student->mobile : Request::old('mobile')}}" id="mobile" name="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" placeholder="00947XXXXXXXX" required>
                                                     @error('mobile')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -607,7 +607,7 @@ Add a Student / Edit Student
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="parent_occupation">ii. Occupation</label>
+                                                    <label for="parent_occupation">ii. Occupation <span class="text-danger font-size-16">*</span></label>
                                                     <input value="{{(isset($student)&&!Request::old('parent_occupation'))? $student->parent_occupation : Request::old('parent_occupation')}}" id="parent_occupation" name="parent_occupation" type="text" class="form-control @error('parent_occupation') is-invalid @enderror">
                                                 </div>
                                             </div>
@@ -620,13 +620,13 @@ Add a Student / Edit Student
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="parent_landline">iv. Telephone No. (Landline)</label>
-                                                    <input value="{{(isset($student)&&!Request::old('parent_landline'))? $student->parent_landline : Request::old('parent_landline')}}" id="parent_landline" name="parent_landline" type="text" class="form-control @error('parent_landline') is-invalid @enderror">
+                                                    <input placeholder="0094XXXXXXXXX" value="{{(isset($student)&&!Request::old('parent_landline'))? $student->parent_landline : Request::old('parent_landline')}}" id="parent_landline" name="parent_landline" type="text" class="form-control @error('parent_landline') is-invalid @enderror">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="parent_mobile">Telephone No. (Mobile) <span class="text-danger font-size-16">*</span></label>
-                                                    <input value="{{(isset($student)&&!Request::old('parent_mobile'))? $student->parent_mobile : Request::old('parent_mobile')}}" id="parent_mobile" name="parent_mobile" type="text" class="form-control @error('parent_mobile') is-invalid @enderror">
+                                                    <input placeholder="0094XXXXXXXXX" value="{{(isset($student)&&!Request::old('parent_mobile'))? $student->parent_mobile : Request::old('parent_mobile')}}" id="parent_mobile" name="parent_mobile" type="text" class="form-control @error('parent_mobile') is-invalid @enderror">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -638,7 +638,7 @@ Add a Student / Edit Student
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="emergency_contact_mobile">Telephone no of the person to be informed in case of an Emergency <span class="text-danger font-size-16">*</span></label>
-                                                    <input value="{{(isset($student)&&!Request::old('emergency_contact_mobile'))? $student->emergency_contact_mobile : Request::old('emergency_contact_mobile')}}" id="emergency_contact_mobile" name="emergency_contact_mobile" type="text" class="form-control @error('emergency_contact_mobile') is-invalid @enderror">
+                                                    <input placeholder="0094XXXXXXXXX" value="{{(isset($student)&&!Request::old('emergency_contact_mobile'))? $student->emergency_contact_mobile : Request::old('emergency_contact_mobile')}}" id="emergency_contact_mobile" name="emergency_contact_mobile" type="text" class="form-control @error('emergency_contact_mobile') is-invalid @enderror">
                                                 </div>
                                             </div>
                                         </div>
@@ -653,165 +653,166 @@ Add a Student / Edit Student
                             </form>
                         </div>
                         @if(isset($enroll))
-{{--                        <div class="card">--}}
-{{--                            <div class="card-header bg-dark text-light">--}}
-{{--                                Documents--}}
-{{--                            </div>--}}
-{{--                            <div class="card-body">--}}
-{{--                                <form action="{{ route('student.registration.image.upload') }}" method="POST" enctype="multipart/form-data" id="document-upload">--}}
-{{--                                    @csrf--}}
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-md-8" >--}}
-{{--                                            <div class="card">--}}
-{{--                                                <div class="card-header bg-soft-info">--}}
-{{--                                                    <div class="text-primary">--}}
-{{--                                                        <div>Each image must be a file of type of jpeg, jpg and may not be greater than 5120 kilobytes (5MB).--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="card-body">--}}
-{{--                                                    <div class="row">--}}
-{{--                                                        <div class="col-md-12">--}}
-{{--                                                            <label>Selection Letter sent by the UGC <span class="text-danger font-size-16">*</span></label>--}}
-{{--                                                            <input type="file" name="ugc" class="form-control  @error('ugc') is-invalid @enderror">--}}
-{{--                                                            @error('ugc')--}}
-{{--                                                            <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                                            @enderror--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
+                        <div class="card">
+                            <div class="card-header bg-dark text-light">
+                                Documents
+                            </div>
+                            <div class="card-body">
+                                <form action="{{ route('student.registration.image.upload') }}" method="POST" enctype="multipart/form-data" id="document-upload">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-8" >
+                                            <div class="card">
+                                                <div class="card-header bg-soft-info">
+                                                    <div class="text-primary">
+                                                        <div>Each image must be a file of type of jpeg, jpg and may not be greater than 5120 kilobytes (5MB).
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label>Selection Letter sent by the UGC <span class="text-danger font-size-16">*</span></label>
+                                                            <input type="hidden" name="student_id" value="{{$student->id}}">
+                                                            <input type="file" name="ugc" class="form-control  @error('ugc') is-invalid @enderror">
+                                                            @error('ugc')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                             </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-{{--                                                <div class="card-body bg-light">--}}
-{{--                                                    <div class="row">--}}
-{{--                                                        <div class="col-md-12 mt-3">--}}
-{{--                                                            <label>Your recent photograph (Identity Card Image) <span class="text-danger font-size-16">*</span></label>--}}
-{{--                                                            <input type="file" name="image" class="form-control  @error('image') is-invalid @enderror">--}}
-{{--                                                            <div class="alert  p-3">--}}
-{{--                                                                <div class="h6 text-primary"><i class="mdi mdi-information"></i> Identity Card Image should be: </div>--}}
-{{--                                                                <div>Required photo size: Passport Size</div>--}}
-{{--                                                                <div>The submitted photos must be in color</div>--}}
-{{--                                                                <div> Head position: straight</div>--}}
-{{--                                                                <div>Background: Blue/Light Blue</div>--}}
-{{--                                                                <div>Recency: taken no more than 6 months ago</div>--}}
-{{--                                                            </div>--}}
-{{--                                                            @error('image')--}}
-{{--                                                            <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                                            @enderror--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="card-body">--}}
-{{--                                                    <div class="row">--}}
-{{--                                                        <div class="col-md-12">--}}
-{{--                                                            <label>Paid Bank Voucher <span class="text-danger font-size-16">*</span></label>--}}
-{{--                                                            <input type="file" name="bank" class="form-control  @error('bank') is-invalid @enderror">--}}
-{{--                                                            @error('bank')--}}
-{{--                                                            <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                                            @enderror--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="card-body bg-light">--}}
-{{--                                                    <div class="row">--}}
-{{--                                                        <div class="col-md-12 mt-3">--}}
-{{--                                                            <label>Student Record Sheet (School Leaving Certificate)  <span class="text-danger font-size-16">*</span></label>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="col-md-6">--}}
-{{--                                                            <label>Front Side</label>--}}
-{{--                                                            <input type="file" name="lc_f" class="form-control  @error('lc_f') is-invalid @enderror">--}}
-{{--                                                            @error('lc_f')--}}
-{{--                                                            <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                                            @enderror--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="col-md-6">--}}
-{{--                                                            <label>Back side </label>--}}
-{{--                                                            <input type="file" name="lc_b" class="form-control  @error('lc_b') is-invalid @enderror">--}}
-{{--                                                            @error('lc_b')--}}
-{{--                                                            <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                                            @enderror--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
+                                                <div class="card-body bg-light">
+                                                    <div class="row">
+                                                        <div class="col-md-12 mt-3">
+                                                            <label>Your recent photograph (Identity Card Image) <span class="text-danger font-size-16">*</span></label>
+                                                            <input type="file" name="image" class="form-control  @error('image') is-invalid @enderror">
+                                                            <div class="alert  p-3">
+                                                                <div class="h6 text-primary"><i class="mdi mdi-information"></i> Identity Card Image should be: </div>
+                                                                <div>Required photo size: Passport Size</div>
+                                                                <div>The submitted photos must be in color</div>
+                                                                <div> Head position: straight</div>
+                                                                <div>Background: Blue/Light Blue</div>
+                                                                <div>Recency: taken no more than 6 months ago</div>
+                                                            </div>
+                                                            @error('image')
+                                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label>Paid Bank Voucher <span class="text-danger font-size-16">*</span></label>
+                                                            <input type="file" name="bank" class="form-control  @error('bank') is-invalid @enderror">
+                                                            @error('bank')
+                                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body bg-light">
+                                                    <div class="row">
+                                                        <div class="col-md-12 mt-3">
+                                                            <label>Student Record Sheet (School Leaving Certificate)  <span class="text-danger font-size-16">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Front Side</label>
+                                                            <input type="file" name="lc_f" class="form-control  @error('lc_f') is-invalid @enderror">
+                                                            @error('lc_f')
+                                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Back side </label>
+                                                            <input type="file" name="lc_b" class="form-control  @error('lc_b') is-invalid @enderror">
+                                                            @error('lc_b')
+                                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
 
 
-{{--                                                <div class="card-body">--}}
-{{--                                                    <div class="row">--}}
-{{--                                                        <div class="col-md-12 mt-3">--}}
-{{--                                                            <label>National Identity Card(NIC) / Passport  <span class="text-danger font-size-16">*</span></label>--}}
-{{--                                                        </div>--}}
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12 mt-3">
+                                                            <label>National Identity Card(NIC) / Passport  <span class="text-danger font-size-16">*</span></label>
+                                                        </div>
 
-{{--                                                        <div class="col-md-6">--}}
-{{--                                                            <label>Front side</label>--}}
-{{--                                                            <input type="file" name="nic_f" class="form-control  @error('nic_f') is-invalid @enderror">--}}
-{{--                                                            @error('nic_f')--}}
-{{--                                                            <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                                            @enderror--}}
-{{--                                                        </div>--}}
+                                                        <div class="col-md-6">
+                                                            <label>Front side</label>
+                                                            <input type="file" name="nic_f" class="form-control  @error('nic_f') is-invalid @enderror">
+                                                            @error('nic_f')
+                                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                                            @enderror
+                                                        </div>
 
-{{--                                                        <div class="col-md-6">--}}
-{{--                                                            <label>Back side</label>--}}
-{{--                                                            <input type="file" name="nic_b" class="form-control  @error('nic_b') is-invalid @enderror">--}}
-{{--                                                            @error('nic_b')--}}
-{{--                                                            <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                                            @enderror--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
+                                                        <div class="col-md-6">
+                                                            <label>Back side</label>
+                                                            <input type="file" name="nic_b" class="form-control  @error('nic_b') is-invalid @enderror">
+                                                            @error('nic_b')
+                                                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-{{--                                                <div class="card-body">--}}
-{{--                                                    <div class="row">--}}
-{{--                                                        --}}{{--                                <div class="col-md-12" id="progress-data">--}}
-{{--                                                        --}}{{--                                     <div class="progress p-3">--}}
-{{--                                                        --}}{{--                                        <div class="bar"></div >--}}
-{{--                                                        --}}{{--                                        <div class="percent">0%</div>--}}
-{{--                                                        --}}{{--                                    </div>--}}
-{{--                                                        --}}{{--                                </div>--}}
-{{--                                                        <div class="col-md-12 mt-3">--}}
-{{--                                                            <button type="submit" class="btn btn-block btn-primary"><i class="fas fa-file-upload"></i> Upload</button>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        @if($enroll->student->student_docs()->count()>0)--}}
-{{--                                            <div class="col-md-4" >--}}
-{{--                                                <div class="card">--}}
-{{--                                                    <div class="card-header bg-success text-light"><i class="mdi mdi-check-circle"></i> Files has been uploaded</div>--}}
-{{--                                                    <div class="card-body">--}}
-{{--                                                        <div class="zoom-gallery">--}}
-{{--                                                            <div class="row">--}}
-{{--                                                                @foreach($enroll->student->student_docs()->get() as $doc)--}}
-{{--                                                                    @if(Storage::disk('docs')->exists($doc->name))--}}
-{{--                                                                        <div class="col-md-12 text-center">--}}
-{{--                                                                            <div class="font-size-12">{{$doc->name}}</div>--}}
-{{--                                                                            <a href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->type}}" class="img-thumbnail img-fluid" width="150"></a>--}}
-{{--                                                                        </div>--}}
-{{--                                                                    @endif--}}
-{{--                                                                @endforeach--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        @endif--}}
-{{--                                    </div>--}}
-{{--                                </form>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                                                        <div class="col-md-12" id="progress-data">
+                                                                                             <div class="progress p-3">
+                                                                                                <div class="bar"></div >
+                                                                                                <div class="percent">0%</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                        <div class="col-md-12 mt-3">
+                                                            <button type="submit" class="btn btn-block btn-primary"><i class="fas fa-file-upload"></i> Upload</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @if($enroll->student->student_docs()->count()>0)
+                                            <div class="col-md-4" >
+                                                <div class="card">
+                                                    <div class="card-header bg-success text-light"><i class="mdi mdi-check-circle"></i> Files has been uploaded</div>
+                                                    <div class="card-body">
+                                                        <div class="zoom-gallery">
+                                                            <div class="row">
+                                                                @foreach($enroll->student->student_docs()->get() as $doc)
+                                                                    @if(Storage::disk('docs')->exists($doc->name))
+                                                                        <div class="col-md-12 text-center">
+                                                                            <div class="font-size-12">{{$doc->name}}</div>
+                                                                            <a href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->type}}" class="img-thumbnail img-fluid" width="150"></a>
+                                                                        </div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         @endif
                     </div>
             </div>

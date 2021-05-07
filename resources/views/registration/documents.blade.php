@@ -28,6 +28,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label>Selection Letter sent by the UGC <span class="text-danger font-size-16">*</span></label>
+                                    <input type="hidden" name="student_id" value="{{Auth::user()->students()->latest()->first()->id}}">
                                     <input type="file" name="ugc" class="form-control  @error('ugc') is-invalid @enderror">
                                     @error('ugc')
                                     <span class="invalid-feedback" role="alert">

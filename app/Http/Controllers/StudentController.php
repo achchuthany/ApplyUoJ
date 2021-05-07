@@ -798,7 +798,7 @@ class StudentController extends Controller
         }
 
 
-        //Enroll
+        //New Enroll
         if(!$isUpdateStudent){
             $enroll = new Enroll();
             $programme_id = $request['programme_id'];
@@ -814,9 +814,18 @@ class StudentController extends Controller
             $enroll->reg_no = $reg_no;
             $enroll->index_no = $index_no;
             $enroll->student_id = $student->id;
-            $enroll->status = 'Documents Pending';
+            $enroll->status = 'Registered';
             $enroll->registration_date = $request['registration_date'];
             $enroll->save();
+            DB::beginTransaction();
+            $application = new ApplicationRegistration();
+            $application->next_registration_number +=1;
+            try{
+                $application->update();
+                DB::commit();
+            }catch(QueryException $e){
+                DB::rollBack();
+            }
         }
 
         return redirect()->route('admin.students.edit',['sid'=>$student->id])->with(['success'=>'Student data has been updated!']);
