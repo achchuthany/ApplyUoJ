@@ -57,8 +57,9 @@
                                         </div>
                                         <input type="date" name="date" class="form-control d-block" required>
                                     </div>
+                                    <button type="submit" class="btn btn-primary mb-2 mr-2"><i class="mdi mdi-sort-alphabetical-ascending"></i> Assign Registration Number</button>
+
                                     <a  href="{{route('admin.application.registrations.index')}}" class="btn btn-light mb-2 mr-3"><i class="mdi mdi-cancel"></i> Cancel</a>
-                                    <button type="submit" class="btn btn-primary mb-2"><i class="mdi mdi-sort-alphabetical-ascending"></i> Automatic</button>
                                 </div>
                             </form>
                         </div>

@@ -62,8 +62,9 @@
                                    <h4 class="text-danger"> Do you want to reset the registration number?</h4>
                                    <p>You are about to reset the registration numbers of the above students.
                                        This <b>cannot</b> be undone.</p>
-                                   <a  href="{{route('admin.application.registrations.index')}}" class="btn btn-light mb-2 mr-3"><i class="mdi mdi-cancel"></i> Cancel</a>
-                                   <button type="submit" class="btn btn-danger mb-2"><i class="mdi mdi-delete-outline"></i> Clear</button>
+                                   <button type="submit" class="btn btn-outline-danger mb-2 mr-2"><i class="mdi mdi-delete-outline"></i> Clear</button>
+
+                                   <a  href="{{route('admin.application.registrations.index')}}" class="btn btn-primary mb-2 mr-3"><i class="mdi mdi-cancel"></i> Cancel</a>
 
                                </div>
                            </form>
