@@ -32,7 +32,7 @@ $(document).ready(function() {
                         extend: "excel",
                         className: "btn-sm btn-primary mr-2",
                         titleAttr: 'Export in Excel',
-                        text: '<i class="fas fa-file-excel"></i> Excel',
+                        text: '<i class="fas fa-file-excel"></i>Export in Excel',
                         init: function(api, node, config) {
                             $(node).removeClass('btn-default')
                         }
