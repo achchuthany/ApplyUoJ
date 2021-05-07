@@ -197,9 +197,9 @@ class UserController extends Controller
     public function delete($id){
         $user= User::where('id',$id)->first();
         $role = DB::table('role_user')->where('user_id',$user->id);
-        if($user->email == 'achchuthan@maco.jfn.ac.lk'){
+        if($user->id == 1){
             $code = 201;
-            $msg = $user->name. ' user can not be delete';
+            $msg = $user->name. ' user can not be delete. System generated user can not be delete.';
             return response()->json(['msg'=>$msg,'code'=>$code]);
         }
         try{
@@ -266,6 +266,6 @@ class UserController extends Controller
         DB::table('user_student')->where('user_id',$user->id)->delete();
         $user->delete();
 
-        return redirect('/register')->with(['success'=>'Start you fresh registration now']);
+        return redirect('/register')->with(['success'=>'Your previews signup details has been deleted. Start you new registration here']);
     }
 }

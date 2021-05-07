@@ -18,11 +18,11 @@ class UserTableSeeder extends Seeder
     {
         $role_admin = Role::where('name', 'Admin')->first();
         $admin = new User();
-        $admin->name = 'Supper Admin';
-        $admin->email = 'achchuthan@maco.jfn.ac.lk';
+        $admin->name = 'Supper Administrator';
+        $admin->email = 'sis@univ.jfn.ac.lk';
         $admin->email_verified_at = Carbon::now();
         $admin->password = bcrypt('achchuthan');
-        $admin->phone_number = '00940770201500';
+        $admin->phone_number = '0094212226714';
         $admin->save();
         $admin->roles()->attach($role_admin);
     }
