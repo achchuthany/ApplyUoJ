@@ -17,7 +17,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="table-responsive mb-4">
-                    <div class="card-body">
+                    <div class="card-body min-vh-100">
                         <table id="datatable" class="table table-striped table-centered datatable dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                             <tr>

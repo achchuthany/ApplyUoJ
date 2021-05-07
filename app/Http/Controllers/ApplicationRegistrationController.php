@@ -26,9 +26,9 @@ class ApplicationRegistrationController extends Controller
                     $reg = Enroll::where([['academic_year_id',$row->academic_year_id],['programme_id',$row->programme_id],['status','Registered']])->count();
                     $total = Enroll::where([['academic_year_id',$row->academic_year_id],['programme_id',$row->programme_id]])->count();
                     $x = $total>0? round(($reg/$total)*100,0):0;
-                   $data =  '<div class="progress  progress-xl animated-progess" style="height: 10px;" >
-                        <div class="progress-bar bg-purple" role="progressbar" style="width: '.$x.'%" aria-valuenow="'.$x.'" aria-valuemin="0" aria-valuemax="'.$x.'">
-
+                   $data =  '<div class="progress progress-xl animated-progess" style="height: 20px;" >
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: '.$x.'%" aria-valuenow="'.$x.'" aria-valuemin="0" aria-valuemax="'.$x.'">
+                            '.$x.'%
                         </div>
                     </div>';
                     return $data;
@@ -47,7 +47,7 @@ class ApplicationRegistrationController extends Controller
                 })
                 ->addColumn('action', function($row){
                     $btn = '
-                    <div class="dropdown dropleft">
+                    <div class="dropdown dropleft" >
                         <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="mdi mdi-menu"></i>
                         </button>
