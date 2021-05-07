@@ -11,7 +11,7 @@
 @section('content')
 @component('common-components.breadcrumb')
     @slot('pagetitle') Students @endslot
-    @slot('title')<a href="{{route('admin.students.index')}}"> <i class="uil uil-arrow-left "></i> </a> {{$title}} Online Registrations @endslot
+    @slot('title')<a href="{{route('admin.students.index')}}"> <i class="uil uil-arrow-left "></i> </a> {{$title}}  Students Registrations @endslot
 @endcomponent
     <div class="row">
         <div class="col-12">

@@ -13,7 +13,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-header h6">
-                    Students Statistics by Programme
+                    Registered Students Statistics by Programme
                     <span class="float-right">Academic Year
                         <select  id="ay">
                             @foreach($ays as $ay)
