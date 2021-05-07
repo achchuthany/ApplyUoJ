@@ -87,10 +87,11 @@
                         <span>Students</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('admin.students.index')}}"><i class="fas fa-database"></i>Students Statistics</a></li>
-                        <li><a href="{{route('admin.students.add')}}"><i class="fas fa-plus"></i>Add a Student</a></li>
+                        <li><a href="{{route('admin.students.index')}}"><i class="fas fa-bars"></i>Statistics</a></li>
+                        <li><a href="{{route('admin.students.search')}}"><i class="fas fa-search"></i>Search </a></li>
+                        <li><a href="{{route('admin.students.add')}}"><i class="fas fa-plus"></i>Add</a></li>
                         <li><a href="{{route('admin.students.upload')}}"><i class="mdi mdi-upload-multiple"></i>Bulk Upload</a></li>
-                        <li><a href="{{route('admin.students.delete.index')}}"><i class="fas fa-trash "></i>Delete Students</a></li>
+                        <li><a href="{{route('admin.students.delete.index')}}"><i class="fas fa-trash "></i>Delete</a></li>
 
                     </ul>
                 </li>

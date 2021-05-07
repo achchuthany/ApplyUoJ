@@ -11,7 +11,7 @@ Students Details by Programme
 @section('content')
 @component('common-components.breadcrumb')
     @slot('pagetitle') Students @endslot
-    @slot('title')<a href="{{route('admin.students.index')}}"> <i class="uil uil-arrow-left "></i> </a> Students Details by Programme @endslot
+    @slot('title')<a href="{{route('admin.students.search')}}"> <i class="uil uil-arrow-left "></i> </a> Students Details by Programme @endslot
 @endcomponent
     <div class="row">
         <div class="col-12">
@@ -97,6 +97,6 @@ Students Details by Programme
     <script src="{{ URL::asset('assets/libs/pdfmake/pdfmake.min.js')}}"></script>
     <script src="{{ URL::asset('assets/js/pages/datatables.students.list.index.js')}}"></script>
         <script>
-        var url = '/admin/students/{{Route::current()->parameters['pid']}}/{{Route::current()->parameters['aid']}}/{{Route::current()->parameters['status']}}';
+        var url = '/admin/students/search/{{Route::current()->parameters['pid']}}/{{Route::current()->parameters['aid']}}/{{Route::current()->parameters['status']}}';
     </script>
 @endsection

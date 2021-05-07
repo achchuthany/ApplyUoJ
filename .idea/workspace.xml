@@ -20,11 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c2ec210-208a-41b5-8c22-9ae5395aa4fe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/student/search.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/pending.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/pending.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,18 +172,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/pdf" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/student" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/student" />
       <recent name="$PROJECT_DIR$/resources/views/pdf" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\public\assets\images" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\js\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images" />
@@ -266,14 +268,7 @@
       <workItem from="1611233347420" duration="5979000" />
       <workItem from="1618568133179" duration="24860000" />
       <workItem from="1620192230869" duration="11232000" />
-      <workItem from="1620307392906" duration="7386000" />
-    </task>
-    <task id="LOCAL-00008" summary="update">
-      <created>1609319724174</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1609319724174</updated>
+      <workItem from="1620307392906" duration="9493000" />
     </task>
     <task id="LOCAL-00009" summary="Update">
       <created>1609395714535</created>
@@ -611,7 +606,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620363947245</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="UI Fix and Transferred and Dropout added">
+      <created>1620365536368</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1620365536368</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -641,8 +643,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="email update student" />
-    <MESSAGE value="email command schedule in kernal" />
     <MESSAGE value="Student Download" />
     <MESSAGE value="Reference Number" />
     <MESSAGE value="Email Notification and Reg" />
@@ -666,7 +666,9 @@
     <MESSAGE value="enrollment status added" />
     <MESSAGE value="phone number format" />
     <MESSAGE value="UI Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="UI Fix" />
+    <MESSAGE value="UI Fix and Transferred and Dropout added" />
+    <MESSAGE value="Student Search by Programme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Student Search by Programme" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

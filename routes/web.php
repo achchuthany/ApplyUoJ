@@ -128,9 +128,14 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'roles' => ['Admin']
     ]);
 
-    Route::get('/admin/students/{pid}/{aid}/{status}',[
+    Route::get('/admin/students/search/{pid}/{aid}/{status}',[
         'uses' => 'App\Http\Controllers\StudentController@students',
         'as' => 'admin.students.program.academic',
+        'roles' => ['Admin']
+    ]);
+    Route::get('/admin/students/search',[
+        'uses' => 'App\Http\Controllers\StudentController@search',
+        'as' => 'admin.students.search',
         'roles' => ['Admin']
     ]);
     Route::post('/admin/students/search/list',[

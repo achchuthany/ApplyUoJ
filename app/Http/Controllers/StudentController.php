@@ -47,8 +47,7 @@ class StudentController extends Controller
         $registered_count = Enroll::where('status','Registered')->get()->count();
         $registered_today_count = Enroll::whereDate('updated_at', Carbon::today())->where('status','Registered')->get()->count();
 
-        $programmes = Programme::orderBy('name','asc')->get();
-        $academics = AcademicYear::orderBy('name','asc')->get();
+
 
         $count_total = array();
         $count_today = array();
@@ -58,8 +57,6 @@ class StudentController extends Controller
         }
 
         return view('student.index',[
-            'programmes'=>$programmes,
-            'academics'=>$academics,
             'count'=>[
                 'ugc'=>$ugc_count,
                 'pending'=>$pending_count,
@@ -550,6 +547,15 @@ class StudentController extends Controller
             'aid'=>$request['academic_year_id'],
             'status'=>$request['status']]);
     }
+    public function search(){
+        $programmes = Programme::orderBy('name','asc')->get();
+        $academics = AcademicYear::orderBy('name','asc')->get();
+        return view('student.search',[
+            'programmes'=>$programmes,
+            'academics'=>$academics,
+            'params'=>$this->params
+        ]);
+    }
     public function acceptRequest($eid,$status){
         $enroll = Enroll::whereId($eid)->first();
         if(!$enroll)
@@ -875,7 +881,7 @@ class StudentController extends Controller
         }
         return view('student.delete');
     }
-public function deleteProcess(Request $request) {
+    public function deleteProcess(Request $request) {
 
         $stu_ids = $request['delete'];
 
