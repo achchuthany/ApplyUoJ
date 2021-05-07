@@ -10,18 +10,18 @@
 @section('content')
 @component('common-components.breadcrumb')
     @slot('pagetitle') Students @endslot
-    @slot('title')Bulk Delete @endslot
+    @slot('title')Delete a Student's Record @endslot
 @endcomponent
     <div class="row">
         <div class="col-12">
             <form class="needs-validation" id="delete" method="POST" action="{{ route('admin.students.delete.process') }}">
                 @csrf
-                <div class="card">
+                <div class="card bg-soft-danger">
                 <div class="card-header bg-danger text-light">
                     Danger Zone
                 </div>
                 <div class="card-body table-responsive mb-4">
-                    <table id="datatable"  class="table table-borderless table-hover table-centered datatable dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <table id="datatable"  class="table table-borderless bg-transparent table-centered datatable dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                         <tr>
                             <th>Name</th>
@@ -36,8 +36,8 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="card-footer">
-                    <button type="button" class="btn btn-outline-danger float-right sa-delete" ><i class="mdi mdi-delete-outline"></i>Bulk Delete </button>
+                <div class="card-footer bg-soft-danger">
+                    You are about to delete the records of the above selected students. This cannot be undone. <button type="button" class="btn btn-danger float-right sa-delete" ><i class="mdi mdi-delete-outline"></i>Bulk Delete </button>
                 </div>
             </div>
             </form>
