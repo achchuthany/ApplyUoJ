@@ -76,9 +76,8 @@
                            </p>
                        </div>
                        <div class="col-md-12">
-
-                           <table class="table table-bordered table-hover table-light">
-                              <thead>
+                           <table class="table table-borderless table-hover table-striped">
+                              <thead class="bg-soft-dark">
                               <tr>
                                   <th>No</th>
                                   <th>Title</th>
