@@ -8,26 +8,51 @@ Login
         <div class="row vh-100 justify-content-center align-items-center">
             <div class="col-md-12 col-lg-12 col-xl-12">
                 <div class="">
-                    <div class="row align-items-center ">
+                    <div class="row align-items-center">
                         <div class="col-lg-7">
-                            <div class="card-body text-center">
+                            <div class="card-body bg-light shadow-lg rounded-lg my-3 p-4">
+                                <a href="{{route('home')}}" class="mb-5 d-block auth-logo">
+                                    <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="" height="40" class="logo logo-light">
+                                    <img src="{{ URL::asset('assets/images/logo-dark.png')}}" alt="" height="40" class="logo logo-dark">
+                                </a>
 
-                                <div class="h1 font-weight-lighter text-light">Welcome Back !</div>
-                                <div class="text-light font-weight-lighter font-size-20">Sign in to manage your MyUoJ account</div>
+                                <div class="p-3 text-center text-dark font-weight-lighter font-size-20">
+                                    Online Registration of Students for the following Courses
+                                </div>
+                                <div class="table-responsive text-light">
+                                    <table class="table table-borderless table-striped">
+                                        <thead class="bg-info text-light">
+{{--                                        <th>Faculty</th>--}}
+                                        <th>Programme</th>
+                                        <th>Closing Date</th>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($data as $row)
+                                            <tr>
+{{--                                                <td>{{$row->programme->faculty->name}}</td>--}}
+                                                <td>{{$row->programme->name}}</td>
+                                                <td>{{\Carbon\Carbon::parse($row->close_date)->toFormattedDateString()}} ({{\Carbon\Carbon::parse($row->close_date)->diffForHumans()}})</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="text-center text-muted border-info ">
+                                    <span class="mx-2"> <i class="mdi mdi-email"></i> admissions@univ.jfn.ac.lk</span>
+                                    <span class="mx-2"> <i class="mdi mdi-phone"></i> +94 021 221 8120</span>
+                                    <span class="mx-2"> <i class="mdi mdi-phone"></i> +94 021 222 6714</span>
+                                </div>
+
 
                             </div>
                         </div>
                         <div class="col-lg-5">
                             <div class="card rounded-lg shadow-lg p-2">
-                                <div class="card-body">
-                                <div class="row">
+                                <div class="card-body ">
+                                <div class="row mb-5">
                                     <div class="col-lg-12">
                                         <div class="text-center">
                                             <img src="{{ URL::asset('assets/images/uoj.png')}}" alt="" height="70" class="logo">
-                                            <a href="{{route('home')}}" class="mb-2 d-block auth-logo">
-                                                <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="" height="40" class="logo logo-light">
-                                                <img src="{{ URL::asset('assets/images/logo-dark.png')}}" alt="" height="40" class="logo logo-dark">
-                                            </a>
                                         </div>
                                     </div>
                                 </div>
