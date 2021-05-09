@@ -12,7 +12,7 @@
         <tr>
             <td style="width: 15%" >
 
-                <div style="width: 35mm;height: 45mm;border: 1px solid blue;">
+                <div style="width: 35mm;height: 45mm;border: 5px solid #cccccc;">
                     @if(Storage::disk('docs')->exists($profileImage))
                         <img style="width: 35mm;height: 45mm;" src="{{storage_path('app/docs/'.$profileImage)}}">
                     @else

@@ -393,7 +393,8 @@ class RegistrationController extends Controller
             }else{
                 $religion = $student->religion ? $this->religion[$student->religion]: null;
             }
-
+            $profile = $student->student_docs()->where('type','photo')->first();
+            $profileImage = ($profile)? $profile->name: '';
             $data []= [
                 'student'=>$student,
                 'enroll'=>$enroll,
@@ -407,6 +408,7 @@ class RegistrationController extends Controller
                 'religion'=>$religion,
                 'dob'=>Carbon::parse($student->date_of_birth)->toFormattedDateString(),
                 'age'=>Carbon::now()->diffInYears(Carbon::parse($enroll->student->date_of_birth)),
+                'profileImage'=>$profileImage,
             ];
         }
        // return \response()->json($data);
@@ -435,7 +437,8 @@ class RegistrationController extends Controller
         }else{
             $religion = $student->religion ? $this->religion[$student->religion]: null;
         }
-
+        $profile = $student->student_docs()->where('type','photo')->first();
+        $profileImage = ($profile)? $profile->name: '';
         $data = [
             'student'=>$student,
             'enroll'=>$enroll,
@@ -449,7 +452,7 @@ class RegistrationController extends Controller
             'religion'=>$religion,
             'dob'=>Carbon::parse($student->date_of_birth)->toFormattedDateString(),
             'age'=>Carbon::now()->diffInYears(Carbon::parse($enroll->student->date_of_birth)),
-            'profileImage'=>$student->student_docs()->where('type','photo')->first()->name,
+            'profileImage'=>$profileImage,
         ];
         $dompdf = PDF::loadView('pdf.personal_data',$data);
         $dompdf->setPaper('A4', 'portrait');

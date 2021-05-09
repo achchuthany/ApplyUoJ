@@ -15,8 +15,12 @@
         <table width="100%" style="margin-bottom: 10px">
             <tr>
                 <td style="width: 15%" >
-                    <div style="width: 35mm;height: 45mm;border: 1px dashed black;">
-                        <div style="text-align: center" ><p>Photo</p></div>
+                    <div style="width: 35mm;height: 45mm;border: 5px solid #cccccc;">
+                        @if(Storage::disk('docs')->exists($x['profileImage']))
+                            <img style="width: 35mm;height: 45mm;" src="{{storage_path('app/docs/'.$x['profileImage'])}}">
+                        @else
+                            <div style="text-align: center" ><p>Photo</p></div>
+                        @endif
                     </div>
                 </td>
                 <td  style="width: 85%;text-align: center">
