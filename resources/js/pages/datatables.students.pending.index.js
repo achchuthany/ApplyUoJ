@@ -18,7 +18,7 @@ $(document).ready(function() {
             ],
             lengthChange: true,
             "order": [[ 2, "asc" ]],
-            pageLength: 50,
+            pageLength: 25,
             // dom: 'Bfrtip',
             // buttons: {
             //     buttons: [

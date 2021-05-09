@@ -12,7 +12,7 @@ $(document).ready(function() {
             ],
             "order": [[ 0, "asc" ]],
             lengthChange: true,
-            pageLength: 20,
+            pageLength: 25,
             dom: 'Bfrtip',
             buttons: [
                 'copy', 'excel', 'pdf', 'print','colvis'

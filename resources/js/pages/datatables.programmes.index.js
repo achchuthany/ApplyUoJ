@@ -14,7 +14,7 @@ $(document).ready(function() {
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             lengthChange: false,
-            pageLength: 50,
+            pageLength: 25,
             dom: 'Bfrtip',
             buttons: [
                 'copy', 'excel', 'pdf', 'colvis'

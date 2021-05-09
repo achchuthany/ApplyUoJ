@@ -15,7 +15,7 @@ $(document).ready(function() {
             ],
             "order": [[ 4, "desc" ]],
             lengthChange: true,
-            pageLength: 100,
+            pageLength: 25,
         }
     );
 } );

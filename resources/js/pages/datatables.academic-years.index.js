@@ -15,7 +15,7 @@ $(document).ready(function() {
             ],
             "order": [[ 0, "desc" ]],
             lengthChange: false,
-            pageLength: 50,
+            pageLength: 25,
             dom: 'Bfrtip',
             buttons: [
                 'copy', 'excel', 'pdf', 'colvis'
