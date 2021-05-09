@@ -43,6 +43,12 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         $data = ApplicationRegistration::whereDate('close_date', '>=', Carbon::now())->where('status','Published')->get();
-        return view('auth.login',['data'=>$data]);
+        //dd($data->count());
+        if ($data->count()==0) {
+            $isShow = false;
+        } else {
+            $isShow = true;
+        }
+        return view('auth.login',['data'=>$data,'isShow'=>$isShow]);
     }
 }
