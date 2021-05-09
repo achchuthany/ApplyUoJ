@@ -31,14 +31,20 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="#" class="nav-link {{Route::currentRouteName()=='student.documents'?'active':''}} ">
+        <a href="#" class="nav-link {{Route::currentRouteName()=='student.photograph'?'active':''}} ">
             <span class="rounded-circle bg-primary p-2 text-light">06</span>
+            Photograph
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="#" class="nav-link {{Route::currentRouteName()=='student.documents'?'active':''}} ">
+            <span class="rounded-circle bg-primary p-2 text-light">07</span>
             Documents
         </a>
     </li>
     <li class="nav-item">
         <a href="#" class="nav-link {{Route::currentRouteName()=='student.registration.complete'?'active':''}} ">
-            <span class="rounded-circle bg-primary p-2 text-light">07</span>
+            <span class="rounded-circle bg-primary p-2 text-light">08</span>
             Complete
         </a>
     </li>

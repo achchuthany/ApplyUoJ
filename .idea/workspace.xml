@@ -20,11 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c2ec210-208a-41b5-8c22-9ae5395aa4fe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/photograph.upload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/registration/photograph.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pdf/personal_data.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pdf/personal_data.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/registration/documents.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/documents.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/add-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/add-edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/registration/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/registration/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registration/nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/my_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/my_profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,18 +181,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/student" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/registration" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/registration" />
       <recent name="$PROJECT_DIR$/resources/views/student" />
       <recent name="$PROJECT_DIR$/resources/views/pdf" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\public\assets\images" />
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images" />
-      <recent name="D:\xampp\htdocs\ApplyUoJ\resources\views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\xampp\htdocs\ApplyUoJ\resources\images" />
@@ -266,77 +277,7 @@
       <workItem from="1611233347420" duration="5979000" />
       <workItem from="1618568133179" duration="24860000" />
       <workItem from="1620192230869" duration="11232000" />
-      <workItem from="1620307392906" duration="11993000" />
-    </task>
-    <task id="LOCAL-00010" summary="json to txt update">
-      <created>1609396191870</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1609396191870</updated>
-    </task>
-    <task id="LOCAL-00011" summary="string size">
-      <created>1609396641451</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1609396641451</updated>
-    </task>
-    <task id="LOCAL-00012" summary="test update">
-      <created>1609407663757</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1609407663757</updated>
-    </task>
-    <task id="LOCAL-00013" summary="welcome page">
-      <created>1609428434913</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1609428434913</updated>
-    </task>
-    <task id="LOCAL-00014" summary="welcome page">
-      <created>1609429809865</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1609429809865</updated>
-    </task>
-    <task id="LOCAL-00015" summary="update">
-      <created>1609602333841</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1609602333841</updated>
-    </task>
-    <task id="LOCAL-00016" summary="'Asia/Colombo'">
-      <created>1609602549155</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1609602549155</updated>
-    </task>
-    <task id="LOCAL-00017" summary="fix">
-      <created>1609654538647</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1609654538647</updated>
-    </task>
-    <task id="LOCAL-00018" summary="fix">
-      <created>1609655129048</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1609655129048</updated>
-    </task>
-    <task id="LOCAL-00019" summary="fix">
-      <created>1609655155527</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1609655155527</updated>
+      <workItem from="1620307392906" duration="38435000" />
     </task>
     <task id="LOCAL-00020" summary="fix">
       <created>1609656169904</created>
@@ -611,7 +552,77 @@
       <option name="project" value="LOCAL" />
       <updated>1620369726202</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="document upload by admin and student">
+      <created>1620372419595</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1620372419595</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Sort by ID and reg_no">
+      <created>1620390987551</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1620390987551</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Export button text">
+      <created>1620391018117</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1620391018117</updated>
+    </task>
+    <task id="LOCAL-00062" summary="user details edited">
+      <created>1620391650109</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1620391650109</updated>
+    </task>
+    <task id="LOCAL-00063" summary="ui fix for delete students">
+      <created>1620392297415</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1620392297416</updated>
+    </task>
+    <task id="LOCAL-00064" summary="menu z-index fix">
+      <created>1620395816265</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1620395816265</updated>
+    </task>
+    <task id="LOCAL-00065" summary="UI Fix">
+      <created>1620396631927</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1620396631927</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Login UI for change">
+      <created>1620458331573</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1620458331573</updated>
+    </task>
+    <task id="LOCAL-00067" summary="datatable data length is 25">
+      <created>1620534025016</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1620534025016</updated>
+    </task>
+    <task id="LOCAL-00068" summary="login show/hide panel based on data">
+      <created>1620534061718</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1620534061718</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -641,16 +652,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Student Download" />
-    <MESSAGE value="Reference Number" />
-    <MESSAGE value="Email Notification and Reg" />
-    <MESSAGE value="PDF Design" />
-    <MESSAGE value="student profile" />
-    <MESSAGE value="Delete Students" />
-    <MESSAGE value="english check" />
-    <MESSAGE value="update" />
-    <MESSAGE value="Interface Update and Landing Page" />
-    <MESSAGE value="Registration error modified and vendor script move to auth" />
     <MESSAGE value="Footer and UI" />
     <MESSAGE value="Letter &quot;A&quot; removed" />
     <MESSAGE value="Email delay setting" />
@@ -663,10 +664,20 @@
     <MESSAGE value="bulk pdf generation for personal data of students" />
     <MESSAGE value="enrollment status added" />
     <MESSAGE value="phone number format" />
-    <MESSAGE value="UI Fix" />
     <MESSAGE value="UI Fix and Transferred and Dropout added" />
     <MESSAGE value="Student Search by Programme" />
-    <option name="LAST_COMMIT_MESSAGE" value="Student Search by Programme" />
+    <MESSAGE value="document upload by admin and student" />
+    <MESSAGE value="Sort by ID and reg_no" />
+    <MESSAGE value="Export button text" />
+    <MESSAGE value="user details edited" />
+    <MESSAGE value="ui fix for delete students" />
+    <MESSAGE value="menu z-index fix" />
+    <MESSAGE value="UI Fix" />
+    <MESSAGE value="Login UI for chage" />
+    <MESSAGE value="Login UI for change" />
+    <MESSAGE value="datatable data length is 25" />
+    <MESSAGE value="login show/hide panel based on data" />
+    <option name="LAST_COMMIT_MESSAGE" value="login show/hide panel based on data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -675,11 +686,6 @@
           <url>file://$PROJECT_DIR$/resources/views/student/upload.blade.php</url>
           <line>25</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/auth/login.blade.php</url>
-          <line>9</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/welcome.blade.php</url>
@@ -695,6 +701,11 @@
           <url>file://$PROJECT_DIR$/resources/views/enroll/confirmation.blade.php</url>
           <line>47</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/auth/login.blade.php</url>
+          <line>45</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

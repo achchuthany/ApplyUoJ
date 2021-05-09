@@ -51,7 +51,7 @@ var third_party_assets = {
         {"name": "pdfmake", "assets": ["./node_modules/pdfmake/build/pdfmake.min.js", "./node_modules/pdfmake/build/vfs_fonts.js"]},
         {"name": "jszip", "assets": ["./node_modules/jszip/dist/jszip.min.js"]},
         {"name": "jquery-form", "assets": ["./node_modules/jquery-form/dist/jquery.form.min.js"]},
-        // {"name": "summernote", "assets": ["./node_modules/summernote/dist/summernote-bs4.min.js", "./node_modules/summernote/dist/summernote-bs4.css"]},
+        {"name": "cropperjs", "assets": ["./node_modules/cropperjs/dist/cropper.min.js", "./node_modules/cropperjs/dist/cropper.min.css"]},
 
     ]
 };
@@ -125,6 +125,8 @@ var app_pages_assets = {
         folder.src + "js/pages/datatables.users.index.js",
         folder.src + "js/pages/delete.users.index.js",
         folder.src + "js/pages/datatables.students.delete.index.js",
+        folder.src + "js/pages/photograph.upload.js",
+
     ]
 };
 

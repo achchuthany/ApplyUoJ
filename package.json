@@ -14,9 +14,9 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "axios": "^0.19",
+        "axios": "^0.21.1",
         "cross-env": "^7.0",
-        "laravel-mix": "^5.0.1",
+        "laravel-mix": "^6.0.19",
         "lodash": "^4.17.19",
         "popper.js": "^1.12",
         "resolve-url-loader": "^3.1.0",
@@ -27,6 +27,7 @@
     "dependencies": {
         "bootstrap": "^4.5.2",
         "chart.js": "^2.9.4",
+        "cropperjs": "^1.5.11",
         "datatables.net": "^1.10.22",
         "datatables.net-autofill": "^2.3.5",
         "datatables.net-autofill-bs4": "^2.3.5",

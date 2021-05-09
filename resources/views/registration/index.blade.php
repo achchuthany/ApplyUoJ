@@ -7,10 +7,30 @@
     <!-- Lightbox css -->
     <link href="{{ URL::asset('assets/libs/magnific-popup/magnific-popup.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/libs/cropperjs/cropperjs.min.css')}}" rel="stylesheet" type="text/css" />
+
     <style>
         .progress { position:relative; width:100%; }
         .bar { background-color: #07B524; width:0%; height:30px; }
         .percent { position:absolute; display:inline-block; left:50%; color: #040608;}
+
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .preview {
+            overflow: hidden;
+            width: 35mm;
+            height: 45mm;
+            margin: 10px;
+            border: 1px solid red;
+        }
+        .modal-lg{
+            max-width: 1000px !important;
+        }
+
     </style>
 @endsection
 @section('content')
@@ -61,6 +81,9 @@
                         @if(Route::currentRouteName()=='student.parents')
                             @include('registration.parents')
                         @endif
+                        @if(Route::currentRouteName()=='student.photograph')
+                            @include('registration.photograph')
+                        @endif
                         @if(Route::currentRouteName()=='student.documents')
                             @include('registration.documents')
                         @endif
@@ -69,6 +92,38 @@
                 </div>
             </div>
         </div>
+    </div>
+
+
+{{--    //model--}}
+
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Crop Image Before Upload</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="img-container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="preview"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="crop"><i class="mdi mdi-crop"></i> Crop and Upload</button>
+            </div>
+        </div>
+    </div>
     </div>
 
 @endsection
@@ -80,10 +135,12 @@
     <script src="{{ URL::asset('assets/js/pages/lightbox.init.js')}}"></script>
     <script src="{{ URL::asset('assets/libs/jquery-form/jquery-form.min.js')}}"></script>
     <script src="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
+    <script src="{{ URL::asset('assets/libs/cropperjs/cropperjs.min.js')}}"></script>
+    <script src="{{ URL::asset('assets/js/pages/photograph.upload.js')}}"></script>
+
     <script>
-        $(".select2").select2({
-            theme: "classic"
-        });
+        $(".select2").select2();
+        var _token = "{{ csrf_token() }}";
     </script>
     @if(Route::currentRouteName()=='student.education')
         <script>
@@ -216,5 +273,7 @@
 {{--        })();--}}
 {{--    </script>--}}
 {{--    @endif--}}
+
+
 
 @endsection

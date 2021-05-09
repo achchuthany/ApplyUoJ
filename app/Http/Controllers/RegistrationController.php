@@ -247,6 +247,9 @@ class RegistrationController extends Controller
         if($this->checkApplicationStatus())
             return redirect()->route('student.registration.completed');
         $student = Auth::user()->students()->latest()->first();
+        if(!$student->al_exam_year)
+            return redirect()->route('student.education');
+
         return view('registration.index',['student'=>$student,'countries'=>$this->countries]);
     }
     public function citizenshipProcess(Request $request){
@@ -308,12 +311,12 @@ class RegistrationController extends Controller
         try {
             $student->update();
             $enroll->update();
-            return redirect()->route('student.documents');
+            return redirect()->route('student.photograph');
         }catch (QueryException $e){
             return back()->withInput()->with(['error'=>'Failed to update']);
         }
     }
-    public function documents(){
+    public function photograph(){
         if($this->checkApplicationStatus())
             return redirect()->route('student.registration.completed');
         $student = Auth::user()->students()->latest()->first();
@@ -323,6 +326,18 @@ class RegistrationController extends Controller
 
         return view('registration.index',['enroll'=>$enroll]);
     }
+    public function documents(){
+        if($this->checkApplicationStatus())
+            return redirect()->route('student.registration.completed');
+        $student = Auth::user()->students()->latest()->first();
+        $enroll = $student->enrolls()->latest()->first();
+        if(!$student->emergency_contact_mobile)
+            return redirect()->route('student.photograph');
+
+        return view('registration.index',['enroll'=>$enroll]);
+    }
+
+
     public function complete(){
         if($this->checkApplicationStatus())
             return redirect()->route('student.registration.completed');
@@ -434,6 +449,7 @@ class RegistrationController extends Controller
             'religion'=>$religion,
             'dob'=>Carbon::parse($student->date_of_birth)->toFormattedDateString(),
             'age'=>Carbon::now()->diffInYears(Carbon::parse($enroll->student->date_of_birth)),
+            'profileImage'=>$student->student_docs()->where('type','photo')->first()->name,
         ];
         $dompdf = PDF::loadView('pdf.personal_data',$data);
         $dompdf->setPaper('A4', 'portrait');
@@ -451,7 +467,6 @@ class RegistrationController extends Controller
     public function imageUploadPost(Request $request){
         $request->validate([
             'ugc' => 'required|image|mimes:jpeg,jpg|max:5125',
-            'image' => 'required|image|mimes:jpeg,jpg|max:5125',
             'bank' => 'required|image|mimes:jpeg,jpg|max:5125',
             'lc_f' => 'required|image|mimes:jpeg,jpg|max:5125',
             'lc_b' => 'required|image|mimes:jpeg,jpg|max:5125',
@@ -462,7 +477,7 @@ class RegistrationController extends Controller
         $student = Student::where('id',$request['student_id'])->first();
 
         //ugc
-        $imageName =$student->nic.'_ugc.'.$request->image->extension();
+        $imageName =$student->nic.'_ugc.'.$request->ugc->extension();
         $request->ugc->storeAs('docs', $imageName);
         /* Store $imageName name in DATABASE from HERE */
         $docs = StudentDoc::where([['student_id',$student->id],['type','ugc']])->first();
@@ -480,24 +495,24 @@ class RegistrationController extends Controller
         else
             $docs->save();
 
-        //photo
-        $imageName =$student->nic.'_photo.'.$request->image->extension();
-        $request->image->storeAs('docs', $imageName);
-        /* Store $imageName name in DATABASE from HERE */
-        $docs = StudentDoc::where([['student_id',$student->id],['type','photo']])->first();
-        $isUpdate = true;
-        if(!$docs){
-            $docs = new StudentDoc();
-            $isUpdate = false;
-        }
-
-        $docs->student_id = $student->id;
-        $docs->name = $imageName;
-        $docs->type = "photo";
-        if($isUpdate)
-            $docs->update();
-        else
-            $docs->save();
+//        //photo
+//        $imageName =$student->nic.'_photo.'.$request->image->extension();
+//        $request->image->storeAs('docs', $imageName);
+//        /* Store $imageName name in DATABASE from HERE */
+//        $docs = StudentDoc::where([['student_id',$student->id],['type','photo']])->first();
+//        $isUpdate = true;
+//        if(!$docs){
+//            $docs = new StudentDoc();
+//            $isUpdate = false;
+//        }
+//
+//        $docs->student_id = $student->id;
+//        $docs->name = $imageName;
+//        $docs->type = "photo";
+//        if($isUpdate)
+//            $docs->update();
+//        else
+//            $docs->save();
 
 
 
@@ -614,5 +629,35 @@ class RegistrationController extends Controller
         $response->header("Content-Type", $type);
 
         return $response;
+    }
+
+    public function uploadProfileImage(Request $request){
+        $student = Student::where('id',$request['student_id'])->first();
+        $image_parts = explode(";base64,", $request->image);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $imageName =$student->nic.'_photo.'.$image_type;
+        Storage::disk('docs')->put($imageName, $image_base64);
+
+        //photo
+        /* Store $imageName name in DATABASE from HERE */
+        $docs = StudentDoc::where([['student_id',$student->id],['type','photo']])->first();
+        $isUpdate = true;
+        if(!$docs){
+            $docs = new StudentDoc();
+            $isUpdate = false;
+        }
+
+        $docs->student_id = $student->id;
+        $docs->name = $imageName;
+        $docs->type = "photo";
+        if($isUpdate)
+            $docs->update();
+        else
+            $docs->save();
+
+        return response()->json(['success'=>$imageName]);
+
     }
 }

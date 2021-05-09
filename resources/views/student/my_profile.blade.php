@@ -28,7 +28,7 @@
                         <div>
                                 @if($enroll->student->student_docs()->where('type','photo')->first() && Storage::disk('docs')->exists($enroll->student->student_docs()->where('type','photo')->first()->name))
                                 <a class="image-popup-no-margins" href="/registration/student/image/{{$enroll->student->student_docs()->where('type','photo')->first()->name}}">
-                                <img src="/registration/student/image/{{$enroll->student->student_docs()->where('type','photo')->first()->name}}" alt="{{$enroll->student->student_docs()->where('type','photo')->first()->type}}" class="img-fluid avatar-lg rounded-circle img-thumbnail">
+                                <img src="/registration/student/image/{{$enroll->student->student_docs()->where('type','photo')->first()->name}}" alt="{{$enroll->student->student_docs()->where('type','photo')->first()->type}}" class="img-fluid  img-thumbnail">
                                 </a>
                                 @else
                                 <img class="img-fluid avatar-lg rounded-circle img-thumbnail" alt="" src="{{ URL::asset('assets/images/users/user.png')}}" width="75">

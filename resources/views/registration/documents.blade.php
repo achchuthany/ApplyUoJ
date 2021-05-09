@@ -24,11 +24,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body bg-light">
                             <div class="row">
                                 <div class="col-md-12">
                                     <label>Selection Letter sent by the UGC <span class="text-danger font-size-16">*</span></label>
-                                    <input type="hidden" name="student_id" value="{{Auth::user()->students()->latest()->first()->id}}">
+                                    <input type="hidden" name="student_id"  id="document_student_id" value="{{Auth::user()->students()->latest()->first()->id}}">
                                     <input type="file" name="ugc" class="form-control  @error('ugc') is-invalid @enderror">
                                     @error('ugc')
                                     <span class="invalid-feedback" role="alert">
@@ -39,27 +39,27 @@
                             </div>
                         </div>
 
-                        <div class="card-body bg-light">
-                            <div class="row">
-                                <div class="col-md-12 mt-3">
-                                    <label>Your recent photograph (Identity Card Image) <span class="text-danger font-size-16">*</span></label>
-                                    <input type="file" name="image" class="form-control  @error('image') is-invalid @enderror">
-                                    <div class="alert  p-3">
-                                        <div class="h6 text-primary"><i class="mdi mdi-information"></i> Identity Card Image should be: </div>
-                                        <div>Required photo size: Passport Size</div>
-                                        <div>The submitted photos must be in color</div>
-                                        <div> Head position: straight</div>
-                                        <div>Background: Blue/Light Blue</div>
-                                        <div>Recency: taken no more than 6 months ago</div>
-                                    </div>
-                                    @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="card-body bg-light">--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="col-md-12 mt-3">--}}
+{{--                                    <label>Your recent photograph (Identity Card Image) <span class="text-danger font-size-16">*</span></label>--}}
+{{--                                    <input type="file" name="image" class="form-control  @error('image') is-invalid @enderror" id="profileImage">--}}
+{{--                                    <div class="alert  p-3">--}}
+{{--                                        <div class="h6 text-primary"><i class="mdi mdi-information"></i> Identity Card Image should be: </div>--}}
+{{--                                        <div>Required photo size: Passport Size</div>--}}
+{{--                                        <div>The submitted photos must be in color</div>--}}
+{{--                                        <div> Head position: straight</div>--}}
+{{--                                        <div>Background: Blue/Light Blue</div>--}}
+{{--                                        <div>Recency: taken no more than 6 months ago</div>--}}
+{{--                                    </div>--}}
+{{--                                    @error('image')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
@@ -137,7 +137,7 @@
 {{--                                    </div>--}}
 {{--                                </div>--}}
                                 <div class="col-md-12 mt-3">
-                                    <button type="submit" class="btn btn-block btn-primary"><i class="fas fa-file-upload"></i> Upload</button>
+                                    <button type="submit" class="btn btn-block btn-primary"><i class="mdi mdi-upload-multiple"></i> Bulk Upload</button>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +174,7 @@
 </div>
 <div class="row mt-4">
     <div class="col">
-        <a href="{{route('student.parents')}}" class="btn btn-light"><i class="mdi mdi-arrow-left mr-1"></i> Back</a>
+        <a href="{{route('student.photograph')}}" class="btn btn-light"><i class="mdi mdi-arrow-left mr-1"></i> Back</a>
     </div>
     <div class="col text-right">
         <a href="{{route('student.registration.complete')}}" class="btn btn-primary">Next <i class="mdi mdi-arrow-right mr-1"></i></a>

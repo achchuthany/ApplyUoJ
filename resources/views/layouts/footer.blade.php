@@ -6,7 +6,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-right d-none d-sm-block">
-                     <a href="https://cv.achchuthan.org" target="_blank" class="text-reset" data-toggle="tooltip" data-placement="top" title="Developed by Yogarajah Achchuthan"><i class="mdi mdi-license text-info"></i></a>
+                    Made with <i class="mdi mdi-heart text-danger"></i> in University of Jaffna
                 </div>
             </div>
         </div>

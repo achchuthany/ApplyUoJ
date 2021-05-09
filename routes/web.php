@@ -435,10 +435,14 @@ Route::group(['middleware' => ['auth','verified','roles'],'roles' => ['Student']
         'as' => 'student.parents.process',
     ]);
     Route::get('/registration/6',[
+        'uses' => 'App\Http\Controllers\RegistrationController@photograph',
+        'as' => 'student.photograph',
+    ]);
+    Route::get('/registration/7',[
         'uses' => 'App\Http\Controllers\RegistrationController@documents',
         'as' => 'student.documents',
     ]);
-    Route::get('/registration/7',[
+    Route::get('/registration/8',[
         'uses' => 'App\Http\Controllers\RegistrationController@complete',
         'as' => 'student.registration.complete',
     ]);
@@ -464,6 +468,13 @@ Route::group(['middleware' => ['auth','verified','roles'],'roles' => ['Student']
         'as' => 'student.registration.image.upload',
         'roles' => ['Student','Admin']
     ]);
+
+    Route::post('registration/student/uploadProfileImage',[
+        'uses' => 'App\Http\Controllers\RegistrationController@uploadProfileImage',
+        'as' => 'student.registration.image.upload.profile',
+        'roles' => ['Student','Admin']
+    ]);
+
 
 });
 
