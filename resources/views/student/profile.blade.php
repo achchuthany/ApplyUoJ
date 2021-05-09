@@ -141,8 +141,8 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#files" role="tab">
-                            <i class="uil  uil-file  font-size-20"></i>
-                            <span class="d-none d-sm-block">Files</span>
+                            <i class="mdi mdi-attachment  font-size-20"></i>
+                            <span class="d-none d-sm-block">Attachment</span>
                         </a>
                     </li>
 {{--                    <li class="nav-item">--}}
