@@ -120,7 +120,7 @@
                                       <td>Declaration for Degree Certificate</td>
                                       <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
                                       <td class="text-center">-</td>
-                                      <td class="text-center"><a href="{{URL::asset('/assets/images/download/Declaration_Name_Degree_Certificate.pdf')}}" download="Declaration_Name_Degree_Certificate.pdf" target="_blank" class="btn btn-sm btn-link"> <i class="mdi mdi-download-outline"></i> Download</a></td>
+                                      <td class="text-center"><a href="{{route('student.registration.download.DegreeDeclarationData',['eid'=>$enroll->id])}}" class="btn btn-sm btn-link"> <i class="mdi mdi-download-outline"></i> Download</a></td>
                                   </tr>
                                   <tr>
                                       <td>6</td>

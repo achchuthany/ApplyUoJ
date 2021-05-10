@@ -468,6 +468,11 @@ Route::group(['middleware' => ['auth','verified','roles'],'roles' => ['Student']
         'as' => 'student.registration.download.IdentityCardData',
         'roles' => ['Student','Admin']
     ]);
+    Route::get('/registration/download/{eid}/DegreeDeclarationData',[
+        'uses' => 'App\Http\Controllers\RegistrationController@downloadDegreeDeclarationData',
+        'as' => 'student.registration.download.DegreeDeclarationData',
+        'roles' => ['Student','Admin']
+    ]);
     Route::post('registration/student/imageUpload',[
         'uses' => 'App\Http\Controllers\RegistrationController@imageUploadPost',
         'as' => 'student.registration.image.upload',

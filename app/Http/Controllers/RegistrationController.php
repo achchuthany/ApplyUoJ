@@ -483,6 +483,24 @@ class RegistrationController extends Controller
         return $dompdf->download($student->nic.'_Identity_Card_Data.pdf');
     }
 
+    public function downloadDegreeDeclarationData($eid){
+
+        $enroll = Enroll::whereId($eid)->first();
+        $student= $enroll->student;
+        $profile = $student->student_docs()->where('type','photo')->first();
+        $profileImage = ($profile)? $profile->name: '';
+        $data = [
+            'student'=>$student,
+            'enroll'=>$enroll,
+            'NotAssigned'=>'Not Assigned',
+            'profileImage'=>$profileImage,
+        ];
+        $dompdf = PDF::loadView('pdf.declaration_name_degree',$data);
+        $dompdf->setPaper('A4', 'portrait');
+        //return $dompdf->stream();
+        return $dompdf->download($student->nic.'_Degree_Declaration_Data.pdf');
+    }
+
 
     public function checkApplicationStatus(){
         $student = Auth::user()->students()->latest()->first();
