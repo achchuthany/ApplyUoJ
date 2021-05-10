@@ -473,6 +473,11 @@ Route::group(['middleware' => ['auth','verified','roles'],'roles' => ['Student']
         'as' => 'student.registration.download.DegreeDeclarationData',
         'roles' => ['Student','Admin']
     ]);
+    Route::get('/registration/download/{eid}/NonSubmissionDocumentsData',[
+        'uses' => 'App\Http\Controllers\RegistrationController@downloadNonSubmissionDocumentsData',
+        'as' => 'student.registration.download.NonSubmissionDocumentsData',
+        'roles' => ['Student','Admin']
+    ]);
     Route::post('registration/student/imageUpload',[
         'uses' => 'App\Http\Controllers\RegistrationController@imageUploadPost',
         'as' => 'student.registration.image.upload',
