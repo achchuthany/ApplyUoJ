@@ -1,3 +1,8 @@
+Prerequiste
+Install Composer
+Install nodejs and npm
+sudo apt install -y php7.4 php7.4-gd php7.4-mbstring php7.4-xml php-zip 
+
 ### Install Composer Dependencies
 `composer install`
 
