@@ -96,7 +96,7 @@ chown -R www-data.www-data /var/www/ApplyUoJ
 chmod -R 755 /var/www/ApplyUoJ
 chmod -R 777 /var/www/ApplyUoJ/storage
 ```
-###Step 5 - Apache Configuration
+### Step 5 - Apache Configuration
 
 `sudo vim /etc/apache2/sites-enabled/000-default.conf`
 
@@ -125,7 +125,7 @@ Reload Apache configuration
 
 `sudo systemctl restart apache2 `
 
-###Step 6 - Cron configuration
+### Step 6 - Cron configuration
 To set up cron jobs, enter:
 
 `crontab -e`
