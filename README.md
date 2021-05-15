@@ -6,7 +6,7 @@
 * NPM Version : 7.9.0
 * Composer Version: 2.0.11
 
-##Installation
+## Installation
 
 ### Step 1 – Installing LAMP Stack
 #### Install PHP
