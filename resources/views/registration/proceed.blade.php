@@ -9,17 +9,14 @@
 @section('content')
     <div class="row align-items-center justify-content-center">
         <div class="col-md-12 col-lg-12 col-xl-12">
-
             <div class="card shadow-none">
-                <div class="card-header">
-                    <div class="text-center alert alert-light alert-border-success">
-                        <i class="mdi mdi-check-circle display-2  text-success"></i>
-                        <p class="font-weight-lighter font-size-20">Your Online registration  has been successfully completed</p>
+                <div class="card-body">
+                    <div class="alert">
+                        <i class="mdi mdi-check-circle text-success"></i> Your Online registration  has been successfully completed
                     </div>
-
                 </div>
             </div>
-            <div class="card text-justify ">
+            <div class="card text-justify">
                 <div class="card-header bg-dark text-light">
                    Follow the Instructions to process your registration of University of Jaffna.
                 </div>
@@ -212,7 +209,7 @@
                                </div>
                                <div class="media-body">
                                    <p>
-                                       If a student cannot provide any of the above mentioned documents should give declaration about the reason for not submitting the same. (Form could be downloaded from website which is named as <a href="{{route('student.registration.download.NonSubmissionDocumentsData',['eid'=>$enroll->id])}}" download="Non_Submission_of_Documents.pdf" target="_blank"  class="btn btn-sm btn-link">"<i class="mdi mdi-download-outline"></i> Non Submission of Documents”</a>).
+                                       If a student cannot provide any of the above mentioned documents should give declaration about the reason for not submitting the same. (Form could be downloaded from website which is named as <a href="{{route('student.registration.download.NonSubmissionDocumentsData',['eid'=>$enroll->id])}}" download="Non_Submission_of_Documents.pdf" target="_blank"  class="btn btn-sm btn-link">"<i class="mdi mdi-download-outline"></i>Download Non Submission of Documents Form”</a>).
                                    </p>
                                </div>
                            </div>
