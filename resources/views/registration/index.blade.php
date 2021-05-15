@@ -42,8 +42,8 @@
     @endcomponent
     <div class="row">
         <div class="col-lg-12">
-            <div class="card">
-                <div class="p-4 bg-white">
+            <div class="card shadow rounded">
+                <div class="p-4 bg-light">
                     <div class="media align-items-center">
                         <div class="media-body">
                             <div class="row align-items-center justify-content-center">
