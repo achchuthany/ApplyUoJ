@@ -14,13 +14,13 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="shortname">ii. Index No. of the G.C.E(A/L) Examination <span class="text-danger font-size-16">*</span></label>
+                    <label for="shortname">ii. Index No. of the G.C.E(A/L) Examination</label>
                     <input value="{{$student->al_index_number }}" id="abbreviation" name="abbreviation" type="text" class="form-control bg-light" disabled>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="shortname">iii. Average Z Score <span class="text-danger font-size-16">*</span></label>
+                    <label for="shortname">iii. Average Z Score</label>
                     <input value="{{$student->al_z_score}}" id="abbreviation" name="abbreviation" type="text" class="form-control bg-light" disabled>
                 </div>
             </div>
@@ -29,7 +29,7 @@
             </div>
             <div class="col-md-8">
                 <div class="form-group">
-                    <label for="subject_1">Subject</label>
+                    <label for="subject_1">Subject <span class="text-danger font-size-16">*</span></label>
                     <select id="subject_1" name="subjects[1][subject]" class="form-control select2">
                         <option disabled selected>-- Select --</option>
                         @foreach($al_subjects as $key=>$subject)
@@ -40,7 +40,7 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="grade_1">Grade</label>
+                    <label for="grade_1">Grade <span class="text-danger font-size-16">*</span></label>
                     <select id="grade_1" name="subjects[1][grade]" class="form-control select2" >
                         <option disabled selected>-- Select --</option>
                         @foreach($al_grades as $key=>$value)
@@ -52,7 +52,7 @@
 
             <div class="col-md-8">
                 <div class="form-group">
-                    <label for="subject_2">Subject</label>
+                    <label for="subject_2">Subject <span class="text-danger font-size-16">*</span></label>
                     <select id="subject_2" name="subjects[2][subject]" class="form-control select2" required>
                         <option disabled selected>-- Select --</option>
                         @foreach($al_subjects as $key=>$subject)
@@ -63,7 +63,7 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="grade_2">Grade</label>
+                    <label for="grade_2">Grade <span class="text-danger font-size-16">*</span></label>
                     <select id="grade_2" name="subjects[2][grade]" class="form-control select2" required>
                         <option disabled selected>-- Select --</option>
                         @foreach($al_grades as $key=>$value)
@@ -75,7 +75,7 @@
 
             <div class="col-md-8">
                 <div class="form-group">
-                    <label for="subject_3">Subject</label>
+                    <label for="subject_3">Subject <span class="text-danger font-size-16">*</span></label>
                     <select id="subject_3" name="subjects[3][subject]" class="form-control select2" required>
                         <option disabled selected>-- Select --</option>
                         @foreach($al_subjects as $key=>$subject)
@@ -86,7 +86,7 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="grade_3">Grade</label>
+                    <label for="grade_3">Grade <span class="text-danger font-size-16">*</span></label>
                     <select id="grade_3" name="subjects[3][grade]" class="form-control select2" required>
                         <option disabled selected>-- Select --</option>
                         @foreach($al_grades as $key=>$value)
