@@ -22,8 +22,8 @@ Register
                         </div>
 
                         <div class="text-center mt-2">
-                            <h5 class="text-dark text-uppercase font-weight-lighter">Start your registration</h5>
-                            <p class="text-muted font-weight-lighter">To start a new application, complete the form below.</p>
+                            <h5 class="text-dark text-uppercase font-weight-lighter">Student Registration</h5>
+                            <p class="text-muted font-weight-lighter">Verifying your admission and creating your enrollment user account.</p>
                         </div>
                         <div class="p-2 mt-1">
                             @include('common-components.flash-message')
@@ -91,7 +91,7 @@ Register
 
                                         <div class="form-group">
                                             <label for="password">{{ __('Password') }}</label>
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Enter password">
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Enter password (minimum 8 characters)">
 
                                             @error('password')
                                             <span class="invalid-feedback" role="alert">

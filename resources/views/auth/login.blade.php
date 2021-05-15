@@ -45,14 +45,19 @@ Login
                         </div>
                         <div class="col-lg-5">
                             <div class="card rounded-lg shadow-lg p-2">
-                                <div class="card-body ">
-                                <div class="row mb-5">
+                                <div class="card-body">
+                                <div class="row mb-3">
                                     <div class="col-lg-12">
                                         <div class="text-center">
                                             <img src="{{ URL::asset('assets/images/uoj.png')}}" alt="" height="70" class="logo">
                                         </div>
                                     </div>
                                 </div>
+                                    <div class="row mb-3">
+                                        <div class="col-lg-12">
+                                            <div class="text-center h6 text-uppercase">Sign in to manage your Online Enrollment</div>
+                                        </div>
+                                    </div>
 
                                     <div class="">
                                         <form method="POST" action="{{ route('login') }}">
@@ -100,7 +105,7 @@ Login
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 mt-2 text-center text-muted">
-                                        <p>© {{ date('Y') }}  {{config('app.name')}} | All Rights Reserved</p>
+                                        <p>© {{ date('Y') }}  {{config('app.name')}}</p> <p> All Rights Reserved</p>
                                     </div>
                                 </div>
                             </div>

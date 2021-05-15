@@ -94,7 +94,7 @@ class RegisterController extends Controller
 
         $student = Student::where([['nic',strtoupper(trim($request['nic']))],['al_index_number',$request['al']]])->first();
         if(!$student)
-            return back()->withInput()->with(['warning'=>'The Index Number is incorrect / You are not selected for university admission']);
+            return back()->withInput()->with(['warning'=>'The Index Number is incorrect / Index number is not in the university admission list.']);
         $enroll = $student->enrolls()->latest()->first();
 
         $application = ApplicationRegistration::where([['academic_year_id',$enroll->academic_year_id],['programme_id',$enroll->programme_id]])->first();
@@ -114,10 +114,10 @@ class RegisterController extends Controller
 
         if(!(($now->greaterThanOrEqualTo($open_date) && $now->lessThanOrEqualTo($close_date)) || $application->status=='Draft') ){
 //            return response()->json([$now,$now->greaterThanOrEqualTo($open_date),$now->lessThanOrEqualTo($close_date)]);
-            return back()->with(['info'=>'Application will be open soon. Please Contact Officials'])->withInput();
+            return back()->with(['info'=>'Application will be open soon. Please Contact Official'])->withInput();
         }
         if($student->users()->get()->count()>0){
-            return back()->with(['warning'=>'User already Exist. If you are not created already please contact Officials'])->withInput();
+            return back()->with(['warning'=>'User already exist with your data. If you are not created already please contact Official'])->withInput();
         }
         $user = $this->create($request->all());
         $role_student = Role::where('name', 'Student')->first();
