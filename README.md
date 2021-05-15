@@ -136,10 +136,10 @@ Update the configuration like below:
 
 
 ### Step 7 -  Optimization
-`composer install --optimize-autoloader --no-dev`
+```composer install --optimize-autoloader --no-dev```
 
-`php artisan config:cache`
+```php artisan config:cache```
 
-`php artisan route:cache`
+```php artisan route:cache```
 
-`php artisan view:cache`
+```php artisan view:cache```
