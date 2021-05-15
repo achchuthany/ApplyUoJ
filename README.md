@@ -135,7 +135,7 @@ Update the configuration like below:
 `* * * * * cd /var/www/ApplyUoJ && php artisan schedule:run >> /dev/null 2>&1`
 
 
-###Step 7 -  Optimization
+### Step 7 -  Optimization
 `composer install --optimize-autoloader --no-dev`
 
 `php artisan config:cache`
