@@ -157,13 +157,13 @@ class StudentController extends Controller
             $data['parent_landline']= $row[21];
 
             $validator = Validator::make($data, [
-                'application_year'=>'required|int',
-                'al_index_number'=>'required|int|unique:students',
+                'application_year'=>'required|integer',
+                'al_index_number'=>'required|integer|unique:students',
                 'title'=>'max:20',
                 'name_initials'=>'max:255',
                 'full_name'=>'max:255',
                 'al_z_score'=>'required|numeric|between:0,4.00',
-                'district_no'=>'required|int',
+                'district_no'=>'required|integer|between:1,25',
                 'district'=>'max:255',
                 'race'=>'max:20' ,
                 'gender'=>'max:10',
@@ -187,7 +187,7 @@ class StudentController extends Controller
                 return redirect()->back()
                     ->withErrors($validator)
                     ->withInput()
-                    ->with(['warning'=>'Your CSV file coantain invalid data type in row #'.$i.' for student nic '.$row[16]]);
+                    ->with(['warning'=>'Your CSV file contain invalid data type in row #'.$i.' for student nic '.$row[16]]);
             }
 
             $s = Student::where('nic',$row[16])->first();
@@ -251,7 +251,7 @@ class StudentController extends Controller
             $student->full_name = $full_name;
             $student->al_z_score = $al_z_score;
             $student->district_no = $district_no;
-            $student->district = $district;
+            $student->district = array_key_exists($district_no,$this->districts)?$this->districts[$district_no]:null;
             $student->race = $race;
             $student->gender = $gender;
             $student->medium = $medium;
