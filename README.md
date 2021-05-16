@@ -75,8 +75,15 @@ nvm use v14.17.0
 cd /var/www
 ```
 
+Option 1: Direct Download with your username and Password
 ```
 git clone https://github.com/achchuthany/ApplyUoJ.git
+```
+Option 2: SSH Download
+
+If you already configured with SSH Key in your server try bellow command.
+```
+git clone git@github.com:achchuthany/ApplyUoJ.git
 ```
 ```
 cd /var/www/ApplyUoJ
