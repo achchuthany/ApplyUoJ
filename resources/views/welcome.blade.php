@@ -122,10 +122,8 @@
                                                                     <li>National Identity Card Back Side</li>
                                                                     <li>School Leaving Certificate Front Side</li>
                                                                     <li>School Leaving Certificate Back Side</li>
-                                                                    <li>Paying voucher  (Use the<a href="{{URL::asset('/assets/images/download/PAYING_IN_VOUCHER.pdf')}}" download="PAYING_IN_VOUCHER.pdf" target="_blank" ><i class="mdi mdi-file-pdf"></i>Paying in Voucher </a> Form)</li>
+                                                                    <li>Paid Bank Slip <a href="{{route('info')}}" ><i class="mdi mdi-currency-usd"></i>Payment Details </a></li>
                                                                 </ol>
-                                                                <p>Please attach the copy of the paid deposit slip together with the University copy of the voucher you have downloaded after paying the required fee to any branch of the People’s Bank.</p>
-
                                                              </div>
                                                         </div>
 
@@ -137,7 +135,7 @@
                                                             </div>
 
                                                             <div class="media-body">
-                                                                <p class="text-muted"> You should complete all the entry requirements on or before the (<a href="{{route('info')}}" > closing date</a>.</p>                                                            </div>
+                                                                <p class="text-muted"> You should complete all the entry requirements on or before the <a href="{{route('info')}}" ><i class="mdi mdi-calculator"></i> closing date</a>.</p>                                                            </div>
                                                         </div>
 
                                                         <div class="media mt-4">
@@ -179,7 +177,7 @@
                                         </div>
                                     </a>
 
-                                    <div id="faqs-privacy-policy-collapse" class="collapse" data-parent="#faqs-accordion">
+                                    <div id="faqs-privacy-policy-collapse" class="collapse show" data-parent="#faqs-accordion">
                                         <div class="p-4">
                                             <div class="row">
                                                 <div class="col-md-6">

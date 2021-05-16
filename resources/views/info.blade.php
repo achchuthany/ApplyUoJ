@@ -6,16 +6,7 @@
 @section('content')
 <div class="container">
     <div class="row vh-100 justify-content-center align-items-center">
-        <div class="col-md-4">
-            <div class="row justify-content-center align-items-center mt-4">
-            <div class="col-md-12">
-                <div class="h2 font-weight-lighter text-light text-center">
-                    Online Registration of Students for Courses of Study
-                </div>
-            </div>
-            </div>
-        </div>
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                     <div class="row justify-content-center mt-4">
@@ -43,6 +34,8 @@
                                                 <th>Faculty</th>
                                                 <th>Programme</th>
                                                 <th>Closing Date</th>
+                                                <th>People’s Bank   Account Number</th>
+                                                <th>Deposit Amount</th>
                                             </thead>
                                             <tbody>
                                                 @foreach($data as $row)
@@ -50,11 +43,16 @@
                                                         <td>{{$row->programme->faculty->name}}</td>
                                                         <td>{{$row->programme->name}}</td>
                                                         <td>{{\Carbon\Carbon::parse($row->close_date)->toFormattedDateString()}}</td>
+                                                        <td>{{$row->account_number}}</td>
+                                                        <td>LKR {{$row->deposit_amount}}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
                                     </div>
+                                </div>
+                                <div class="card-header">
+                                    Payment can be made in any branch of the People’s Bank in favour of University of Jaffna Collection Account Number mention above.
                                 </div>
                             </div>
                         </div>

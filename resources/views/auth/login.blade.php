@@ -24,12 +24,14 @@ Login
                                         <thead class="bg-info text-light">
                                         <th>Programme</th>
                                         <th>Closing Date</th>
+                                        <th>Apply</th>
                                         </thead>
                                         <tbody>
                                         @foreach($data as $row)
                                             <tr>
                                                 <td>{{$row->programme->name}}</td>
                                                 <td>{{\Carbon\Carbon::parse($row->close_date)->toFormattedDateString()}} ({{\Carbon\Carbon::parse($row->close_date)->diffForHumans()}})</td>
+                                                <th><a href="{{route('welcome')}}">Apply</a> </th>
                                             </tr>
                                         @endforeach
                                         </tbody>
