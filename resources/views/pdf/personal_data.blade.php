@@ -14,7 +14,7 @@
 
                 <div style="width: 35mm;height: 45mm;border: 5px solid #cccccc;">
                     @if(Storage::disk('docs')->exists($profileImage))
-                        <img style="width: 35mm;height: 45mm;" src="{{storage_path('app/docs/'.$profileImage)}}">
+{{--                        <img style="width: 35mm;height: 45mm;" src="{{storage_path('app/docs/'.$profileImage)}}">--}}
                     @else
                         <div style="text-align: center" ><p>Photo</p></div>
                     @endif
