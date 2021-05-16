@@ -81,9 +81,16 @@
 
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Bank Payment: Deposit Amount</label>
+                                            <div class="input-group">
+                                                <div class="input-group-text">LKR</div>
+                                                <input value="{{(isset($ea)&&!Request::old('deposit_amount'))? $ea->deposit_amount : Request::old('deposit_amount')}}"  id="deposit_amount" name="deposit_amount" type="text" class="form-control" required>
+                                            </div>
 
-
-
+                                        </div>
+                                    </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label">Status</label>

@@ -15,6 +15,8 @@ class AddAccountNoToApplicationRegistrationsTable extends Migration
     {
         Schema::table('application_registrations', function (Blueprint $table) {
             $table->string('account_number',30)->nullable();
+            $table->double('deposit_amount',10,2)->nullable();
+
         });
     }
 
@@ -27,6 +29,7 @@ class AddAccountNoToApplicationRegistrationsTable extends Migration
     {
         Schema::table('application_registrations', function (Blueprint $table) {
             $table->dropColumn('account_number');
+            $table->dropColumn('deposit_amount');
         });
     }
 }

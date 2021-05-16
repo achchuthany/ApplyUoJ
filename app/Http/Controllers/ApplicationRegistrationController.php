@@ -87,7 +87,8 @@ class ApplicationRegistrationController extends Controller
             'programme_id' => 'required|int',
             'open_date' => 'required|date',
             'close_date' => 'required|date',
-            'account_number'=>'required|integer'
+            'account_number'=>'required|integer',
+            'deposit_amount'=>'required|numeric'
         ]);
     $open_date = Carbon::parse($request['open_date']);
     $close_date = Carbon::parse($request['close_date']);
@@ -117,6 +118,7 @@ class ApplicationRegistrationController extends Controller
         $registration->close_date = $request['close_date'];
         $registration->status = $request['status'];
         $registration->account_number = $request['account_number'];
+        $registration->deposit_amount = $request['deposit_amount'];
 
         try{
             if ($isUpdate && $registration->update()) {
