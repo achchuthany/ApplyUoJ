@@ -197,3 +197,10 @@ php artisan route:cache
 ```
 php artisan view:cache
 ```
+
+## Error Handling 
+### NPM assets generation error fix
+* Remove the local `node_modules & package-lock.json`
+* Clean npm cache by `sudo npm cache verify`
+* Update the global npm by `sudo npm i -g npm`
+* Reinstall the local node_modules by `sudo npm i`
