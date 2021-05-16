@@ -32,25 +32,22 @@
 
     <table style="table-layout: fixed; border-collapse: collapse; width: 100%; border: none;">
         <tr>
-            <td class="p-2" width="30%">A/L Index Number </td>
+            <td class="p-2" width="20%">A/L Index Number </td>
             <td class="p-2 dotted">{{$student->al_index_number}}</td>
+            <td class="p-2" width="30%">National Identity Card No</td>
+            <td class="p-2 dotted">{{$student->nic}}</td>
         </tr>
         <tr>
             <td class="p-2">Faculty</td>
-            <td class="p-2 dotted">{{$enroll->programme->faculty->name}}</td>
+            <td class="p-2 dotted" colspan="3">{{$enroll->programme->faculty->name}}</td>
         </tr>
         <tr>
             <td class="p-2">Full Name</td>
-            <td class="p-2 dotted">{{$student->full_name}}</td>
+            <td class="p-2 dotted" colspan="3">{{$student->full_name}}</td>
         </tr>
         <tr>
             <td class="p-2">Course of Study</td>
-            <td class="p-2 dotted">{{$enroll->programme->name}}</td>
-        </tr>
-
-        <tr>
-            <td class="p-2">National Identity Card No</td>
-            <td class="p-2 dotted">{{$student->nic}}</td>
+            <td class="p-2 dotted" colspan="3">{{$enroll->programme->name}}</td>
         </tr>
     </table>
     <p class="text-justify">
