@@ -74,6 +74,13 @@
 
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Bank Payment: Account Number</label>
+                                            <input value="{{(isset($ea)&&!Request::old('account_number'))? $ea->account_number : Request::old('account_number')}}"  id="account_number" name="account_number" type="text" class="form-control" required>
+
+                                        </div>
+                                    </div>
 
 
 
