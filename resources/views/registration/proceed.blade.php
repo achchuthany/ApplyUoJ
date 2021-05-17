@@ -107,7 +107,7 @@
                                    </tr>
                                    <tr>
                                        <td>4</td>
-                                       <td>Payment voucher of registration fee and other fees of  LKR {{$application->deposit_amount}} made by Peoples’ Bank (Account Number: <b>{{$application->account_number}})</b></td>
+                                       <td>Payment voucher of registration fee and other fees of  <b>LKR {{$application->deposit_amount}}</b> made by Peoples’ Bank (Account Number: <b>{{$application->account_number}})</b></td>
                                        <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
                                        <td class="text-center">-</td>
                                        <td class="text-center">-</td>
