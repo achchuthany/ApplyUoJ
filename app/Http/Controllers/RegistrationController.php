@@ -362,7 +362,10 @@ class RegistrationController extends Controller
         $enroll = $student->enrolls()->latest()->first();
         if(!$this->checkApplicationStatus())
             return redirect()->route('student.registration.complete');
-        return view('registration.proceed',['enroll'=>$enroll]);
+
+        $application = ApplicationRegistration::where([['programme_id',$enroll->programme->id],['academic_year_id',$enroll->academic_year->id]])->first();
+
+        return view('registration.proceed',['enroll'=>$enroll,'application'=>$application]);
     }
     public function downloadPersonalDataByCourse($pid,$aid,$status){
         if ($status == "all") {

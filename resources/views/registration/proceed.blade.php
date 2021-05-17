@@ -73,7 +73,7 @@
                                <p class="font-weight-bolder">
                                    The details of required documents  is listed below:
                                </p>
-                               <table class="table table-borderless table-striped table-light">
+                               <table class="table table-borderless table-striped">
                                    <thead class="bg-light">
                                    <tr>
                                        <th>No</th>
@@ -107,10 +107,10 @@
                                    </tr>
                                    <tr>
                                        <td>4</td>
-                                       <td>Payment voucher of registration fee and other fees of  Rs.2350 made by Peoples’ Bank</td>
+                                       <td>Payment voucher of registration fee and other fees of  LKR {{$application->deposit_amount}} made by Peoples’ Bank (Account Number: <b>{{$application->account_number}})</b></td>
                                        <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
                                        <td class="text-center">-</td>
-                                       <td class="text-center"><a href="{{URL::asset('/assets/images/download/PAYING_IN_VOUCHER.pdf')}}" download="PAYING_IN_VOUCHER.pdf" target="_blank" class="btn btn-sm btn-link"> <i class="mdi mdi-download-outline"></i> Download</a> </td>
+                                       <td class="text-center">-</td>
                                    </tr>
                                    <tr>
                                        <td>5</td>
@@ -209,7 +209,7 @@
                                </div>
                                <div class="media-body">
                                    <p>
-                                       If a student cannot provide any of the above mentioned documents should give declaration about the reason for not submitting the same. (Form could be downloaded from website which is named as <a href="{{route('student.registration.download.NonSubmissionDocumentsData',['eid'=>$enroll->id])}}" download="Non_Submission_of_Documents.pdf" target="_blank"  class="btn btn-sm btn-link">"<i class="mdi mdi-download-outline"></i>Download Non Submission of Documents Form”</a>).
+                                       If a student cannot provide any of the above mentioned documents should give declaration about the reason for not submitting the same. (Form could be downloaded from website which is named as <a href="{{route('student.registration.download.NonSubmissionDocumentsData',['eid'=>$enroll->id])}}" class="btn btn-sm btn-link">"<i class="mdi mdi-download-outline"></i>Download Non Submission of Documents Form”</a>).
                                    </p>
                                </div>
                            </div>
