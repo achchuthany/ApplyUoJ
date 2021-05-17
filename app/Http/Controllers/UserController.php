@@ -76,7 +76,7 @@ class UserController extends Controller
                    return $row->updated_at->diffForHumans();
                })
                 ->addColumn('action', function($row){
-                    $btn = '<a href="'.route('users.edit',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil uil-pen font-size-18"></i></a>
+                    $btn = '<a href="'.route('users.edit',['id'=>$row->id]).'" class="text-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil uil-pen font-size-18"></i></a>
                      <a  class="px-3 text-danger sa-warning" id ="exam'.$row->id.'" data-exam="'.$row->id.'" data-toggle="tooltip" data-placement="top" title="Delete Examination"  ><i class="uil uil-trash-alt font-size-18"></i></a>
                ';
                     return $btn;
@@ -87,11 +87,20 @@ class UserController extends Controller
      return view('user.index');
     }
     public function add(){
+        if(auth()->user()->id!=1){
+            $message = "System generated supper admin can add new user";
+            return redirect()->back()->with(['warning'=>$message]);
+        }
+
         $roles = Role::get();
         $faculties = Faculty::orderby('name','asc')->get();
         return view('user.add-edit',['roles'=>$roles,'faculties'=>$faculties]);
     }
     public function edit($id) {
+        if($id==1 && auth()->user()->id!=1){
+            $message = "System generated supper admin can edit";
+            return redirect()->back()->with(['warning'=>$message]);
+        }
         $user = User::where('id',$id)->first();
         $roles = Role::get();
         $userroles = $user->roles()->first();
@@ -135,7 +144,7 @@ class UserController extends Controller
             if($student){
                 $this->validate($request,[
                     'email' => 'sometimes|required|unique:students,email,'.$student->id,
-                    'phone_number' => 'required|unique:users,phone_number,'.$user->id
+                    'phone_number' => 'required|numeric|digits:13|unique:users,phone_number,'.$user->id
 
                 ]);
                 $student->email = $request['email'];
@@ -171,7 +180,7 @@ class UserController extends Controller
                 $this->validate($request,[
                     'name' => ['required', 'string', 'max:255'],
                     'email' => ['sometimes','required', 'string', 'email', 'max:255', 'unique:users'],
-                    'phone_number' => ['required', 'string','unique:users'],
+                    'phone_number' => ['required', 'numeric','digits:13','unique:users'],
                     'password' => ['required', 'string', 'min:8'],
                 ]);
                 $user->email = strtolower($request['email']);
@@ -186,7 +195,6 @@ class UserController extends Controller
                 event(new Registered($user));
                 $message = $user->name." user data has been successfully created";
                 $msag_type = 'success';
-                event(new Registered($user));
             }
         }catch(QueryException $ex){
             $msag_type = 'error';
@@ -199,7 +207,7 @@ class UserController extends Controller
         $role = DB::table('role_user')->where('user_id',$user->id);
         if($user->id == 1){
             $code = 201;
-            $msg = $user->name. ' user can not be delete. System generated user can not be delete.';
+            $msg = 'System generated supper admin can not be delete.';
             return response()->json(['msg'=>$msg,'code'=>$code]);
         }
         try{
