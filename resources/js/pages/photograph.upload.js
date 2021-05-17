@@ -29,8 +29,12 @@ $("body").on("change", "#profileImage", function(e){
 $modal.on('shown.bs.modal', function () {
     cropper = new Cropper(image, {
         aspectRatio: 35 / 45,
-        viewMode: 0,
+        viewMode: 1,
         preview: '.preview',
+        dragMode: 'crop',
+        movable : false,
+        scalable: false,
+        zoomable: false
     });
 }).on('hidden.bs.modal', function () {
     cropper.destroy();
@@ -41,6 +45,9 @@ $("#crop").click(function(){
     canvas = cropper.getCroppedCanvas({
         width: 826,
         height: 1062,
+        fillColor: '#fff',
+        imageSmoothingEnabled: false,
+        imageSmoothingQuality: 'high',
     });
     canvas.toBlob(function(blob) {
         url = URL.createObjectURL(blob);
