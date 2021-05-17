@@ -111,6 +111,9 @@ class RegisterController extends Controller
         $now->hour = 0;
         $now->minute = 0;
         $now->second = 0;
+        if($application->status=='Draft'){
+            return back()->with(['info'=>'Application will be open soon. Please Contact Official'])->withInput();
+        }
 
         if(!(($now->greaterThanOrEqualTo($open_date) && $now->lessThanOrEqualTo($close_date)) || $application->status=='Draft') ){
 //            return response()->json([$now,$now->greaterThanOrEqualTo($open_date),$now->lessThanOrEqualTo($close_date)]);
