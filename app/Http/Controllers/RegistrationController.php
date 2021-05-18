@@ -334,7 +334,8 @@ class RegistrationController extends Controller
             return redirect()->route('student.registration.completed');
         $student = Auth::user()->students()->latest()->first();
         $enroll = $student->enrolls()->latest()->first();
-        if(!$student->emergency_contact_mobile)
+        $photo = StudentDoc::where([['student_id',$student->id],['type','photo']])->first();
+        if(!$photo)
             return redirect()->route('student.photograph');
 
         return view('registration.index',['enroll'=>$enroll]);
@@ -345,7 +346,7 @@ class RegistrationController extends Controller
         if($this->checkApplicationStatus())
             return redirect()->route('student.registration.completed');
 
-        if(Auth::user()->students()->first()->student_docs()->count()<1)
+        if(Auth::user()->students()->first()->student_docs()->count()<3)
             return back()->with(['warning'=>'Please upload required documents']);
         return view('registration.conform');
     }
