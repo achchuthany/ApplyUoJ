@@ -124,8 +124,13 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="shortname">iv. District</label>
-                    <input value="{{$student->district}}" id="district" name="district" type="text" class="form-control bg-light" disabled>
+                    <label for="shortname">iv. District <span class="text-danger font-size-16">*</span></label>
+                    <select id="district" name="district" class="form-control select2" required>
+                        <option selected disabled>Select District</option>
+                        @foreach($districts as $district)
+                            <option value="{{$district}}" {{(isset($student->district)&&!Request::old('district'))? ($student->district==$district?'selected':'') : (Request::old('district')==$district?'selected':'') }}>{{$district}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="col-md-2">

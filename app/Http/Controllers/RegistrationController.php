@@ -32,6 +32,7 @@ class RegistrationController extends Controller
     public $civil_status;
     public $religion ;
     public $params;
+    public $districts;
     public function __construct(){
         $this->countries = config('app.countries');
         $this->al_subjects = config('app.al_subjects');
@@ -41,6 +42,7 @@ class RegistrationController extends Controller
         $this->civil_status = config('app.civil_status');
         $this->religion = config('app.religion');
         $this->params = config('app.enroll_status');
+        $this->districts = config('app.districts');
 
     }
     public function index(){
@@ -86,13 +88,14 @@ class RegistrationController extends Controller
             return redirect()->route('student.personal');
         $address_p = $student->addresses()->where('address_type','Permanent')->first();
         $address_c = $student->addresses()->where('address_type','Contact')->first();
-        return view('registration.index',['student'=>$student,'address_p'=>$address_p,'address_c'=>$address_c,'countries'=>$this->countries]);
+        return view('registration.index',['student'=>$student,'address_p'=>$address_p,'address_c'=>$address_c,'countries'=>$this->countries,'districts'=>$this->districts]);
     }
     public function addressProcess(Request $request){
         $this->validate($request,[
             'province'=>'required',
             'mobile'=>'required',
             'email'=>'required',
+            'district'=>'required'
         ]);
         $validator = Validator::make($request->all(), [
             "address"    => "required|array|min:2",
@@ -158,7 +161,7 @@ class RegistrationController extends Controller
         }
 
         $student->province = $request['province'];
-        //$student->mobile = $request['mobile'];
+        $student->district = $request['district'];
         //$student->email  = $request['email'];
 
 //        $user = $student->users()->latest()->first();
