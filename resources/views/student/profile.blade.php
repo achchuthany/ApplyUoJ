@@ -18,17 +18,17 @@
             <div class="card h-100">
                 <div class="card-body">
                     <div class="text-center">
+                        @if(auth()->user()->hasRole('Admin'))
                         <div class="dropdown float-right">
                             <a class="text-body text-primary dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true">
                                 Action <i class="mdi mdi-menu "></i>
                             </a>
-
-                            <div class="dropdown-menu dropdown-menu-right">
-                                @if($enroll->status=='Documents Pending'||$enroll->status=='Processing')
-                                <a class="dropdown-item sa-accept" data-enrollid="{{$enroll->id}}" data-enrollstatus="ap" href="#"><i class="mdi mdi-account-check text-success font-size-20"></i> Accept Application</a>
-                                <a class="dropdown-item sa-accept"  data-enrollid="{{$enroll->id}}" data-enrollstatus="in"  href="#"><i class="mdi mdi-account-cancel text-warning font-size-20"></i> Re-submission Request</a>
-                                @endif
-                                <a class="dropdown-item" href="{{route('admin.students.edit',['sid'=>$enroll->student_id])}}"><i class="mdi mdi-account-edit font-size-20"></i> Edit Personal Data</a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    @if($enroll->status=='Documents Pending'||$enroll->status=='Processing')
+                                    <a class="dropdown-item sa-accept" data-enrollid="{{$enroll->id}}" data-enrollstatus="ap" href="#"><i class="mdi mdi-account-check text-success font-size-20"></i> Accept Application</a>
+                                    <a class="dropdown-item sa-accept"  data-enrollid="{{$enroll->id}}" data-enrollstatus="in"  href="#"><i class="mdi mdi-account-cancel text-warning font-size-20"></i> Re-submission Request</a>
+                                    @endif
+                                    <a class="dropdown-item" href="{{route('admin.students.edit',['sid'=>$enroll->student_id])}}"><i class="mdi mdi-account-edit font-size-20"></i> Edit Personal Data</a>
                                     @if($enroll->status=='Registered')
                                     <div class="dropdown-divider"></div>
                                     <h5 class="dropdown-header text-warning">Edit Course</h5>
@@ -41,11 +41,11 @@
                                     <a class="dropdown-item" href="{{route('student.registration.download.IdentityCardData',['eid'=>$enroll->id])}}"><i class="mdi mdi-file-pdf text-dark"></i> Download Identity Card Data</a>
                                     <a class="dropdown-item" href="{{route('student.registration.download.DegreeDeclarationData',['eid'=>$enroll->id])}}"><i class="mdi mdi-file-pdf text-dark"></i> Download Degree Declaration Data</a>
                                     <a class="dropdown-item" href="{{route('student.registration.download.NonSubmissionDocumentsData',['eid'=>$enroll->id])}}"><i class="mdi mdi-file-pdf text-dark"></i> Download Non-Submission Documents Data</a>
-
-                            </div>
+                                </div>
                         </div>
+                        @endif
                         <div class="dropdown float-left text-dark">
-                            <i class="mdi mdi-information-outline"></i> <span id="enroll_status">{{$enroll->status}}</span>
+                            <i class="mdi mdi-account"></i> <span id="enroll_status">{{$enroll->status}}</span>
                         </div>
                         <div class="clearfix"></div>
                         <div>
