@@ -57,7 +57,7 @@ Add New User
                                             <label for="role_id">User Role</label>
                                             <select class="form-control select2" name="role_id" readonly>
                                                 @foreach($roles as $role)
-                                                    <option value="{{$role->id}}" {{(isset($user)&&!Request::old('role_id'))? (($userroles->id  == $role->id)? 'selected':'') : ( (Request::old('role_id') ==$role->id)? 'selected':'')}} {{(isset($userroles) && $userroles->name  == "Admin" && $userroles->id  != $role->id) ?'disabled':''}} {{(isset($userroles) && $userroles->name  == "Student" && $userroles->id  != $role->id) ?'disabled':''}} {{( isset($userroles) && $userroles->name  != "Student" &&  $role->name=="Student") ?'disabled':''}} {{!isset($user) && $role->name=="Student" ?'disabled':''}}>{{$role->description}}</option>
+                                                    <option value="{{$role->id}}" {{(isset($user)&&!Request::old('role_id'))? (($userroles->id  == $role->id)? 'selected':'') : ( (Request::old('role_id') ==$role->id)? 'selected':'')}} {{(isset($userroles) && $userroles->name  == "Admin" && $role->name!='Admin' && $user->id  == 1) ?'disabled':''}} {{(isset($userroles) && $userroles->name  == "Student" && $userroles->id  != $role->id) ?'disabled':''}} {{( isset($userroles) && $userroles->name  != "Student" &&  $role->name=="Student") ?'disabled':''}} {{!isset($user) && $role->name=="Student" ?'disabled':''}}>{{$role->description}}</option>
                                                 @endforeach
                                             </select><input id="id" class="form-control" type="hidden" name="id" value="{{ (isset($user))? $user->id   : ''}}" >
                                         </div>
@@ -73,14 +73,14 @@ Add New User
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="control-label">Phone Number</label>
-                                            <input value="{{(isset($user)&&!Request::old('phone_number'))? $user->phone_number : Request::old('phone_number')}}"  id="phone_number" name="phone_number" type="text" class="form-control" required>
+                                            <input value="{{(isset($user)&&!Request::old('phone_number'))? $user->phone_number : Request::old('phone_number')}}"  id="phone_number" name="phone_number" type="text" class="form-control" required placeholder="0094770201500">
 
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="control-label">Password</label>
-                                            <input value="{{(isset($user)&&!Request::old('password'))? '' : Request::old('password')}}"  id="password" name="password" type="password" class="form-control" {{isset($user)? '':'required'}}>
+                                            <input value="{{(isset($user)&&!Request::old('password'))? '' : Request::old('password')}}"  id="password" name="password" type="password" class="form-control" {{isset($user)? '':'required'}} placeholder="minimum 8 characters">
 
                                         </div>
                                     </div>
