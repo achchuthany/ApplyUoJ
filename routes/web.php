@@ -35,18 +35,18 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
     Route::get('/',[
         'uses' => 'App\Http\Controllers\HomeController@index',
         'as' => 'index',
-        'roles' => ['Admin','Student']
+        'roles' => ['Admin','Student','Dean','Welfare']
     ]);
     //home
     Route::get('/home',[
         'uses' => 'App\Http\Controllers\HomeController@index',
         'as' => 'home',
-        'roles' => ['Admin','Student']
+        'roles' => ['Admin','Student','Dean','Welfare']
     ]);
     Route::get('registration/student/image/{name}',[
         'uses' => 'App\Http\Controllers\RegistrationController@getImageFile',
         'as' => 'student.registration.image',
-        'roles' => ['Admin','Student']
+        'roles' => ['Admin','Student','Dean']
     ]);
 
     //Admin Home Page
@@ -59,7 +59,7 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
     Route::get('/admin/students',[
         'uses' => 'App\Http\Controllers\StudentController@index',
         'as' => 'admin.students.index',
-        'roles' => ['Admin']
+        'roles' => ['Admin','Dean']
     ]);
     Route::get('/admin/students/add',[
         'uses' => 'App\Http\Controllers\StudentController@add',
@@ -107,20 +107,20 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
     Route::get('/admin/students/all',[
         'uses' => 'App\Http\Controllers\StudentController@all',
         'as' => 'admin.students.all',
-        'roles' => ['Admin']
+        'roles' => ['Admin','Dean']
     ]);
 
     Route::get('/admin/students/cat/{status}',[
         'uses' => 'App\Http\Controllers\StudentController@pending',
         'as' => 'admin.students.pending',
-        'roles' => ['Admin']
+        'roles' => ['Admin','Dean']
     ]);
 
 
     Route::get('/admin/students/enroll/profile/{id}',[
         'uses' => 'App\Http\Controllers\StudentController@profile',
         'as' => 'admin.students.enroll.profile',
-        'roles' => ['Admin']
+        'roles' => ['Admin','Dean']
     ]);
     Route::get('/admin/students/enroll/profile/action/{eid}/{status}',[
         'uses' => 'App\Http\Controllers\StudentController@acceptRequest',
@@ -131,17 +131,17 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
     Route::get('/admin/students/search/{pid}/{aid}/{status}',[
         'uses' => 'App\Http\Controllers\StudentController@students',
         'as' => 'admin.students.program.academic',
-        'roles' => ['Admin']
+        'roles' => ['Admin','Dean']
     ]);
     Route::get('/admin/students/search',[
         'uses' => 'App\Http\Controllers\StudentController@search',
         'as' => 'admin.students.search',
-        'roles' => ['Admin']
+        'roles' => ['Admin','Dean']
     ]);
     Route::post('/admin/students/search/list',[
         'uses' => 'App\Http\Controllers\StudentController@searchStudentsList',
         'as' => 'admin.students.search.list',
-        'roles' => ['Admin']
+        'roles' => ['Admin','Dean']
     ]);
     Route::get('/admin/students/delete',[
         'uses' => 'App\Http\Controllers\StudentController@delete',
@@ -385,6 +385,21 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'as' => 'student.registration.download.PersonalData.all',
         'roles' => ['Admin']
     ]);
+
+    //Faculty Dashboard for Dean
+    Route::get('/home/faculty',[
+        'uses' => 'App\Http\Controllers\HomeFacultyController@index',
+        'as' => 'home.faculty',
+        'middleware' => 'roles',
+        'roles' => ['Dean']
+    ]);
+    Route::post('/home/faculty',[
+        'uses' => 'App\Http\Controllers\HomeFacultyController@indexSearch',
+        'as' => 'home.faculty.search',
+        'middleware' => 'roles',
+        'roles' => ['Dean']
+    ]);
+
 
 });
 

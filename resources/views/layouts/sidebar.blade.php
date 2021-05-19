@@ -32,6 +32,7 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
+                @if(auth()->user()->hasRole('Admin'))
                 <li class="menu-title">Administrations</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -79,7 +80,7 @@
 
                     </ul>
                 </li>
-
+                @endif
                 <li class="menu-title">Students</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -89,12 +90,14 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('admin.students.index')}}"><i class="fas fa-bars"></i>Statistics</a></li>
                         <li><a href="{{route('admin.students.search')}}"><i class="fas fa-search"></i>Search </a></li>
+                        @if(auth()->user()->hasRole('Admin'))
                         <li><a href="{{route('admin.students.add')}}"><i class="fas fa-plus"></i>Add</a></li>
                         <li><a href="{{route('admin.students.upload')}}"><i class="mdi mdi-upload-multiple"></i>Bulk Upload</a></li>
                         <li><a href="{{route('admin.students.delete.index')}}"><i class="fas fa-trash "></i>Delete</a></li>
-
+                        @endif
                     </ul>
                 </li>
+                @if(auth()->user()->hasRole('Admin'))
                 <li class="menu-title">Applications</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -106,7 +109,7 @@
                         <li><a href="{{route('admin.application.registrations.add')}}"><i class="fas fa-plus"></i>Call a Registration</a></li>
                     </ul>
                 </li>
-
+                @endif
 
             </ul>
         </div>

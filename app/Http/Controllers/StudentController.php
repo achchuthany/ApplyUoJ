@@ -40,6 +40,9 @@ class StudentController extends Controller
 
     }
     public function index(){
+        if(Auth::User()->hasRole('Dean')) {
+        return redirect()->route('home.faculty')->with(['info'=>'You are redirected to faculty home']);
+        }
         $ugc_count = Student::get()->count();
         $pending_count = Enroll::where('status','Processing')->get()->count();
         $pending_today_count = Enroll::whereDate('updated_at', Carbon::today())->where('status','Processing')->get()->count();
@@ -303,7 +306,24 @@ class StudentController extends Controller
     }
     public function all(Request $request){
         if ($request->ajax()) {
-            $data = Enroll::latest()->get();
+            if(Auth::User()->hasRole('Dean')){
+                $user_id = auth()->user()->id;
+                $faculty_id = DB::table('role_user')->where('user_id', $user_id)->value('faculty_id');
+                $data= Enroll::select(
+                    'enrolls.id as id',
+                    'enrolls.programme_id as programme_id',
+                    'enrolls.student_id as student_id',
+                    'enrolls.academic_year_id as academic_year_id',
+                    'enrolls.reg_no as reg_no',
+                    'enrolls.index_no as index_no',
+                    'enrolls.registration_date as registration_date',
+                    'enrolls.status as status',
+                    'enrolls.created_at as created_at',
+                    'enrolls.updated_at as updated_at'
+                )->leftJoin('programmes','programmes.id','=','enrolls.programme_id')->where([['programmes.faculty_id',$faculty_id]])->get();
+            }else{
+                $data = Enroll::latest()->get();
+            }
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('image', function($row){
@@ -353,7 +373,24 @@ class StudentController extends Controller
             return redirect()->route('admin.students.index');
         }
         if ($request->ajax()) {
-            $data = Enroll::where('status',$this->params[$status])->latest()->get();
+            if(Auth::User()->hasRole('Dean')){
+                $user_id = auth()->user()->id;
+                $faculty_id = DB::table('role_user')->where('user_id', $user_id)->value('faculty_id');
+                $data= Enroll::select(
+                    'enrolls.id as id',
+                    'enrolls.programme_id as programme_id',
+                    'enrolls.student_id as student_id',
+                    'enrolls.academic_year_id as academic_year_id',
+                    'enrolls.reg_no as reg_no',
+                    'enrolls.index_no as index_no',
+                    'enrolls.registration_date as registration_date',
+                    'enrolls.status as status',
+                    'enrolls.created_at as created_at',
+                    'enrolls.updated_at as updated_at'
+                )->leftJoin('programmes','programmes.id','=','enrolls.programme_id')->where([['programmes.faculty_id',$faculty_id],['enrolls.status',$this->params[$status]]])->get();
+            }else{
+                $data = Enroll::where('status',$this->params[$status])->get();
+            }
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('image', function($row){
@@ -430,6 +467,14 @@ class StudentController extends Controller
         $civil_statuses = config('app.civil_status');
         $religion = config('app.religion');
 
+        if(Auth::User()->hasRole('Dean')){
+            $user_id = auth()->user()->id;
+            $faculty_id = DB::table('role_user')->where('user_id', $user_id)->value('faculty_id');
+            $data= Enroll::leftJoin('programmes','programmes.id','=','enrolls.programme_id')->where([['programmes.faculty_id',$faculty_id],['enrolls.id',$id]])->first();
+            if(!$data)
+                return redirect()->route('home.faculty')->with(['warning'=>'Faculty admin only have the privilege to access their students']);
+        }
+
         $enroll = Enroll::whereId($id)->first();
 
 
@@ -452,7 +497,6 @@ class StudentController extends Controller
     return view('student.profile',['enroll'=>$enroll,'race'=>$race,'gender'=>$gender,'civil_status'=>$civil_status,'religion'=>$religion]);
     }
     public function students(Request $request,$pid,$aid,$status){
-
         if ($status == "all") {
             $data = Enroll::where([['programme_id', $pid], ['academic_year_id', $aid]])->latest()->get();
             $filter = "All";
@@ -464,6 +508,13 @@ class StudentController extends Controller
             $data = Enroll::where([['programme_id', $pid], ['academic_year_id', $aid], ['status', $this->params[$status]]])->latest()->get();
             $filter = $this->params[$status];
         }
+        if(Auth::User()->hasRole('Dean')) {
+            $user_id = auth()->user()->id;
+            $faculty_id = DB::table('role_user')->where('user_id', $user_id)->value('faculty_id');
+            $programmes = Programme::where([['faculty_id',$faculty_id],['id',$pid]])->orderBy('name','asc')->get();
+            if(!$programmes) $data = Enroll::where('status','null')->get();
+        }
+
         $count = $data->count();
         if ($request->ajax()) {
             return (Datatables::of($data)
@@ -549,7 +600,13 @@ class StudentController extends Controller
             'status'=>$request['status']]);
     }
     public function search(){
-        $programmes = Programme::orderBy('name','asc')->get();
+        if(Auth::User()->hasRole('Dean')) {
+            $user_id = auth()->user()->id;
+            $faculty_id = DB::table('role_user')->where('user_id', $user_id)->value('faculty_id');
+            $programmes = Programme::where('faculty_id',$faculty_id)->orderBy('name','asc')->get();
+        }else{
+            $programmes = Programme::orderBy('name','asc')->get();
+        }
         $academics = AcademicYear::orderBy('name','asc')->get();
         return view('student.search',[
             'programmes'=>$programmes,
