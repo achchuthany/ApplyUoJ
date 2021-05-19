@@ -35,11 +35,11 @@ class HomeController extends Controller
         //dd(Auth::User()->roles()->get());
         if(Auth::User()->hasRole('Student')){
             return redirect()->route('student.registration.index');
-        }if(Auth::User()->hasRole('Admin')){
-            $ays = AcademicYear::latest()->get();
-           return view('home',['ays'=>$ays]);
-        }else{
+        }if(Auth::User()->hasRole('Dean')){
             return redirect()->route('home.faculty');
+        }else{
+            $ays = AcademicYear::latest()->get();
+            return view('home',['ays'=>$ays]);
         }
     }
 

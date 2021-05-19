@@ -46,20 +46,20 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
     Route::get('registration/student/image/{name}',[
         'uses' => 'App\Http\Controllers\RegistrationController@getImageFile',
         'as' => 'student.registration.image',
-        'roles' => ['Admin','Student','Dean']
+        'roles' => ['Admin','Student','Dean','Welfare']
     ]);
 
     //Admin Home Page
     Route::get('/home/data/{aid}',[
         'uses' => 'App\Http\Controllers\HomeController@graphData',
         'as' => 'home.data',
-        'roles' => ['Admin']
+        'roles' => ['Admin','Welfare']
     ]);
     //student
     Route::get('/admin/students',[
         'uses' => 'App\Http\Controllers\StudentController@index',
         'as' => 'admin.students.index',
-        'roles' => ['Admin','Dean']
+        'roles' => ['Admin','Dean','Welfare']
     ]);
     Route::get('/admin/students/add',[
         'uses' => 'App\Http\Controllers\StudentController@add',
@@ -107,20 +107,20 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
     Route::get('/admin/students/all',[
         'uses' => 'App\Http\Controllers\StudentController@all',
         'as' => 'admin.students.all',
-        'roles' => ['Admin','Dean']
+        'roles' => ['Admin','Dean','Welfare']
     ]);
 
     Route::get('/admin/students/cat/{status}',[
         'uses' => 'App\Http\Controllers\StudentController@pending',
         'as' => 'admin.students.pending',
-        'roles' => ['Admin','Dean']
+        'roles' => ['Admin','Dean','Welfare']
     ]);
 
 
     Route::get('/admin/students/enroll/profile/{id}',[
         'uses' => 'App\Http\Controllers\StudentController@profile',
         'as' => 'admin.students.enroll.profile',
-        'roles' => ['Admin','Dean']
+        'roles' => ['Admin','Dean','Welfare']
     ]);
     Route::get('/admin/students/enroll/profile/action/{eid}/{status}',[
         'uses' => 'App\Http\Controllers\StudentController@acceptRequest',
@@ -131,17 +131,17 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
     Route::get('/admin/students/search/{pid}/{aid}/{status}',[
         'uses' => 'App\Http\Controllers\StudentController@students',
         'as' => 'admin.students.program.academic',
-        'roles' => ['Admin','Dean']
+        'roles' => ['Admin','Dean','Welfare']
     ]);
     Route::get('/admin/students/search',[
         'uses' => 'App\Http\Controllers\StudentController@search',
         'as' => 'admin.students.search',
-        'roles' => ['Admin','Dean']
+        'roles' => ['Admin','Dean','Welfare']
     ]);
     Route::post('/admin/students/search/list',[
         'uses' => 'App\Http\Controllers\StudentController@searchStudentsList',
         'as' => 'admin.students.search.list',
-        'roles' => ['Admin','Dean']
+        'roles' => ['Admin','Dean','Welfare']
     ]);
     Route::get('/admin/students/delete',[
         'uses' => 'App\Http\Controllers\StudentController@delete',
