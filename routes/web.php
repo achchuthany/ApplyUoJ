@@ -122,7 +122,7 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'as' => 'admin.students.enroll.profile',
         'roles' => ['Admin','Dean','Welfare']
     ]);
-    Route::get('/admin/students/enroll/profile/action/{eid}/{status}',[
+    Route::post('/admin/students/enroll/profile/action/{eid}/{status}',[
         'uses' => 'App\Http\Controllers\StudentController@acceptRequest',
         'as' => 'admin.students.enroll.profile.action',
         'roles' => ['Admin']
@@ -376,6 +376,10 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         $student = App\Models\Student::first();
         $enroll = $student->enrolls()->first();
         return new App\Mail\EnrolmentConfirmationMail($enroll);
+    });
+    Route::get('/mailable/3', function () {
+        $enroll = App\Models\Enroll::first();
+        return new App\Mail\EnrolmentAcceptMail($enroll,"Please check your online application. There is a problem with your online application, you need to modify your application again. These are the problem with your application:  Identity Card Image not fully uploaded ");
     });
 
     //download all stdents perosnal data form

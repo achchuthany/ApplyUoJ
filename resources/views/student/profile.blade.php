@@ -565,9 +565,11 @@
     <!-- end row -->
 @endsection
 @section('script')
+    <script>
+        var _token = "{{csrf_token()}}";
+    </script>
     <script src="{{ URL::asset('assets/libs/magnific-popup/magnific-popup.min.js')}}"></script>
     <script src="{{ URL::asset('assets/js/pages/lightbox.init.js')}}"></script>
     <script src="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
     <script src="{{ URL::asset('assets/js/pages/action.enroll.index.js')}}"></script>
-
 @endsection

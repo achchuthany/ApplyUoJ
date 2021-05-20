@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\EnrolmentAcceptJob;
 use App\Models\AcademicYear;
 use App\Models\Address;
 use App\Models\ApplicationRegistration;
@@ -614,7 +615,7 @@ class StudentController extends Controller
             'params'=>$this->params
         ]);
     }
-    public function acceptRequest($eid,$status){
+    public function acceptRequest(Request $request,$eid,$status){
         $enroll = Enroll::whereId($eid)->first();
         if(!$enroll)
             return response()->json(['msg'=>"Enroll data not found!",'code'=>201]);
@@ -626,6 +627,11 @@ class StudentController extends Controller
             $enroll->update();
             $code = 200;
             $msg = $enroll->student->name_initials." enroll status has been updated to ".$enroll->status;
+            $job = (new EnrolmentAcceptJob($enroll->id,$request['message']))
+                ->delay(
+                    now()->addSeconds(30)
+                );
+            dispatch($job);
         }catch (QueryException $ex){
             $msg = $ex->getMessage();
             $code = 201;
