@@ -29,6 +29,27 @@
             </div>
         </div> <!-- end col -->
 
+        <div class="col-md-4">
+            <div class="card bg-soft-light">
+                <div class="card-header">Invited Students <span class="float-right text-light"><a href="{{route('admin.students.pending',['status'=>'in'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-body  text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_today['in']}}</span> </div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_total['in']}}</span> </div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
 
         <div class="col-md-4">
             <div class="card bg-soft-warning">
@@ -189,27 +210,27 @@
         </div> <!-- end col -->
 
 
-        <div class="col-md-4">
-            <div class="card bg-soft-danger">
-                <div class="card-header">Deleted Students <span class="float-right"><a href="{{route('admin.students.pending',['status'=>'de'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card-body  text-center">
-                                <div class="h1 font-weight-lighter text-secondary"><span data-plugin="counterup">{{$count_today['de']}}</span></div>
-                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card-body text-center">
-                                <div class="h1 font-weight-lighter text-secondary"><span data-plugin="counterup">{{$count_total['de']}}</span></div>
-                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> <!-- end col -->
+{{--        <div class="col-md-4">--}}
+{{--            <div class="card bg-soft-danger">--}}
+{{--                <div class="card-header">Deleted Students <span class="float-right"><a href="{{route('admin.students.pending',['status'=>'de'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>--}}
+{{--                <div class="card-body">--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-md-6">--}}
+{{--                            <div class="card-body  text-center">--}}
+{{--                                <div class="h1 font-weight-lighter text-secondary"><span data-plugin="counterup">{{$count_today['de']}}</span></div>--}}
+{{--                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-6">--}}
+{{--                            <div class="card-body text-center">--}}
+{{--                                <div class="h1 font-weight-lighter text-secondary"><span data-plugin="counterup">{{$count_total['de']}}</span></div>--}}
+{{--                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div> <!-- end col -->--}}
 
     </div> <!-- end row -->
 
