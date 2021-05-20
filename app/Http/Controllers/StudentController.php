@@ -517,6 +517,13 @@ class StudentController extends Controller
         }
 
         $count = $data->count();
+
+        //count value of student enroll status
+        $count_total = array();
+        foreach ($this->params as $key=>$value){
+            $count_total[$key]= Enroll::where([['programme_id', $pid], ['academic_year_id', $aid],['status',$value]])->get()->count();
+        }
+
         if ($request->ajax()) {
             return (Datatables::of($data)
                 ->addIndexColumn()
@@ -586,7 +593,7 @@ class StudentController extends Controller
         }
         $programme = Programme::whereId($pid)->first();
         $ay = AcademicYear::whereId($aid)->first();
-            return view('student.list',['programme'=>$programme,'academic' => $ay,'count'=>$count,'filter'=>$filter]);
+            return view('student.list',['programme'=>$programme,'academic' => $ay,'count'=>$count,'filter'=>$filter,'count_total'=>$count_total,'params'=>$this->params ]);
 
     }
     public function searchStudentsList(Request $request){

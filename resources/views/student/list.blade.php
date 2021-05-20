@@ -22,7 +22,7 @@ Students Details by Programme
                           <div class="row">
                               <div class="col-md-6">
                                   <div class="mt-2">
-                                      <p class="mb-1 text-primary">Faculty</p>
+                                      <p class="mb-1 text-primary">Faculty </p>
                                       <h5 class="font-size-16">{{$programme->faculty->name}} ({{$programme->faculty->abbreviation}}) </h5>
                                   </div>
                               </div>
@@ -47,22 +47,36 @@ Students Details by Programme
                           </div>
                       </div>
                     <div class="col-md-3 text-center ">
-                        <div class="mt-2">
-                            <p class="mb-1 text-primary">Number of Students</p>
+                        <div class="mt-2 text-center">
+                            <p class="mb-1 text-primary">Number of Students <a class="btn btn-sm btn-primary" target="_blank" href="{{route('student.registration.download.PersonalData.all',['pid'=>request()->route('pid'),'aid'=>request()->route('aid'),'status'=>request()->route('status')])}}"><i class="mdi mdi-file-pdf"></i> Export</a></p>
                             <h5 class="display-3 text-primary" data-plugin="counterup">{{$count}} </h5>
                         </div>
                     </div>
                     </div>
                 </div>
 
-                <div class="card-body mb-4">
+                <div class="card-body bg-light">
                     <div class="row">
-                        <div class="col-md-12">
-                            <a class="btn btn-sm btn-outline-purple float-right" target="_blank" href="{{route('student.registration.download.PersonalData.all',['pid'=>request()->route('pid'),'aid'=>request()->route('aid'),'status'=>request()->route('status')])}}"><i class="mdi mdi-file-pdf"></i> Bulk Generate Personal Data of Students' PDF</a>
+                        @foreach($count_total as $key => $value)
+                            @if($key !='de')
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="font-weight-lighter font-size-14">{{$params[$key]}}</div>
+                                        </div>
+                                        <div class="col-4">
+                                            <span class="text-primary text-right" data-plugin="counterup">{{$value}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
-
                 <div class="card-body table-responsive mb-4">
                     <table id="datatable"  class="table table-hover  table-striped table-centered datatable dt-responsive nowrap table-card-list" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
