@@ -16,11 +16,10 @@ Add a Student / Edit Student
     <div class="row">
         <div class="col-lg-12">
                 <div class="bg-transparent">
-                        <div class="p-4">
+                        <div class="py-2">
                             <div class="media align-items-center">
                                 <div class="media-body">
                                     <div class="row">
-
                                         <div class="col-md-11">
                                             <h5 class="font-size-16 mb-1">Student Info </h5>
                                             <p class="text-muted text-truncate mb-0">Fill the necessary information below</p>
@@ -30,7 +29,7 @@ Add a Student / Edit Student
                             </div>
                         </div>
                     <div>
-                        <div class="p-4 border-top">
+                        <div class="border-top">
                             <form class="needs-validation" method="POST" action="{{ route('admin.students.addEditProcess') }}">
                                 {{ csrf_field() }}
                                 @if(!isset($enroll))
@@ -661,7 +660,7 @@ Add a Student / Edit Student
                                 <form action="{{ route('student.registration.image.upload') }}" method="POST" enctype="multipart/form-data" id="document-upload">
                                     @csrf
                                     <div class="row">
-                                        <div class="col-md-8" >
+                                        <div class="col-md-6" >
                                             <div class="card">
                                                 <div class="card-header bg-soft-info">
                                                     <div class="text-primary">
@@ -669,7 +668,7 @@ Add a Student / Edit Student
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="card-body bg-light">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <label>Selection Letter sent by the UGC <span class="text-danger font-size-16">*</span></label>
@@ -684,27 +683,27 @@ Add a Student / Edit Student
                                                     </div>
                                                 </div>
 
-                                                <div class="card-body bg-light">
-                                                    <div class="row">
-                                                        <div class="col-md-12 mt-3">
-                                                            <label>Your recent photograph (Identity Card Image) <span class="text-danger font-size-16">*</span></label>
-                                                            <input type="file" name="image" class="form-control  @error('image') is-invalid @enderror">
-                                                            <div class="alert  p-3">
-                                                                <div class="h6 text-primary"><i class="mdi mdi-information"></i> Identity Card Image should be: </div>
-                                                                <div>Required photo size: Passport Size</div>
-                                                                <div>The submitted photos must be in color</div>
-                                                                <div> Head position: straight</div>
-                                                                <div>Background: Blue/Light Blue</div>
-                                                                <div>Recency: taken no more than 6 months ago</div>
-                                                            </div>
-                                                            @error('image')
-                                                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
+{{--                                                <div class="card-body bg-light">--}}
+{{--                                                    <div class="row">--}}
+{{--                                                        <div class="col-md-12 mt-3">--}}
+{{--                                                            <label>Your recent photograph (Identity Card Image) <span class="text-danger font-size-16">*</span></label>--}}
+{{--                                                            <input type="file" name="image" class="form-control  @error('image') is-invalid @enderror">--}}
+{{--                                                            <div class="alert  p-3">--}}
+{{--                                                                <div class="h6 text-primary"><i class="mdi mdi-information"></i> Identity Card Image should be: </div>--}}
+{{--                                                                <div>Required photo size: Passport Size</div>--}}
+{{--                                                                <div>The submitted photos must be in color</div>--}}
+{{--                                                                <div> Head position: straight</div>--}}
+{{--                                                                <div>Background: Blue/Light Blue</div>--}}
+{{--                                                                <div>Recency: taken no more than 6 months ago</div>--}}
+{{--                                                            </div>--}}
+{{--                                                            @error('image')--}}
+{{--                                                            <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                                            @enderror--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-12">
@@ -775,21 +774,15 @@ Add a Student / Edit Student
 
                                                 <div class="card-body">
                                                     <div class="row">
-                                                                                        <div class="col-md-12" id="progress-data">
-                                                                                             <div class="progress p-3">
-                                                                                                <div class="bar"></div >
-                                                                                                <div class="percent">0%</div>
-                                                                                            </div>
-                                                                                        </div>
                                                         <div class="col-md-12 mt-3">
-                                                            <button type="submit" class="btn btn-block btn-primary"><i class="fas fa-file-upload"></i> Upload</button>
+                                                            <button type="submit" class="btn btn-block btn-primary"><i class="mdi mdi-upload-multiple"></i> Upload</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         @if($enroll->student->student_docs()->count()>0)
-                                            <div class="col-md-4" >
+                                            <div class="col-md-6" >
                                                 <div class="card">
                                                     <div class="card-header bg-success text-light"><i class="mdi mdi-check-circle"></i> Files has been uploaded</div>
                                                     <div class="card-body">
@@ -797,9 +790,9 @@ Add a Student / Edit Student
                                                             <div class="row">
                                                                 @foreach($enroll->student->student_docs()->get() as $doc)
                                                                     @if(Storage::disk('docs')->exists($doc->name))
-                                                                        <div class="col-md-12 text-center">
-                                                                            <div class="font-size-12">{{$doc->name}}</div>
-                                                                            <a href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->type}}" class="img-thumbnail img-fluid" width="150"></a>
+                                                                        <div class="col-md-3 text-center">
+{{--                                                                            <div class="font-size-12">{{$doc->name}}</div>--}}
+                                                                            <a  href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->type}}" class="img-thumbnail img-fluid" width="150" ></a>
                                                                         </div>
                                                                     @endif
                                                                 @endforeach
