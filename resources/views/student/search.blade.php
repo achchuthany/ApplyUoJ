@@ -12,14 +12,14 @@
         @slot('pagetitle') Student @endslot
         @slot('title') Search Students  @endslot
     @endcomponent
-    <div class="row">
-        <div class="col-12">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-6">
             <div class="card">
                 <div class="card-header">List of Students by Programme</div>
                 <div class="card-body">
                     <form class="needs-validation" method="POST" action="{{ route('admin.students.search.list') }}">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="programme_id">Programme Title</label>
                                     <select class="form-control select2" name="programme_id" required>
@@ -29,7 +29,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="academic_year_id">Academic Year</label>
                                     <select class="form-control select2" name="academic_year_id" required>
@@ -39,7 +39,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="status">Enroll Status</label>
                                     <select class="form-control select2" name="status" required>
@@ -51,10 +51,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-12">
                                 <div class="form-group pt-1">
                                     {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-primary btn-block mt-4">
+                                    <button type="submit" class="btn btn-primary btn-block">
                                         <i class="fas fa-search"></i> List
                                     </button>
                                 </div>
