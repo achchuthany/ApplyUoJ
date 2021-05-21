@@ -348,7 +348,53 @@ class RegistrationController extends Controller
 
         if(Auth::user()->students()->first()->student_docs()->count()<3)
             return back()->with(['warning'=>'Please upload required documents']);
-        return view('registration.conform');
+        $student = Auth::user()->students()->latest()->first();
+        $enroll = $student->enrolls()->latest()->first();
+        return view('registration.conform',['checkUpload'=>$this->checkProfileData($enroll->id)]);
+    }
+
+    private function checkProfileData($eid){
+        $isProfileImage = false;
+        try{
+            if(Auth::user()->hasRole('Student')){
+                $student = Auth::user()->students()->latest()->first();
+                $enroll = $student->enrolls()->latest()->first();
+            }else{
+                $enroll = Enroll::whereId($eid)->first();
+                $student= $enroll->student;
+            }
+            $permanent =  $student->addresses->where('address_type','Permanent')->first();
+            $permanentAddress = $permanent->address_no .' '.$permanent->address_street .' '.$permanent->address_city .' '.$permanent->address_4 .' '.$permanent->address_state .' '.$permanent->address_country .' '.$permanent->address_postal_code ;
+            $profile = $student->student_docs()->where('type','photo')->first();
+            $profileImage = ($profile)? $profile->name: '';
+            $data = [
+                'student'=>$student,
+                'enroll'=>$enroll,
+                'NotAssigned'=>'Not Assigned',
+                'permanentAddress'=>$permanentAddress,
+                'gender'=>$student->gender? $this->gender[$student->gender]:null,
+                'civil_status'=>$student->civil_status?$this->civil_status[$student->civil_status]:null,
+                'profileImage'=>$profileImage,
+            ];
+            $dompdf = PDF::loadView('pdf.identity_card',$data);
+            $dompdf->setPaper('A4', 'portrait');
+            $dompdf->stream();
+            $isProfileImage = true;
+        }catch (\Exception $e){
+            $isProfileImage = false;
+        }
+
+        $ugc = $student->student_docs()->where('type','ugc')->first();
+        $bank = $student->student_docs()->where('type','bank')->first();
+        $lc = $student->student_docs()->where('type','BLC')->first();
+        $nic = $student->student_docs()->where('type','BNIC')->first();
+
+        $isUGC = $ugc?true:false;
+        $isBank = $bank?true:false;
+        $isLC = $lc?true:false;
+        $isNIC = $nic?true:false;
+
+        return ['isProfileImage'=>$isProfileImage,'isUGC'=>$isUGC,'isBank'=>$isBank,'isLC'=>$isLC,'isNIC'=>$isNIC];
     }
     public function completeProcess(){
         $student = Auth::user()->students()->latest()->first();
