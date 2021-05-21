@@ -101,7 +101,7 @@ npm install
 
 #### Generate Assets
 ```
-npm run prod
+npm run production
 ```
 
 #### Create a copy of your .env file
