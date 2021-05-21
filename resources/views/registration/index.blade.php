@@ -110,7 +110,7 @@
                 <div class="img-container">
                     <div class="row">
                         <div class="col-md-8">
-                            <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
+                            <img id="image" src="https://avatars0.githubusercontent.com/u/5129701">
                         </div>
                         <div class="col-md-4">
                             <div class="preview"></div>

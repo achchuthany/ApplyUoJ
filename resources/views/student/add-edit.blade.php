@@ -6,6 +6,27 @@ Add a Student / Edit Student
     <link href="{{ URL::asset('assets/libs/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- Lightbox css -->
     <link href="{{ URL::asset('assets/libs/magnific-popup/magnific-popup.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/libs/cropperjs/cropperjs.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+
+    <style>
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .preview {
+            overflow: hidden;
+            width: 35mm;
+            height: 45mm;
+            margin: 10px;
+            border: 1px solid red;
+        }
+        .modal-lg{
+            max-width: 1000px !important;
+        }
+
+    </style>
 @endsection
 @section('content')
 @component('common-components.breadcrumb')
@@ -644,7 +665,7 @@ Add a Student / Edit Student
                                         <!-- end row -->
                                     </div>
                                 </div>
-                                <div class="row mt-4">
+                                <div class="row my-4">
                                     <div class="col text-right">
                                         <button  type="submit" class="btn btn-primary"><i class="mdi mdi-content-save-outline mr-1"></i>  Save </button>
                                     </div>
@@ -652,6 +673,49 @@ Add a Student / Edit Student
                             </form>
                         </div>
                         @if(isset($enroll))
+                            <div class="card">
+                                <div class="card-header bg-dark text-light">
+                                    Identity Card Image
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-8" >
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <div class="text-dark">
+                                                        <div>Image must be a file of type of jpeg, jpg and may not be greater than 5120 kilobytes (5MB).
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body bg-light">
+                                                    <div class="row">
+                                                        <div class="col-md-12 mt-3">
+                                                            <label>Your recent photograph (Identity Card Image) <span class="text-danger font-size-16">*</span></label>
+                                                            <input type="hidden" name="student_id"  id="document_student_id" value="{{$student->id}}">
+                                                            <input type="file" name="image" class="form-control  @error('image') is-invalid @enderror" id="profileImage">
+                                                            <div class="alert  p-3">
+                                                                <div class="h6 text-primary"><i class="mdi mdi-information"></i> Identity Card Image should be: </div>
+                                                                <div>Required photo size: Passport Size</div>
+                                                                <div>The submitted photos must be in color</div>
+                                                                <div> Head position: straight</div>
+                                                                <div>Background: Blue/Light Blue</div>
+                                                                <div>Recency: taken no more than 6 months ago</div>
+                                                                <div>Eyes: must be clearly visible</div>
+                                                                <div>Blurred pictures will be rejected</div>
+                                                                <div>Dress code: the colors of your clothes must be in contrast with the background. Do not wear Blue/Light Blue tops</div>
+                                                            </div>
+                                                            @error('image')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                                @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
                         <div class="card">
                             <div class="card-header bg-dark text-light">
                                 Documents
@@ -812,6 +876,39 @@ Add a Student / Edit Student
         </div>
     </div>
 
+
+{{--    //model--}}
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Crop Image Before Upload</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="img-container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <img id="image" src="https://avatars0.githubusercontent.com/u/5129701">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="preview"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="crop"><i class="mdi mdi-crop"></i> Crop and Upload</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @endsection
 @section('script')
     <script src="{{ URL::asset('assets/libs/select2/select2.min.js')}}"></script>
@@ -819,8 +916,11 @@ Add a Student / Edit Student
     <script src="{{ URL::asset('assets/libs/magnific-popup/magnific-popup.min.js')}}"></script>
     <!-- lightbox init js-->
     <script src="{{ URL::asset('assets/js/pages/lightbox.init.js')}}"></script>
+    <script src="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
+
     <script>
         $(".select2").select2();
+        var _token = "{{ csrf_token() }}";
     </script>
     <script>
         if(!$('#RaceOthers').is(':checked')){
@@ -884,4 +984,6 @@ Add a Student / Edit Student
     </script>
 
     <script src="{{ URL::asset('assets/js/pages/generate.reg.no.js')}}"></script>
+    <script src="{{ URL::asset('assets/libs/cropperjs/cropperjs.min.js')}}"></script>
+    <script src="{{ URL::asset('assets/js/pages/photograph.upload.js')}}"></script>
 @endsection
