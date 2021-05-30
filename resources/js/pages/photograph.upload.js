@@ -65,25 +65,29 @@ $("#crop").click(function(){
                     'image': base64data,
 
                 },
-                success: function(data){
-                    console.log(data.success);
+                success: function(data) {
+                    console.log(data.isChecked);
                     $modal.modal('hide');
-                    Swal.fire({
-                        title: 'Success',
-                        text: "You have successfully uploaded your profile image.",
-                        icon: 'success',
-                        showCancelButton: false,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Continue upload documents',
-                        imageUrl: '/registration/student/image/'+data.success,
-                        imageWidth: 150,
-                        imageAlt: 'Custom image',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.replace("/registration/7");
-                        }
-                    })
+                    if (data.isChecked){
+                        Swal.fire({
+                            title: 'Success',
+                            text: "You have successfully uploaded your profile image.",
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Continue upload documents',
+                            imageUrl: '/registration/student/image/' + data.success,
+                            imageWidth: 150,
+                            imageAlt: 'Custom image',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.replace("/registration/7");
+                            }
+                        })
+                    }else{
+                        Swal.fire("Upload failed",'Your profile picture is not fully uploaded. Upload again!', "error");
+                    }
                 }
             });
         }

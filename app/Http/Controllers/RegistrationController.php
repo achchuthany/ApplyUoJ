@@ -795,7 +795,13 @@ class RegistrationController extends Controller
         else
             $docs->save();
 
-        return response()->json(['success'=>$imageName]);
+        $enroll = Enroll::where('student_id',$student->id)->latest()->first();
+        $isChecked = false;
+        if($enroll && $this->checkProfileData($enroll->id)['isProfileImage']){
+            $isChecked = true;
+        }
+
+        return response()->json(['success'=>$imageName,'isChecked'=>$isChecked]);
 
     }
 }
