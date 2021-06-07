@@ -119,6 +119,8 @@ class ApplicationRegistrationController extends Controller
         $registration->status = $request['status'];
         $registration->account_number = $request['account_number'];
         $registration->deposit_amount = $request['deposit_amount'];
+        if($request['next_registration_number'])
+            $registration->next_registration_number = $request['next_registration_number'];
 
         try{
             if ($isUpdate && $registration->update()) {

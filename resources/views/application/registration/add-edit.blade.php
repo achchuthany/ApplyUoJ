@@ -76,6 +76,13 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
+                                            <label class="control-label">Next Registration Number</label>
+                                            <input value="{{(isset($ea)&&!Request::old('next_registration_number'))? $ea->next_registration_number : Request::old('next_registration_number')}}"  id="next_registration_number" name="next_registration_number" type="text" class="form-control">
+                                            <span class="text-danger"><i class="mdi mdi-information"></i> Do not edit the value until you really want to edit</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
                                             <label class="control-label">Bank Payment: Account Number</label>
                                             <input value="{{(isset($ea)&&!Request::old('account_number'))? $ea->account_number : Request::old('account_number')}}"  id="account_number" name="account_number" type="text" class="form-control" required>
 
