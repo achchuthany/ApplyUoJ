@@ -87,7 +87,7 @@ class ApplicationRegistrationController extends Controller
             'programme_id' => 'required|int',
             'open_date' => 'required|date',
             'close_date' => 'required|date',
-            'account_number'=>'required|integer',
+            'account_number'=>'required|numeric',
             'deposit_amount'=>'required|numeric'
         ]);
     $open_date = Carbon::parse($request['open_date']);
