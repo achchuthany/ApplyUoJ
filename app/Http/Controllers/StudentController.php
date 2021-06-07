@@ -166,7 +166,7 @@ class StudentController extends Controller
                 'title'=>'max:20',
                 'name_initials'=>'max:255',
                 'full_name'=>'max:255',
-                'al_z_score'=>'required|numeric|between:0,4.00',
+                'al_z_score'=>'required|numeric|between:-4.00,4.00',
                 'district_no'=>'required|integer|between:1,25',
                 'district'=>'max:255',
                 'race'=>'max:20' ,
