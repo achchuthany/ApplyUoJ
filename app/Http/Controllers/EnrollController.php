@@ -72,7 +72,7 @@ class EnrollController extends Controller
             $index_no = $this->generateIndexNo($application); //$application->programme->abbreviation.substr($application->academic_year->application_year,2,2).sprintf("%03d",$application->next_registration_number);
             $enroll = Enroll::whereId($en->id)->first();
             $enroll->reg_no = $reg_no;
-            $enroll->index_no = $index_no;
+            //$enroll->index_no = $index_no;
             $enroll->registration_date= $request['date'];
             $enroll->status = 'Registered';
             try {
@@ -149,7 +149,7 @@ class EnrollController extends Controller
         $reg_no = $this->generateRegNo($application);
         $index_no = $this->generateIndexNo($application);
         $enroll->reg_no = $reg_no;
-        $enroll->index_no = $index_no;
+        //$enroll->index_no = $index_no;
         $enroll->registration_date= $request['date'];
         $enroll->programme_id = $request['programme_id'];
         $enroll->academic_year_id = $request['academic_year_id'];
