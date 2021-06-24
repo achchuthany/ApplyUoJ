@@ -73,7 +73,7 @@ class UserController extends Controller
                     return $b;
                 })
                ->addColumn('update', function($row){
-                   return $row->updated_at->diffForHumans();
+                   return $row->updated_at->toDateTimeString();
                })
                 ->addColumn('action', function($row){
                     $btn = '<a href="'.route('users.edit',['id'=>$row->id]).'" class="text-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil uil-pen font-size-18"></i></a>
