@@ -117,6 +117,7 @@
                         <option value="Northern" {{(isset($student)&&!Request::old('province'))? ($student->province=='Northern'?'selected':'') : (Request::old('province')=='Northern'?'selected':'') }}>Northern</option>
                         <option value="North Western" {{(isset($student)&&!Request::old('province'))? ($student->province=='North Western'?'selected':'') : (Request::old('province')=='North Western'?'selected':'') }}>North Western</option>
                         <option value="Sabaragamuwa" {{(isset($student)&&!Request::old('province'))? ($student->province=='Sabaragamuwa'?'selected':'') : (Request::old('province')=='Sabaragamuwa'?'selected':'') }}>Sabaragamuwa</option>
+                        <option value="Southern" {{(isset($student)&&!Request::old('province'))? ($student->province=='Southern'?'selected':'') : (Request::old('province')=='Southern'?'selected':'') }}>Southern</option>
                         <option value="Uva" {{(isset($student)&&!Request::old('province'))? ($student->province=='Uva'?'selected':'') : (Request::old('province')=='Uva'?'selected':'') }}>Uva</option>
                         <option value="Western" {{(isset($student)&&!Request::old('province'))? ($student->province=='Western'?'selected':'') : (Request::old('province')=='Western'?'selected':'') }}>Western</option>
                     </select>
