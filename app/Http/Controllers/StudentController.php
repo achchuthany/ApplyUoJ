@@ -447,13 +447,13 @@ class StudentController extends Controller
         if(!$enroll)
             return redirect()->back();
 
-        if($enroll->student->race)
-            if($enroll->student->race && strlen($enroll->student->race)>1){
-                $race = $enroll->student->race;
-            }else if($enroll->student->race){
-                $race = $races[$enroll->student->race];
-            }
-
+        if($enroll->student->race && strlen($enroll->student->race)>1){
+            $race = $enroll->student->race;
+        }else if($enroll->student->race){
+            $race = $races[$enroll->student->race];
+        }else{
+            $race = null;
+        }
         $gender = $enroll->student->gender?$genders[$enroll->student->gender] : null;
         $civil_status = $enroll->student->civil_status? $civil_statuses[$enroll->student->civil_status] : null;
 
