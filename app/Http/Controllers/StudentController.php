@@ -422,7 +422,7 @@ class StudentController extends Controller
                     return $row->academic_year->name;
                 })
                 ->addColumn('updated', function($row){
-                    return $row->updated_at->toDateString();
+                    return $row->updated_at->toDateString() ." - ".$row->updated_at->longAbsoluteDiffForHumans();
                 })
                 ->addColumn('action', function($row){
                     $btn = '
