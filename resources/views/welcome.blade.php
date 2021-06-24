@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <div class="card  shadow-none">
+            <div class="card shadow my-5">
                 <div class="card-body">
                     <div class="row justify-content-center mt-4">
                         <div class="col-lg-5">
@@ -21,8 +21,10 @@
                     </div>
 
                     <div class="card-body bg-transparent text-center mt-4">
-                        <div class="h2 font-weight-lighter text-dark">
-                            Online Registration of Students for Courses of Study
+                        <div class="font-weight-lighter text-dark">
+                            <h2 class="text-uppercase">
+                                Online Enrolment for ACADEMIC PROGRAMME
+                            </h2>
                         </div>
                     </div>
 
@@ -30,8 +32,8 @@
                         <div class="col-xl-12">
                             <div id="faqs-accordion" class="custom-accordion mt-5 mt-xl-0">
                                 <div class="card border shadow-none">
-                                    <a href="#faqs-gen-ques-collapse" class="text-dark" data-toggle="collapse" aria-expanded="true" aria-controls="faqs-gen-ques-collapse">
-                                        <div class="bg-white p-3">
+                                    <a href="#step1" class="text-dark" data-toggle="collapse" aria-expanded="true" aria-controls="faqs-gen-ques-collapse">
+                                        <div class="bg-primary p-3">
 
                                             <div class="media align-items-center">
                                                 <div class="mr-3">
@@ -42,7 +44,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="media-body overflow-hidden">
-                                                    <h5 class="font-size-16 mb-1">Before start the online registration you need to know the following:</h5>
+                                                    <h5 class="font-size-16 mb-1 text-light">Before start the online enrolment you need to know the following:</h5>
                                                 </div>
                                                 <i class="mdi mdi-chevron-up accor-down-icon font-size-16"></i>
                                             </div>
@@ -50,10 +52,10 @@
                                         </div>
                                     </a>
 
-                                    <div id="faqs-gen-ques-collapse" class="collapse show" data-parent="#faqs-accordion">
+                                    <div id="step1" class="collapse show" data-parent="#faqs-accordion">
                                         <div class="p-4">
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div>
                                                         <div class="media mt-4">
                                                             <div class="avatar-xs mr-3">
@@ -63,7 +65,7 @@
                                                             </div>
 
                                                             <div class="media-body">
-                                                                <p class="text-muted">Online Application Form   should be filled only in the English medium using BLOCK CAPITAL LETTERS.</p>
+                                                                <p class="text-dark">Online Application Form   should be filled only in the English medium using BLOCK CAPITAL LETTERS.</p>
                                                             </div>
                                                         </div>
 
@@ -75,7 +77,7 @@
                                                             </div>
 
                                                             <div class="media-body">
-                                                                <p class="text-muted">Full Name must be given as it is appeared in the Birth Certificate. (If the name in the Birth Certificate is different than the name which is in use, necessary amendments should be made in the Birth Certificate prior to get the registration)</p>
+                                                                <p class="text-dark">Full Name must be given as it is appeared in the Birth Certificate. (If the name in the Birth Certificate is different than the name which is in use, necessary amendments should be made in the Birth Certificate prior to get the registration)</p>
                                                             </div>
                                                         </div>
                                                         <div class="media mt-4">
@@ -86,7 +88,7 @@
                                                             </div>
 
                                                             <div class="media-body">
-                                                                <p class="text-muted">  Please provide your permanent address, contact telephone number and email address to enable the Admissions Branch of the University of Jaffna to communicate with you in future activities.</p>
+                                                                <p class="text-dark">  Please provide your permanent address, contact telephone number and email address to enable the Admissions Branch of the University of Jaffna to communicate with you in future activities.</p>
                                                             </div>
                                                         </div>
 
@@ -98,13 +100,13 @@
                                                             </div>
 
                                                             <div class="media-body">
-                                                                <p class="text-muted"> You should indicate your educational qualifications and examination results accurately and clearly.</p>
+                                                                <p class="text-dark"> You should indicate your educational qualifications and examination results accurately and clearly.</p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div>
                                                         <div class="media mt-4">
                                                             <div class="avatar-xs mr-3">
@@ -122,7 +124,7 @@
                                                                     <li>National Identity Card Back Side</li>
                                                                     <li>School Leaving Certificate Front Side</li>
                                                                     <li>School Leaving Certificate Back Side</li>
-                                                                    <li>Paid Bank Slip <a href="{{route('info')}}" ><i class="mdi mdi-currency-usd"></i>Payment Details </a></li>
+                                                                    <li>Paid Bank Slip <a href="{{route('info')}}" > - Payment Details </a></li>
                                                                 </ol>
                                                              </div>
                                                         </div>
@@ -135,7 +137,7 @@
                                                             </div>
 
                                                             <div class="media-body">
-                                                                <p class="text-muted"> You should complete all the entry requirements on or before the <a href="{{route('info')}}" ><i class="mdi mdi-calculator"></i> closing date</a>.</p>                                                            </div>
+                                                                <p class="text-dark"> You should complete all the entry requirements on or before the <a href="{{route('info')}}" > closing date</a>.</p>                                                            </div>
                                                         </div>
 
                                                         <div class="media mt-4">
@@ -146,7 +148,7 @@
                                                             </div>
 
                                                             <div class="media-body">
-                                                                <p class="text-muted">Use the <b>'Start the Registration Now!'</b> button provided at the bottom of the page to start your registration.</p>                                                            </div>
+                                                                <p class="text-dark">Use the <b>'Start the Enrolment Now!'</b> button provided at the bottom of the page to start your registration.</p>                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -157,8 +159,8 @@
                                 </div>
 
                                 <div class="card border shadow-none">
-                                    <a href="#faqs-privacy-policy-collapse" class="text-dark collapsed" data-toggle="collapse" aria-expanded="false" aria-controls="faqs-privacy-policy-collapse">
-                                        <div class="bg-white p-3">
+                                    <a href="#step2" class="text-dark collapsed" data-toggle="collapse" aria-expanded="false" aria-controls="faqs-privacy-policy-collapse">
+                                        <div class="bg-primary p-3">
 
                                             <div class="media align-items-center">
                                                 <div class="mr-3">
@@ -169,7 +171,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="media-body overflow-hidden">
-                                                    <h5 class="font-size-16 mb-1"> What happens after you have submitted your online registration?</h5>
+                                                    <h5 class="font-size-16 mb-1 text-light"> What happens after you have submitted your online enrolment?</h5>
                                                 </div>
                                                 <i class="mdi mdi-chevron-up accor-down-icon font-size-16"></i>
                                             </div>
@@ -177,10 +179,10 @@
                                         </div>
                                     </a>
 
-                                    <div id="faqs-privacy-policy-collapse" class="collapse show" data-parent="#faqs-accordion">
+                                    <div id="step2" class="collapse show" data-parent="#faqs-accordion">
                                         <div class="p-4">
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div>
                                                         <div class="media mt-4">
                                                             <div class="avatar-xs mr-3">
@@ -190,7 +192,7 @@
                                                             </div>
 
                                                             <div class="media-body">
-                                                                <p class="text-muted">You will receive a confirmation email</p>                                                            </div>
+                                                                <p class="text-dark">You will receive a confirmation email</p>                                                            </div>
                                                         </div>
 
                                                         <div class="media mt-4">
@@ -201,13 +203,16 @@
                                                             </div>
 
                                                             <div class="media-body">
-                                                                <p class="text-muted">You can monitor the progress of your online registration                         </p>                                                            </div>
+                                                                <p class="text-dark">
+                                                                    You can monitor the progress of your online enrolment
+                                                                </p>
+                                                            </div>
                                                         </div>
 
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div>
                                                         <div class="media mt-4">
                                                             <div class="avatar-xs mr-3">
@@ -217,7 +222,7 @@
                                                             </div>
 
                                                             <div class="media-body">
-                                                                <p class="text-muted">You can continue to upload supporting documentation to your online registration</p>                                                            </div>
+                                                                <p class="text-dark">You can continue to upload supporting documentation to your online enrolment</p>                                                            </div>
                                                         </div>
 
                                                         <div class="media mt-4">
@@ -228,7 +233,7 @@
                                                             </div>
 
                                                             <div class="media-body">
-                                                                <p class="text-muted">Use the <b>'Manage your application'</b> button provided at the bottom of the page to manage your online registration.</p>                                                        </div>
+                                                                <p class="text-dark">Use the <b>'Manage your enrolment'</b> button provided at the bottom of the page to manage your online enrolment.</p>                                                        </div>
                                                         </div>
 
                                                     </div>
@@ -246,8 +251,8 @@
                         <div class="col-lg-6">
                             <div class="text-center">
                                 <div>
-                                    <a href="{{route('login')}}" class="btn btn-outline-secondary m-2"><i class="mdi mdi-account-outline"></i> Manage your application </a>
-                                    <a href="{{route('register')}}" class="btn btn-primary m-2"><i class="mdi mdi-progress-check"></i> Start the Registration Now!</a>                                                    </div>
+                                    <a href="{{route('login')}}" class="btn btn-outline-secondary m-2"><i class="mdi mdi-account-outline"></i> Manage your enrolment </a>
+                                    <a href="{{route('register')}}" class="btn btn-primary m-2"><i class="mdi mdi-progress-check"></i> Start the Enrolment Now!</a>                                                    </div>
                             </div>
                         </div>
                         <div class="col-lg-12 text-center mt-3 px-2">

@@ -10,37 +10,32 @@ Login
                 <div class="">
                     <div class="row align-items-center">
                         <div class="col-lg-7">
+                            <a href="{{route('home')}}" class="my-2 d-block auth-logo">
+                                <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="MyUoJ" height="40" class="logo logo-dark">
+                                <img src="{{ URL::asset('assets/images/logo-dark.png')}}" alt="MyUoJ" height="40" class="logo logo-light">
+                            </a>
                             @if($isShow)
                             <div class="card-body bg-light shadow-lg rounded-lg my-3 p-4">
-                                <a href="{{route('home')}}" class="mb-5 d-block auth-logo">
-                                    <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="" height="40" class="logo logo-light">
-                                    <img src="{{ URL::asset('assets/images/logo-dark.png')}}" alt="" height="40" class="logo logo-dark">
-                                </a>
-                                <div class="p-3 text-center text-dark font-weight-lighter font-size-20">
-                                    Online Registration of Students for the following Courses
+                                <div class="h5 text-uppercase mb-3">
+                                    Closing Dates for STUDENT Enrolment
                                 </div>
                                 <div class="table-responsive text-light">
                                     <table class="table table-borderless table-striped">
-                                        <thead class="bg-info text-light">
+                                        <thead>
                                         <th>Programme</th>
                                         <th>Closing Date</th>
-                                        <th>Apply</th>
+                                        <th>Enrolment</th>
                                         </thead>
                                         <tbody>
                                         @foreach($data as $row)
                                             <tr>
                                                 <td>{{$row->programme->name}}</td>
-                                                <td>{{\Carbon\Carbon::parse($row->close_date)->toFormattedDateString()}} ({{\Carbon\Carbon::parse($row->close_date)->diffForHumans()}})</td>
-                                                <th><a href="{{route('welcome')}}">Apply</a> </th>
+                                                <td>{{\Carbon\Carbon::parse($row->close_date)->toFormattedDateString()}} ({{\Carbon\Carbon::create($row->close_date)->hour(24)->diffForHumans()}})</td>
+                                                <th><a href="{{route('welcome')}}" class="btn btn-outline-primary btn-sm">Enrol now</a> </th>
                                             </tr>
                                         @endforeach
                                         </tbody>
                                     </table>
-                                </div>
-                                <div class="text-center text-muted border-info ">
-                                    <span class="mx-2"> <i class="mdi mdi-email"></i> admissions@univ.jfn.ac.lk</span>
-                                    <span class="mx-2"> <i class="mdi mdi-phone"></i> +94 021 221 8120</span>
-                                    <span class="mx-2"> <i class="mdi mdi-phone"></i> +94 021 222 6714</span>
                                 </div>
                             </div>
                             @endif
@@ -51,13 +46,13 @@ Login
                                 <div class="row mb-3">
                                     <div class="col-lg-12">
                                         <div class="text-center">
-                                            <img src="{{ URL::asset('assets/images/uoj.png')}}" alt="" height="70" class="logo">
+                                            <img src="{{ URL::asset('assets/images/uoj.png')}}" alt="University of Jaffna" height="70" class="logo">
                                         </div>
                                     </div>
                                 </div>
                                     <div class="row mb-3">
                                         <div class="col-lg-12">
-                                            <div class="text-center h6 text-uppercase">Sign in to manage your Online Enrollment</div>
+                                            <div class="text-center h6 text-uppercase">Sign in to manage your Online Enrolment</div>
                                         </div>
                                     </div>
 
@@ -100,7 +95,7 @@ Login
                                                 <button class="btn btn-primary w-sm waves-effect waves-light" type="submit">{{ __('Log In') }} <i class="mdi mdi-login-variant"></i> </button>
                                             </div>
                                             <div class="mt-4 text-center">
-                                                <p class="mb-0">Don't have an account ? <a href="{{url('apply')}}" class="font-weight-medium text-primary"> Apply now </a> </p>
+                                                <p class="mb-0">Don't Have an Account?<a href="{{url('apply')}}" > Create account</a>  </p>
                                             </div>
                                         </form>
                                     </div>
@@ -108,6 +103,11 @@ Login
                                 <div class="row">
                                     <div class="col-md-12 mt-2 text-center text-muted">
                                         <p>© {{ date('Y') }}  {{config('app.name')}}</p> <p> All Rights Reserved</p>
+                                        <div class="font-size-12 py-3 bg-light">
+                                            <span class=""> <i class="mdi mdi-email"></i> admissions@univ.jfn.ac.lk</span>
+                                            <span class="ml-1"> <i class="mdi mdi-phone"></i> +94 021 221 8120</span>
+                                            <span class="ml-1"> <i class="mdi mdi-phone"></i> +94 021 222 6714</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

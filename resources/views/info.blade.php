@@ -24,8 +24,8 @@
                     <div class="row mt-4">
                         <div class="col-xl-12">
                             <div class="card bg-transparent shadow-none">
-                                <div class="card-header">
-                                    <a class="btn btn-primary btn-sm float-right" href="{{route('welcome')}}"><i class="mdi mdi-arrow-left"></i> Back</a> Call for Registration
+                                <div class="card-header text-uppercase">
+                                    <a class="btn btn-primary btn-sm float-right" href="{{route('welcome')}}"><i class="mdi mdi-arrow-left"></i> Back</a>  <h4>Closing Dates for STUDENT Enrolment</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
