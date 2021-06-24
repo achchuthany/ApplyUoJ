@@ -191,11 +191,12 @@ class EnrollController extends Controller
         return view('enroll.reg',['enroll'=>$enroll,'programmes'=>$programmes,'academics'=>$ays]);
     }
     public function changeRegProcess(Request $request,$id){
+//        'index_no' => 'sometimes|required|unique:enrolls,index_no,'.$id,
         $this->validate($request,[
             'reg_no' => 'sometimes|required|unique:enrolls,reg_no,'.$id,
-            'index_no' => 'sometimes|required|unique:enrolls,index_no,'.$id,
             'date'=>'required',
         ]);
+        $request['index_no'] ? $this->validate($request,['index_no' => 'sometimes|required|unique:enrolls,index_no,'.$id]):'';
         $enroll = Enroll::whereId($id)->first();
         $enroll->registration_date= $request['date'];
         $enroll->reg_no = strtoupper($request['reg_no']);

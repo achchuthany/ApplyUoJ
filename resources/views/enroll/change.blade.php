@@ -19,10 +19,7 @@ Change Course of Study
 
                 <div class="text-center">
                     @if($enroll->student->student_docs()->where('type','photo')->first() && Storage::disk('docs')->exists($enroll->student->student_docs()->where('type','photo')->first()->name))
-                        <a class="image-popup-no-margins mb-0" href="/registration/student/image/{{$enroll->student->student_docs()->where('type','photo')->first()->name}}">
-
-                            <img src="/registration/student/image/{{$enroll->student->student_docs()->where('type','photo')->first()->name}}" alt="{{$enroll->student->student_docs()->where('type','photo')->first()->type}}" class="img-fluid h-100 img-thumbnail mb-0">
-                        </a>
+                        <img src="/registration/student/image/{{$enroll->student->student_docs()->where('type','photo')->first()->name}}" alt="{{$enroll->student->student_docs()->where('type','photo')->first()->type}}" class="img-thumbnail">
                     @else
                         <img class="img-fluid h-100 img-thumbnail" alt="" src="{{ URL::asset('assets/images/users/user.png')}}" width="75">
                     @endif
@@ -35,7 +32,7 @@ Change Course of Study
     <div class="col-md-9 mb-4">
         <div class="card h-100">
             <div class="card-body">
-                <div class="card-title text-info">Current Enrolled Course <span class="text-muted font-size-12 float-right">Updated at {{$enroll->updated_at->diffForHumans()}} </span> </div>
+                <div class="card-title text-info">Enrolled Programme <span class="text-muted font-size-12 float-right">Updated at {{$enroll->updated_at->diffForHumans()}} </span> </div>
                 <div class="text-muted">
                     <div class="row">
                         <div class="col-md-2">
