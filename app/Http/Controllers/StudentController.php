@@ -162,7 +162,7 @@ class StudentController extends Controller
 
             $validator = Validator::make($data, [
                 'application_year'=>'required|integer',
-                'al_index_number'=>'required|integer|unique:students',
+                'al_index_number'=>'required|integer',
                 'title'=>'max:20',
                 'name_initials'=>'max:255',
                 'full_name'=>'max:255',
@@ -684,7 +684,7 @@ class StudentController extends Controller
             'mobile'=>'required',
             'nic'=>'required|unique:students,nic,'.$request['student_id'],
             'email'=>'required|email|unique:students,email,'.$request['student_id'],
-            'al_index_number'=>'required|unique:students,al_index_number,'.$request['student_id'],
+            'al_index_number'=>'required|integer',
             'al_exam_year'=>'required',
             'race'=>'required',
             'gender'=>'required',
