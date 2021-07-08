@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header">Total Students <span class="float-right text-light"><a href="{{route('admin.students.all')}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-header"> UGC Admitted Students<span class="float-right text-light"><a href="{{route('admin.students.all')}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
@@ -31,7 +31,7 @@
 
         <div class="col-md-4">
             <div class="card bg-soft-light">
-                <div class="card-header">Invited Students <span class="float-right text-light"><a href="{{route('admin.students.pending',['status'=>'in'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-header"> Enrollment Pending Students<span class="float-right text-light"><a href="{{route('admin.students.pending',['status'=>'in'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -99,7 +99,7 @@
 
         <div class="col-md-4">
             <div class="card bg-soft-primary">
-                <div class="card-header">Registration Accepted Students <span class="float-right text-light"><a href="{{route('admin.students.pending',['status'=>'ap'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-header">Reg. No. Assigning Pending Students <span class="float-right text-light"><a href="{{route('admin.students.pending',['status'=>'ap'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
