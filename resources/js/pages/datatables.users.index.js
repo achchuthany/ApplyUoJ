@@ -14,6 +14,7 @@ $(document).ready(function() {
                 {data: 'update', name: 'update'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
+            "order": [[ 5, "desc" ]],
             lengthChange: true,
             pageLength: 25,
             // dom: 'Bfrtip',
