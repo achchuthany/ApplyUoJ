@@ -327,16 +327,8 @@ class StudentController extends Controller
             }
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->addColumn('image', function($row){
-                    $doc = $row->student->student_docs()->where('type','photo')->first();
-                    if($doc && Storage::disk('docs')->exists($doc->name))
-                        return '<img src="/registration/student/image/'.$doc->name.'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
-                    else if($row->student->gender == "M")
-                        return '<img src="'.URL::asset('assets/images/users/male.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
-                    else
-                        return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
-
-
+                ->addColumn('al_index_no', function($row){
+                    return $row->student->al_index_number;
                 })
                 ->addColumn('name', function($row){
                     return $row->student->full_name;
@@ -422,7 +414,7 @@ class StudentController extends Controller
                     return $row->academic_year->name;
                 })
                 ->addColumn('updated', function($row){
-                    return $row->updated_at->toDateString() ." - ".$row->updated_at->longAbsoluteDiffForHumans();
+                    return $row->updated_at->toDateTimeString();
                 })
                 ->addColumn('action', function($row){
                     $btn = '
@@ -527,14 +519,8 @@ class StudentController extends Controller
         if ($request->ajax()) {
             return (Datatables::of($data)
                 ->addIndexColumn()
-                ->addColumn('image', function($row){
-                    $doc = $row->student->student_docs()->where('type','photo')->first();
-                    if($doc && Storage::disk('docs')->exists($doc->name))
-                        return '<img src="/registration/student/image/'.$doc->name.'" alt="" class="avatar-sm rounded-circle img-thumbnail">';
-                    else if($row->student->gender == "M")
-                        return '<img src="'.URL::asset('assets/images/users/male.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
-                    else
-                        return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
+                ->addColumn('al_index_no', function($row){
+                    return $row->student->al_index_number;
                 })
                 ->addColumn('ref_no', function($row){
                     return $row->getRefNo();
@@ -563,7 +549,7 @@ class StudentController extends Controller
                         $address.= $add->address_state ? ', '.$add->address_state:'';
                         $address.=', '.$add->address_country;
                         $address.= $add->address_postal_code? ', '.$add->address_postal_code:'';
-                        return $address;
+                        return strtoupper($address);
                     }
                     return null;
                 })
@@ -571,13 +557,13 @@ class StudentController extends Controller
                     return strtoupper($row->student->title);
                 })
                 ->addColumn('name_initials', function ($row) {
-                    return $row->student->name_initials;
+                    return strtoupper($row->student->name_initials);
                 })
                 ->addColumn('full_name', function ($row) {
-                    return $row->student->full_name;
+                    return strtoupper($row->student->full_name);
                 })
                 ->addColumn('registration_date', function ($row) {
-                    return ($row->registration_date)?Carbon::parse($row->registration_date)->toFormattedDateString().' ('.Carbon::parse($row->registration_date)->diffForHumans().')':"Not Registered";
+                    return ($row->registration_date)?strtoupper(Carbon::parse($row->registration_date)->toFormattedDateString()):"Not Registered";
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '
@@ -586,8 +572,64 @@ class StudentController extends Controller
                     return $btn;
                 })
                 ->addColumn('status', function ($row) {
-                    return $row->status;
+                    return strtoupper($row->status);
                 })
+
+                ->addColumn('province', function ($row) {
+                    return strtoupper($row->student->province);
+                })
+                ->addColumn('district', function ($row) {
+                    return strtoupper($row->student->district);
+                })
+                ->addColumn('al_z_score', function ($row) {
+                    return $row->student->al_z_score;
+                })
+                ->addColumn('race', function ($row) {
+                    $race = null;
+                    if(isset($this->race[$row->student->race])){
+                        $race = $this->race[$row->student->race];
+                    }else{
+                        $race = $row->student->race;
+                    }
+                    return strtoupper($race);
+                })
+                ->addColumn('gender', function ($row) {
+                    $gender = null;
+                    if(isset($this->gender[$row->student->gender])){
+                        $gender = $this->gender[$row->student->gender];
+                    }else{
+                        $gender = $row->student->gender;
+                    }
+                    return strtoupper($gender);
+                })
+                ->addColumn('civil_status', function ($row) {
+                    $civil_status = null;
+                    if(isset($this->civil_status[$row->student->civil_status])){
+                        $civil_status = $this->civil_status[$row->student->civil_status];
+                    }else{
+                        $civil_status = $row->student->civil_status;
+                    }
+                    return strtoupper($civil_status);
+                })
+                ->addColumn('religion', function ($row) {
+                    $religion = null;
+                    if(isset($this->religion[$row->student->religion])){
+                        $religion = $this->religion[$row->student->religion];
+                    }else{
+                        $religion = $row->student->religion;
+                    }
+                    return strtoupper($religion);
+                })
+                ->addColumn('date_of_birth', function ($row) {
+                    return ($row->student->date_of_birth)?strtoupper(Carbon::parse($row->student->date_of_birth)->toFormattedDateString())  :"N/A";
+                })
+                ->addColumn('citizenship', function ($row) {
+                    return strtoupper($row->student->citizenship);
+                })
+                ->addColumn('citizenship_type', function ($row) {
+                    return strtoupper($row->student->citizenship_type);
+                })
+
                 ->rawColumns(['action', 'image'])
                 ->make(true));
         }

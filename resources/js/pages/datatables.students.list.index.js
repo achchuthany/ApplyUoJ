@@ -7,7 +7,7 @@ $(document).ready(function() {
             ajax: url,
             columns: [
                 {data: 'ref_no', name: 'ref_no'},
-                {data: 'image', name: 'image'},
+                {data: 'al_index_no', name: 'al_index_no'},
                 {data: 'reg_no', name: 'reg_no'},
                 {data: 'index_no', name: 'index_no'},
                 {data: 'title', name: 'title'},
@@ -19,26 +19,28 @@ $(document).ready(function() {
                 {data: 'address', name: 'address'},
                 {data: 'registration_date', name: 'registration_date'},
                 {data: 'status', name: 'status'},
+
+                {data: 'province', name: 'province'},
+                {data: 'district', name: 'district'},
+                {data: 'al_z_score', name: 'al_z_score'},
+                {data: 'race', name: 'race'},
+                {data: 'gender', name: 'gender'},
+                {data: 'civil_status', name: 'civil_status'},
+                {data: 'religion', name: 'religion'},
+                {data: 'date_of_birth', name: 'date_of_birth'},
+                {data: 'citizenship', name: 'citizenship'},
+                {data: 'citizenship_type', name: 'citizenship_type'},
+
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             "order": [[ 2, "asc" ]],
             lengthChange: true,
-            pageLength: 100,
+            "lengthMenu": [[10, 25, 50,100, -1], [10, 25, 50, 100, "All"]],     // page length options
+            pageLength: 25,
             dom: 'Bfrtip',
-            // dom: 'Bfrtip',
-            buttons: {
-                buttons: [
-                    {
-                        extend: "excel",
-                        className: "btn-sm btn-primary mr-2",
-                        titleAttr: 'Export in Excel',
-                        text: '<i class="fas fa-file-excel"></i>Export in Excel',
-                        init: function(api, node, config) {
-                            $(node).removeClass('btn-default')
-                        }
-                    },'colvis'
-                ]
-            }
+            buttons: [
+                'copy', 'excel', 'colvis','pageLength'
+            ]
         }
     );
 } );

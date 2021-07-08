@@ -1,6 +1,7 @@
 @extends('layouts.master-dark-sidebar')
 @section('title')
-Students Details by Programme
+    {{$programme->name}} - {{$academic->name}} - {{$filter}}
+
 @endsection
 @section('css')
     <link href="{{ URL::asset('assets/libs/datatables/datatables.min.css')}}" rel="stylesheet" type="text/css" />
@@ -11,7 +12,7 @@ Students Details by Programme
 @section('content')
 @component('common-components.breadcrumb')
     @slot('pagetitle') Students @endslot
-    @slot('title')<a href="{{route('admin.students.search')}}"> <i class="uil uil-arrow-left "></i> </a> Students Details by Programme @endslot
+    @slot('title') {{$programme->name}} - {{$academic->name}} @endslot
 @endcomponent
     <div class="row">
         <div class="col-12">
@@ -48,7 +49,8 @@ Students Details by Programme
                       </div>
                     <div class="col-md-3 text-center ">
                         <div class="mt-2 text-center">
-                            <p class="mb-1 text-primary">Number of Students <a class="btn btn-sm btn-primary" target="_blank" href="{{route('student.registration.download.PersonalData.all',['pid'=>request()->route('pid'),'aid'=>request()->route('aid'),'status'=>request()->route('status')])}}"><i class="mdi mdi-file-pdf"></i> Export</a></p>
+{{--                            <p class="mb-1 text-primary">Number of Students <a class="btn btn-sm btn-primary" target="_blank" href="{{route('student.registration.download.PersonalData.all',['pid'=>request()->route('pid'),'aid'=>request()->route('aid'),'status'=>request()->route('status')])}}"><i class="mdi mdi-file-pdf"></i> Export</a></p>--}}
+
                             <h5 class="display-3 text-primary" data-plugin="counterup">{{$count}} </h5>
                         </div>
                     </div>
@@ -82,7 +84,7 @@ Students Details by Programme
                         <thead>
                         <tr class="bg-transparent">
                             <th>Reference</th>
-                            <th>Image</th>
+                            <th>AL Index No.</th>
                             <th>Reg. No.</th>
                             <th>Index. No.</th>
                             <th>Title</th>
@@ -94,6 +96,18 @@ Students Details by Programme
                             <th>Permanent Address</th>
                             <th>Date of Registration</th>
                             <th>Registration Status</th>
+
+                            <th>Province</th>
+                            <th>District</th>
+                            <th>AL Z Score </th>
+                            <th>Race </th>
+                            <th>Gender </th>
+                            <th>Civil Status </th>
+                            <th>Religion </th>
+                            <th>Date of Birth </th>
+                            <th>Citizenship </th>
+                            <th>Citizenship Type </th>
+
                             <th>Profile</th>
                         </tr>
                         </thead>
