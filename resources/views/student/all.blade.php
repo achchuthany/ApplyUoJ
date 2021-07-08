@@ -20,7 +20,7 @@ List of Students
                         <thead>
                         <tr class="bg-transparent">
                             <th>Reference</th>
-                            <th>Image</th>
+                            <th>A/L Index No.</th>
                             <th>Full Name</th>
                             <th>NIC No.</th>
                             <th>Mobile</th>
