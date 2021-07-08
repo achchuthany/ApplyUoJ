@@ -88,9 +88,8 @@
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
                             <li><a href="{{route('admin.analytics.race')}}"><i class="fas fa-user-friends"></i>Race</a></li>
-                            <li><a href="{{route('users.add')}}"><i class="fas fa-female"></i>Gender</a></li>
-                            <li><a href="{{route('users.add')}}"><i class="fas fa-map-pin"></i>District</a></li>
-                            <li><a href="{{route('users.add')}}"><i class="fas fa-book"></i>G.C.E (A/L) </a></li>
+                            <li><a href="{{route('admin.analytics.gender')}}"><i class="fas fa-female"></i>Gender</a></li>
+                            <li><a href="{{route('admin.analytics.district')}}"><i class="fas fa-map-pin"></i>District</a></li>
 
 
                         </ul>

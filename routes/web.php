@@ -404,7 +404,7 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'roles' => ['Dean']
     ]);
 
-    //Analytics
+    //RACE Analytics
     Route::get('/admin/analytics/race',[
         'uses' => 'App\Http\Controllers\AnalyticController@raceIndex',
         'as' => 'admin.analytics.race',
@@ -414,6 +414,34 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
     Route::post('/admin/analytics/getRaceData',[
         'uses' => 'App\Http\Controllers\AnalyticController@getRaceData',
         'as' => 'admin.analytics.getRaceData',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+
+    //GENDER ANALYST
+    Route::get('/admin/analytics/gender',[
+        'uses' => 'App\Http\Controllers\AnalyticController@genderIndex',
+        'as' => 'admin.analytics.gender',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/analytics/getGenderData',[
+        'uses' => 'App\Http\Controllers\AnalyticController@getGenderData',
+        'as' => 'admin.analytics.getGenderData',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+
+    //DISTRICT
+    Route::get('/admin/analytics/district',[
+        'uses' => 'App\Http\Controllers\AnalyticController@districtIndex',
+        'as' => 'admin.analytics.district',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/analytics/getDistrictData',[
+        'uses' => 'App\Http\Controllers\AnalyticController@getDistrictData',
+        'as' => 'admin.analytics.getDistrictData',
         'middleware' => 'roles',
         'roles' => ['Admin']
     ]);

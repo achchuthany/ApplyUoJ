@@ -22,17 +22,13 @@ var barChartData = {
     datasets: [{
         label: 'Number of Students',
         backgroundColor: [
-            "#8E0D37",
-            "#EC7500",
-            "#00524D",
-            "#FFBF24"
+            "#084edb",
+            "#f61b8c",
 
         ],
         hoverBackgroundColor: [
-            "#8E0D37",
-            "#EC7500",
-            "#00524D",
-            "#FFBF24"
+            "#084edb",
+            "#f61b8c",
 
         ],
         hoverBorderColor: "#ececec",
@@ -41,8 +37,8 @@ var barChartData = {
     }]
 };
 
-var ctx = document.getElementById("pie").getContext("2d");
-var myRace = new Chart(ctx, {
+var ctx = document.getElementById("gender_chart").getContext("2d");
+var genderChart = new Chart(ctx, {
     type: 'pie',
     data: barChartData,
     options: {
@@ -90,8 +86,8 @@ var religionChartData = {
         data: []
     }]
 };
-var religion_ctx = document.getElementById("religion_chart").getContext("2d");
-var myReligion = new Chart(religion_ctx, {
+var religion_ctx = document.getElementById("civil_chart").getContext("2d");
+var civilChart = new Chart(religion_ctx, {
     type: 'pie',
     data: religionChartData,
     options: {
@@ -119,35 +115,35 @@ function getData(programme_id,academic_year_id,enroll_status){
         '_token':_token
     }).done(function (data) {
         let html = html2 =  "";
-        for(let i=0;i<data.label.length;i++){
+        for(let i=0;i<data.gender_count.length;i++){
             html +=
                 "<tr>" +
-                "<td>"+data.label[i]+"</td>" +
-                "<td class='text-center'>"+data.data[i]+"</td>" +
-                "<td>"+((data.data[i]/data.total)*100).toFixed(2)+"%</td>" +
+                "<td>"+data.gender_label[i]+"</td>" +
+                "<td class='text-center'>"+data.gender_count[i]+"</td>" +
+                "<td>"+((data.gender_count[i]/data.total)*100).toFixed(2)+"%</td>" +
                 "</tr>";
         }
-        $("#table_data").html(html);
+        $("#gender_table_data").html(html);
 
-        for(let i=0;i<data.religion_label.length;i++){
+        for(let i=0;i<data.civil_status_count.length;i++){
             html2 +=
                 "<tr>" +
-                "<td>"+data.religion_label[i]+"</td>" +
-                "<td class='text-center'>"+data.religion_count[i]+"</td>" +
-                "<td>"+((data.religion_count[i]/data.total)*100).toFixed(2)+"%</td>" +
+                "<td>"+data.civil_status_label[i]+"</td>" +
+                "<td class='text-center'>"+data.civil_status_count[i]+"</td>" +
+                "<td>"+((data.civil_status_count[i]/data.total)*100).toFixed(2)+"%</td>" +
                 "</tr>";
         }
-        $("#religion_table_data").html(html2);
+        $("#civil_table_data").html(html2);
 
         //UPDATE RACE CHART
-        myRace.data.labels = data.label;
-        myRace.data.datasets[0].data = data.data;
-        myRace.update();
+        genderChart.data.labels = data.gender_label;
+        genderChart.data.datasets[0].data = data.gender_count;
+        genderChart.update();
 
         //UPDATE RELIGION CHART
-        myReligion.data.labels = data.religion_label;
-        myReligion.data.datasets[0].data = data.religion_count;
-        myReligion.update();
+        civilChart.data.labels = data.civil_status_label;
+        civilChart.data.datasets[0].data = data.civil_status_count;
+        civilChart.update();
 
     });
 }

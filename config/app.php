@@ -621,6 +621,17 @@ return [
         'H'=>'Hindu',
         'C'=>'Christian',
         'I'=>'Islam'
+    ],
+    'provinces'=>[
+        1=>'Central',
+        2=>'Eastern',
+        3=>'North Central',
+        4=>'Northern',
+        5=>'North Western',
+        6=>'Sabaragamuwa',
+        7=>'Southern',
+        8=>'Uva',
+        9=>'Western'
     ]
 
 ];

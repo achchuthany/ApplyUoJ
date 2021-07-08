@@ -127,6 +127,8 @@ var app_pages_assets = {
         folder.src + "js/pages/datatables.students.delete.index.js",
         folder.src + "js/pages/photograph.upload.js",
         folder.src + "js/pages/chart_race.init.js",
+        folder.src + "js/pages/chart_gender.init.js",
+        folder.src + "js/pages/chart_district.init.js",
 
 
     ]

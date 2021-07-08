@@ -21,6 +21,8 @@
     "/assets/js/pages/datatables.students.delete.index.js": "/assets/js/pages/datatables.students.delete.index.js",
     "/assets/js/pages/photograph.upload.js": "/assets/js/pages/photograph.upload.js",
     "/assets/js/pages/chart_race.init.js": "/assets/js/pages/chart_race.init.js",
+    "/assets/js/pages/chart_gender.init.js": "/assets/js/pages/chart_gender.init.js",
+    "/assets/js/pages/chart_district.init.js": "/assets/js/pages/chart_district.init.js",
     "/assets/css/app.css": "/assets/css/app.css",
     "/assets/css/app-rtl.css": "/assets/css/app-rtl.css",
     "/assets/css/icons.css": "/assets/css/icons.css",
