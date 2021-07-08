@@ -404,6 +404,20 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'roles' => ['Dean']
     ]);
 
+    //Analytics
+    Route::get('/admin/analytics/race',[
+        'uses' => 'App\Http\Controllers\AnalyticController@raceIndex',
+        'as' => 'admin.analytics.race',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/analytics/getRaceData',[
+        'uses' => 'App\Http\Controllers\AnalyticController@getRaceData',
+        'as' => 'admin.analytics.getRaceData',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+
 
 });
 
