@@ -632,6 +632,13 @@ return [
         7=>'Southern',
         8=>'Uva',
         9=>'Western'
-    ]
+    ],
+    'gmail_schedule' =>[
+        'scheduled_at' => env("MAIL_START_DELAY_TIME",120),
+        'delay_bulk' => env('MAIL_DELAY_TIME_FOR_NEXT_COUNT',300),
+        'limit' => env('MAIL_COUNT_FOR_DELAY',50),
+        'delay_one' => env('MAIL_DELAY_TIME_FOR_NEXT_MAIL',4),
+        ],
+
 
 ];

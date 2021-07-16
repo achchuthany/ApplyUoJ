@@ -226,11 +226,13 @@ class EnrollController extends Controller
             ->orderBy('reg_no','asc')
             ->get();
 
+        $gmail_schedule = config('app.gmail_schedule');
+
         //GET ENV varilables
-        $scheduled_at = getenv("MAIL_START_DELAY_TIME");
-        $delay_bulk = getenv('MAIL_DELAY_TIME_FOR_NEXT_COUNT');
-        $limit = getenv('MAIL_COUNT_FOR_DELAY');
-        $delay_one = getenv('MAIL_DELAY_TIME_FOR_NEXT_MAIL');
+        $scheduled_at = $gmail_schedule['scheduled_at'];
+        $delay_bulk = $gmail_schedule['delay_bulk'];
+        $limit = $gmail_schedule['limit'];
+        $delay_one = $gmail_schedule['delay_one'];
         $count = 0;
         foreach ($enrolls as $enroll){
             ($count>=$limit && $count%$limit==0) ? $scheduled_at = $scheduled_at + $delay_bulk : $scheduled_at += $delay_one;
@@ -242,7 +244,7 @@ class EnrollController extends Controller
                 );
             dispatch($job);
         }
-        return redirect()->back()->with(['message_type'=>'success','message'=>'Email has been placed in queue for the process. Queue will be start '.getenv("MAIL_START_DELAY_TIME").' second latter.']);
+        return redirect()->back()->with(['message_type'=>'success','message'=>'Email has been placed in queue for the process. Queue will be start '.$gmail_schedule['scheduled_at'].' second latter.']);
     }
 
 }
