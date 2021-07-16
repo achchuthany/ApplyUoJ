@@ -12,19 +12,19 @@
             <div class="card shadow-none">
                 <div class="card-body">
                     <div class="alert">
-                        <i class="mdi mdi-check-circle text-success"></i> Your Online registration  has been successfully completed
+                        <i class="mdi mdi-check-circle text-success"></i> Your Online enrolment has been successfully completed
                     </div>
                 </div>
             </div>
             <div class="card text-justify">
                 <div class="card-header bg-dark text-light">
-                   Follow the Instructions to process your registration of University of Jaffna.
+                   Follow the Instructions to process your online enrolment of University of Jaffna.
                 </div>
                 <div class="card-body">
                    <div class="row">
                        <div class="col-md-12">
                            <div class="font-weight-lighter font-size-16">
-                               Your Online Application Status is  <span class="font-weight-bolder border-bottom border-info">{{$enroll->status}}</span>
+                               Your Online Enrolment Status is  <span class="font-weight-bolder border-bottom border-info">{{$enroll->status}}</span>
                                <span class="float-right">Reference number is <b class="font-weight-bolder border-bottom border-info">{{$enroll->getRefNo()}}</b></span>
                            </div>
                        </div>

@@ -146,15 +146,15 @@
                 @if($enroll->student->student_docs()->count()>0)
                 <div class="col-md-4" >
                     <div class="card">
-                        <div class="card-header bg-success text-light"><i class="mdi mdi-check-circle"></i> Files has been uploaded</div>
+                        <div class="card-header bg-light"><i class="mdi mdi-image-album"></i>Uploaded Documents</div>
                         <div class="card-body">
                             <div class="zoom-gallery">
                                 <div class="row">
                                     @foreach($enroll->student->student_docs()->get() as $doc)
                                         @if(Storage::disk('docs')->exists($doc->name))
-                                            <div class="col-md-12 text-center">
+                                            <div class="col-md-12">
                                                 <div class="font-size-12">{{$doc->name}}</div>
-                                                <a href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->type}}" class="img-thumbnail img-fluid" width="150"></a>
+                                                <a href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->type}}" class="img-thumbnail img-fluid" width="200"></a>
                                             </div>
                                         @endif
                                     @endforeach

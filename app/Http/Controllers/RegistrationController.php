@@ -752,7 +752,7 @@ class RegistrationController extends Controller
 
 
         return back()
-            ->with('success','You have successfully upload image.')
+            ->with('success','You have successfully uploaded the documents.')
             ->with('image',$imageName);
     }
     public function getImageFile($name){

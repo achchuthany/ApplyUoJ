@@ -17,8 +17,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                   <span>Use the 'Proceed with Registration' button provided at the bottom of the page to complete your registration.
-                    If you click 'Proceed with Registration' you will not be able to Edit the application anymore.</span>
+                   <span>Use the 'Proceed with Enrolment' button provided at the bottom of the page to complete your online enrolment.
+                    If you click 'Proceed with Enrolment' you will not be able to Edit the online application anymore.</span>
                 </div>
                 <form class="needs-validation" method="POST" action="{{ route('student.registration.complete.process') }}">
                     {{ csrf_field() }}
@@ -28,27 +28,27 @@
                            <p class="text-uppercase">Checklist of uploaded documents</p>
                        </div>
                        <div class="col-md-12">
-                          <p><i class="mdi font-weight-bold font-size-24 {{$checkUpload['isProfileImage']?'mdi-check text-success':'mdi-close text-danger'}}"></i>
+                          <p class="{{$checkUpload['isProfileImage']?'text-success':'text-danger'}}"><i class="mdi font-weight-bold font-size-24 {{$checkUpload['isProfileImage']?'mdi-check text-success':'mdi-close text-danger'}}"></i>
                               Your recent photograph (Identity Card Image) (Step 06)
                           </p>
                        </div>
                        <div class="col-md-12">
-                           <p><i class="mdi font-weight-bold font-size-24 {{$checkUpload['isUGC']?'mdi-check text-success':'mdi-close text-danger'}}"></i>
+                           <p class="{{$checkUpload['isUGC']?'text-success':'text-danger'}}"><i class="mdi font-weight-bold font-size-24 {{$checkUpload['isUGC']?'mdi-check text-success':'mdi-close text-danger'}}"></i>
                                Selection Letter sent by the UGC (Step 07)
                            </p>
                        </div>
                        <div class="col-md-12">
-                           <p><i class="mdi font-weight-bold font-size-24 {{$checkUpload['isBank']?'mdi-check text-success':'mdi-close text-danger'}}"></i>
+                           <p class="{{$checkUpload['isBank']?'text-success':'text-danger'}}"><i class="mdi font-weight-bold font-size-24 {{$checkUpload['isBank']?'mdi-check text-success':'mdi-close text-danger'}}"></i>
                                Paid Bank Voucher (Step 07)
                            </p>
                        </div>
                        <div class="col-md-12">
-                           <p><i class="mdi font-weight-bold font-size-24 {{$checkUpload['isLC']?'mdi-check text-success':'mdi-close text-danger'}}"></i>
+                           <p class="{{$checkUpload['isLC']?'text-success':'text-danger'}}"><i class="mdi font-weight-bold font-size-24 {{$checkUpload['isLC']?'mdi-check text-success':'mdi-close text-danger'}}"></i>
                                Student Record Sheet (School Leaving Certificate) (Step 07)
                            </p>
                        </div>
                        <div class="col-md-12">
-                           <p><i class="mdi font-weight-bold font-size-24 {{$checkUpload['isNIC']?'mdi-check text-success':'mdi-close text-danger'}}"></i>
+                           <p class="{{$checkUpload['isNIC']?'text-success':'text-danger'}}"   ><i class="mdi font-weight-bold font-size-24 {{$checkUpload['isNIC']?'mdi-check text-success':'mdi-close text-danger'}}"></i>
                                National Identity Card(NIC) / Passport (Step 07)
                            </p>
                        </div>
@@ -67,7 +67,7 @@
                            <a href="{{route('student.documents')}}" class="btn btn-light"><i class="mdi mdi-arrow-left mr-1"></i> Back</a>
                        </div>
                        <div class="col-md-6 text-left">
-                           <button  type="submit" class="btn btn-primary"><i class="mdi mdi-content-save-all mr-1"></i>  Proceed with Registration</button>
+                           <button  type="submit" class="btn btn-primary"><i class="mdi mdi-content-save mr-1"></i>  Proceed with Enrolment</button>
                        </div> <!-- end col -->
                    </div> <!-- end row-->
                </div>
