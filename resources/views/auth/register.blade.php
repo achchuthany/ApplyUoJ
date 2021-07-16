@@ -22,8 +22,8 @@ Register
                         </div>
 
                         <div class="text-center mt-2">
-                            <h5 class="text-dark text-uppercase font-weight-lighter">Student Registration</h5>
-                            <p class="text-muted font-weight-lighter">Verifying your admission and creating your enrollment user account.</p>
+                            <h5 class="text-dark text-uppercase font-weight-lighter">Student Enrolment</h5>
+                            <p class="text-muted font-weight-lighter">Verifying your admission and creating your online enrolment user account in MyUoJ.</p>
                         </div>
                         <div class="p-2 mt-1">
                             @include('common-components.flash-message')
