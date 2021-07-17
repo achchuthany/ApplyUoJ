@@ -44,14 +44,37 @@
     </div> <!-- end row -->
 
     <div class="row">
+
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header">Total Students <span class="float-right text-light"><a href="{{route('admin.students.all')}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-header"> UGC Admitted Students<span class="float-right text-light"><a href="{{route('admin.students.all')}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card-body text-center">
-                                <div class="h1 text-info  font-weight-lighter"><span data-plugin="counterup">{{$total}}</span> </div>
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$total}}</span> </div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total Students</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+
+        <div class="col-md-4">
+            <div class="card bg-soft-light">
+                <div class="card-header"> Enrollment Pending Students<span class="float-right text-light"><a href="{{route('admin.students.pending',['status'=>'in'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-body  text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_today['in']}}</span> </div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_total['in']}}</span> </div>
                                 <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
                             </div>
                         </div>
@@ -59,29 +82,161 @@
                 </div>
             </div>
         </div> <!-- end col -->
-        @foreach($params as $index=>$value)
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">{{$value}} Students <span class="float-right text-light"><a href="{{route('admin.students.pending',['status'=>$index])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card-body  text-center">
-                                    <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_today[$index]}}</span> </div>
-                                    <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today</div>
-                                </div>
+
+        <div class="col-md-4">
+            <div class="card bg-soft-warning">
+                <div class="card-header">Documents Pending Students <span class="float-right text-light"><a href="{{route('admin.students.pending',['status'=>'dp'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-body  text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_today['dp']}}</span> </div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today</div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="card-body text-center">
-                                    <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_total[$index]}}</span> </div>
-                                    <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_total['dp']}}</span> </div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> <!-- end col -->
-        @endforeach
+            </div>
+        </div> <!-- end col -->
+
+        <div class="col-md-4">
+            <div class="card bg-soft-info">
+                <div class="card-header">Registration Processing Students <span class="float-right text-light"><a href="{{route('admin.students.pending',['status'=>'ps'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-body  text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_today['ps']}}</span> </div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_total['ps']}}</span> </div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+
+        <div class="col-md-4">
+            <div class="card bg-soft-primary">
+                <div class="card-header">Reg. No. Assigning Pending Students <span class="float-right text-light"><a href="{{route('admin.students.pending',['status'=>'ap'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-body  text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_today['ap']}}</span> </div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_total['ap']}}</span> </div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+
+        <div class="col-md-4">
+            <div class="card bg-soft-success">
+                <div class="card-header">Registered Students <span class="float-right"><a href="{{route('admin.students.pending',['status'=>'rg'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-body  text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_today['rg']}}</span></div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_total['rg']}}</span></div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+
+        <div class="col-md-4">
+            <div class="card bg-soft-purple">
+                <div class="card-header">Rejected Students <span class="float-right"><a href="{{route('admin.students.pending',['status'=>'re'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-body  text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_today['re']}}</span></div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_total['re']}}</span></div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+
+        <div class="col-md-4">
+            <div class="card bg-soft-secondary">
+                <div class="card-header">Transferred Students <span class="float-right"><a href="{{route('admin.students.pending',['status'=>'tr'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-body  text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_today['tr']}}</span></div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_total['tr']}}</span></div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+
+        <div class="col-md-4">
+            <div class="card bg-soft-pink">
+                <div class="card-header">Dropout Students <span class="float-right"><a href="{{route('admin.students.pending',['status'=>'dr'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-body  text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_today['dr']}}</span></div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body text-center">
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_total['dr']}}</span></div>
+                                <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+
     </div>
 @endsection
 @section('script')
