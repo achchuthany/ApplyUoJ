@@ -756,6 +756,13 @@ class RegistrationController extends Controller
             ->with('image',$imageName);
     }
     public function getImageFile($name){
+        //dd(strpos($name,auth()->user()->students()->first()->nic),strpos($name,auth()->user()->students()->first()->nic) !== false);
+        if((auth()->user()->hasRole('Dean') || auth()->user()->hasRole('Welfare')) && strpos($name,'photo')===false){
+            abort(404);
+        }
+        if((auth()->user()->hasRole('Student') && (strpos($name,auth()->user()->students()->first()->nic)) === false )){
+            abort(404);
+        }
         $path= Storage::disk('docs')->path($name);
         if (!File::exists($path)) {
             abort(404);
