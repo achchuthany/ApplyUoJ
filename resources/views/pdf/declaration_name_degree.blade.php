@@ -39,15 +39,15 @@
         </tr>
         <tr>
             <td class="p-2">Faculty</td>
-            <td class="p-2 dotted" colspan="3">{{$enroll->programme->faculty->name}}</td>
+            <td class="p-2 dotted" colspan="3">{{strtoupper($enroll->programme->faculty->name)}}</td>
         </tr>
         <tr>
             <td class="p-2">Full Name</td>
-            <td class="p-2 dotted" colspan="3">{{$student->full_name}}</td>
+            <td class="p-2 dotted" colspan="3">{{strtoupper($student->full_name)}}</td>
         </tr>
         <tr>
             <td class="p-2">Course of Study</td>
-            <td class="p-2 dotted" colspan="3">{{$enroll->programme->name}}</td>
+            <td class="p-2 dotted" colspan="3">{{strtoupper($enroll->programme->name)}}</td>
         </tr>
     </table>
     <p class="text-justify">
@@ -58,7 +58,7 @@
 
     <table style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
        <tr>
-           <td rowspan="3" style="width: 15%">English</td>
+           <td rowspan="4" style="width: 15%">English</td>
            <td  style="border: 1px solid black;padding: 13px;"></td>
            <td  style="border: 1px solid black;padding: 13px;"></td>
            <td  style="border: 1px solid black;padding: 13px;"></td>
@@ -115,10 +115,28 @@
             <td  style="border: 1px solid black;padding: 13px;"></td>
         </tr>
         <tr>
-            <td colspan="17" class="p-2"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
         </tr>
         <tr>
-            <td rowspan="3" style="width: 15%">Tamil</td>
+            <td colspan="17"></td>
+        </tr>
+        <tr>
+            <td rowspan="4" style="width: 15%">Tamil</td>
             <td  style="border: 1px solid black;padding: 13px;"></td>
             <td  style="border: 1px solid black;padding: 13px;"></td>
             <td  style="border: 1px solid black;padding: 13px;"></td>
@@ -175,10 +193,28 @@
             <td  style="border: 1px solid black;padding: 13px;"></td>
         </tr>
         <tr>
-            <td colspan="17" class="p-2"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
         </tr>
         <tr>
-            <td rowspan="3" style="width: 15%">Sinhala</td>
+            <td colspan="17"></td>
+        </tr>
+        <tr>
+            <td rowspan="4" style="width: 15%">Sinhala</td>
             <td  style="border: 1px solid black;padding: 13px;"></td>
             <td  style="border: 1px solid black;padding: 13px;"></td>
             <td  style="border: 1px solid black;padding: 13px;"></td>
@@ -197,6 +233,24 @@
             <td  style="border: 1px solid black;padding: 13px;"></td>
 
 
+        </tr>
+        <tr>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
+            <td  style="border: 1px solid black;padding: 13px;"></td>
         </tr>
         <tr>
             <td  style="border: 1px solid black;padding: 13px;"></td>
@@ -236,17 +290,15 @@
         </tr>
 
     </table>
-
-    <p>Copy of the National identity card should be attached.</p>
-    <p class="text-justify">Evidence and Affidavit should be attached if there is any discrepancy between the name in the personal file at the  time  of registration and  the  name  indicated above  to confirm that both of the  names indicate one and the same person.</p>
-    <table style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;">
+    <p class="text-justify">Copy of the National identity card should be attached. Evidence and Affidavit should be attached if there is any discrepancy between the name in the personal file at the  time  of registration and  the  name  indicated above  to confirm that both of the  names indicate one and the same person.</p>
+    <table style="table-layout: fixed;border-collapse: collapse;width: 100%;border: none;margin-top: 20px;">
         <tr>
             <td style="width: 50%">....../....../............</td>
             <td style="width: 50%; text-align: right;">.......................................</td>
         </tr>
         <tr>
-            <td class="p-2">Date</td>
-            <td class="p-2" style="text-align: right;">Signature of the Student</td>
+            <td>Date</td>
+            <td style="text-align: right;">Signature of the Student</td>
         </tr>
     </table>
 @endsection
