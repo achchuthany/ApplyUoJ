@@ -36,14 +36,14 @@ Add New User
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="control-label">Full Name</label>
-                                            <input value="{{(isset($user)&&!Request::old('name'))? $user->name : Request::old('name')}}"  id="name" name="name" type="text" class="form-control" required>
+                                            <input value="{{(isset($user)&&!Request::old('name'))? $user->name : Request::old('name')}}"  id="name" name="name" type="text" class="form-control {{$user->hasRole('Student')?'bg-light':''}}" required {{$user->hasRole('Student')?'readonly':''}}>
 
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="faculty_id">Faculty</label>
-                                            <select class="form-control select2" name="faculty_id" required>
+                                            <select class="form-control select2 " name="faculty_id" required>
                                                 <option disabled selected>Select Faculty</option>
                                                 <option value="0" {{(isset($user)&&!Request::old('department_id'))? (($did  == '0')? 'selected':'') : ( (Request::old('department_id') =='0')? 'selected':'')}}>All Faculties</option>
                                                 @foreach($faculties as $faculty)
@@ -99,6 +99,17 @@ Add New User
                                                     SMS Subscription
                                                 </label>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Verification</label>
+                                            <p class="my-0 {{$user->email_verified_at?'text-success':'text-warning'}}">
+                                                <i class="mdi mdi-email"></i> {{$user->email_verified_at}}
+                                            </p>
+                                            <p class="my-0 {{$user->phone_verified_at?'text-success':'text-warning'}}">
+                                                <i class="mdi mdi-phone"></i> {{$user->phone_verified_at}}
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">

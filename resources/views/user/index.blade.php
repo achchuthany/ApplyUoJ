@@ -22,11 +22,10 @@ User Details
                             <thead>
                             <tr class="bg-transparent">
                                 <th>Name</th>
-                                <th>NIC No.</th>
                                 <th>E-mail</th>
-                                <th>Status</th>
                                 <th>Role(s)</th>
                                 <th>Updated At</th>
+                                <th>Status</th>
                                 <th style="width: 120px;">Action</th>
                             </tr>
                             </thead>

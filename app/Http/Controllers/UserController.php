@@ -34,43 +34,16 @@ class UserController extends Controller
            return Datatables::of($data)
                 ->addIndexColumn()
                ->addColumn('name', function($row){
-                   if($row->hasRole('Student'))
-                        return $row->students()->latest()->first()->name_initials;
-                   return $row->name;
-               })
-               ->addColumn('nic', function($row){
-                   if($row->hasRole('Student'))
-                       return $row->students()->latest()->first()->nic;
                    return $row->name;
                })
                 ->addColumn('roles', function($row){
-                    $roles = $row->roles()->get();
-                    $r =null;
-                    foreach ($roles as $role){
-                        $r .= ' '.$role->name.' ';
-                    }
-                    return $r;
+                    return $row->roles()->first()->name;
                 })
                 ->addColumn('status', function($row){
-                    $b = null;
-                    if($row->email_verified_at ==null){
-                        $b .= '<i class="mdi mdi-email-mark-as-unread text-warning p-1" data-toggle="tooltip" data-placement="top" title="Email Verification Failed"></i>';
+                    if($row->is_active){
+                        return 'Active';
                     }
-                   else{
-                        $b .= '<i class="mdi mdi-email text-success p-1" data-toggle="tooltip" data-placement="top" title="Email Verified"></i>';
-                    }
-                    if($row->is_active == 1){
-                        $b.= '<i class="fa fa-user-check text-success p-1" title="Active"></i>';
-                    }
-                    else{
-                        $b.= '<i class="fa fa-user-lock text-warning p-1" title="Inactive"></i>';
-                    }
-                    if($row->phone_verfied_at == null){
-                        $b.='<i class="fas fa-sms text-warning p-1" title="SMS Verification Pending"></i>';
-                    }else{
-                        $b.='<i class="fas fa-sms text-success p-1" title="SMS Verified"></i>';
-                    }
-                    return $b;
+                    return 'Suspended';
                 })
                ->addColumn('update', function($row){
                    return $row->updated_at->toDateTimeString();
@@ -81,7 +54,7 @@ class UserController extends Controller
                ';
                     return $btn;
                 })
-                ->rawColumns(['status','action'])
+                ->rawColumns(['action'])
                 ->make(true);
         }
      return view('user.index');
