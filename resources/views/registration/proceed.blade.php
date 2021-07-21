@@ -165,20 +165,27 @@
                                    </tr>
                                    <tr>
                                        <td>12</td>
+                                       <td>English translation of the birth certificate</td>
+                                       <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                       <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
+                                       <td class="text-center">-</td>
+                                   </tr>
+                                   <tr>
+                                       <td>13</td>
                                        <td>Photocopy of the G.C.E. (A/L) Certificate</td>
                                        <td class="text-center"></td>
                                        <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
                                        <td class="text-center">-</td>
                                    </tr>
                                    <tr>
-                                       <td>13</td>
+                                       <td>14</td>
                                        <td>Photocopy of the G.C.E. (O/L) Certificate</td>
                                        <td class="text-center"></td>
                                        <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
                                        <td class="text-center">-</td>
                                    </tr>
                                    <tr>
-                                       <td>14</td>
+                                       <td>15</td>
                                        <td>Affidavit / Marriage certificate, if there is a difference in the name</td>
 
                                        <td class="text-center"><i class="mdi mdi-check-bold"></i> </td>
