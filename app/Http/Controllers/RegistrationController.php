@@ -417,6 +417,33 @@ class RegistrationController extends Controller
 
         return view('registration.proceed',['enroll'=>$enroll,'application'=>$application]);
     }
+    public function downloadLetterOfEnrolmentByCourse($pid,$aid,$status){
+        if ($status == "all") {
+            $enrolls = Enroll::where([['programme_id', $pid], ['academic_year_id', $aid]])->orderBy('reg_no')->orderBy('id')->get();
+        } else {
+            if (!array_key_exists("$status", $this->params)) {
+                return redirect()->back()->with(['warning'=>"Invalid enrollment status!"]);
+            }
+            $enrolls = Enroll::where([['programme_id', $pid], ['academic_year_id', $aid], ['status', $this->params[$status]]])->orderBy('reg_no')->orderBy('id')->get();
+        }
+
+        $data = array();
+        foreach ($enrolls as $enroll){
+            $student= $enroll->student;
+            $profile = $student->student_docs()->where('type','photo')->first();
+            $profileImage = ($profile)? $profile->name: '';
+            $data []= [
+                'student'=>$student,
+                'enroll'=>$enroll,
+                'NotAssigned'=>'Not Assigned',
+                'profileImage'=>$profileImage,
+            ];
+        }
+        // return \response()->json($data);
+        $dompdf = PDF::loadView('pdf.all_letter_of_enrolment',compact('data'));
+        $dompdf->setPaper('A4', 'portrait');
+        return $dompdf->stream();
+    }
     public function downloadPersonalDataByCourse($pid,$aid,$status){
         if ($status == "all") {
             $enrolls = Enroll::where([['programme_id', $pid], ['academic_year_id', $aid]])->orderBy('reg_no')->orderBy('id')->get();
@@ -610,17 +637,12 @@ class RegistrationController extends Controller
             $enroll = Enroll::whereId($eid)->first();
             $student= $enroll->student;
         }
-        $permanent =  $student->addresses->where('address_type','Permanent')->first();
-        $permanentAddress = $permanent->address_no .' '.$permanent->address_street .' '.$permanent->address_city .' '.$permanent->address_4 .' '.$permanent->address_state .' '.$permanent->address_country .' '.$permanent->address_postal_code ;
         $profile = $student->student_docs()->where('type','photo')->first();
         $profileImage = ($profile)? $profile->name: '';
         $data = [
             'student'=>$student,
             'enroll'=>$enroll,
             'NotAssigned'=>'Not Assigned',
-            'permanentAddress'=>$permanentAddress,
-            'gender'=>$student->gender? $this->gender[$student->gender]:null,
-            'civil_status'=>$student->civil_status?$this->civil_status[$student->civil_status]:null,
             'profileImage'=>$profileImage,
         ];
         $dompdf = PDF::loadView('pdf.letter_of_enrolment',$data);

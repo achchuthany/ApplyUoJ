@@ -544,6 +544,11 @@ Route::group(['middleware' => ['auth','verified','roles'],'roles' => ['Student']
         'as' => 'student.registration.download.LetterOfEnrolment',
         'roles' => ['Admin']
     ]);
+    Route::get('/registration/download/LetterOfEnrolment/{pid}/{aid}/{status}',[
+        'uses' => 'App\Http\Controllers\RegistrationController@downloadLetterOfEnrolmentByCourse',
+        'as' => 'student.registration.download.LetterOfEnrolmentByCourse',
+        'roles' => ['Admin']
+    ]);
     Route::post('registration/student/imageUpload',[
         'uses' => 'App\Http\Controllers\RegistrationController@imageUploadPost',
         'as' => 'student.registration.image.upload',
