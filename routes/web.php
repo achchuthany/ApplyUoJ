@@ -389,6 +389,16 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'as' => 'student.registration.download.PersonalData.all',
         'roles' => ['Admin']
     ]);
+    Route::get('/registration/download/{eid}/LetterOfEnrolment',[
+        'uses' => 'App\Http\Controllers\RegistrationController@downloadLetterOfEnrolment',
+        'as' => 'student.registration.download.LetterOfEnrolment',
+        'roles' => ['Admin']
+    ]);
+    Route::get('/registration/download/LetterOfEnrolment/{pid}/{aid}/{status}',[
+        'uses' => 'App\Http\Controllers\RegistrationController@downloadLetterOfEnrolmentByCourse',
+        'as' => 'student.registration.download.LetterOfEnrolmentByCourse',
+        'roles' => ['Admin']
+    ]);
 
     //Faculty Dashboard for Dean
     Route::get('/home/faculty',[
@@ -538,16 +548,6 @@ Route::group(['middleware' => ['auth','verified','roles'],'roles' => ['Student']
         'uses' => 'App\Http\Controllers\RegistrationController@downloadNonSubmissionDocumentsData',
         'as' => 'student.registration.download.NonSubmissionDocumentsData',
         'roles' => ['Student','Admin']
-    ]);
-    Route::get('/registration/download/{eid}/LetterOfEnrolment',[
-        'uses' => 'App\Http\Controllers\RegistrationController@downloadLetterOfEnrolment',
-        'as' => 'student.registration.download.LetterOfEnrolment',
-        'roles' => ['Admin']
-    ]);
-    Route::get('/registration/download/LetterOfEnrolment/{pid}/{aid}/{status}',[
-        'uses' => 'App\Http\Controllers\RegistrationController@downloadLetterOfEnrolmentByCourse',
-        'as' => 'student.registration.download.LetterOfEnrolmentByCourse',
-        'roles' => ['Admin']
     ]);
     Route::post('registration/student/imageUpload',[
         'uses' => 'App\Http\Controllers\RegistrationController@imageUploadPost',

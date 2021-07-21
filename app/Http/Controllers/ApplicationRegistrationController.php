@@ -56,6 +56,9 @@ class ApplicationRegistrationController extends Controller
                         <a class="dropdown-item" href="'.route('admin.enroll.assign.reg.index',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id]).'"  data-toggle="tooltip" data-placement="top" title="Assign Registration Number"><i class="mdi mdi-account-lock font-size-18"></i> Assign Registration No.</a>
                         <a class="dropdown-item" href="'.route('admin.enroll.clear.reg.index',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id]).'"   data-toggle="tooltip" data-placement="top" title="Delete Registration Number"><i class="mdi mdi-account-remove font-size-18 text-warning"></i> Clear Registration No.</a>
                         <div class="dropdown-divider"></div>
+                        <h5 class="dropdown-header">Print</h5>
+                        <a class="dropdown-item" target="_blank" href="'.route('student.registration.download.LetterOfEnrolmentByCourse',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id,'status'=>'rg']).'"   data-toggle="tooltip" data-placement="top" title=" Letter of Enrolment"><i class="mdi mdi-printer font-size-18"></i> Letter of Enrolment</a>
+
                         <h5 class="dropdown-header">Email</h5>
                         <a class="dropdown-item" href="'.route('admin.enroll.confirmation',['app_id'=>$row->id]).'"   data-toggle="tooltip" data-placement="top" title=" Confirmation of Enrolment"><i class="mdi mdi-email-send font-size-18"></i> Confirmation of Enrolment</a>
                         <div class="dropdown-divider"></div>
