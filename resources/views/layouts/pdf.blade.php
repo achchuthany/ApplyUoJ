@@ -12,7 +12,7 @@
         }
         *{
             font-family:  Helvetica, sans-serif;
-            font-size: 14px;
+            font-size: 12px;
         }
         /** Define now the real margins of every page in the PDF **/
         body {
@@ -31,6 +31,9 @@
             padding-top: 10px;
             padding-bottom: 10px;
         }
+        .p-1{
+            padding: 5px;
+        }
         .mt-5{
             margin-top: 15px;
             /*border: 1px solid #dddddd;*/
@@ -47,7 +50,7 @@
             top: 0cm;
             left: 0cm;
             right: 0cm;
-            min-height: 10cm;
+            min-height: 5cm;
             margin-left: 2cm;
             margin-right: 2cm;
             /* text-align: center; */
@@ -79,6 +82,9 @@
         }
         .text-justify{
             text-align: justify;
+        }
+        .border td,th{
+            border:1px solid #3F3F3F;
         }
     </style>
 </head>

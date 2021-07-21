@@ -601,6 +601,34 @@ class RegistrationController extends Controller
         return true;
     }
 
+    public function downloadLetterOfEnrolment($eid){
+
+        if(Auth::user()->hasRole('Student')){
+            $student = Auth::user()->students()->latest()->first();
+            $enroll = $student->enrolls()->latest()->first();
+        }else{
+            $enroll = Enroll::whereId($eid)->first();
+            $student= $enroll->student;
+        }
+        $permanent =  $student->addresses->where('address_type','Permanent')->first();
+        $permanentAddress = $permanent->address_no .' '.$permanent->address_street .' '.$permanent->address_city .' '.$permanent->address_4 .' '.$permanent->address_state .' '.$permanent->address_country .' '.$permanent->address_postal_code ;
+        $profile = $student->student_docs()->where('type','photo')->first();
+        $profileImage = ($profile)? $profile->name: '';
+        $data = [
+            'student'=>$student,
+            'enroll'=>$enroll,
+            'NotAssigned'=>'Not Assigned',
+            'permanentAddress'=>$permanentAddress,
+            'gender'=>$student->gender? $this->gender[$student->gender]:null,
+            'civil_status'=>$student->civil_status?$this->civil_status[$student->civil_status]:null,
+            'profileImage'=>$profileImage,
+        ];
+        $dompdf = PDF::loadView('pdf.letter_of_enrolment',$data);
+        $dompdf->setPaper('A4', 'portrait');
+        return $dompdf->stream();
+        return $dompdf->download($student->nic.'_Letter_of_Enrolment.pdf');
+    }
+
 
     public function imageUploadPost(Request $request){
         $request->validate([
