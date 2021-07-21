@@ -625,7 +625,7 @@ class RegistrationController extends Controller
         ];
         $dompdf = PDF::loadView('pdf.letter_of_enrolment',$data);
         $dompdf->setPaper('A4', 'portrait');
-        return $dompdf->stream();
+        //return $dompdf->stream();
         return $dompdf->download($student->nic.'_Letter_of_Enrolment.pdf');
     }
 

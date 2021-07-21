@@ -37,7 +37,8 @@
                                     @endif
                                     <div class="dropdown-divider"></div>
                                     <h5 class="dropdown-header">Download</h5>
-                                    <a class="dropdown-item" href="{{route('student.registration.download.PersonalData',['eid'=>$enroll->id])}}"><i class="mdi mdi-file-pdf text-dark"></i> Download Personal Data</a>
+                                        <a class="dropdown-item" href="{{route('student.registration.download.LetterOfEnrolment',['eid'=>$enroll->id])}}"><i class="mdi mdi-file-pdf text-dark"></i> Letter of Enrolment</a>
+                                        <a class="dropdown-item" href="{{route('student.registration.download.PersonalData',['eid'=>$enroll->id])}}"><i class="mdi mdi-file-pdf text-dark"></i> Download Personal Data</a>
                                     <a class="dropdown-item" href="{{route('student.registration.download.IdentityCardData',['eid'=>$enroll->id])}}"><i class="mdi mdi-file-pdf text-dark"></i> Download Identity Card Data</a>
                                     <a class="dropdown-item" href="{{route('student.registration.download.DegreeDeclarationData',['eid'=>$enroll->id])}}"><i class="mdi mdi-file-pdf text-dark"></i> Download Degree Declaration Data</a>
                                     <a class="dropdown-item" href="{{route('student.registration.download.NonSubmissionDocumentsData',['eid'=>$enroll->id])}}"><i class="mdi mdi-file-pdf text-dark"></i> Download Non-Submission Documents Data</a>
