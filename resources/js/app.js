@@ -12,12 +12,32 @@
         $('.vertical-menu-btn').on('click', function (event) {
             event.preventDefault();
             $('body').toggleClass('sidebar-enable');
+            if (window.sessionStorage) {
+                var alreadyEnabled = sessionStorage.getItem("is_sidebar_enable");
+                if (alreadyEnabled) {
+                    sessionStorage.removeItem("is_sidebar_enable");
+                }else{
+                    sessionStorage.setItem("is_sidebar_enable", "sidebar-enable");
+                }
+            }
             if ($(window).width() >= 992) {
                 $('body').toggleClass('vertical-collpsed');
             } else {
                 $('body').removeClass('vertical-collpsed');
             }
         });
+
+        if (window.sessionStorage) {
+            var alreadyEnabled = sessionStorage.getItem("is_sidebar_enable");
+            if (alreadyEnabled) {
+                $('body').toggleClass('sidebar-enable');
+                if ($(window).width() >= 992) {
+                    $('body').toggleClass('vertical-collpsed');
+                } else {
+                    $('body').removeClass('vertical-collpsed');
+                }
+            }
+        }
     }
 
     function initActiveMenu() {
