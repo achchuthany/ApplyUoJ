@@ -40,7 +40,14 @@ Register
 {{--                                            </span>--}}
 {{--                                        @enderror--}}
 {{--                                </div>--}}
-
+                                <div class="text-muted mb-2">
+                                    <div>
+                                        Please enter the email address and mobile number that we will use to contact you.
+                                    </div>
+                                    <div>
+                                        You will need to setup a username and password so that you can login to MyUoJ. Your username for MyUoJ will be your email address.
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -104,14 +111,6 @@ Register
                                             <label for="password-confirm">{{ __('Confirm Password') }}</label>
                                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Enter password">
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="text-muted mt-2">
-                                    <div>
-                                        <i class="mdi mdi-star text-info"></i> Give your working Mobile number and email for future communication from University of Jaffna.
-                                    </div>
-                                    <div>
-                                        <i class="mdi mdi-star text-info"></i> Remember your "email" and "password" for future use
                                     </div>
                                 </div>
                                 <div class="mt-2 text-right">
