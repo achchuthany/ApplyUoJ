@@ -389,11 +389,11 @@ class StudentController extends Controller
                 ->addColumn('image', function($row){
                     $doc = $row->student->student_docs()->where('type','photo')->first();
                     if($doc && Storage::disk('docs')->exists($doc->name))
-                        return '<img src="/registration/student/image/'.$doc->name.'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
+                        return '<img src="/registration/student/image/'.$doc->name.'" alt="" loading="lazy" class="avatar-sm  rounded-circle img-thumbnail">';
                     else if($row->student->gender == "M")
-                        return '<img src="'.URL::asset('assets/images/users/male.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
+                        return '<img src="'.URL::asset('assets/images/users/male.png').'" alt="" loading="lazy" class="avatar-sm  rounded-circle img-thumbnail">';
                     else
-                        return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" class="avatar-sm  rounded-circle img-thumbnail">';
+                        return '<img src="'.URL::asset('assets/images/users/female.png').'" alt="" loading="lazy" class="avatar-sm  rounded-circle img-thumbnail">';
                 })
                 ->addColumn('ref_no', function($row){
                     return $row->getRefNo();
