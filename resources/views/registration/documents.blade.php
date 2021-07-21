@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header font-size-16 bg-dark text-light">
-        Upload your documents
+        7. Upload your documents
     </div>
 {{--    <div class="card-body">--}}
 {{--        <div class="row mt-3">--}}
@@ -17,17 +17,19 @@
             @csrf
             <div class="row">
                 <div class="col-md-8" >
-                    <div class="card">
-                        <div class="card-header">
+                    <div class="card shadow-none bg-transparent">
+                        <div class="card-header bg-white">
                             <div class="text-dark">
-                                <div>Each image must be a file of type of jpeg, jpg and may not be greater than 5120 kilobytes (5MB).
+                                <div>
+                                    <p>Each image must be a file of type of jpeg, jpg and may not be greater than 5120 kilobytes (5MB).</p>
+                                    <p class="text-primary">Select the images and click the <b>"Bulk Upload"</b> button to upload the image</p>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body bg-light">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label>Selection Letter sent by the UGC <span class="text-danger font-size-16">*</span></label>
+                                    <label>i. Selection Letter sent by the UGC <span class="text-danger font-size-16">*</span></label>
                                     <input type="hidden" name="student_id"  id="document_student_id" value="{{Auth::user()->students()->latest()->first()->id}}">
                                     <input type="file" name="ugc" class="form-control  @error('ugc') is-invalid @enderror">
                                     @error('ugc')
@@ -63,7 +65,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label>Paid Bank Voucher <span class="text-danger font-size-16">*</span></label>
+                                    <label>ii. Paid Bank Voucher <span class="text-danger font-size-16">*</span></label>
                                     <input type="file" name="bank" class="form-control  @error('bank') is-invalid @enderror">
                                     @error('bank')
                                     <span class="invalid-feedback" role="alert">
@@ -76,7 +78,7 @@
                         <div class="card-body bg-light">
                             <div class="row">
                                 <div class="col-md-12 mt-3">
-                                    <label>Student Record Sheet (School Leaving Certificate)  <span class="text-danger font-size-16">*</span></label>
+                                    <label>iii. Student Record Sheet (School Leaving Certificate)  <span class="text-danger font-size-16">*</span></label>
                                 </div>
                                 <div class="col-md-6">
                                     <label>Front Side</label>
@@ -103,7 +105,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12 mt-3">
-                                    <label>National Identity Card(NIC) / Passport  <span class="text-danger font-size-16">*</span></label>
+                                    <label>iv. National Identity Card(NIC) / Passport  <span class="text-danger font-size-16">*</span></label>
                                 </div>
 
                                 <div class="col-md-6">
@@ -128,16 +130,96 @@
                             </div>
                         </div>
 
+
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-md-12 mt-3">
+                                    <label>v. Birth Certificate (Original)<span class="text-danger font-size-16">*</span></label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Front side</label>
+                                    <input type="file" name="bc_f" class="form-control  @error('bc_f') is-invalid @enderror">
+                                    @error('bc_f')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Back side</label>
+                                    <input type="file" name="bc_b" class="form-control  @error('bc_b') is-invalid @enderror">
+                                    @error('bc_b')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="card-body">
                             <div class="row">
-{{--                                <div class="col-md-12" id="progress-data">--}}
-{{--                                     <div class="progress p-3">--}}
-{{--                                        <div class="bar"></div >--}}
-{{--                                        <div class="percent">0%</div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
                                 <div class="col-md-12 mt-3">
-                                    <button type="submit" class="btn btn-block btn-primary"><i class="mdi mdi-upload-multiple"></i> Bulk Upload</button>
+                                    <label>vi. G.C.E. (A/L) Certificate<span class="text-danger font-size-16">*</span></label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Front side</label>
+                                    <input type="file" name="al_f" class="form-control  @error('al_f') is-invalid @enderror">
+                                    @error('al_f')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Back side</label>
+                                    <input type="file" name="al_b" class="form-control  @error('al_b') is-invalid @enderror">
+                                    @error('al_b')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-md-12 mt-3">
+                                    <label>vii. G.C.E. (O/L) Certificate<span class="text-danger font-size-16">*</span></label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Front side</label>
+                                    <input type="file" name="ol_f" class="form-control  @error('ol_f') is-invalid @enderror">
+                                    @error('ol_f')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Back side</label>
+                                    <input type="file" name="ol_b" class="form-control  @error('ol_b') is-invalid @enderror">
+                                    @error('ol_b')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 mt-3 text-right">
+                                    <button type="submit" class="btn btn-primary"><i class="mdi mdi-upload-multiple"></i> Bulk Upload</button>
                                 </div>
                             </div>
                         </div>
@@ -149,12 +231,12 @@
                         <div class="card-header bg-light"><i class="mdi mdi-image-album"></i>Uploaded Documents</div>
                         <div class="card-body">
                             <div class="zoom-gallery">
-                                <div class="row">
+                                <div class="row justify-content-center">
                                     @foreach($enroll->student->student_docs()->get() as $doc)
                                         @if(Storage::disk('docs')->exists($doc->name))
-                                            <div class="col-md-12">
-                                                <div class="font-size-12">{{$doc->name}}</div>
-                                                <a href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->type}}" class="img-thumbnail img-fluid" width="200"></a>
+                                            <div class="col-md-5 bg-light m-2">
+                                                <a href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->name}}" class="img-thumbnail img-fluid"></a>
+                                                <div class="font-size-10 text-center">{{$doc->name}}</div>
                                             </div>
                                         @endif
                                     @endforeach

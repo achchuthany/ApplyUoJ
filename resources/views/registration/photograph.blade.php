@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header font-size-16 bg-dark text-light">
-        Upload your Identity Card Image
+        6. Upload your Identity Card Image
     </div>
 {{--    <div class="card-body">--}}
 {{--        <div class="row mt-3">--}}
@@ -17,14 +17,14 @@
             @csrf
             <div class="row">
                 <div class="col-md-8" >
-                    <div class="card">
+                    <div class="card shadow-none bg-transparent">
                         <div class="card-header">
                             <div class="text-dark">
                                 <div>Image must be a file of type of jpeg, jpg and may not be greater than 5120 kilobytes (5MB).
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body bg-light">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12 mt-3">
                                     <label>Your recent photograph (Identity Card Image) <span class="text-danger font-size-16">*</span></label>
@@ -60,9 +60,9 @@
                                 <div class="row">
                                     @foreach($enroll->student->student_docs()->get() as $doc)
                                         @if(Storage::disk('docs')->exists($doc->name))
-                                            <div class="col-md-12">
-                                                <div class="font-size-12">{{$doc->name}}</div>
-                                                <a href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->type}}" class="img-thumbnail img-fluid" width="200"></a>
+                                            <div class="col-md-5 bg-light m-2">
+                                                <a href="/registration/student/image/{{$doc->name}}" title="{{$doc->name}}"><img src="/registration/student/image/{{$doc->name}}" alt="{{$doc->name}}" class="img-thumbnail img-fluid"></a>
+                                                <div class="font-size-10 text-center">{{$doc->name}}</div>
                                             </div>
                                         @endif
                                     @endforeach
