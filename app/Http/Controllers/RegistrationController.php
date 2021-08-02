@@ -663,16 +663,16 @@ class RegistrationController extends Controller
             'nic_f' => 'required|image|mimes:jpeg,jpg|max:5125',
             'nic_b' => 'required|image|mimes:jpeg,jpg|max:5125',
 
-            'bc_f' => 'required|image|mimes:jpeg,jpg|max:5125',
-            'bc_b' => 'required|image|mimes:jpeg,jpg|max:5125',
-
-            'al_f' => 'required|image|mimes:jpeg,jpg|max:5125',
-            'al_b' => 'required|image|mimes:jpeg,jpg|max:5125',
-
-            'ol_f' => 'required|image|mimes:jpeg,jpg|max:5125',
-            'ol_b' => 'required|image|mimes:jpeg,jpg|max:5125',
             'student_id'=>'required',
         ]);
+//            'bc_f' => 'required|image|mimes:jpeg,jpg|max:5125',
+//            'bc_b' => 'required|image|mimes:jpeg,jpg|max:5125',
+//
+//            'al_f' => 'required|image|mimes:jpeg,jpg|max:5125',
+//            'al_b' => 'required|image|mimes:jpeg,jpg|max:5125',
+//
+//            'ol_f' => 'required|image|mimes:jpeg,jpg|max:5125',
+//            'ol_b' => 'required|image|mimes:jpeg,jpg|max:5125',
         $student = Student::where('id',$request['student_id'])->first();
 
         //ugc
@@ -812,119 +812,119 @@ class RegistrationController extends Controller
             $docs->save();
 
         //Birth Certificate Front
-        $imageName =$student->nic.'_FBC.'.$request->bc_f->extension();
-        $request->bc_f->storeAs('docs', $imageName);
-        /* Store $imageName name in DATABASE from HERE */
-        $docs = StudentDoc::where([['student_id',$student->id],['type','FBC']])->first();
-        $isUpdate = true;
-        if(!$docs){
-            $docs = new StudentDoc();
-            $isUpdate = false;
-        }
-
-        $docs->student_id = $student->id;
-        $docs->name = $imageName;
-        $docs->type = "FBC";
-        if($isUpdate)
-            $docs->update();
-        else
-            $docs->save();
-
-        //Birth Certificate Back
-        $imageName =$student->nic.'_BBC.'.$request->bc_b->extension();
-        $request->bc_b->storeAs('docs', $imageName);
-        /* Store $imageName name in DATABASE from HERE */
-        $docs = StudentDoc::where([['student_id',$student->id],['type','BBC']])->first();
-        $isUpdate = true;
-        if(!$docs){
-            $docs = new StudentDoc();
-            $isUpdate = false;
-        }
-
-        $docs->student_id = $student->id;
-        $docs->name = $imageName;
-        $docs->type = "BBC";
-        if($isUpdate)
-            $docs->update();
-        else
-            $docs->save();
-
-
-        //AL Front
-        $imageName =$student->nic.'_FAL.'.$request->al_f->extension();
-        $request->al_f->storeAs('docs', $imageName);
-        /* Store $imageName name in DATABASE from HERE */
-        $docs = StudentDoc::where([['student_id',$student->id],['type','FAL']])->first();
-        $isUpdate = true;
-        if(!$docs){
-            $docs = new StudentDoc();
-            $isUpdate = false;
-        }
-
-        $docs->student_id = $student->id;
-        $docs->name = $imageName;
-        $docs->type = "FAL";
-        if($isUpdate)
-            $docs->update();
-        else
-            $docs->save();
-
-        //AL BACK
-        $imageName =$student->nic.'_BAL.'.$request->al_b->extension();
-        $request->al_b->storeAs('docs', $imageName);
-        /* Store $imageName name in DATABASE from HERE */
-        $docs = StudentDoc::where([['student_id',$student->id],['type','BAL']])->first();
-        $isUpdate = true;
-        if(!$docs){
-            $docs = new StudentDoc();
-            $isUpdate = false;
-        }
-
-        $docs->student_id = $student->id;
-        $docs->name = $imageName;
-        $docs->type = "BAL";
-        if($isUpdate)
-            $docs->update();
-        else
-            $docs->save();
-
-        //OL Front
-        $imageName =$student->nic.'_FOL.'.$request->ol_f->extension();
-        $request->ol_f->storeAs('docs', $imageName);
-        /* Store $imageName name in DATABASE from HERE */
-        $docs = StudentDoc::where([['student_id',$student->id],['type','FOL']])->first();
-        $isUpdate = true;
-        if(!$docs){
-            $docs = new StudentDoc();
-            $isUpdate = false;
-        }
-
-        $docs->student_id = $student->id;
-        $docs->name = $imageName;
-        $docs->type = "FOL";
-        if($isUpdate)
-            $docs->update();
-        else
-            $docs->save();
-
-        //OL Front
-        $imageName =$student->nic.'_BOL.'.$request->ol_b->extension();
-        $request->ol_b->storeAs('docs', $imageName);
-        /* Store $imageName name in DATABASE from HERE */
-        $docs = StudentDoc::where([['student_id',$student->id],['type','BOL']])->first();
-        $isUpdate = true;
-        if(!$docs){
-            $docs = new StudentDoc();
-            $isUpdate = false;
-        }
-
-        $docs->student_id = $student->id;
-        $docs->name = $imageName;
-        $docs->type = "BOL";
-        if($isUpdate)
-            $docs->update();
-        else
-            $docs->save();
+//        $imageName =$student->nic.'_FBC.'.$request->bc_f->extension();
+//        $request->bc_f->storeAs('docs', $imageName);
+//        /* Store $imageName name in DATABASE from HERE */
+//        $docs = StudentDoc::where([['student_id',$student->id],['type','FBC']])->first();
+//        $isUpdate = true;
+//        if(!$docs){
+//            $docs = new StudentDoc();
+//            $isUpdate = false;
+//        }
+//
+//        $docs->student_id = $student->id;
+//        $docs->name = $imageName;
+//        $docs->type = "FBC";
+//        if($isUpdate)
+//            $docs->update();
+//        else
+//            $docs->save();
+//
+//        //Birth Certificate Back
+//        $imageName =$student->nic.'_BBC.'.$request->bc_b->extension();
+//        $request->bc_b->storeAs('docs', $imageName);
+//        /* Store $imageName name in DATABASE from HERE */
+//        $docs = StudentDoc::where([['student_id',$student->id],['type','BBC']])->first();
+//        $isUpdate = true;
+//        if(!$docs){
+//            $docs = new StudentDoc();
+//            $isUpdate = false;
+//        }
+//
+//        $docs->student_id = $student->id;
+//        $docs->name = $imageName;
+//        $docs->type = "BBC";
+//        if($isUpdate)
+//            $docs->update();
+//        else
+//            $docs->save();
+//
+//
+//        //AL Front
+//        $imageName =$student->nic.'_FAL.'.$request->al_f->extension();
+//        $request->al_f->storeAs('docs', $imageName);
+//        /* Store $imageName name in DATABASE from HERE */
+//        $docs = StudentDoc::where([['student_id',$student->id],['type','FAL']])->first();
+//        $isUpdate = true;
+//        if(!$docs){
+//            $docs = new StudentDoc();
+//            $isUpdate = false;
+//        }
+//
+//        $docs->student_id = $student->id;
+//        $docs->name = $imageName;
+//        $docs->type = "FAL";
+//        if($isUpdate)
+//            $docs->update();
+//        else
+//            $docs->save();
+//
+//        //AL BACK
+//        $imageName =$student->nic.'_BAL.'.$request->al_b->extension();
+//        $request->al_b->storeAs('docs', $imageName);
+//        /* Store $imageName name in DATABASE from HERE */
+//        $docs = StudentDoc::where([['student_id',$student->id],['type','BAL']])->first();
+//        $isUpdate = true;
+//        if(!$docs){
+//            $docs = new StudentDoc();
+//            $isUpdate = false;
+//        }
+//
+//        $docs->student_id = $student->id;
+//        $docs->name = $imageName;
+//        $docs->type = "BAL";
+//        if($isUpdate)
+//            $docs->update();
+//        else
+//            $docs->save();
+//
+//        //OL Front
+//        $imageName =$student->nic.'_FOL.'.$request->ol_f->extension();
+//        $request->ol_f->storeAs('docs', $imageName);
+//        /* Store $imageName name in DATABASE from HERE */
+//        $docs = StudentDoc::where([['student_id',$student->id],['type','FOL']])->first();
+//        $isUpdate = true;
+//        if(!$docs){
+//            $docs = new StudentDoc();
+//            $isUpdate = false;
+//        }
+//
+//        $docs->student_id = $student->id;
+//        $docs->name = $imageName;
+//        $docs->type = "FOL";
+//        if($isUpdate)
+//            $docs->update();
+//        else
+//            $docs->save();
+//
+//        //OL Front
+//        $imageName =$student->nic.'_BOL.'.$request->ol_b->extension();
+//        $request->ol_b->storeAs('docs', $imageName);
+//        /* Store $imageName name in DATABASE from HERE */
+//        $docs = StudentDoc::where([['student_id',$student->id],['type','BOL']])->first();
+//        $isUpdate = true;
+//        if(!$docs){
+//            $docs = new StudentDoc();
+//            $isUpdate = false;
+//        }
+//
+//        $docs->student_id = $student->id;
+//        $docs->name = $imageName;
+//        $docs->type = "BOL";
+//        if($isUpdate)
+//            $docs->update();
+//        else
+//            $docs->save();
 
 
         return back()

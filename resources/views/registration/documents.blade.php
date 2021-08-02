@@ -131,90 +131,90 @@
                         </div>
 
 
-                        <div class="card-body bg-light">
-                            <div class="row">
-                                <div class="col-md-12 mt-3">
-                                    <label>v. Birth Certificate (Original)<span class="text-danger font-size-16">*</span></label>
-                                </div>
+{{--                        <div class="card-body bg-light">--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="col-md-12 mt-3">--}}
+{{--                                    <label>v. Birth Certificate (Original)<span class="text-danger font-size-16">*</span></label>--}}
+{{--                                </div>--}}
 
-                                <div class="col-md-6">
-                                    <label>Front side</label>
-                                    <input type="file" name="bc_f" class="form-control  @error('bc_f') is-invalid @enderror">
-                                    @error('bc_f')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
+{{--                                <div class="col-md-6">--}}
+{{--                                    <label>Front side</label>--}}
+{{--                                    <input type="file" name="bc_f" class="form-control  @error('bc_f') is-invalid @enderror">--}}
+{{--                                    @error('bc_f')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
 
-                                <div class="col-md-6">
-                                    <label>Back side</label>
-                                    <input type="file" name="bc_b" class="form-control  @error('bc_b') is-invalid @enderror">
-                                    @error('bc_b')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
+{{--                                <div class="col-md-6">--}}
+{{--                                    <label>Back side</label>--}}
+{{--                                    <input type="file" name="bc_b" class="form-control  @error('bc_b') is-invalid @enderror">--}}
+{{--                                    @error('bc_b')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
 
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12 mt-3">
-                                    <label>vi. G.C.E. (A/L) Certificate<span class="text-danger font-size-16">*</span></label>
-                                </div>
+{{--                        <div class="card-body">--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="col-md-12 mt-3">--}}
+{{--                                    <label>vi. G.C.E. (A/L) Certificate<span class="text-danger font-size-16">*</span></label>--}}
+{{--                                </div>--}}
 
-                                <div class="col-md-6">
-                                    <label>Front side</label>
-                                    <input type="file" name="al_f" class="form-control  @error('al_f') is-invalid @enderror">
-                                    @error('al_f')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
+{{--                                <div class="col-md-6">--}}
+{{--                                    <label>Front side</label>--}}
+{{--                                    <input type="file" name="al_f" class="form-control  @error('al_f') is-invalid @enderror">--}}
+{{--                                    @error('al_f')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
 
-                                <div class="col-md-6">
-                                    <label>Back side</label>
-                                    <input type="file" name="al_b" class="form-control  @error('al_b') is-invalid @enderror">
-                                    @error('al_b')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
+{{--                                <div class="col-md-6">--}}
+{{--                                    <label>Back side</label>--}}
+{{--                                    <input type="file" name="al_b" class="form-control  @error('al_b') is-invalid @enderror">--}}
+{{--                                    @error('al_b')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="card-body bg-light">
-                            <div class="row">
-                                <div class="col-md-12 mt-3">
-                                    <label>vii. G.C.E. (O/L) Certificate<span class="text-danger font-size-16">*</span></label>
-                                </div>
+{{--                        <div class="card-body bg-light">--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="col-md-12 mt-3">--}}
+{{--                                    <label>vii. G.C.E. (O/L) Certificate<span class="text-danger font-size-16">*</span></label>--}}
+{{--                                </div>--}}
 
-                                <div class="col-md-6">
-                                    <label>Front side</label>
-                                    <input type="file" name="ol_f" class="form-control  @error('ol_f') is-invalid @enderror">
-                                    @error('ol_f')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
+{{--                                <div class="col-md-6">--}}
+{{--                                    <label>Front side</label>--}}
+{{--                                    <input type="file" name="ol_f" class="form-control  @error('ol_f') is-invalid @enderror">--}}
+{{--                                    @error('ol_f')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
 
-                                <div class="col-md-6">
-                                    <label>Back side</label>
-                                    <input type="file" name="ol_b" class="form-control  @error('ol_b') is-invalid @enderror">
-                                    @error('ol_b')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
+{{--                                <div class="col-md-6">--}}
+{{--                                    <label>Back side</label>--}}
+{{--                                    <input type="file" name="ol_b" class="form-control  @error('ol_b') is-invalid @enderror">--}}
+{{--                                    @error('ol_b')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                         <div class="card-body">
                             <div class="row">

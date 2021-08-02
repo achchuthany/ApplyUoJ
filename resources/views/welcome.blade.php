@@ -122,12 +122,12 @@
                                                                     <li>School Leaving Certificate Back Side</li>
                                                                     <li>National Identity Card Front Side</li>
                                                                     <li>National Identity Card Back Side</li>
-                                                                    <li>Birth Certificate (Original) Front Side</li>
-                                                                    <li>Birth Certificate (Original) Back Side </li>
-                                                                    <li>G.C.E. (A/L) Certificate Front Side </li>
-                                                                    <li>G.C.E. (A/L) Certificate Back Side </li>
-                                                                    <li>G.C.E. (O/L) Certificate Front Side </li>
-                                                                    <li>G.C.E. (O/L) Certificate Back Side </li>
+{{--                                                                    <li>Birth Certificate (Original) Front Side</li>--}}
+{{--                                                                    <li>Birth Certificate (Original) Back Side </li>--}}
+{{--                                                                    <li>G.C.E. (A/L) Certificate Front Side </li>--}}
+{{--                                                                    <li>G.C.E. (A/L) Certificate Back Side </li>--}}
+{{--                                                                    <li>G.C.E. (O/L) Certificate Front Side </li>--}}
+{{--                                                                    <li>G.C.E. (O/L) Certificate Back Side </li>--}}
                                                                 </ol>
                                                              </div>
                                                         </div>
