@@ -26,7 +26,7 @@
                                 <div class="dropdown-menu dropdown-menu-right">
                                     @if($enroll->status=='Documents Pending'||$enroll->status=='Processing')
                                     <a class="dropdown-item sa-accept" data-enrollid="{{$enroll->id}}" data-enrollstatus="ap" href="#"><i class="mdi mdi-account-check text-success font-size-20"></i> Accept Application</a>
-                                    <a class="dropdown-item sa-accept"  data-enrollid="{{$enroll->id}}" data-enrollstatus="in"  href="#"><i class="mdi mdi-account-cancel text-warning font-size-20"></i> Re-submission Request</a>
+                                    <a class="dropdown-item sa-accept"  data-enrollid="{{$enroll->id}}" data-enrollstatus="dp"  href="#"><i class="mdi mdi-account-cancel text-warning font-size-20"></i> Re-submission Request</a>
                                     @endif
                                     <a class="dropdown-item" href="{{route('admin.students.edit',['sid'=>$enroll->student_id])}}"><i class="mdi mdi-account-edit font-size-20"></i> Edit Personal Data</a>
                                     @if($enroll->status=='Registered')
