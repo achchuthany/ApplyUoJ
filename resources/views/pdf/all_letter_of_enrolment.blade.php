@@ -217,7 +217,7 @@
             <td class="p-1 dotted"></td>
         </tr>
         <tr>
-            <td class="p-1" colspan="2">Deputy/Assistant Registrar, Adminisions Branch</td>
+            <td class="p-1" colspan="2">AR/SAR/DR, Admissions Branch</td>
             <td class="p-1" style="text-align: right;">Date of Issue</td>
             <td class="p-1 dotted"></td>
         </tr>
