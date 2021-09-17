@@ -57,26 +57,20 @@
             <th class="p-1" style="width: 5%; text-align: center;">No</th>
             <th class="p-1" style="border:1px solid #3F3F3F;">Title</th>
             <th class="p-1" style="width: 8%;text-align: center;">Original</th>
-            <th class="p-1" style="width: 5%;text-align: center;">Y/N</th>
             <th class="p-1" style="width: 8%;text-align: center;">Copy</th>
-            <th class="p-1" style="width: 5%;text-align: center;">Y/N</th>
         </tr>
 
         <tr>
             <td class="p-1">01</td>
             <td class="p-1" style="text-align: left;">Selection Letter sent by the UGC</td>
             <td class="p-1" style="background:#888888"></td>
-            <td class="p-1" style="background:#888888"></td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
         </tr>
 
         <tr>
             <td class="p-1">02</td>
             <td class="p-1" style="text-align: left;">Duly completed Application  Form for Registration</td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
-            <td class="p-1" style="background:#888888"></td>
             <td class="p-1" style="background:#888888"></td>
         </tr>
 
@@ -84,9 +78,7 @@
         <tr>
             <td class="p-1">03</td>
             <td class="p-1" style="text-align: left;">Payment voucher of registration fee and other fees of  Rs.2350 made by Peoples’ Bank</td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
-            <td class="p-1" style="background:#888888"></td>
             <td class="p-1" style="background:#888888"></td>
 
         </tr>
@@ -96,8 +88,6 @@
             <td class="p-1">04</td>
             <td class="p-1" style="text-align: left;">NIC Photocopy</td>
             <td class="p-1" style="background:#888888"></td>
-            <td class="p-1" style="background:#888888"></td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
         </tr>
 
@@ -105,92 +95,70 @@
             <td class="p-1">05</td>
             <td class="p-1" style="text-align: left;">Photocopy of the G.C.E. (A/L) Certificate </td>
             <td class="p-1" style="background:#888888"></td>
-            <td class="p-1" style="background:#888888"></td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
         </tr>
         <tr>
             <td class="p-1">06</td>
             <td class="p-1" style="text-align: left;">Photocopy of the G.C.E. (O/L) Certificate </td>
             <td class="p-1" style="background:#888888"></td>
-            <td class="p-1" style="background:#888888"></td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
         </tr>
         <tr>
             <td class="p-1">07</td>
             <td class="p-1" style="text-align: left;">School Leaving Certificate </td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
 
         </tr>
         <tr>
             <td class="p-1">08</td>
             <td class="p-1" style="text-align: left;">Duly completed declaration form on Prohibition of Ragging and other forms of violence</td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
-            <td class="p-1" style="background:#888888"></td>
             <td class="p-1" style="background:#888888"></td>
         </tr>
         <tr>
             <td class="p-1">09</td>
             <td class="p-1" style="text-align: left;">Medical Form</td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
-            <td class="p-1" style="background:#888888"></td>
             <td class="p-1" style="background:#888888"></td>
 
         </tr>
         <tr>
             <td class="p-1">10</td>
             <td class="p-1" style="text-align: left;">10 copies of Passport(35mmX45mm) size colour Photograph of the applicant </td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
-            <td class="p-1" style="background:#888888"></td>
             <td class="p-1" style="background:#888888"></td>
 
         </tr>
         <tr>
             <td class="p-1">11</td>
             <td class="p-1" style="text-align: left;">Birth Certificate </td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
         </tr>
         <tr>
             <td class="p-1">12</td>
             <td class="p-1" style="text-align: left;">English translation of the birth certificate</td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
         </tr>
         <tr>
             <td class="p-1">13</td>
             <td class="p-1" style="text-align: left;">Affidavit / Marriage certificate, if there is a difference in the name</td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
-            <td class="p-1" style="background:#888888"></td>
             <td class="p-1" style="background:#888888"></td>
         </tr>
         <tr>
             <td class="p-1">14</td>
             <td class="p-1" style="text-align: left;">Student Identity Card Form</td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
-            <td class="p-1" style="background:#888888"></td>
             <td class="p-1" style="background:#888888"></td>
 
         </tr>
         <tr>
             <td class="p-1">15</td>
             <td class="p-1" style="text-align: left;">Declaration for  Degree Certificate</td>
-            <td class="p-1">Yes</td>
             <td class="p-1"></td>
-            <td class="p-1" style="background:#888888"></td>
             <td class="p-1" style="background:#888888"></td>
 
         </tr>
