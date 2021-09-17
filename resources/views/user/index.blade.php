@@ -23,7 +23,7 @@ User Details
                             <tr class="bg-transparent">
                                 <th>Name</th>
                                 <th>E-mail</th>
-                                <th>Role(s)</th>
+                                <th>Phone</th>
                                 <th>Updated At</th>
                                 <th>Status</th>
                                 <th style="width: 120px;">Action</th>

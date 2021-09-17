@@ -37,7 +37,7 @@ class UserController extends Controller
                    return $row->name;
                })
                 ->addColumn('roles', function($row){
-                    return $row->roles()->first()->name;
+                    return $row->phone_number;
                 })
                 ->addColumn('status', function($row){
                     if($row->is_active){
