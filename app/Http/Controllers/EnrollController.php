@@ -7,6 +7,7 @@ use App\Models\AcademicYear;
 use App\Models\ApplicationRegistration;
 use App\Models\Enroll;
 use App\Models\Programme;
+use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -146,6 +147,24 @@ class EnrollController extends Controller
             return redirect()->back()->with(['message_type'=>$msag_type,'message'=>$message]);
         }
 
+        //update status of students log
+        $student = Student::whereId($enroll->student_id)->first();
+        $log = new \stdClass();
+        $log->previews = $enroll->status;
+        $log->now = "Transferred";
+        $log->date = $request['date'];
+        $log->comments = "";
+        $log->created_at = Carbon::now();
+        $log->created_by = auth()->user()->name;
+        $log->p_programme= $enroll->programme->name;
+        $log->p_ay = $enroll->academic_year->name;
+        $log->p_reg = $enroll->reg_no;
+
+        if($student->comments) $data= json_decode($student->comments,true);else $data = [];
+        array_push($data,$log);
+        $student->comments = json_encode($data);
+
+
         $reg_no = $this->generateRegNo($application);
         $index_no = $this->generateIndexNo($application);
         $enroll->reg_no = $reg_no;
@@ -154,10 +173,13 @@ class EnrollController extends Controller
         $enroll->programme_id = $request['programme_id'];
         $enroll->academic_year_id = $request['academic_year_id'];
         $enroll->status = 'Registered';
+
+
         try {
             $application->next_registration_number += 1;
             $application->update();
             $enroll->update();
+            $student->update();
             $message = $enroll->reg_no. ' successfully updated';
             $msag_type = 'success';
             DB::commit();
@@ -245,6 +267,42 @@ class EnrollController extends Controller
             dispatch($job);
         }
         return redirect()->back()->with(['message_type'=>'success','message'=>'Email has been placed in queue for the process. Queue will be start '.$gmail_schedule['scheduled_at'].' second latter.']);
+    }
+    public function dropout($enroll_id){
+        $enroll = Enroll::whereId($enroll_id)->first();
+        $status = config('app.enroll_status');
+        return view('enroll.dropout',['enroll'=>$enroll,'status'=>$status]);
+    }
+
+    public function dropoutProcess($enroll_id,Request $request){
+        $enroll = Enroll::whereId($enroll_id)->first();
+        $status = config('app.enroll_status');
+
+        $student = Student::whereId($enroll->student_id)->first();
+
+        $log = new \stdClass();
+        $log->previews = $enroll->status;
+        $log->now = $request['status'];
+        $log->date = $request['date'];
+        $log->comments = $request['comments'];
+        $log->created_at = Carbon::now();
+        $log->created_by = auth()->user()->name;
+        $log->p_programme= $enroll->programme->name;
+        $log->p_ay = $enroll->academic_year->name;
+        $log->p_reg = $enroll->reg_no;
+
+
+        if($student->comments) $data= json_decode($student->comments,true);else $data = [];
+        array_push($data,$log);
+        $student->comments = json_encode($data);
+
+        $student->update();
+
+        $enroll->status = $request['status'];
+        $enroll->update();
+
+        return redirect()->back()->with(['message_type'=>'success','message'=>'Update Successfully']);
+
     }
 
 }

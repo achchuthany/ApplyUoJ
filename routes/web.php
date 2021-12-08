@@ -324,6 +324,16 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'as' => 'admin.enroll.confirmation.process',
         'roles' => ['Admin']
     ]);
+    Route::get('/admin/enroll/dropout/{enroll_id}',[
+        'uses' => 'App\Http\Controllers\EnrollController@dropout',
+        'as' => 'admin.enroll.dropout',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/enroll/dropout/{enroll_id}',[
+        'uses' => 'App\Http\Controllers\EnrollController@dropoutProcess',
+        'as' => 'admin.enroll.dropout.process',
+        'roles' => ['Admin']
+    ]);
 
 
     //Users

@@ -175,12 +175,12 @@
 
     </div>
 </div>
-    <div class="row mt-4">
-        <div class="col">
-            <a href="{{route('student.personal')}}" class="btn btn-light"><i class="mdi mdi-arrow-left mr-1"></i> Back</a>
-        </div>
-        <div class="col text-right">
-            <button  type="submit" class="btn btn-primary">  Next <i class="mdi mdi-arrow-right mr-1"></i></button>
-        </div> <!-- end col -->
-    </div> <!-- end row-->
+<div class="row mt-4">
+    <div class="col">
+        <a href="{{route('student.personal')}}" class="btn btn-light"><i class="mdi mdi-arrow-left mr-1"></i> Back</a>
+    </div>
+    <div class="col text-right">
+        <button  type="submit" class="btn btn-primary">  Next <i class="mdi mdi-arrow-right mr-1"></i></button>
+    </div> <!-- end col -->
+</div> <!-- end row-->
 </form>
