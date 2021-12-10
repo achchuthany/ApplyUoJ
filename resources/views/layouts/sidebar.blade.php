@@ -104,7 +104,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('admin.students.identity')}}"><i class="fas fa-id-badge"></i>Identity Card </a></li>
 
-                        @if(auth()->user()->hasRole('Admin') || auth()->user()->hasRole('Dean'))
+                        @if(auth()->user()->hasRole('Admin') || auth()->user()->hasRole('Dean')|| auth()->user()->hasRole('Welfare'))
                         <li><a href="{{route('admin.students.index')}}"><i class="fas fa-bars"></i>Statistics</a></li>
                         <li><a href="{{route('admin.students.search')}}"><i class="fas fa-search"></i>Search </a></li>
                         @endif
