@@ -6,6 +6,7 @@ use App\Jobs\EnrolmentConfirmationJob;
 use App\Models\AcademicYear;
 use App\Models\ApplicationRegistration;
 use App\Models\Enroll;
+use App\Models\Faculty;
 use App\Models\Programme;
 use App\Models\Student;
 use Carbon\Carbon;
@@ -305,4 +306,45 @@ class EnrollController extends Controller
 
     }
 
+    public function assignIndexNumber($pid,$aid){
+        $this->checkParams($pid,$aid);
+        $enrolls = Enroll::leftJoin('students','students.id','=','enrolls.student_id')
+            ->where([['enrolls.programme_id',$pid],['enrolls.academic_year_id',$aid],['enrolls.status','Registered']])->whereNull('enrolls.index_no')
+            ->orderBy('enrolls.reg_no','asc')
+            ->get();
+        $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
+        $faculty = Faculty::whereId($application->programme->faculty_id)->first();
+        return view('enroll.assign_index',['enrolls'=>$enrolls,'application'=>$application,'faculty'=>$faculty]);
+    }
+    public function assignIndexProcess(Request $request,$pid,$aid){
+        $this->checkParams($pid,$aid);
+        $enrolls = Enroll::select('enrolls.id as id')->leftJoin('students','students.id','=','enrolls.student_id')
+            ->where([['enrolls.programme_id',$pid],['enrolls.academic_year_id',$aid],['enrolls.status','Registered']])->whereNull('enrolls.index_no')
+            ->orderBy('enrolls.reg_no','asc')
+            ->get();
+
+        $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
+
+        foreach ($enrolls as $en){
+            DB::beginTransaction();
+            $faculty = Faculty::whereId($application->programme->faculty_id)->first();
+
+            $index_no = $faculty->abbreviation.$faculty->next_index_number;
+            $enroll = Enroll::whereId($en->id)->first();
+            $enroll->index_no = $index_no;
+            try {
+                $faculty->next_index_number += 1;
+                $faculty->update();
+                $enroll->update();
+                DB::commit();
+            }catch(QueryException $e){
+                DB::rollBack();
+            }
+        }
+
+        $message = $application->programme->name. '\'s index numbers has been successfully updated!';
+        $msag_type = 'success';
+        return redirect()->route('admin.enroll.assign.index.number',['pid'=>$application->programme_id,'aid'=>$application->academic_year_id])->with(['message_type'=>$msag_type,'message'=>$message]);
+
+    }
 }

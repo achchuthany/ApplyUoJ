@@ -45,6 +45,7 @@ class FacultyController extends Controller
             $faculty = new Faculty();
         }
         $faculty->name = trim($request['name']);
+        $faculty->next_index_number = trim($request['next_index_number']);
         $faculty->abbreviation = strtoupper(trim($request['abbreviation']));
 
         try{

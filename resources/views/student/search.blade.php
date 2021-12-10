@@ -43,8 +43,7 @@
                                 <div class="form-group">
                                     <label for="status">Enroll Status</label>
                                     <select class="form-control select2" name="status" required>
-                                        <option disabled selected>Select Enroll Status</option>
-                                        <option value="all">All</option>
+                                        <option value="all" selected>All</option>
                                         @foreach($params as $key=>$value)
                                             <option value="{{$key}}">{{$value}}</option>
                                         @endforeach

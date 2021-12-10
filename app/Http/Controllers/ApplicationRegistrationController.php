@@ -52,19 +52,20 @@ class ApplicationRegistrationController extends Controller
                             <i class="mdi mdi-menu"></i>
                         </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                         <h5 class="dropdown-header">Students</h5>
+                        <a class="dropdown-item" href="'.route('admin.students.program.academic',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id,'status'=>'all']).'"  data-toggle="tooltip" data-placement="top" title="View All Students"><i class="fas fa-users font-size-18"></i> List of Students</a>
+                         <div class="dropdown-divider"></div>
                         <h5 class="dropdown-header">Registration</h5>
-                        <a class="dropdown-item" href="'.route('admin.enroll.assign.reg.index',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id]).'"  data-toggle="tooltip" data-placement="top" title="Assign Registration Number"><i class="mdi mdi-account-lock font-size-18"></i> Assign Registration No.</a>
-                        <a class="dropdown-item" href="'.route('admin.enroll.clear.reg.index',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id]).'"   data-toggle="tooltip" data-placement="top" title="Delete Registration Number"><i class="mdi mdi-account-remove font-size-18 text-warning"></i> Clear Registration No.</a>
+                        <a class="dropdown-item" href="'.route('admin.enroll.assign.reg.index',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id]).'"  data-toggle="tooltip" data-placement="top" title="Assign Registration Number"><i class="mdi mdi-account-lock font-size-18"></i> Assign Registration Number</a>
+                        <a class="dropdown-item" href="'.route('admin.enroll.assign.index.number',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id]).'"   data-toggle="tooltip" data-placement="top" title="Assign Index Number"><i class="mdi mdi-format-list-numbered font-size-18"></i> Assign Index Number</a>
                         <div class="dropdown-divider"></div>
                         <h5 class="dropdown-header">Print</h5>
                         <a class="dropdown-item" target="_blank" href="'.route('student.registration.download.LetterOfEnrolmentByCourse',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id,'status'=>'rg']).'"   data-toggle="tooltip" data-placement="top" title=" Letter of Enrolment"><i class="mdi mdi-printer font-size-18"></i> Letter of Enrolment</a>
-
+                        <div class="dropdown-divider"></div>
                         <h5 class="dropdown-header">Email</h5>
                         <a class="dropdown-item" href="'.route('admin.enroll.confirmation',['app_id'=>$row->id]).'"   data-toggle="tooltip" data-placement="top" title=" Confirmation of Enrolment"><i class="mdi mdi-email-send font-size-18"></i> Confirmation of Enrolment</a>
-                        <div class="dropdown-divider"></div>
-                        <h5 class="dropdown-header">Students</h5>
-                        <a class="dropdown-item" href="'.route('admin.students.program.academic',['pid'=>$row->programme_id,'aid'=>$row->academic_year_id,'status'=>'all']).'"  data-toggle="tooltip" data-placement="top" title="View All Students"><i class="fas fa-users font-size-18"></i> List of Students</a>
-                        <div class="dropdown-divider"></div>
+
+                       <div class="dropdown-divider"></div>
                         <h5 class="dropdown-header">Applications</h5>
                         <a class="dropdown-item" href="'.route('admin.application.registrations.edit',['id'=>$row->id]).'"   data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil uil-pen font-size-18"></i> Edit</a>
                         ';

@@ -29,19 +29,27 @@ Add a Faculty / Edit Faculty
                             <form class="needs-validation" method="POST" action="{{ route('admin.faculties.process') }}">
                                 {{ csrf_field() }}
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="name">Faculty Name</label>
                                             <input value="{{(isset($faculty)&&!Request::old('name'))? $faculty->name : Request::old('name')}}" id="name" name="name" type="text" class="form-control" required>
                                             <input id="id" class="form-control" type="hidden" name="id" value="{{ (isset($faculty))? $faculty->id   : ''}}" >
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="shortname">Faculty Abbreviation</label>
                                             <input value="{{(isset($faculty)&&!Request::old('abbreviation'))? $faculty->abbreviation : Request::old('abbreviation')}}" id="abbreviation" name="abbreviation" type="text" class="form-control" required>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="next_index_number">Next Index Number</label>
+                                            <input value="{{(isset($faculty)&&!Request::old('next_index_number'))? $faculty->next_index_number : Request::old('next_index_number')}}" id="next_index_number" name="next_index_number" type="text" class="form-control">
+                                            <span class="text-danger"><i class="mdi mdi-information"></i> Do not edit the value until you really want to edit</span>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <!-- end row -->
                                 <div class="row mt-4">

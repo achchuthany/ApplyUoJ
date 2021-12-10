@@ -335,6 +335,16 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'roles' => ['Admin']
     ]);
 
+    Route::get('/admin/enroll/assign/index/{pid}/{aid}',[
+        'uses' => 'App\Http\Controllers\EnrollController@assignIndexNumber',
+        'as' => 'admin.enroll.assign.index.number',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/enroll/assign/index/{pid}/{aid}/process',[
+        'uses' => 'App\Http\Controllers\EnrollController@assignIndexProcess',
+        'as' => 'admin.enroll.assign.index.process',
+        'roles' => ['Admin']
+    ]);
 
     //Users
     Route::get('/admin/users',[
