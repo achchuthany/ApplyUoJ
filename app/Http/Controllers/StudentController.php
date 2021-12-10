@@ -1033,4 +1033,67 @@ class StudentController extends Controller
         }
     return redirect()->back()->with(['success'=>$msg]);
 }
+
+    public function identity(){
+        $programmes = Programme::orderBy('name','asc')->get();
+        $academics = AcademicYear::orderBy('name','asc')->get();
+        return view('student.identity',[
+            'programmes'=>$programmes,
+            'academics'=>$academics,
+        ]);
+    }
+    public function identitySearch(Request $request, $pid,$aid){
+        if ($request->ajax()) {
+            $data = Enroll::where([['programme_id', $pid], ['academic_year_id', $aid], ['status', 'Registered']])->latest()->get();
+            return (Datatables::of($data)
+                ->addColumn('ref_no', function ($row) {
+                    return $row->getRefNo();
+                })
+                ->addColumn('reg_no', function ($row) {
+                    return ($row->reg_no) ? $row->reg_no : 'N/A';
+                })
+                ->addColumn('nic', function ($row) {
+                    return $row->student->nic;
+                })
+                ->addColumn('address', function ($row) {
+                    $add = $row->student->addresses()->where('address_type', 'Permanent')->first();
+                    if ($add) {
+                        $address = $add->address_no . ', ' . $add->address_street;
+                        $address .= $add->address_city ? (', ' . $add->address_city) : '';
+                        $address .= $add->address_4 ? ', ' . $add->address_4 : '';
+                        $address .= $add->address_state ? ', ' . $add->address_state : '';
+                        $address .= ', ' . $add->address_country;
+                        $address .= $add->address_postal_code ? ', ' . $add->address_postal_code : '';
+                        return strtoupper($address);
+                    }
+                    return null;
+                })
+                ->addColumn('title', function ($row) {
+                    return strtoupper($row->student->title);
+                })
+                ->addColumn('programme', function ($row) {
+                    return strtoupper($row->programme->name);
+                })
+                ->addColumn('faculty', function ($row) {
+                    return strtoupper($row->programme->faculty->name);
+                })
+                ->addColumn('name_initials', function ($row) {
+                    return strtoupper($row->student->name_initials);
+                })
+                ->addColumn('full_name', function ($row) {
+                    return strtoupper($row->student->full_name);
+                })
+                ->addColumn('image', function ($row) {
+                    $doc = $row->student->student_docs()->where('type', 'photo')->first();
+                    if ($doc && Storage::disk('docs')->exists($doc->name))
+                        return '<img src="/registration/student/image/' . $doc->name . '" alt="" loading="lazy" class=" img-thumbnail">';
+                    else if ($row->student->gender == "M")
+                        return '<img src="' . URL::asset('assets/images/users/male.png') . '" alt="" loading="lazy" class="img-thumbnail">';
+                    else
+                        return '<img src="' . URL::asset('assets/images/users/female.png') . '" alt="" loading="lazy" class=" img-thumbnail">';
+                })
+                ->rawColumns(['image'])
+                ->make(true));
+        }
+    }
 }

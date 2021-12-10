@@ -54,7 +54,11 @@ Add New User
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="role_id">User Role</label>
+                                            <label for="role_id">User Role
+                                               </label>
+                                            <a type="button" class="btn btn-sm btn-link float-right" data-toggle="modal" data-target="#user_role_model">
+                                                <i class="mdi mdi-plus mr-1"></i>Add
+                                            </a>
                                             <select class="form-control select2" name="role_id" readonly>
                                                 @foreach($roles as $role)
                                                     <option value="{{$role->id}}" {{(isset($user)&&!Request::old('role_id'))? (($userroles->id  == $role->id)? 'selected':'') : ( (Request::old('role_id') ==$role->id)? 'selected':'')}} {{(isset($userroles) && $userroles->name  == "Admin" && $role->name!='Admin' && $user->id  == 1) ?'disabled':''}} {{(isset($userroles) && $userroles->name  == "Student" && $userroles->id  != $role->id) ?'disabled':''}} {{( isset($userroles) && $userroles->name  != "Student" &&  $role->name=="Student") ?'disabled':''}} {{!isset($user) && $role->name=="Student" ?'disabled':''}}>{{$role->description}}</option>
@@ -137,6 +141,43 @@ Add New User
             </div>
         </div>
     </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="user_role_model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">User Role</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="{{route('users.roles')}}">
+                @csrf
+            <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="role_name"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" id="description" name="role_description">
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 @endsection
 @section('script')

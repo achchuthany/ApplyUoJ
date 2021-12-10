@@ -249,4 +249,20 @@ class UserController extends Controller
 
         return redirect('/register')->with(['success'=>'Your previews signup details has been deleted. Start you new registration here']);
     }
+
+    public function roles(Request $request)
+    {
+        $this->validate($request,[
+            'role_name' => ['required'],
+            'role_description' => ['required'],
+        ]);
+        $role = new Role();
+        $role->name = $request['role_name'];
+        $role->description = $request['role_description'];
+        $role->save();
+
+        $message = " Role has been successfully created";
+        $msag_type = 'success';
+        return redirect()->back()->with(['message_type'=>$msag_type,'message'=>$message]);
+    }
 }

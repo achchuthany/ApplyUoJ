@@ -102,8 +102,12 @@
                         <span>Students</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('admin.students.identity')}}"><i class="fas fa-id-badge"></i>Identity Card </a></li>
+
+                        @if(auth()->user()->hasRole('Admin') || auth()->user()->hasRole('Dean'))
                         <li><a href="{{route('admin.students.index')}}"><i class="fas fa-bars"></i>Statistics</a></li>
                         <li><a href="{{route('admin.students.search')}}"><i class="fas fa-search"></i>Search </a></li>
+                        @endif
                         @if(auth()->user()->hasRole('Admin'))
                         <li><a href="{{route('admin.students.add')}}"><i class="fas fa-plus"></i>Add</a></li>
                         <li><a href="{{route('admin.students.upload')}}"><i class="mdi mdi-upload-multiple"></i>Bulk Upload</a></li>

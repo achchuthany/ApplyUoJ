@@ -35,13 +35,13 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
     Route::get('/',[
         'uses' => 'App\Http\Controllers\HomeController@index',
         'as' => 'index',
-        'roles' => ['Admin','Student','Dean','Welfare']
+        'roles' => ['Admin','Student','Dean','Welfare','Library']
     ]);
     //home
     Route::get('/home',[
         'uses' => 'App\Http\Controllers\HomeController@index',
         'as' => 'home',
-        'roles' => ['Admin','Student','Dean','Welfare']
+        'roles' => ['Admin','Student','Dean','Welfare','Library']
     ]);
     Route::get('registration/student/image/{name}',[
         'uses' => 'App\Http\Controllers\RegistrationController@getImageFile',
@@ -154,7 +154,16 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'roles' => ['Admin']
     ]);
 
-
+    Route::get('/admin/students/identity',[
+        'uses' => 'App\Http\Controllers\StudentController@identity',
+        'as' => 'admin.students.identity',
+        'roles' => ['Admin','Dean','Welfare','Library']
+    ]);
+    Route::get('/admin/students/identity/{pid}/{aid}',[
+        'uses' => 'App\Http\Controllers\StudentController@identitySearch',
+        'as' => 'admin.students.identity.search',
+        'roles' => ['Admin','Dean','Welfare','Library']
+    ]);
     //Faculty
 
     Route::get('/admin/faculties',[
@@ -383,6 +392,12 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'as' => 'user.profile',
         'middleware' => 'roles',
         'roles' => ['Admin','Student']
+    ]);
+    Route::post('/admin/user/roles',[
+        'uses' => 'App\Http\Controllers\UserController@roles',
+        'as' => 'users.roles',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
     ]);
 
 //CHECK MAIL
