@@ -43,6 +43,7 @@
 
                     </div>
                 </div>
+                @if($enrolls->count()>0)
                 <div class="card-footer bg-soft-info">
                     <div class="row">
                         <div class="col-md-8 offset-md-2 text-center">
@@ -60,6 +61,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div> <!-- end col -->
     </div> <!-- end row -->
