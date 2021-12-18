@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
     Route::get('registration/student/image/{name}',[
         'uses' => 'App\Http\Controllers\RegistrationController@getImageFile',
         'as' => 'student.registration.image',
-        'roles' => ['Admin','Student','Dean','Welfare']
+        'roles' => ['Admin','Student','Dean','Welfare','Library']
     ]);
 
     //Admin Home Page
