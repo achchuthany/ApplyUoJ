@@ -22,7 +22,7 @@
                             <div class="text-dark">
                                 <div>
                                     <p>Each image must be a file of type of jpeg, jpg and may not be greater than 5120 kilobytes (5MB).</p>
-                                    <p class="text-primary">Select the images and click the <b>"Bulk Upload"</b> button to upload the image</p>
+                                    <p class="text-primary">Select the images and click the <b>"Bulk Upload"</b> button to upload the scan documents</p>
                                 </div>
                             </div>
                         </div>
@@ -126,6 +126,25 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 mt-3">
+                                    <label>v. Signature of the Student  <span class="text-danger font-size-16">*</span></label>
+                                </div>
+
+                                <div class="col-md-12">
+
+                                    <input type="file" name="signature" class="form-control  @error('signature') is-invalid @enderror">
+                                    @error('signature')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                    <span class="text-muted">Sign on a clean white sheet of paper using the blue pen</span>
                                 </div>
                             </div>
                         </div>
@@ -250,7 +269,7 @@
         </form>
     </div>
 
-    <div class="card-footer">
+    <div class="card-footer text-center">
         If you documents were successfully uploaded, click "Next" to navigate the next step.
     </div>
 </div>

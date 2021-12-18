@@ -663,6 +663,8 @@ class RegistrationController extends Controller
             'nic_f' => 'required|image|mimes:jpeg,jpg|max:5125',
             'nic_b' => 'required|image|mimes:jpeg,jpg|max:5125',
 
+            'signature' => 'required|image|mimes:jpeg,jpg|max:5125',
+
             'student_id'=>'required',
         ]);
 //            'bc_f' => 'required|image|mimes:jpeg,jpg|max:5125',
@@ -810,6 +812,26 @@ class RegistrationController extends Controller
             $docs->update();
         else
             $docs->save();
+
+        //signature
+        $imageName =$student->nic.'_sign.'.$request->signature->extension();
+        $request->signature->storeAs('docs', $imageName);
+        /* Store $imageName name in DATABASE from HERE */
+        $docs = StudentDoc::where([['student_id',$student->id],['type','SIGN']])->first();
+        $isUpdate = true;
+        if(!$docs){
+            $docs = new StudentDoc();
+            $isUpdate = false;
+        }
+
+        $docs->student_id = $student->id;
+        $docs->name = $imageName;
+        $docs->type = "SIGN";
+        if($isUpdate)
+            $docs->update();
+        else
+            $docs->save();
+
 
         //Birth Certificate Front
 //        $imageName =$student->nic.'_FBC.'.$request->bc_f->extension();
