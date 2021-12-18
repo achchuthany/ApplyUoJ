@@ -350,8 +350,8 @@ class StudentController extends Controller
                 })
                 ->addColumn('action', function($row){
                     $btn = '
-                   <a href="'.route('admin.students.enroll.profile',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Profile"><i class="uil uil-user  "></i></a>
-                   <a href="'.route('admin.students.edit',['sid'=>$row->student_id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil  uil-edit-alt  font-size-18"></i></a>
+                   <a href="'.route('admin.students.enroll.profile',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Profile" target="_blank"><i class="uil uil-user  "></i></a>
+                   <a href="'.route('admin.students.edit',['sid'=>$row->student_id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Edit" target="_blank"><i class="uil  uil-edit-alt  font-size-18"></i></a>
                    ';
                     return $btn;
                 })
@@ -418,7 +418,7 @@ class StudentController extends Controller
                 })
                 ->addColumn('action', function($row){
                     $btn = '
-                   <a href="'.route('admin.students.enroll.profile',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="View Submission"><i class="uil uil-user"></i></a>
+                   <a href="'.route('admin.students.enroll.profile',['id'=>$row->id]).'" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="View Submission" target="_blank"><i class="uil uil-user"></i></a>
                    ';
                     return $btn;
                 })
@@ -567,7 +567,7 @@ class StudentController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '
-                   <a href="' . route('admin.students.enroll.profile', ['id' => $row->id]) . '" class="px-3 btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="View Submission"><i class="uil uil-user "></i> Profile</a>
+                   <a href="' . route('admin.students.enroll.profile', ['id' => $row->id]) . '" class="px-3 btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="View Submission" target="_blank"><i class="uil uil-user "></i> Profile</a>
                    ';
                     return $btn;
                 })
@@ -1035,7 +1035,13 @@ class StudentController extends Controller
 }
 
     public function identity(){
-        $programmes = Programme::orderBy('name','asc')->get();
+        if(Auth::User()->hasRole('Dean')) {
+            $user_id = auth()->user()->id;
+            $faculty_id = DB::table('role_user')->where('user_id', $user_id)->value('faculty_id');
+            $programmes = Programme::where('faculty_id',$faculty_id)->orderBy('name','asc')->get();
+        }else{
+            $programmes = Programme::orderBy('name','asc')->get();
+        }
         $academics = AcademicYear::orderBy('name','asc')->get();
         return view('student.identity',[
             'programmes'=>$programmes,

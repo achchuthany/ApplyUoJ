@@ -259,8 +259,8 @@ return [
         'ap'=>'Accepted',
         'rg'=>'Registered',
         'tr'=>'Transferred',
-        'dr'=>'Dropout',
-        're'=>'Rejected',
+        'ne'=>'Not Enrolled',
+        'ca'=>'Cancelled',
         'de'=>'Deleted',
     ],
     'countries'=>[

@@ -36,12 +36,12 @@
                         <div class="col-xl-12">
                             <div id="faqs-accordion" class="custom-accordion mt-5 mt-xl-0">
                                 <div class="card border shadow-none">
-                                    <a href="#step1" class="text-dark" data-toggle="collapse" aria-expanded="true" aria-controls="faqs-gen-ques-collapse">
-                                        <div class="bg-soft-dark p-3">
+                                    <a href="#step1" class="text-light" data-toggle="collapse" aria-expanded="true" aria-controls="faqs-gen-ques-collapse">
+                                        <div class="bg-primary p-3">
 
                                             <div class="media align-items-center">
                                                 <div class="media-body overflow-hidden">
-                                                    <h5 class="font-size-16 mb-1 text-dark">Before start the online enrolment you need to know the following:</h5>
+                                                    <h5 class="font-size-16 mb-1 text-light">Before start the online enrolment you need to know the following:</h5>
                                                 </div>
                                                 <i class="mdi mdi-chevron-up accor-down-icon font-size-16 text-light"></i>
                                             </div>
@@ -113,7 +113,7 @@
                                                             </div>
 
                                                             <div class="media-body text-dark">
-                                                                <p>Following documents will be required to be uploaded to process your application. Therefore, please have the documents scanned into either ‘ jpeg’ or 'jpg' formats and each image size should be less than 5MB</p>
+                                                                <p>Following documents will be required to be uploaded to process your application. Therefore, please have the documents scanned into either <b> ‘ jpeg’ or 'jpg' </b> formats and each image size should be less than 5MB</p>
                                                                 <ol>
                                                                     <li>Your recent photograph.</li>
                                                                     <li>Selection Letter sent by the UGC</li>
@@ -122,6 +122,7 @@
                                                                     <li>School Leaving Certificate Back Side</li>
                                                                     <li>National Identity Card Front Side</li>
                                                                     <li>National Identity Card Back Side</li>
+                                                                    <li>Signature of the Student (Sign on a clean white sheet of paper using the blue pen)</li>
 {{--                                                                    <li>Birth Certificate (Original) Front Side</li>--}}
 {{--                                                                    <li>Birth Certificate (Original) Back Side </li>--}}
 {{--                                                                    <li>G.C.E. (A/L) Certificate Front Side </li>--}}
@@ -163,11 +164,11 @@
 
                                 <div class="card border shadow-none">
                                     <a href="#step2" class="text-dark collapsed" data-toggle="collapse" aria-expanded="false" aria-controls="faqs-privacy-policy-collapse">
-                                        <div class="bg-soft-dark p-3">
+                                        <div class="bg-primary p-3">
 
                                             <div class="media align-items-center">
                                                 <div class="media-body overflow-hidden">
-                                                    <h5 class="font-size-16 mb-1 text-dark"> What happens after you have submitted your online enrolment?</h5>
+                                                    <h5 class="font-size-16 mb-1 text-light"> What happens after you have submitted your online enrolment?</h5>
                                                 </div>
                                                 <i class="mdi mdi-chevron-up accor-down-icon font-size-16 text-light"></i>
                                             </div>
@@ -247,8 +248,8 @@
                         <div class="col-lg-12">
                             <div class="text-right">
                                 <div>
-                                    <a href="{{route('login')}}" class="btn btn-secondary m-2"> Manage your enrolment </a>
-                                    <a href="{{route('register')}}" class="btn btn-primary m-2">Start the Enrolment Now </a>                                                    </div>
+                                    <a href="{{route('login')}}" class="btn btn-soft-secondary m-2"> Manage your enrolment </a>
+                                    <a href="{{route('register')}}" class="btn btn-primary m-2">Start the Enrolment Now <i class="mdi mdi-arrow-right ml-1"></i> </a>                                                    </div>
                             </div>
                         </div>
                     </div>

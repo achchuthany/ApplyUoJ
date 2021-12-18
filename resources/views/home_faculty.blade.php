@@ -173,18 +173,18 @@
 
         <div class="col-md-4">
             <div class="card bg-soft-purple">
-                <div class="card-header">Rejected Students <span class="float-right"><a href="{{route('admin.students.pending',['status'=>'re'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-header">Not Enrolled Students <span class="float-right"><a href="{{route('admin.students.pending',['status'=>'ne'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card-body  text-center">
-                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_today['re']}}</span></div>
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_today['ne']}}</span></div>
                                 <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="card-body text-center">
-                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_total['re']}}</span></div>
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_total['ne']}}</span></div>
                                 <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
                             </div>
                         </div>
@@ -217,18 +217,18 @@
 
         <div class="col-md-4">
             <div class="card bg-soft-pink">
-                <div class="card-header">Dropout Students <span class="float-right"><a href="{{route('admin.students.pending',['status'=>'dr'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
+                <div class="card-header">Registration Cancelled Students <span class="float-right"><a href="{{route('admin.students.pending',['status'=>'ca'])}}" class="btn-link"><i class="fas fa-list"></i> View</a> </span></div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card-body  text-center">
-                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_today['dr']}}</span></div>
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_today['ca']}}</span></div>
                                 <div class="font-size-12"><i class="fa fa-user-graduate"></i> Today </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="card-body text-center">
-                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_total['dr']}}</span></div>
+                                <div class="h1 font-weight-lighter"><span data-plugin="counterup">{{$count_total['ca']}}</span></div>
                                 <div class="font-size-12"><i class="fa fa-user-graduate"></i> Total</div>
                             </div>
                         </div>
