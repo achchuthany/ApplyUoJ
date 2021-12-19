@@ -16,22 +16,22 @@ Login
                             </a>
                             @if($isShow)
                             <div class="card-body bg-light shadow-lg rounded-lg my-3 p-4">
-                                <div class="h5 text-uppercase mb-3">
+                                <div class="h5 text-uppercase mb-3 text-center">
                                     Closing Dates for STUDENT Enrolment
                                 </div>
-                                <div class="table-responsive text-light">
-                                    <table class="table table-borderless table-striped">
+                                <div class="table-responsive">
+                                    <table class="table table-hover" >
                                         <thead>
                                         <th>Programme</th>
                                         <th>Closing Date</th>
                                         <th>Enrolment</th>
                                         </thead>
-                                        <tbody>
+                                        <tbody data-simplebar style="max-height: 400px;">
                                         @foreach($data as $row)
                                             <tr>
-                                                <td>{{$row->programme->name}}</td>
-                                                <td>{{\Carbon\Carbon::parse($row->close_date)->toFormattedDateString()}} ({{\Carbon\Carbon::create($row->close_date)->hour(24)->diffForHumans()}})</td>
-                                                <th><a href="{{route('welcome')}}" class="btn btn-outline-primary btn-sm">Enrol now</a> </th>
+                                                <td><span class="badge badge-soft-info p-1"> {{$row->academic_year->name}} </span> {{$row->programme->name}} </td>
+                                                <td>{{\Carbon\Carbon::parse($row->close_date)->toFormattedDateString()}} <span class="badge badge-soft-info p-1">{{\Carbon\Carbon::create($row->close_date)->hour(24)->diffForHumans()}}</span></td>
+                                                <th><a href="{{route('welcome')}}" class="btn btn-primary btn-sm">Enrol now</a> </th>
                                             </tr>
                                         @endforeach
                                         </tbody>
