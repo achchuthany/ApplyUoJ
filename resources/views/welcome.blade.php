@@ -122,7 +122,7 @@
                                                                     <li>School Leaving Certificate Back Side</li>
                                                                     <li>National Identity Card Front Side</li>
                                                                     <li>National Identity Card Back Side</li>
-                                                                    <li>Signature of the Student (Sign on a clean white sheet of paper using the blue pen)</li>
+                                                                    <li>Signature of the Student (Sign on a clean paper using a blue pen)</li>
 {{--                                                                    <li>Birth Certificate (Original) Front Side</li>--}}
 {{--                                                                    <li>Birth Certificate (Original) Back Side </li>--}}
 {{--                                                                    <li>G.C.E. (A/L) Certificate Front Side </li>--}}
