@@ -144,7 +144,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                    <span class="text-muted">Sign on a clean paper using a blue pen</span>
+                                    <span class="text-muted">Sign on a clean white paper using a blue pen</span>
                                 </div>
                             </div>
                         </div>
