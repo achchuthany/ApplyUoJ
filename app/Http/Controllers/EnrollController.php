@@ -223,7 +223,7 @@ class EnrollController extends Controller
         $enroll = Enroll::whereId($id)->first();
         $enroll->registration_date= $request['date'];
         $enroll->reg_no = strtoupper($request['reg_no']);
-        $enroll->index_no = strtoupper($request['index_no']);
+        $enroll->index_no = $request['index_no']?strtoupper($request['index_no']):null;
         try {
             $enroll->update();
             $message = $enroll->reg_no. ' successfully updated';
