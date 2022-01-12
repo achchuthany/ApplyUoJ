@@ -347,4 +347,30 @@ class EnrollController extends Controller
         return redirect()->route('admin.enroll.assign.index.number',['pid'=>$application->programme_id,'aid'=>$application->academic_year_id])->with(['message_type'=>$msag_type,'message'=>$message]);
 
     }
+    public function clearIndexNumberIndex($pid,$aid){
+        $this->checkParams($pid,$aid);
+        $enrolls = $this->getEnrolls($pid,$aid,'Registered');
+        $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
+        return view('enroll.clear_index',['enrolls'=>$enrolls,'application'=>$application]);
+    }
+    public function clearIndexNumberProcess($pid,$aid){
+        $this->checkParams($pid,$aid);
+        $enrolls = Enroll::where([['enrolls.programme_id',$pid],['enrolls.academic_year_id',$aid],['enrolls.status','Registered']])
+            ->get();
+        $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
+        foreach ($enrolls as $enroll){
+            DB::beginTransaction();
+            $enroll->index_no = null;
+            try {
+                $enroll->update();
+                DB::commit();
+            } catch (QueryException $e) {
+                DB::rollBack();
+            }
+
+        }
+        $message = $application->programme->name. '\'s index details successfully cleared!';
+        $msag_type = 'success';
+        return redirect()->route('admin.enroll.clear.index.number',['pid'=>$application->programme_id,'aid'=>$application->academic_year_id])->with(['message_type'=>$msag_type,'message'=>$message]);
+    }
 }

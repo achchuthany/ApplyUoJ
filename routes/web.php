@@ -355,6 +355,18 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'roles' => ['Admin']
     ]);
 
+    Route::get('/admin/enroll/clear/index/{pid}/{aid}',[
+        'uses' => 'App\Http\Controllers\EnrollController@clearIndexNumberIndex',
+        'as' => 'admin.enroll.clear.index.number',
+        'roles' => ['Admin']
+    ]);
+
+    Route::post('/admin/enroll/clear/index/{pid}/{aid}/process',[
+        'uses' => 'App\Http\Controllers\EnrollController@clearIndexNumberProcess',
+        'as' => 'admin.enroll.clear.index.number.process',
+        'roles' => ['Admin']
+    ]);
+
     //Users
     Route::get('/admin/users',[
         'uses' => 'App\Http\Controllers\UserController@index',
