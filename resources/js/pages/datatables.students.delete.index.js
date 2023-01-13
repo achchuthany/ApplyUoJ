@@ -6,7 +6,7 @@ $(document).ready(function() {
             retrieve: true,
             ajax: '/admin/students/delete',
             columns: [
-                {data: 'name', name: 'name'},
+                {data: 'name_initials', name: 'name_initials'},
                 {data: 'nic', name: 'nic'},
                 {data: 'mobile', name: 'mobile'},
                 {data: 'enrolls', name: 'enrolls'},

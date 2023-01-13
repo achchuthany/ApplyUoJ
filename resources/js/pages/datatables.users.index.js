@@ -8,7 +8,7 @@ $(document).ready(function() {
             columns: [
                 {data: 'name', name: 'name'},
                 {data: 'email', name: 'email'},
-                {data: 'roles', name: 'roles'},
+                {data: 'phone_number', name: 'phone_number'},
                 {data: 'update', name: 'update'},
                 {data: 'status', name: 'status',orderable: false, searchable: false},
                 {data: 'action', name: 'action', orderable: false, searchable: false},

@@ -17,6 +17,7 @@ $(document).ready(function() {
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             lengthChange: true,
+            "order": [[ 0, "desc" ]],
             pageLength: 25,
             dom: 'Bfrtip',
             buttons: [

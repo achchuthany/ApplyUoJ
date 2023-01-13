@@ -27,7 +27,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12 mt-3">
-                                    <label>Your recent photograph (Identity Card Image) <span class="text-danger font-size-16">*</span></label>
+                                    <label>Your Recent Photograph <span class="text-danger font-size-16">*</span></label>
                                     <input type="hidden" name="student_id"  id="document_student_id" value="{{Auth::user()->students()->latest()->first()->id}}">
                                     <input type="file" name="image" class="form-control  @error('image') is-invalid @enderror" id="profileImage">
                                     <div class="alert  p-3">

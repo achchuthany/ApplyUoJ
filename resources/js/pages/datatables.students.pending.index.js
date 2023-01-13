@@ -6,42 +6,23 @@ $(document).ready(function() {
             retrieve: true,
             ajax: url,
             columns: [
-                {data: 'ref_no', name: 'ref_no'},
-                {data: 'image', name: 'image'},
-                {data: 'name', name: 'name'},
-                {data: 'nic', name: 'nic'},
-                {data: 'mobile', name: 'mobile'},
-                {data: 'programme', name: 'programme'},
-                {data: 'academic_year', name: 'academic_year'},
-                {data: 'updated', name: 'updated'},
+                {data: 'ref_no', name: 'ref_no', orderable: false, searchable: false},
+                {data: 'image', name: 'image', orderable: false, searchable: false},
+                {data: 'full_name', name: 'students.full_name'},
+                {data: 'nic', name: 'students.nic'},
+                {data: 'mobile', name: 'students.mobile'},
+                {data: 'programme_name', name: 'programmes.name'},
+                {data: 'academic_year_name', name: 'academic_years.name'},
+                {data: 'updated', name: 'updated',orderable: false, searchable: false},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             lengthChange: true,
-            "order": [[ 7, "asc" ]],
+            "lengthMenu": [[10, 25, 50,100], [10, 25, 50, 100]],     // page length options
             pageLength: 25,
-            // dom: 'Bfrtip',
-            // buttons: {
-            //     buttons: [
-            //         {
-            //             extend: "excel",
-            //             className: "btn-sm btn-info mr-2",
-            //             titleAttr: 'Export in Excel',
-            //             text: '<i class="fas fa-file-excel"></i> Excel',
-            //             init: function(api, node, config) {
-            //                 $(node).removeClass('btn-default')
-            //             }
-            //         },
-            //         {
-            //             extend: "pdf",
-            //             className: "btn-sm btn-info",
-            //             titleAttr: 'Export in PDF',
-            //             text: '<i class="fas fa-file-pdf"></i> PDF',
-            //             init: function(api, node, config) {
-            //                 $(node).removeClass('btn-default')
-            //             }
-            //         }
-            //     ]
-            // }
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'excel', 'colvis','pageLength'
+            ]
         }
     );
 } );

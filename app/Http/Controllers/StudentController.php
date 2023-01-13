@@ -310,43 +310,42 @@ class StudentController extends Controller
             if(Auth::User()->hasRole('Dean')){
                 $user_id = auth()->user()->id;
                 $faculty_id = DB::table('role_user')->where('user_id', $user_id)->value('faculty_id');
-                $data= Enroll::select(
-                    'enrolls.id as id',
-                    'enrolls.programme_id as programme_id',
-                    'enrolls.student_id as student_id',
-                    'enrolls.academic_year_id as academic_year_id',
-                    'enrolls.reg_no as reg_no',
-                    'enrolls.index_no as index_no',
-                    'enrolls.registration_date as registration_date',
-                    'enrolls.status as status',
-                    'enrolls.created_at as created_at',
-                    'enrolls.updated_at as updated_at'
-                )->leftJoin('programmes','programmes.id','=','enrolls.programme_id')->where([['programmes.faculty_id',$faculty_id]])->get();
+                $data = Enroll::select(
+                    'enrolls.id',
+                    'enrolls.student_id',
+                    'students.al_index_number',
+                    'students.full_name',
+                    'students.nic',
+                    'students.mobile',
+                    'programmes.name as programme_name',
+                    'enrolls.programme_id',
+                    'academic_years.name as academic_year_name'
+                )
+                    ->leftJoin('students','students.id','=','enrolls.student_id')
+                    ->leftJoin('programmes','programmes.id','=','enrolls.programme_id')
+                    ->leftJoin('academic_years','academic_years.id','=','enrolls.academic_year_id')
+                    ->where([['programmes.faculty_id',$faculty_id]])
+                    ->orderBy('enrolls.created_at','desc');
             }else{
-                $data = Enroll::latest()->get();
+                $data = Enroll::select(
+                    'enrolls.id',
+                    'enrolls.student_id',
+                    'students.al_index_number',
+                    'students.full_name',
+                    'students.nic',
+                    'students.mobile',
+                    'programmes.name as programme_name',
+                    'enrolls.programme_id',
+                    'academic_years.name as academic_year_name'
+                )
+                    ->leftJoin('students','students.id','=','enrolls.student_id')
+                    ->leftJoin('programmes','programmes.id','=','enrolls.programme_id')
+                    ->leftJoin('academic_years','academic_years.id','=','enrolls.academic_year_id');
             }
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->addColumn('al_index_no', function($row){
-                    return $row->student->al_index_number;
-                })
-                ->addColumn('name', function($row){
-                    return $row->student->full_name;
-                })
                 ->addColumn('ref_no', function($row){
                     return $row->getRefNo();
-                })
-                ->addColumn('nic', function($row){
-                    return Student::where('id',$row->student_id)->first()->nic;
-                })
-                ->addColumn('mobile', function($row){
-                    return Student::where('id',$row->student_id)->first()->mobile;
-                })
-                ->addColumn('programme', function($row){
-                    return $row->programme->name;
-                })
-                ->addColumn('academic_year', function($row){
-                    return $row->academic_year->name;
                 })
                 ->addColumn('action', function($row){
                     $btn = '
@@ -369,20 +368,40 @@ class StudentController extends Controller
             if(Auth::User()->hasRole('Dean')){
                 $user_id = auth()->user()->id;
                 $faculty_id = DB::table('role_user')->where('user_id', $user_id)->value('faculty_id');
-                $data= Enroll::select(
-                    'enrolls.id as id',
-                    'enrolls.programme_id as programme_id',
-                    'enrolls.student_id as student_id',
-                    'enrolls.academic_year_id as academic_year_id',
-                    'enrolls.reg_no as reg_no',
-                    'enrolls.index_no as index_no',
-                    'enrolls.registration_date as registration_date',
-                    'enrolls.status as status',
-                    'enrolls.created_at as created_at',
-                    'enrolls.updated_at as updated_at'
-                )->leftJoin('programmes','programmes.id','=','enrolls.programme_id')->where([['programmes.faculty_id',$faculty_id],['enrolls.status',$this->params[$status]]])->get();
+                $data = Enroll::select(
+                    'enrolls.id',
+                    'enrolls.student_id',
+                    'students.al_index_number',
+                    'students.full_name',
+                    'students.nic',
+                    'students.mobile',
+                    'programmes.name as programme_name',
+                    'enrolls.programme_id',
+                    'enrolls.updated_at',
+                    'academic_years.name as academic_year_name'
+                )
+                    ->leftJoin('students','students.id','=','enrolls.student_id')
+                    ->leftJoin('programmes','programmes.id','=','enrolls.programme_id')
+                    ->leftJoin('academic_years','academic_years.id','=','enrolls.academic_year_id')
+                    ->where([['programmes.faculty_id',$faculty_id],['enrolls.status',$this->params[$status]]]);
             }else{
-                $data = Enroll::where('status',$this->params[$status])->get();
+                $data = Enroll::select(
+                    'enrolls.id',
+                    'enrolls.student_id',
+                    'students.al_index_number',
+                    'students.full_name',
+                    'students.nic',
+                    'students.mobile',
+                    'programmes.name as programme_name',
+                    'enrolls.programme_id',
+                    'enrolls.updated_at',
+                    'academic_years.name as academic_year_name'
+                )
+                    ->leftJoin('students','students.id','=','enrolls.student_id')
+                    ->leftJoin('programmes','programmes.id','=','enrolls.programme_id')
+                    ->leftJoin('academic_years','academic_years.id','=','enrolls.academic_year_id')
+                    ->where('enrolls.status',$this->params[$status]);
+
             }
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -397,21 +416,6 @@ class StudentController extends Controller
                 })
                 ->addColumn('ref_no', function($row){
                     return $row->getRefNo();
-                })
-                ->addColumn('name', function($row){
-                    return $row->student->name_initials;
-                })
-                ->addColumn('nic', function($row){
-                    return Student::where('id',$row->student_id)->first()->nic;
-                })
-                ->addColumn('mobile', function($row){
-                    return Student::where('id',$row->student_id)->first()->mobile;
-                })
-                ->addColumn('programme', function($row){
-                    return $row->programme->name;
-                })
-                ->addColumn('academic_year', function($row){
-                    return $row->academic_year->name;
                 })
                 ->addColumn('updated', function($row){
                     return $row->updated_at->toDateTimeString();
@@ -482,10 +486,10 @@ class StudentController extends Controller
             $race = null;
         }
 
-        $gender = $enroll->student->gender?$genders[$enroll->student->gender] : null;
-        $civil_status = $enroll->student->civil_status? $civil_statuses[$enroll->student->civil_status] : null;
+        $gender = array_key_exists($enroll->student->gender,$genders)?$genders[$enroll->student->gender] : null;
+        $civil_status = array_key_exists($enroll->student->civil_status,$civil_statuses)? $civil_statuses[$enroll->student->civil_status] : null;
 
-        $religion = $enroll->student->religion? (strlen($enroll->student->religion)>1?$enroll->student->religion:$religion[$enroll->student->religion]): null;
+        $religion = array_key_exists($enroll->student->religion,$religion)? $religion[$enroll->student->religion]:$enroll->student->religion;
 
     return view('student.profile',['enroll'=>$enroll,'race'=>$race,'gender'=>$gender,'civil_status'=>$civil_status,'religion'=>$religion]);
     }
@@ -969,17 +973,8 @@ class StudentController extends Controller
     }
     public function delete(Request $request){
         if ($request->ajax()) {
-            $data = Student::latest()->get();
+            $data = Student::query();
             return Datatables::of($data)
-                ->addColumn('name', function($row){
-                    return $row->name_initials;
-                })
-                ->addColumn('nic', function($row){
-                    return $row->nic;
-                })
-                ->addColumn('mobile', function($row){
-                    return $row->mobile;
-                })
                 ->addColumn('enrolls', function($row){
                     return $row->enrolls()->count();
                 })

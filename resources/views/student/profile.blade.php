@@ -364,7 +364,7 @@
                                     <div class="col-md-6">
                                         <div class="mt-4">
                                             <p class="text-muted mb-1">Gender </p>
-                                            <h5 class="font-size-16 {{$enroll->student->gender ? '': 'text-info'}}">{{$enroll->student->gender ? $gender : 'Not Assigned'}}</h5>
+                                            <h5 class="font-size-16 {{$gender ? '': 'text-info'}}">{{$gender ? $gender : 'Not Assigned'}}</h5>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

@@ -30,15 +30,9 @@ class UserController extends Controller
 
     public function index(Request $request){
         if ($request->ajax()) {
-            $data = User::latest()->get();
+            $data = User::latest();
            return Datatables::of($data)
                 ->addIndexColumn()
-               ->addColumn('name', function($row){
-                   return $row->name;
-               })
-                ->addColumn('roles', function($row){
-                    return $row->phone_number;
-                })
                 ->addColumn('status', function($row){
                     if($row->is_active){
                         return 'Active';
