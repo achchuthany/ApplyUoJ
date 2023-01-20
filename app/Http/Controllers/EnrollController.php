@@ -329,7 +329,7 @@ class EnrollController extends Controller
             DB::beginTransaction();
             $faculty = Faculty::whereId($application->programme->faculty_id)->first();
 
-            $index_no = $faculty->abbreviation.$faculty->next_index_number;
+            $index_no = $faculty->abbreviation.sprintf("%05d",$faculty->next_index_number);
             $enroll = Enroll::whereId($en->id)->first();
             $enroll->index_no = $index_no;
             try {

@@ -53,7 +53,7 @@ Add New Programme
                                             <label class="control-label">Faculty</label>
                                             <select class="form-control select2" name="faculty_id">
                                                 @foreach($faculties as $faculty)
-                                                    <option value="{{$faculty->id}}" {{(isset($programme)&&!Request::old('faculty_id'))? (($programme->faculty_id  == $faculty->id)? 'selected':'') : ( (Request::old('faculty_id') ==$faculty->id)? 'selected':'')}}>{{$faculty->name}}</option>
+                                                    <option value="{{$faculty->id}}" {{(isset($programme)&&!Request::old('faculty_id'))? (($programme->faculty_id  == $faculty->id)? 'selected':'') : ( (Request::old('faculty_id') ==$faculty->id)? 'selected':'')}}>{{$faculty->name}} ({{$faculty->abbreviation}})</option>
                                                 @endforeach
                                             </select>
                                         </div>

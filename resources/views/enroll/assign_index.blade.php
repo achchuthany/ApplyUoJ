@@ -35,7 +35,7 @@
                                     <td>{{$enroll->reg_no}}</td>
                                     <td>{{$enroll->full_name}}</td>
                                     <td>{{$enroll->nic}}</td>
-                                    <td>{{$faculty->abbreviation}}{{$faculty->next_index_number++}}</td>
+                                    <td>{{$faculty->abbreviation}}{{sprintf("%05d",$faculty->next_index_number++)}}</td>
                                 </tr>
                             @endforeach
                             </tbody>

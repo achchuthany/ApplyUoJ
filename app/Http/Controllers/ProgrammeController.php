@@ -17,7 +17,8 @@ class ProgrammeController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('faculty', function($row){
-                    return Faculty::whereId($row->faculty_id)->first()->name;
+                    $fa = Faculty::whereId($row->faculty_id)->first();
+                    return $fa->name.' ('.$fa->abbreviation.')';
                 })
                 ->addColumn('action', function($row){
                     $btn = '
