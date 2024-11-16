@@ -86,7 +86,7 @@ class ExportController extends Controller
         $zip = new \ZipArchive();
         $zip->open($zip_file, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
 
-        if ($zip->open($zip_file, \ZipArchive::CREATE) === TRUE) {
+        if ($zip->open($zip_file, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === TRUE) {
             foreach ($names as $name) {
                 $filePath = Storage::disk('docs')->path($name);
                 if (file_exists($filePath)) {
