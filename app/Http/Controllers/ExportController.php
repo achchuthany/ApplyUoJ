@@ -84,16 +84,20 @@ class ExportController extends Controller
         $zip_file=storage_path('app/downloads/temp/profile_images.zip');
 
         $zip = new \ZipArchive();
-        $zip->open($zip_file, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
-
-        if ($zip->open($zip_file, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === TRUE) {
-            foreach ($names as $name) {
-                $filePath = Storage::disk('docs')->path($name);
-                if (file_exists($filePath)) {
-                    $zip->addFile($filePath, basename($filePath));
+        try {
+            if ($zip->open($zip_file, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === TRUE) {
+                foreach ($names as $name) {
+                    $filePath = Storage::disk('docs')->path($name);
+                    if (file_exists($filePath)) {
+                        $zip->addFile($filePath, basename($filePath));
+                    }
                 }
+                $zip->close();
+            } else {
+                return back()->with(['error' => "Error: Could not create zip file, please try again"])->withInput();
             }
-            $zip->close();
+        } catch (\Exception $e) {
+            return back()->with(['error' => $e->getMessage()])->withInput();
         }
         //check if the zip file was created
         if (!file_exists($zip_file)) {
