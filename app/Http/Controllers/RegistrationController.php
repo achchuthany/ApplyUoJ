@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\EnrolmentConfirmationJob;
 use App\Jobs\RegistrationConfirmationJob;
+use App\Jobs\SendMessageJob;
 use App\Models\Address;
 use App\Models\ApplicationRegistration;
 use App\Models\Enroll;
@@ -10,6 +12,7 @@ use App\Models\Student;
 use App\Models\StudentAlExam;
 use App\Models\StudentDoc;
 use App\Models\User;
+use App\Services\JobScheduleService;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
@@ -404,7 +407,27 @@ class RegistrationController extends Controller
         }
         $enroll->status = 'Processing';
         $enroll->update();
-        dispatch(new RegistrationConfirmationJob($enroll->id,$student->id));
+        $jobService = new JobScheduleService();
+        $schedule = $jobService->getSchedule();
+        $sms_scheduled_at = Carbon::parse($schedule->sms_scheduled_at);
+        $email_scheduled_at = Carbon::parse($schedule->email_scheduled_at);
+
+        $message = "Your online application for the  ".$enroll->programme->name." at the University of Jaffna has been received. You will be notified once it has been processed.";
+        $job_sms = (new SendMessageJob($enroll->student->mobile,$message))
+            ->delay(
+                $sms_scheduled_at->addSecond()
+            );
+        dispatch($job_sms);
+
+        //email job
+        $job = (new RegistrationConfirmationJob($enroll->id,$student->id))
+            ->delay(
+                $email_scheduled_at->addSeconds(5)
+            );
+        dispatch($job);
+        $jobService->updateSchedule($email_scheduled_at,$sms_scheduled_at);
+
+//        dispatch(new RegistrationConfirmationJob($enroll->id,$student->id));
         return redirect()->route('student.registration.completed');
     }
     public function completed(){

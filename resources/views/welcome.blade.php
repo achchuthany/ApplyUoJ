@@ -16,10 +16,6 @@
                                     <img src="{{ URL::asset('assets/images/uoj.png')}}" alt="UNIVERSITY OF JAFFNA"  class="img-fluid mx-auto d-block logo logo-dark">
                                     <img src="{{ URL::asset('assets/images/uoj.png')}}" alt="UNIVERSITY OF JAFFNA" class="logo logo-light">
                                 </a>
-                                <a href="{{route('home')}}" class="mb-1 d-block auth-logo">
-                                    <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="" height="40" class="logo logo-light">
-                                    <img src="{{ URL::asset('assets/images/logo-dark.png')}}" alt="" height="40" class="logo logo-dark">
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -27,6 +23,10 @@
                     <div class="card-body bg-transparent text-center mt-2">
                         <div class="font-weight-lighter text-dark">
                             <h2 class="text-uppercase">
+                                <a href="{{route('home')}}">
+                                    <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="" height="40" class="logo">
+                                    <img src="{{ URL::asset('assets/images/logo-dark.png')}}" alt="" height="40" class="logo">
+                                </a>
                                 Online Enrolment for ACADEMIC PROGRAMME
                             </h2>
                         </div>

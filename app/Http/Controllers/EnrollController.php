@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\EnrolmentConfirmationJob;
+use App\Jobs\SendMessageJob;
 use App\Models\AcademicYear;
 use App\Models\ApplicationRegistration;
 use App\Models\Enroll;
 use App\Models\Faculty;
 use App\Models\Programme;
 use App\Models\Student;
+use App\Services\JobScheduleService;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -67,11 +69,27 @@ class EnrollController extends Controller
             ->where([['enrolls.programme_id',$pid],['enrolls.academic_year_id',$aid],['enrolls.status','Accepted']])
             ->orderBy('students.full_name','asc')
             ->get();
+
+        //get scheduled time
+        $jobService = new JobScheduleService();
+        $schedule = $jobService->getSchedule();
+        $sms_scheduled_at = Carbon::parse($schedule->sms_scheduled_at);
+        $email_scheduled_at = Carbon::parse($schedule->email_scheduled_at);
+        $gmail_schedule = config('app.gmail_schedule');
+
+        //GET ENV varilables
+        $scheduled_at = $gmail_schedule['scheduled_at'];
+        $delay_bulk = $gmail_schedule['delay_bulk'];
+        $limit = $gmail_schedule['limit'];
+        $delay_one = $gmail_schedule['delay_one'];
+        $count = 0;
+
+
         foreach ($enrolls as $en){
             DB::beginTransaction();
             $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
             $reg_no = $application->academic_year->application_year.'/'.$application->programme->abbreviation.'/'.sprintf("%03d",$application->next_registration_number);
-            $index_no = $this->generateIndexNo($application); //$application->programme->abbreviation.substr($application->academic_year->application_year,2,2).sprintf("%03d",$application->next_registration_number);
+            //$index_no = $this->generateIndexNo($application); //$application->programme->abbreviation.substr($application->academic_year->application_year,2,2).sprintf("%03d",$application->next_registration_number);
             $enroll = Enroll::whereId($en->id)->first();
             $enroll->reg_no = $reg_no;
             //$enroll->index_no = $index_no;
@@ -81,11 +99,31 @@ class EnrollController extends Controller
                 $application->next_registration_number += 1;
                 $application->update();
                 $enroll->update();
+
+                ($count>=$limit && $count%$limit==0) ? $scheduled_at = $scheduled_at + $delay_bulk : $scheduled_at += $delay_one;
+                $count++;
+                //send sms
+                $message = "Congratulations, You are enrolled for ".$application->programme->name." at University of Jaffna. Your Registration Number: ".$enroll->reg_no.". Check your MyUoJ portal for further details";
+                $job_sms = (new SendMessageJob($enroll->student->mobile,$message))
+                    ->delay(
+                        $sms_scheduled_at->addSecond()
+                    );
+                dispatch($job_sms);
+
+                //email job
+                $job = (new EnrolmentConfirmationJob($enroll->id))
+                    ->delay(
+                        $email_scheduled_at->addSeconds($scheduled_at)
+                    );
+                dispatch($job);
                 DB::commit();
             }catch(QueryException $e){
                 DB::rollBack();
             }
         }
+
+        //update schedule
+        $jobService->updateSchedule($email_scheduled_at,$sms_scheduled_at);
 
         $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
         $message = $application->programme->name. '\'s registration details successfully updated!';
@@ -325,6 +363,10 @@ class EnrollController extends Controller
 
         $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
 
+        $jobService = new JobScheduleService();
+        $schedule = $jobService->getSchedule();
+        $sms_scheduled_at = Carbon::parse($schedule->sms_scheduled_at);
+        $email_scheduled_at = Carbon::parse($schedule->email_scheduled_at);
         foreach ($enrolls as $en){
             DB::beginTransaction();
             $faculty = Faculty::whereId($application->programme->faculty_id)->first();
@@ -336,11 +378,21 @@ class EnrollController extends Controller
                 $faculty->next_index_number += 1;
                 $faculty->update();
                 $enroll->update();
+
+                //send sms
+                $message = "Your Index Number: ".$enroll->index_no.". Check your MyUoJ portal for further details";
+                $job_sms = (new SendMessageJob($enroll->student->mobile,$message))
+                    ->delay(
+                        $sms_scheduled_at->addSecond()
+                    );
+                dispatch($job_sms);
+
                 DB::commit();
             }catch(QueryException $e){
                 DB::rollBack();
             }
         }
+        $jobService->updateSchedule($email_scheduled_at,$sms_scheduled_at);
 
         $message = $application->programme->name. '\'s index numbers has been successfully updated!';
         $msag_type = 'success';

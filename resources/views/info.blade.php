@@ -13,8 +13,8 @@
                         <div class="col-lg-12">
                             <div class="text-center">
                                 <a href="{{url('/')}}" class="d-block auth-logo">
-                                    <img src="{{ URL::asset('assets/images/uoj.png')}}" alt="UNIVERSITY OF JAFFNA"  height="70" class="logo logo-dark">
-                                    <img src="{{ URL::asset('assets/images/uoj.png')}}" alt="UNIVERSITY OF JAFFNA"  height="70"  class="logo logo-light">
+                                    <img src="{{ URL::asset('assets/images/uoj.png')}}" alt="UNIVERSITY OF JAFFNA"  height="70" class="logo logo-light">
+                                    <img src="{{ URL::asset('assets/images/uoj.png')}}" alt="UNIVERSITY OF JAFFNA"  height="70"  class="logo logo-dark">
                                 </a>
                             </div>
                         </div>

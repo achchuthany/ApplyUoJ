@@ -111,6 +111,7 @@
                         @if(auth()->user()->hasRole('Admin'))
                         <li><a href="{{route('admin.students.add')}}"><i class="fas fa-plus"></i>Add</a></li>
                         <li><a href="{{route('admin.students.upload')}}"><i class="mdi mdi-upload-multiple"></i>Bulk Upload</a></li>
+                        <li><a href="{{route('admin.students.export.index')}}"><i class="mdi mdi-export"></i>Bulk Export</a></li>
                         <li><a href="{{route('admin.students.delete.index')}}"><i class="mdi mdi-delete"></i>Bulk Delete</a></li>
                         @endif
                     </ul>

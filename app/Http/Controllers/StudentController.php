@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\EnrolmentAcceptJob;
+use App\Jobs\SendMessageJob;
 use App\Models\AcademicYear;
 use App\Models\Address;
 use App\Models\ApplicationRegistration;
@@ -11,6 +12,7 @@ use App\Models\Enroll;
 use App\Models\Programme;
 use App\Models\Student;
 use App\Models\StudentAlExam;
+use App\Services\JobScheduleService;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -680,11 +682,27 @@ class StudentController extends Controller
             $enroll->update();
             $code = 200;
             $msg = $enroll->student->name_initials." enroll status has been updated to ".$enroll->status;
+
+            $jobService = new JobScheduleService();
+            $schedule = $jobService->getSchedule();
+            $sms_scheduled_at = Carbon::parse($schedule->sms_scheduled_at);
+            $email_scheduled_at = Carbon::parse($schedule->email_scheduled_at);
+
+
             $job = (new EnrolmentAcceptJob($enroll->id,$request['message']))
                 ->delay(
-                    now()->addSeconds(30)
+                    $email_scheduled_at->addSeconds(5)
                 );
             dispatch($job);
+
+            $message = "Your registration status for the  ".$enroll->programme->name." at the University of Jaffna is ".$enroll->status.". Please check your email for more details.";
+            $job_sms = (new SendMessageJob($enroll->student->mobile,$message))
+                ->delay(
+                    $sms_scheduled_at->addSecond()
+                );
+            dispatch($job_sms);
+
+            $jobService->updateSchedule($email_scheduled_at,$sms_scheduled_at);
         }catch (QueryException $ex){
             $msg = $ex->getMessage();
             $code = 201;

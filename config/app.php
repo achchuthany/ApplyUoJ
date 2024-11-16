@@ -638,7 +638,11 @@ return [
         'delay_bulk' => env('MAIL_DELAY_TIME_FOR_NEXT_COUNT',300),
         'limit' => env('MAIL_COUNT_FOR_DELAY',50),
         'delay_one' => env('MAIL_DELAY_TIME_FOR_NEXT_MAIL',4),
-        ],
-
+    ],
+    'sms_gateway' =>[
+        'username' => env('SMS_USERNAME', 'user'),
+        'password'=>env('SMS_PASSWORD','password'),
+        'alias'=>env('SMS_ALIAS','alias')
+    ],
 
 ];

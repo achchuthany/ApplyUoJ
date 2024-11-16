@@ -502,6 +502,24 @@ Route::group(['middleware' => ['auth','verified','roles']], function () {
         'middleware' => 'roles',
         'roles' => ['Admin']
     ]);
+    Route::get('/admin/students/export',[
+        'uses' => 'App\Http\Controllers\ExportController@index',
+        'as' => 'admin.students.export.index',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/students/export',[
+        'uses' => 'App\Http\Controllers\ExportController@export',
+        'as' => 'admin.students.export',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+    Route::post('/admin/students/export/image',[
+        'uses' => 'App\Http\Controllers\ExportController@exportProfileImage',
+        'as' => 'admin.students.export.image',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
 
 
 });

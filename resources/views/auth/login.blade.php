@@ -5,33 +5,35 @@ Login
 @section('content')
 <div class="account-pages">
     <div class="container">
-        <div class="row vh-100 justify-content-center align-items-center">
-            <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row justify-content-center align-items-center my-5">
+            <div class="col-md-12">
                 <div class="">
-                    <div class="row align-items-center">
+                    <div class="row">
                         <div class="col-lg-7">
-                            <a href="{{route('home')}}" class="my-2 d-block auth-logo">
-                                <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="MyUoJ" height="40" class="logo logo-dark">
-                                <img src="{{ URL::asset('assets/images/logo-dark.png')}}" alt="MyUoJ" height="40" class="logo logo-light">
-                            </a>
+                            <div class="d-flex justify-content-center">
+                                <a href="{{route('home')}}">
+                                    <img src="{{ URL::asset('assets/images/logo-dark.png')}}" alt="MyUoJ" height="30" class="logo logo-dark">
+                                </a>
+                            </div>
+
                             @if($isShow)
-                            <div class="card-body bg-light shadow-lg rounded-lg my-3 p-4">
-                                <div class="h5 text-uppercase mb-3 text-center">
+                            <div class="card-body">
+                                <div class="h5 text-uppercase text-center">
                                     Closing Dates for STUDENT Enrolment
                                 </div>
                                 <div class="table-responsive">
-                                    <table class="table table-hover" >
+                                    <table class="table table-hover table-striped" >
                                         <thead>
                                         <th>Programme</th>
                                         <th>Closing Date</th>
                                         <th>Enrolment</th>
                                         </thead>
-                                        <tbody data-simplebar style="max-height: 400px;">
+                                        <tbody>
                                         @foreach($data as $row)
                                             <tr>
-                                                <td><span class="badge badge-soft-info p-1"> {{$row->academic_year->name}} </span> {{$row->programme->name}} </td>
-                                                <td>{{\Carbon\Carbon::parse($row->close_date)->toFormattedDateString()}} <span class="badge badge-soft-info p-1">{{\Carbon\Carbon::create($row->close_date)->hour(24)->diffForHumans()}}</span></td>
-                                                <th><a href="{{route('welcome')}}" class="btn btn-primary btn-sm">Enrol now</a> </th>
+                                                <td> {{$row->programme->name}} - {{$row->academic_year->name}} </td>
+                                                <td> {{\Carbon\Carbon::parse($row->close_date)->toDayDateTimeString()}} </td>
+                                                <th> <a href="{{route('welcome')}}" class="btn btn-primary btn-sm">Enrol now</a> </th>
                                             </tr>
                                         @endforeach
                                         </tbody>

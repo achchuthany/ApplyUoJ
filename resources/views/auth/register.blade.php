@@ -13,9 +13,9 @@ Register
                             <div class="col-lg-12 m-0">
                                 <div class="text-center">
                                     <img src="{{ URL::asset('assets/images/uoj.png')}}" alt="" height="70" class="logo">
-                                    <a href="{{route('home')}}" class="mb-1 d-block auth-logo">
-                                        <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="" height="40" class="logo logo-light">
-                                        <img src="{{ URL::asset('assets/images/logo-dark.png')}}" alt="" height="40" class="logo logo-dark">
+                                    <a href="{{route('home')}}">
+                                        <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="" height="40" class="logo">
+                                        <img src="{{ URL::asset('assets/images/logo-dark.png')}}" alt="" height="40" class="logo">
                                     </a>
                                 </div>
                             </div>
@@ -77,6 +77,7 @@ Register
                                                 <div class="input-group-text">+94</div>
                                                 <input id="phone_number" type="tel" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus placeholder="07XXXXXXXX">
                                             </div>
+                                            <div>Enter the correct mobile number to receive SMS notifications.</div>
                                             @error('phone_number')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

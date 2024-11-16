@@ -6,7 +6,7 @@
         @include('layouts.head')
   </head>
 
-    <body class="authentication-student-bg">
+    <body class="bg-white">
         @yield('content')
         @include('layouts.vendor-scripts')
     </body>
