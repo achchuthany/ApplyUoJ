@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class EnrollController extends Controller
 {
@@ -84,7 +85,8 @@ class EnrollController extends Controller
         $delay_one = $gmail_schedule['delay_one'];
         $count = 0;
 
-
+//Log::info('### Start Assign Registration Process ###');
+//Log::info('## Start Schedule ##',[$email_scheduled_at,$sms_scheduled_at]);
         foreach ($enrolls as $en){
             DB::beginTransaction();
             $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
@@ -100,7 +102,7 @@ class EnrollController extends Controller
                 $application->update();
                 $enroll->update();
 
-                ($count>=$limit && $count%$limit==0) ? $scheduled_at = $scheduled_at + $delay_bulk : $scheduled_at += $delay_one;
+                ($count>=$limit && $count%$limit==0) ? $scheduled_at = $delay_bulk : $scheduled_at = $delay_one;
                 $count++;
                 //send sms
                 $message = "Congratulations, You are enrolled for ".$application->programme->name." at University of Jaffna. Your Registration Number: ".$enroll->reg_no.". Check your MyUoJ portal for further details";
@@ -116,6 +118,7 @@ class EnrollController extends Controller
                         $email_scheduled_at->addSeconds($scheduled_at)
                     );
                 dispatch($job);
+                //Log::info('Email',[now(),$scheduled_at,$email_scheduled_at,$sms_scheduled_at]);
                 DB::commit();
             }catch(QueryException $e){
                 DB::rollBack();
@@ -124,7 +127,7 @@ class EnrollController extends Controller
 
         //update schedule
         $jobService->updateSchedule($email_scheduled_at,$sms_scheduled_at);
-
+        //Log::info('### End Assign Registration Process ###',[$email_scheduled_at,$sms_scheduled_at]);
         $application = ApplicationRegistration::where([['programme_id',$pid],['academic_year_id',$aid]])->first();
         $message = $application->programme->name. '\'s registration details successfully updated!';
         $msag_type = 'success';
@@ -289,22 +292,41 @@ class EnrollController extends Controller
 
         $gmail_schedule = config('app.gmail_schedule');
 
+        //get scheduled time
+        $jobService = new JobScheduleService();
+        $schedule = $jobService->getSchedule();
+        $sms_scheduled_at = Carbon::parse($schedule->sms_scheduled_at);
+        $email_scheduled_at = Carbon::parse($schedule->email_scheduled_at);
+        $gmail_schedule = config('app.gmail_schedule');
+
         //GET ENV varilables
         $scheduled_at = $gmail_schedule['scheduled_at'];
         $delay_bulk = $gmail_schedule['delay_bulk'];
         $limit = $gmail_schedule['limit'];
         $delay_one = $gmail_schedule['delay_one'];
         $count = 0;
+        //Log::info('### Start Confirmation Process ###');
         foreach ($enrolls as $enroll){
-            ($count>=$limit && $count%$limit==0) ? $scheduled_at = $scheduled_at + $delay_bulk : $scheduled_at += $delay_one;
+            ($count>=$limit && $count%$limit==0) ? $scheduled_at = $delay_bulk : $scheduled_at = $delay_one;
             $count++;
+            //send sms
+            $message = "Congratulations, You are enrolled for ".$application->programme->name." at University of Jaffna. Your Registration Number: ".$enroll->reg_no.". Check your MyUoJ portal for further details";
+            $job_sms = (new SendMessageJob($enroll->student->mobile,$message))
+                ->delay(
+                    $sms_scheduled_at->addSecond()
+                );
+            dispatch($job_sms);
+
             // send all mail in the queue.
             $job = (new EnrolmentConfirmationJob($enroll->id))
                 ->delay(
-                    now()->addSeconds($scheduled_at)
+                    $email_scheduled_at->addSeconds($scheduled_at)
                 );
             dispatch($job);
+            //Log::info('Email Queue',[now(),$sms_scheduled_at,$email_scheduled_at]);
         }
+        $jobService->updateSchedule($email_scheduled_at,$sms_scheduled_at);
+        //Log::info('### End Confirmation Process ###');
         return redirect()->back()->with(['message_type'=>'success','message'=>'Email has been placed in queue for the process. Queue will be start '.$gmail_schedule['scheduled_at'].' second latter.']);
     }
     public function dropout($enroll_id){
