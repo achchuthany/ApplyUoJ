@@ -35,7 +35,7 @@
                                     <label for="programme_id">Programme Title</label>
                                     <select class="form-control select2" name="programme_id" required>
                                         @foreach($programmes as $programme)
-                                            <option value="{{$programme->id}}" >{{$programme->name.' - '.$programme->type}}</option>
+                                            <option value="{{$programme->id}}" {{old('programme_id')==$programme->id?'selected':''}} >{{$programme->name.' - '.$programme->type}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -45,7 +45,7 @@
                                     <label for="title">Academic Year</label>
                                     <select class="form-control select2" name="academic_year_id" required>
                                         @foreach($academics as $academic)
-                                            <option value="{{$academic->id}}">{{$academic->name}}</option>
+                                            <option value="{{$academic->id}}" {{old('academic_year_id')==$programme->id?'selected':''}}>{{$academic->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

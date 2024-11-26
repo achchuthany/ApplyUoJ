@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jobs\EnrolmentAcceptJob;
 use App\Jobs\SendMessageJob;
+use App\Jobs\WelcomeEmailScheduleJob;
 use App\Models\AcademicYear;
 use App\Models\Address;
 use App\Models\ApplicationRegistration;
@@ -181,7 +182,7 @@ class StudentController extends Controller
                 'mobile'=>'numeric',
                 'nic'=>'required|unique:students',
                 'al_english_mark'=>'required|numeric|between:0,100.00',
-                'email'=>'email',
+                'email'=>'email|unique:students',
                 'mobile_home'=>'numeric',
                 'parent_mobile'=>'numeric',
                 'parent_landline'=>'numeric'
@@ -305,6 +306,8 @@ class StudentController extends Controller
             $msag_type = 'success';
             $message = $count_insert[0]. ' students and '.$count_insert[1].'  enroll data has been successfully created.';
         }
+        dispatch(new WelcomeEmailScheduleJob($programme_id,$academic_year_id,$request->csv_data_file_id));
+
         return redirect()->route('admin.students.upload')->with(['message_type'=>$msag_type,'message'=>$message]);
     }
     public function all(Request $request){

@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class SendMessageJob implements ShouldQueue
 {
@@ -36,5 +37,6 @@ class SendMessageJob implements ShouldQueue
     {
         $sms = new SendSMS();
         $sms->send($this->phone_number, $this->message);
+        //Log::log('info', 'Message sent to ' . $this->phone_number.' with message: '.$this->message);
     }
 }
