@@ -42,7 +42,7 @@ After the receiving your Enrollment Number, contact the relevant faculty to lear
     Start the Enrolment Now
 @endcomponent
 
-Thanks,<br/>
+Thank you,<br/>
 Admissions Branch, University of Jaffna <br/>
 admissions@univ.jfn.ac.lk | +94 21 222 6714 | +94 21 221 8120 <br/>
 <i>This is system generated email.</i>
