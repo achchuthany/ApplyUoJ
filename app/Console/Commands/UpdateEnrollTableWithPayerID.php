@@ -56,8 +56,10 @@ class UpdateEnrollTableWithPayerID extends Command
             $lastTwoDigits = substr($academicYear->name, -2);
             $this->info('Starting the table update...' . $lastTwoDigits);
 
-
-            $enrolls = Enroll::where('academic_year_id', $academicYear->id)->get();
+            // get all enrolls for the academic year and payer id is null
+            $enrolls = Enroll::where('academic_year_id', $academicYear->id)
+                        ->whereNull('payer_id')
+                        ->get();
 
             foreach ($enrolls as $enroll) {
                 $payer_id = $lastTwoDigits . str_pad($newPayerId, 5, '0', STR_PAD_LEFT);
@@ -78,6 +80,7 @@ class UpdateEnrollTableWithPayerID extends Command
             $this->error('Error: ' . $e->getMessage());
             return 0;
         }
+        $this->info('Table update completed!');
         return 1;
     }
 }
