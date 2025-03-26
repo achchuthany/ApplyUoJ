@@ -65,6 +65,13 @@ Add New Academic Year
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
+                                            <label for="next_payer_id">Next Payer ID</label>
+                                            <input value="{{(isset($ay)&&!Request::old('next_payer_id'))? $ay->next_payer_id : Request::old('next_payer_id')}}" id="next_payer_id" name="next_payer_id" type="text" class="form-control bg-soft-warning" required readonly>
+                                            <span class="text-danger">Please do not edit this field.</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
                                             <label class="control-label">Status</label>
                                             <select class="form-control select2" name="status" required>
                                                 <option value="Published" {{(isset($ay)&&!Request::old('status'))? (($ay->status  == 'Published')? 'selected':'') : ( (Request::old('status') =='Published')? 'selected':'')}}>Published</option>

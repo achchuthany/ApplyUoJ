@@ -39,7 +39,8 @@ class AcademicYearController extends Controller
     {
         $this->validate($request,[
             'application_year' => 'sometimes|required|int|min:2000|max:9999|unique:academic_years,application_year,'.$request['id'],
-            'academic_year' => 'sometimes|required|unique:academic_years,name,'.$request['id']
+            'academic_year' => 'sometimes|required|unique:academic_years,name,'.$request['id'],
+            'next_payer_id' => 'required|int|min:1|max:39999'
         ]);
         $isUpdate = false;
         if ($request['id']) {
@@ -54,6 +55,7 @@ class AcademicYearController extends Controller
         $ay->date_of_start  = $request['start'];
         $ay->date_of_end = $request['end'];
         $ay->status = $request['status'];
+        $ay->next_payer_id = $request['next_payer_id'];
 
         try{
         if ($isUpdate && $ay->update()) {
