@@ -57,6 +57,10 @@
                                 <h5 class="font-size-16">{{$enroll->academic_year->name}}</h5>
                             </div>
                             <div class="mt-4">
+                                <p class="mb-1">Index Number</p>
+                                <h5 class="font-size-16 {{$enroll->index_no? '': 'text-info'}} ">{{$enroll->index_no? $enroll->index_no: 'Not Assigned'}}</h5>
+                            </div>
+                            <div class="mt-4">
                                 <p class="mb-1">Registration Number</p>
                                 <h5 class="font-size-16 {{$enroll->reg_no? '': 'text-info'}} ">{{$enroll->reg_no? $enroll->reg_no: 'Not Assigned'}} </h5>
                             </div>
@@ -64,16 +68,22 @@
                                 <p class="mb-1">Date of Registration</p>
                                 <h5 class="font-size-16 {{$enroll->registration_date? '': 'text-info'}} ">{{$enroll->registration_date? Carbon\Carbon::parse($enroll->registration_date)->toFormattedDateString(): 'Not Assigned'}}</h5>
                             </div>
+                            <div class="mt-4">
+                                <p class="mb-1">Payer ID</p>
+                                <h5 class="font-size-16 {{$enroll->payer_id? '': 'text-info'}} ">{{$enroll->payer_id??'Not Assigned'}}</h5>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-                <div class="card-footer text-center">
-                    Contact: Admissions Branch, University of Jaffna <div><i class="mdi mdi-phone"></i>+94 21 222 6714</div>
-                    <div> <i class="mdi mdi-phone"></i> +94 21 221 8120</div>
+                <div class="card-footer">
+                    <small>Contact</small>
+                    <div>Admissions Branch, University of Jaffna </div>
+                     <div><i class="mdi mdi-phone"></i>+94 21 222 6714 <i class="mdi mdi-phone"></i> +94 21 221 8120</div>
                     <div><i class="mdi mdi-email"></i> admissions@univ.jfn.ac.lk</div>
                 </div>
                 <div class="card-footer">
-                    <div class="font-size-10 text-center text-uppercase">
+                    <div class="font-size-10">
                         <i class="mdi mdi-clock-outline"></i> <span class="text-muted">Updated at {{$enroll->updated_at->diffForHumans()}} </span>
                     </div>
                 </div>
@@ -453,74 +463,74 @@
 {{--                        </div>--}}
 {{--                    </div>--}}
 
-                    <div class="tab-pane" id="log" role="tabpanel">
-                        <div>
-                            <div data-simplebar style="max-height: 430px;">
-                                <div class="media border-bottom py-4">
-                                    <img class="mr-2 rounded-circle avatar-xs" src="{{ URL::asset('assets/images/users/male.png')}}" alt="">
-                                    <div class="media-body">
-                                        <h5 class="font-size-15 mt-0 mb-1">Marion Walker <small class="text-muted float-right">1 hr ago</small></h5>
-                                        <p class="text-muted">If several languages coalesce, the grammar of the resulting .</p>
+{{--                    <div class="tab-pane" id="log" role="tabpanel">--}}
+{{--                        <div>--}}
+{{--                            <div data-simplebar style="max-height: 430px;">--}}
+{{--                                <div class="media border-bottom py-4">--}}
+{{--                                    <img class="mr-2 rounded-circle avatar-xs" src="{{ URL::asset('assets/images/users/male.png')}}" alt="">--}}
+{{--                                    <div class="media-body">--}}
+{{--                                        <h5 class="font-size-15 mt-0 mb-1">Marion Walker <small class="text-muted float-right">1 hr ago</small></h5>--}}
+{{--                                        <p class="text-muted">If several languages coalesce, the grammar of the resulting .</p>--}}
 
-                                        <a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i
-                                            class="mdi mdi-reply"></i> Reply</a>
+{{--                                        <a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i--}}
+{{--                                            class="mdi mdi-reply"></i> Reply</a>--}}
 
-                                        <div class="media mt-4">
-                                            <img class="mr-2 rounded-circle avatar-xs" src="{{ URL::asset('assets/images/users/male.png')}}" alt="">
-                                            <div class="media-body">
-                                                <h5 class="font-size-15 mt-0 mb-1">Shanon Marvin <small class="text-muted float-right">1 hr ago</small></h5>
-                                                <p class="text-muted">It will be as simple as in fact, it will be Occidental. To it will seem like simplified .</p>
+{{--                                        <div class="media mt-4">--}}
+{{--                                            <img class="mr-2 rounded-circle avatar-xs" src="{{ URL::asset('assets/images/users/male.png')}}" alt="">--}}
+{{--                                            <div class="media-body">--}}
+{{--                                                <h5 class="font-size-15 mt-0 mb-1">Shanon Marvin <small class="text-muted float-right">1 hr ago</small></h5>--}}
+{{--                                                <p class="text-muted">It will be as simple as in fact, it will be Occidental. To it will seem like simplified .</p>--}}
 
 
-                                                <a href="javascript: void(0);" class="text-muted font-13 d-inline-block">
-                                                    <i class="mdi mdi-reply"></i> Reply
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="media border-bottom py-4">
-                                    <img class="mr-2 rounded-circle avatar-xs" src="{{ URL::asset('/assets/images/users/male.png')}}" alt="">
-                                    <div class="media-body">
-                                        <h5 class="font-size-15 mt-0 mb-1">Janice Morgan <small class="text-muted float-right">2 hrs ago</small></h5>
-                                        <p class="text-muted">To achieve this, it would be necessary to have uniform pronunciation.</p>
+{{--                                                <a href="javascript: void(0);" class="text-muted font-13 d-inline-block">--}}
+{{--                                                    <i class="mdi mdi-reply"></i> Reply--}}
+{{--                                                </a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="media border-bottom py-4">--}}
+{{--                                    <img class="mr-2 rounded-circle avatar-xs" src="{{ URL::asset('/assets/images/users/male.png')}}" alt="">--}}
+{{--                                    <div class="media-body">--}}
+{{--                                        <h5 class="font-size-15 mt-0 mb-1">Janice Morgan <small class="text-muted float-right">2 hrs ago</small></h5>--}}
+{{--                                        <p class="text-muted">To achieve this, it would be necessary to have uniform pronunciation.</p>--}}
 
-                                        <a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i
-                                            class="mdi mdi-reply"></i> Reply</a>
+{{--                                        <a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i--}}
+{{--                                            class="mdi mdi-reply"></i> Reply</a>--}}
 
-                                    </div>
-                                </div>
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                                <div class="media border-bottom py-4">
-                                    <img class="mr-2 rounded-circle avatar-xs" src="{{ URL::asset('assets/images/users/male.png')}}" alt="">
-                                    <div class="media-body">
-                                        <h5 class="font-size-15 mt-0 mb-1">Patrick Petty <small class="text-muted float-right">3 hrs ago</small></h5>
-                                        <p class="text-muted">Sed ut perspiciatis unde omnis iste natus error sit </p>
+{{--                                <div class="media border-bottom py-4">--}}
+{{--                                    <img class="mr-2 rounded-circle avatar-xs" src="{{ URL::asset('assets/images/users/male.png')}}" alt="">--}}
+{{--                                    <div class="media-body">--}}
+{{--                                        <h5 class="font-size-15 mt-0 mb-1">Patrick Petty <small class="text-muted float-right">3 hrs ago</small></h5>--}}
+{{--                                        <p class="text-muted">Sed ut perspiciatis unde omnis iste natus error sit </p>--}}
 
-                                        <a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i
-                                            class="mdi mdi-reply"></i> Reply</a>
+{{--                                        <a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i--}}
+{{--                                            class="mdi mdi-reply"></i> Reply</a>--}}
 
-                                    </div>
-                                </div>
-                            </div>
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                            <div class="border rounded mt-4">
-                                <form action="#">
-                                    <div class="px-2 py-1 bg-light">
+{{--                            <div class="border rounded mt-4">--}}
+{{--                                <form action="#">--}}
+{{--                                    <div class="px-2 py-1 bg-light">--}}
 
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-sm btn-link text-dark text-decoration-none"><i class="uil uil-link"></i></button>
-                                            <button type="button" class="btn btn-sm btn-link text-dark text-decoration-none"><i class="uil uil-smile"></i></button>
-                                            <button type="button" class="btn btn-sm btn-link text-dark text-decoration-none"><i class="uil uil-at"></i></button>
-                                            </div>
+{{--                                        <div class="btn-group" role="group">--}}
+{{--                                            <button type="button" class="btn btn-sm btn-link text-dark text-decoration-none"><i class="uil uil-link"></i></button>--}}
+{{--                                            <button type="button" class="btn btn-sm btn-link text-dark text-decoration-none"><i class="uil uil-smile"></i></button>--}}
+{{--                                            <button type="button" class="btn btn-sm btn-link text-dark text-decoration-none"><i class="uil uil-at"></i></button>--}}
+{{--                                            </div>--}}
 
-                                    </div>
-                                    <textarea rows="3" class="form-control border-0 resize-none" placeholder="Your Message..."></textarea>
+{{--                                    </div>--}}
+{{--                                    <textarea rows="3" class="form-control border-0 resize-none" placeholder="Your Message..."></textarea>--}}
 
-                                </form>
-                            </div> <!-- end .border-->
-                        </div>
-                    </div>
+{{--                                </form>--}}
+{{--                            </div> <!-- end .border-->--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                 </div>
             </div>
